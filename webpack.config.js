@@ -24,8 +24,11 @@ module.exports = async (env, options) => {
       commands: "./src/commands/commands.js",
     },
     output: {
-      clean: true,
-    },
+        path: path.resolve(__dirname, "build"),
+        filename: "[name].bundle.js",
+        clean: true,
+        publicPath: "/",
+      },
     resolve: {
       extensions: [".html", ".js", ".jsx"],
     },
@@ -100,6 +103,7 @@ module.exports = async (env, options) => {
       }),
     ],
     devServer: {
+    static: "./build",
       hot: true,
       headers: {
         "Access-Control-Allow-Origin": "*",
