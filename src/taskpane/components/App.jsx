@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import Header from "./Header";
 import HeroList from "./HeroList";
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 });
 
 const App = (props) => {
-    const [data, setData] = useState('hello');
+    // const [data, setData] = useState('hello');
 
     // useEffect(() => {
     //     try{
