@@ -15,18 +15,18 @@ const useStyles = makeStyles({
 const App = (props) => {
     const [data, setData] = useState('hello');
 
-    useEffect(() => {
-        try{
-            fetch('https://dummyjson.com/products/1')
-            .then(res => res.json())
-            .then((json) => {
-                console.log(json);
-                setData(json.description)
-            })
-        }catch(err){
-            console.log(err);
-        }
-    }, []);
+    // useEffect(() => {
+    //     try{
+    //         fetch('https://dummyjson.com/products/1')
+    //         .then(res => res.json())
+    //         .then((json) => {
+    //             console.log(json);
+    //             setData(json.description)
+    //         })
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }, []);
 
             
   const styles = useStyles();
