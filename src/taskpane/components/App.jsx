@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Header from "./Header";
 import HeroList from "./HeroList";
@@ -13,6 +13,22 @@ const useStyles = makeStyles({
 });
 
 const App = (props) => {
+    const [data, setData] = useState('hello');
+
+    useEffect(() => {
+        try{
+            fetch('https://dummyjson.com/products/1')
+            .then(res => res.json())
+            .then((json) => {
+                console.log(json);
+                setData(json.description)
+            })
+        }catch(err){
+            console.log(err);
+        }
+    }, []);
+
+            
   const styles = useStyles();
   // The list items are static and won't change at runtime,
   // so this should be an ordinary const, not a part of state.
