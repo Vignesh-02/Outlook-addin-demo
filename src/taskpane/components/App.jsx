@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 });
 
 const App = (props) => {
-  const styles = useStyles();d
+  const styles = useStyles();
   // The list items are static and won't change at runtime,
   // so this should be an ordinary const, not a part of state.
   const listItems = [
