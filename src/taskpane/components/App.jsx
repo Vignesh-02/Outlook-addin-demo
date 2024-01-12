@@ -35,15 +35,15 @@ const App = (props) => {
   const listItems = [
     {
       icon: <Ribbon24Regular />,
-      primaryText: "Achieve more with Office integration",
+      primaryText: "The apt tool for wise sales",
     },
     {
       icon: <LockOpen24Regular />,
-      primaryText: "Unlock features and functionality",
+      primaryText: "Reply to your ISR as soon as possible",
     },
     {
       icon: <DesignIdeas24Regular />,
-      primaryText: "Create and visualize like a pro",
+      primaryText: "visualize your inventory",
     },
   ];
 
