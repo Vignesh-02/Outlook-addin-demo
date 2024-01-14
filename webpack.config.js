@@ -68,7 +68,7 @@ module.exports = async (env, options) => {
           },
         },
       ],
-    },
+    },7 
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
