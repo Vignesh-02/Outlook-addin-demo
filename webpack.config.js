@@ -4,6 +4,8 @@ const path = require("path");
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CspHtmlWebpackPlugin = require("csp-html-webpack-plugin");
+
 const webpack = require("webpack");
 
 const urlDev = "https://localhost:3001/";
@@ -89,6 +91,36 @@ module.exports = async (env, options) => {
           },
         ],
       }),
+
+      new CspHtmlWebpackPlugin(
+        {
+            
+                "base-uri": "'self'",
+                "object-src": "'none'",
+                "script-src": ["'self'", "'unsafe-inline'"],
+                "style-src": ["'self'", "'unsafe-inline'"],
+                "font-src": ["'self'", "data:", "fonts.gstatic.com"],
+                "connect-src": [ "'self'",
+                                  "http://localhost:8000",
+                                  "127.0.0.1:8000",
+                                  "https://dummyjson.com"
+  
+                ],
+                "frame-src": ["'none'"],
+        },
+        {
+            enabled: true,
+            hashingMethod: "sha256",
+            hashEnabled: {
+              "script-src": true,
+              "style-src": true,
+            },
+            nonceEnabled: {
+              "script-src": true,
+              "style-src": true,
+            },
+          },
+        ),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
