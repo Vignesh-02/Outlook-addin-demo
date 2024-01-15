@@ -20,7 +20,7 @@ const App = (props) => {
             fetch('https://dummyjson.com/products/1')
             .then(res => res.json())
             .then((json) => {
-                console.log(json);
+                console.log(" Test json data", json);
                 setData(json.description)
             })
 

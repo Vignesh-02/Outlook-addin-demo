@@ -70,7 +70,7 @@ module.exports = async (env, options) => {
           },
         },
       ],
-    },7 
+    },
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
@@ -97,16 +97,15 @@ module.exports = async (env, options) => {
             
                 "base-uri": "'self'",
                 "object-src": "'none'",
-                "script-src": ["'self'", "'unsafe-inline'"],
+                "script-src": ["'self'", "'unsafe-eval'"],
                 "style-src": ["'self'", "'unsafe-inline'"],
-                "font-src": ["'self'", "data:", "fonts.gstatic.com"],
                 "connect-src": [ "'self'",
+                                  "https://dummyjson.com",
                                   "http://localhost:8000",
                                   "127.0.0.1:8000",
-                                  "https://dummyjson.com"
-  
+                                  
                 ],
-                "frame-src": ["'none'"],
+                "frame-src": ["'self'"]
         },
         {
             enabled: true,
