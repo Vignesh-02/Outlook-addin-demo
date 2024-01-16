@@ -61,11 +61,15 @@ const App = (props) => {
     //   <TextInsertion />
     // </div>
 
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
-    </Router>
+    <div>
+        <Login />
+    </div>
+
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<Login />} />
+    //   </Routes>
+    // </Router>
 
   );
 };
