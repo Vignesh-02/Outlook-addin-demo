@@ -69,6 +69,11 @@ module.exports = async (env, options) => {
             filename: "assets/[name][ext][query]",
           },
         },
+        {
+            test: /\.css$/i,  // Regex to match CSS files
+            use: ['style-loader', 'css-loader'],  // Loaders are used in reverse order
+        },
+
       ],
     },
     plugins: [
