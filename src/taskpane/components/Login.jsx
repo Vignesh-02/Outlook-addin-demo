@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles/Login.css"
-// import logo from "../../../public/logo1.png";
+import logo from "../../../public/logo1.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -17,9 +17,9 @@ const Login = () => {
     <>
       <div className="page">
         <div className="cont1">
-          {/* <div id="image">
+          <div id="image">
             <img src={logo} alt="Logo" />
-          </div> */}
+          </div>
           <div className="cont1-child2">
             <div id="heading">Login</div>
             <div id="para">

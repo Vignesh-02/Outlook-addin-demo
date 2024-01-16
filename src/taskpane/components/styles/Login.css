@@ -11,8 +11,9 @@
   }
   
   .cont1 {
-    width: 40%;
-    margin-left: 30%;
+    /* width: 40%; */
+    width: 80%;
+    margin-left: 10%;
     margin-top: 31px;
     margin-bottom: 57px;
     display: flex;
@@ -113,10 +114,10 @@
     width: calc(100% - 32px);
     opacity: 0.6;
     color: #1c1c1c;
-    font-size: 1.5rem;
+    font-size: 0.7rem;
     font-weight: 100;
     letter-spacing: 0.12px;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
     padding: 8px 13px;
     padding-left: 0px;
     margin-left: 13px;
@@ -140,7 +141,7 @@
   }
   
   #forgot-heading {
-    font-size: 1.3rem;
+    font-size: 0.8rem;
     color: #1c1c1c;
     font-family: Helvetica Neue;
     font-weight: 100;
@@ -149,9 +150,8 @@
     padding: 0px 8px 0px 8px;
   }
   #forgot-anchor {
-    font-size: 1.3rem;
     color: #356f9f;
-    font-size: 1.3rem;
+    font-size: 0.7rem;
     font-family: Helvetica Neue;
     font-weight: 100;
     letter-spacing: 0.12px;
@@ -161,11 +161,11 @@
   
   #loginBtn {
     color: white;
-    font-size: 1.3rem;
+    font-size: 0.7rem;
     font-family: "Orbitron";
     font-weight: 500;
     letter-spacing: 0.42px;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
     width: 100%;
     height: 100%;
     padding-left: 15px;
