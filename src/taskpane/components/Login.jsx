@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles/Login.css"
-import logo from "../../../public/logo1.png";
+// import logo from "../../../public/logo1.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";

@@ -30,6 +30,7 @@
     "@emotion/styled": "^11.11.0",
     "@fluentui/react-components": "^9.30.4",
     "@fluentui/react-icons": "^2.0.214",
+    "@fontsource/orbitron": "^5.0.18",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
     "core-js": "^3.9.1",
