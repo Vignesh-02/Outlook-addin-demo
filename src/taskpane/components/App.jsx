@@ -6,6 +6,12 @@ import TextInsertion from "./TextInsertion";
 import { makeStyles } from "@fluentui/react-components";
 import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluentui/react-icons";
 
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Home from "./Pages/Home/Home";
+import Login from "./Login";
+
+
 const useStyles = makeStyles({
   root: {
     minHeight: "100vh",
@@ -15,19 +21,19 @@ const useStyles = makeStyles({
 const App = (props) => {
     // const [data, setData] = useState('hello');
 
-    useEffect(() => {
-        try{
-            fetch('https://dummyjson.com/products/1')
-            .then(res => res.json())
-            .then((json) => {
-                console.log(" Test json data", json);
-                setData(json.description)
-            })
+    // useEffect(() => {
+    //     try{
+    //         fetch('https://dummyjson.com/products/1')
+    //         .then(res => res.json())
+    //         .then((json) => {
+    //             console.log(" Test json data", json);
+    //             setData(json.description)
+    //         })
 
-        }catch(err){
-            console.log(err);
-        }
-    }, []);
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }, []);
 
             
   const styles = useStyles();
@@ -49,11 +55,18 @@ const App = (props) => {
   ];
 
   return (
-    <div className={styles.root}>
-      <Header logo="assets/logo-filled.png" title={props.title} message="Welcome" />
-      <HeroList message="Discover what this add-in can do for you today!" items={listItems} />
-      <TextInsertion />
-    </div>
+    // <div className={styles.root}>
+    //   <Header logo="assets/logo-filled.png" title={props.title} message="Welcome" />
+    //   <HeroList message="Discover what this add-in can do for you today!" items={listItems} />
+    //   <TextInsertion />
+    // </div>
+
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </Router>
+
   );
 };
 
