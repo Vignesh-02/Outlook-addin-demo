@@ -92,34 +92,34 @@ module.exports = async (env, options) => {
         ],
       }),
 
-      new CspHtmlWebpackPlugin(
-        {
+    //   new CspHtmlWebpackPlugin(
+    //     {
             
-                "base-uri": "'self'",
-                "object-src": "'none'",
-                "script-src": ["'self'", "'unsafe-eval'"],
-                "style-src": ["'self'", "'unsafe-inline'"],
-                "connect-src": [ "'self'",
-                                  "https://dummyjson.com",
-                                  "http://localhost:8000",
-                                  "127.0.0.1:8000",
+    //             "base-uri": "'self'",
+    //             "object-src": "'none'",
+    //             "script-src": ["'self'", "'unsafe-eval'"],
+    //             "style-src": ["'self'", "'unsafe-inline'"],
+    //             "connect-src": [ "'self'",
+    //                               "https://dummyjson.com",
+    //                               "http://localhost:8000",
+    //                               "127.0.0.1:8000",
                                   
-                ],
-                "frame-src": ["'self'"]
-        },
-        {
-            enabled: true,
-            hashingMethod: "sha256",
-            hashEnabled: {
-              "script-src": true,
-              "style-src": true,
-            },
-            nonceEnabled: {
-              "script-src": true,
-              "style-src": true,
-            },
-          },
-        ),
+    //             ],
+    //             "frame-src": ["'self'"]
+    //     },
+    //     {
+    //         enabled: true,
+    //         hashingMethod: "sha256",
+    //         hashEnabled: {
+    //           "script-src": true,
+    //           "style-src": true,
+    //         },
+    //         nonceEnabled: {
+    //           "script-src": true,
+    //           "style-src": true,
+    //         },
+    //       },
+    //     ),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
