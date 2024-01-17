@@ -8,7 +8,6 @@ import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluen
 
 
 
-const MyComponent = () => {
 
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
