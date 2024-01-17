@@ -7,6 +7,10 @@ import { makeStyles } from "@fluentui/react-components";
 import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluentui/react-icons";
 
 
+
+const MyComponent = () => {
+
+
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import Home from "./Pages/Home/Home";
 import Login from "./Login";

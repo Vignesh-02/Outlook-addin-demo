@@ -5,12 +5,14 @@ import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 
 const Login = () => {
-    const navigate = useNavigate();
+
+    const history = useHistory();
+
     const [showPassword, setShowPassword] = useState(false);
   
     const togglePasswordVisibility = () => {
@@ -19,9 +21,9 @@ const Login = () => {
     const handleLogin = () => {
       // Your login logic goes here
       console.log("Login button is clicked");
-      navigate("/home");
+      history.push('/home');
     };
-  
+
 
     
   return (
