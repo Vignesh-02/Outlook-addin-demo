@@ -5,14 +5,25 @@ import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+  
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
+    const handleLogin = () => {
+      // Your login logic goes here
+      console.log("Login button is clicked");
+      navigate("/home");
+    };
+  
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
+    
   return (
     <>
       <div className="page">
@@ -76,7 +87,7 @@ const Login = () => {
               <a href="#">Click Here</a>
             </div>
           </div>
-          <button id="loginBtn" type="submit">
+          <button onClick={handleLogin} id="loginBtn" type="submit">
             Login
           </button>
         </div>

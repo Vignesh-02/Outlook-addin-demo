@@ -10,6 +10,7 @@ import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluen
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import Home from "./Pages/Home/Home";
 import Login from "./Login";
+import Home from "./Home";
 
 
 const useStyles = makeStyles({
@@ -68,6 +69,8 @@ const App = (props) => {
     <Router>
         <Switch> {/* Use Switch to render the first Route that matches the location */}
             <Route exact path="/" component={Login} />
+            <Route exact path="/home" component={Login} />
+
             {/* Add other Routes here as needed */}
         </Switch>
     </Router>
