@@ -7,7 +7,7 @@ import { makeStyles } from "@fluentui/react-components";
 import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluentui/react-icons";
 
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Hashrouter as Router, Routes, Route } from "react-router-dom";
 // import Home from "./Pages/Home/Home";
 import Login from "./Login";
 
@@ -67,7 +67,7 @@ const App = (props) => {
 
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route exact path="/" component={Login} />
       </Routes>
     </Router>
 
