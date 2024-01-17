@@ -7,7 +7,7 @@ import { makeStyles } from "@fluentui/react-components";
 import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluentui/react-icons";
 
 
-import { Hashrouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import Home from "./Pages/Home/Home";
 import Login from "./Login";
 
@@ -66,9 +66,10 @@ const App = (props) => {
     // </div>
 
     <Router>
-      <Routes>
-        <Route exact path="/" component={Login} />
-      </Routes>
+        <Switch> {/* Use Switch to render the first Route that matches the location */}
+            <Route exact path="/" component={Login} />
+            {/* Add other Routes here as needed */}
+        </Switch>
     </Router>
 
   );
