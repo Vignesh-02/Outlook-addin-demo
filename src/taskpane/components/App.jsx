@@ -69,7 +69,7 @@ const App = (props) => {
     <Router>
         <Switch> {/* Use Switch to render the first Route that matches the location */}
             <Route exact path="/" component={Login} />
-            <Route exact path="/home" component={Login} />
+            <Route exact path="/home" component={Home} />
 
             {/* Add other Routes here as needed */}
         </Switch>
