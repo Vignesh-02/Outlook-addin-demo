@@ -9,6 +9,22 @@ Office.onReady(() => {
   // If needed, Office.js is ready to be called.
 });
 
+
+Outlook.Explorer.explorer = this.Application.ActiveExplorer();
+Outlook.Selection.selection = explorer.Selection;
+
+if (selection.Count > 0)   // Check that selection is not empty.
+{
+    object selectedItem = selection[1];   // Index is one-based.
+    Outlook.MailItem mailItem = selectedItem as Outlook.MailItem;
+
+    if (mailItem != null)    // Check that selected item is a message.
+    {
+        // Process mail item here.
+    }
+}
+
+
 /**
  * Shows a notification when the add-in command is executed.
  * @param event {Office.AddinCommands.Event}
