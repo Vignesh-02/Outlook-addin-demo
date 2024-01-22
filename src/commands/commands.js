@@ -7,22 +7,46 @@
 
 Office.onReady(() => {
   // If needed, Office.js is ready to be called.
+  if (info.host === Office.HostType.Outlook) {
+    // Office is ready
+    fetchEmailContent();
+}
 });
 
 
-Outlook.Explorer.explorer = this.Application.ActiveExplorer();
-Outlook.Selection.selection = explorer.Selection;
+function fetchEmailContent() {
+    const item = Office.context.mailbox.item;
 
-if (selection.Count > 0)   // Check that selection is not empty.
-{
-    object selectedItem = selection[1];   // Index is one-based.
-    Outlook.MailItem mailItem = selectedItem as Outlook.MailItem;
+    // Access the subject of the item
+    const subject = item.subject;
 
-    if (mailItem != null)    // Check that selected item is a message.
-    {
-        // Process mail item here.
-    }
+    // Get body content
+    item.body.getAsync(Office.CoercionType.Text, (result) => {
+        if (result.status === Office.AsyncResultStatus.Succeeded) {
+            console.log('Email Body:', result.value);
+            // Do something with the email body
+        } else {
+            console.error('Error:', result.error);
+        }
+    });
+
+    // You can also access other properties like sender, to, cc, etc.
 }
+
+
+// Outlook.Explorer.explorer = this.Application.ActiveExplorer();
+// Outlook.Selection.selection = explorer.Selection;
+
+// if (selection.Count > 0)   // Check that selection is not empty.
+// {
+//     object.selectedItem = selection[1];   // Index is one-based.
+//     Outlook.MailItem mailItem = selectedItem as Outlook.MailItem;
+
+//     if (mailItem != null)    // Check that selected item is a message.
+//     {
+//         // Process mail item here.
+//     }
+// }
 
 
 /**

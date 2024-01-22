@@ -46,7 +46,35 @@
         <Host xsi:type="MailHost">
           <DesktopFormFactor>
             <FunctionFile resid="Commands.Url"/>
-            <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+                        <OfficeTab id="TabDefault">
+                            <Group id="myCustomGroup">
+                                <Label resid="groupLabel" />
+                                <Icon>
+                                    <bt:Image size="16" resid="icon16" />
+                                    <bt:Image size="32" resid="icon32" />
+                                    <bt:Image size="80" resid="icon80" />
+                                </Icon>
+                                <Control xsi:type="Button" id="myButtonId">
+                                    <Label resid="buttonLabel" />
+                                    <Supertip>
+                                        <Title resid="buttonTooltipTitle"/>
+                                        <Description resid="buttonTooltipDesc"/>
+                                    </Supertip>
+                                    <Icon>
+                                        <bt:Image size="16" resid="icon16" />
+                                        <bt:Image size="32" resid="icon32" />
+                                        <bt:Image size="80" resid="icon80" />
+                                    </Icon>
+                                    <Action xsi:type="ShowTaskpane">
+                                        <TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>
+                                        <SourceLocation resid="readTaskpaneUrl" />
+                                    </Action>
+                                </Control>
+                            </Group>
+                        </OfficeTab>
+                    </ExtensionPoint>
+            <ExtensionPoint xsi:type="MessageComposeCommandSurface" xsi:type="MessageReadCommandSurface">
               <OfficeTab id="TabDefault">
                 <Group id="msgComposeGroup">
                   <Label resid="GroupLabel"/>
