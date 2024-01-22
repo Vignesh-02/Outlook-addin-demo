@@ -47,6 +47,7 @@
           <DesktopFormFactor>
             <FunctionFile resid="Commands.Url"/>
             <ExtensionPoint xsi:type="MessageReadCommandSurface">
+                    <SupportsNoItemContext>true</SupportsNoItemContext>
                         <OfficeTab id="TabDefault">
                             <Group id="myCustomGroup">
                                 <Label resid="TaskpaneButton.Label" />
