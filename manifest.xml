@@ -74,7 +74,7 @@
                             </Group>
                         </OfficeTab>
                     </ExtensionPoint>
-            <ExtensionPoint xsi:type="MessageComposeCommandSurface" xsi:type="MessageReadCommandSurface">
+            <ExtensionPoint xsi:type="MessageComposeCommandSurface">
               <OfficeTab id="TabDefault">
                 <Group id="msgComposeGroup">
                   <Label resid="GroupLabel"/>
