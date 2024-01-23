@@ -112,18 +112,24 @@ const App = (props) => {
     // <div>
     //     <Login />
     // </div>
-    <div>
-        Custom Property Value: {emailItem}
-    </div>
+    // <div>
+    //     Custom Property Value: {emailItem}
+    // </div>
 
-    // <Router>
-    //     <Switch> {/* Use Switch to render the first Route that matches the location */}
-    //         <Route exact path="/" component={Login} />
-    //         <Route exact path="/home" component={Home} />
-
-    //         {/* Add other Routes here as needed */}
-    //     </Switch>
-    // </Router>
+    <Router>
+        <Switch> {/* Use Switch to render the first Route that matches the location */}
+            <Route exact path="/" component={Login} />
+            {/* <Route exact path="/home" component={Home}  emailItem={emailItem}/> */}
+            <Route 
+                exact
+                path="/home" 
+                render={(props) => (
+                    <Home {...props} emailItem={emailItem} />
+                )} 
+            />       
+            {/* Add other Routes here as needed */}
+        </Switch>
+    </Router>
 
   );
 };

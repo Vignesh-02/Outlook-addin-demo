@@ -5,7 +5,7 @@ import logo2 from "../../../public/w3.png";
 import logo3 from "../../../public/w4.png";
 import cross from "../../../public/Vector.png";
 
-const Home = () => {
+const Home = ({ emailItem, ...rest  }) => {
   const DelegateBtn = () => {
     alert("Delegate Button is clicked");
   };
@@ -74,13 +74,7 @@ const Home = () => {
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
                   <div className="content">
-                    Lorem ipsum dolor sit amet consectetur. Et tincidunt enim
-                    lectus mauris amet id vitae orci nisl. Venenatis auctor
-                    ligula in tellus non. Posuere eget mattis sed egestas
-                    tincidunt quis congue scelerisque aliquam. Rhoncus quis
-                    dignissim faucibus magnis non vitae nulla. Nibh semper
-                    consequat pretium sed cras a semper. Diam morbi arcu
-                    placerat turpis.
+                  { emailItem }
                   </div>
                 </div>
               </div>
