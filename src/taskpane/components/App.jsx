@@ -28,6 +28,9 @@ const App = (props) => {
     const [emailItem, setEmailItem] = useState('');
 
     useEffect(() => {
+        Office.onReady(() => {
+
+
         Office.context.mailbox.item.customProperties.refreshAsync(function (asyncResult) {
             if (asyncResult.status === Office.AsyncResultStatus.Failed) {
                 console.error("Failed to refresh custom properties: " + asyncResult.error.message);
@@ -37,6 +40,9 @@ const App = (props) => {
                 setEmailItem(myPropertyValue);
             }
         });
+
+    });
+
     }, []);
 
 
