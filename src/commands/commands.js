@@ -24,6 +24,16 @@ function fetchEmailContent() {
     item.body.getAsync(Office.CoercionType.Text, (result) => {
         if (result.status === Office.AsyncResultStatus.Succeeded) {
             console.log('Email Body:', result.value);
+
+            Office.context.mailbox.item.customProperties.set("emailItem", result.value);
+            Office.context.mailbox.item.customProperties.saveAsync(function (asyncResult) {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+        console.error("Failed to save custom property: " + asyncResult.error.message);
+    } else {
+        console.log("Custom property saved successfully.");
+    }
+});
+
             // Do something with the email body
         } else {
             console.error('Error:', result.error);

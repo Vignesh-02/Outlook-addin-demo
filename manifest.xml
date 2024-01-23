@@ -64,7 +64,6 @@
                                     <Action xsi:type="ShowTaskpane">
                                         <SourceLocation resid="Taskpane.Url"/>
                                         <!-- Enables your add-in to activate on multiple selected messages. -->
-                                        <SupportsMultiSelect>true</SupportsMultiSelect>
                                     </Action>
                                 </Control>
                             </Group>
@@ -92,7 +91,6 @@
           <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>
         </bt:LongStrings>
       </Resources>
-
     </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>

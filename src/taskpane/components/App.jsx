@@ -1,4 +1,6 @@
 import * as React from "react";
+import  { useEffect, useState } from 'react';
+
 import PropTypes from "prop-types";
 import Header from "./Header";
 import HeroList from "./HeroList";
@@ -23,7 +25,20 @@ const useStyles = makeStyles({
 });
 
 const App = (props) => {
-    // const [data, setData] = useState('hello');
+    const [emailItem, setEmailItem] = useState('');
+
+    useEffect(() => {
+        Office.context.mailbox.item.customProperties.refreshAsync(function (asyncResult) {
+            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                console.error("Failed to refresh custom properties: " + asyncResult.error.message);
+            } else {
+                const properties = asyncResult.value;
+                const myPropertyValue = properties.get("emailItem");
+                setEmailItem(myPropertyValue);
+            }
+        });
+    }, []);
+
 
     // useEffect(() => {
     //     try{
@@ -68,15 +83,18 @@ const App = (props) => {
     // <div>
     //     <Login />
     // </div>
+    <div>
+        Custom Property Value: {emailItem}
+    </div>
 
-    <Router>
-        <Switch> {/* Use Switch to render the first Route that matches the location */}
-            <Route exact path="/" component={Login} />
-            <Route exact path="/home" component={Home} />
+    // <Router>
+    //     <Switch> {/* Use Switch to render the first Route that matches the location */}
+    //         <Route exact path="/" component={Login} />
+    //         <Route exact path="/home" component={Home} />
 
-            {/* Add other Routes here as needed */}
-        </Switch>
-    </Router>
+    //         {/* Add other Routes here as needed */}
+    //     </Switch>
+    // </Router>
 
   );
 };
