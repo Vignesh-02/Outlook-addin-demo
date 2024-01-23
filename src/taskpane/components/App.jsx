@@ -27,24 +27,47 @@ const useStyles = makeStyles({
 const App = (props) => {
     const [emailItem, setEmailItem] = useState('');
 
+    // useEffect(() => {
+    //     Office.onReady(() => {
+
+
+    //         Office.context.mailbox.item.loadCustomPropertiesAsync(function(asyncResult){
+    //             if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+    //                 var customProps = asyncResult.value;
+    //                 var emailData = customProps.get("emailItem");
+    //                 setEmailItem(emailData);
+    //         }
+    //         if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+    //             console.error("Failed to save custom property: " + asyncResult.error.message);
+    //         }
+    //           });
+    // });
+
+    // }, []);
+
     useEffect(() => {
+        // Function to fetch email content
+        const getEmailContent = async () => {
+            try {
+                await Office.context.mailbox.item.body.getAsync(Office.CoercionType.Text, (result) => {
+                    if (result.status === Office.AsyncResultStatus.Succeeded) {
+                        setEmailItem(result.value);
+                    } else {
+                        console.error('Error retrieving email body:', result.error);
+                    }
+                });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
         Office.onReady(() => {
-
-
-        Office.context.mailbox.item.customProperties.refreshAsync(function (asyncResult) {
-            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                console.error("Failed to refresh custom properties: " + asyncResult.error.message);
-            } else {
-                const properties = asyncResult.value;
-                const myPropertyValue = properties.get("emailItem");
-                setEmailItem(myPropertyValue);
+            // Check if the Office context is ready and if it's a mail read scenario
+            if (Office.context.mailbox && Office.context.mailbox.item) {
+                getEmailContent();
             }
         });
-
-    });
-
     }, []);
-
 
     // useEffect(() => {
     //     try{

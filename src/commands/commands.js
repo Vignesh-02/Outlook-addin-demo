@@ -4,6 +4,7 @@
  */
 
 /* global Office */
+let _customProps;
 
 Office.onReady(() => {
   // If needed, Office.js is ready to be called.
@@ -15,33 +16,45 @@ Office.onReady(() => {
 
 
 function fetchEmailContent() {
-    const item = Office.context.mailbox.item;
-
     // Access the subject of the item
     const subject = item.subject;
 
-    // Get body content
-    item.body.getAsync(Office.CoercionType.Text, (result) => {
-        if (result.status === Office.AsyncResultStatus.Succeeded) {
-            console.log('Email Body:', result.value);
-
-            Office.context.mailbox.item.customProperties.set("emailItem", result.value);
-            Office.context.mailbox.item.customProperties.saveAsync(function (asyncResult) {
+    Office.context.mailbox.item.loadCustomPropertiesAsync(function(asyncResult){
+        if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            var customProps = asyncResult.value;
+            customProps.set("emailItem", customProps);
+      
+            customProps.saveAsync(function(result){
+               console.log('save result '+JSON.stringify(result));
+            });
+            console.log('property = '+JSON.stringify(customProps));
+    }
     if (asyncResult.status === Office.AsyncResultStatus.Failed) {
         console.error("Failed to save custom property: " + asyncResult.error.message);
-    } else {
-        console.log("Custom property saved successfully.");
     }
-});
+      });
+      
 
-            // Do something with the email body
-        } else {
-            console.error('Error:', result.error);
-        }
-    });
+   
 
     // You can also access other properties like sender, to, cc, etc.
 }
+
+function customPropsCallback(asyncResult) {
+    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+      // Handle the failure.
+      console.error("Failed to save custom property: " + asyncResult.error.message);
+
+    }
+    else {
+      // Successfully loaded custom properties,
+      // can get them from the asyncResult argument.
+      _customProps = asyncResult.value;
+      console.log("Custom property saved successfully.");
+
+    }
+  }
+  
 
 
 // Outlook.Explorer.explorer = this.Application.ActiveExplorer();
