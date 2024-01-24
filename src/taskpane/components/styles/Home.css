@@ -271,11 +271,13 @@
     gap: 12px;
     display: flex;
   }
+
+/* content class */
   .content {
     flex: 1 1 0;
     align-self: stretch;
     color: #1c1c1c;
-    font-size: 10px;
+    font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
     line-height: 14px;
