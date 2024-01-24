@@ -5,6 +5,10 @@ import logo2 from "../../../public/w3.png";
 import logo3 from "../../../public/w4.png";
 import cross from "../../../public/Vector.png";
 
+
+import { Button } from '@material-ui/core';
+
+
 const Home = ({ emailDetails, ...rest  }) => {
   const DelegateBtn = () => {
     alert("Delegate Button is clicked");

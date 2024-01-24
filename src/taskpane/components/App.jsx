@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 });
 
 const App = (props) => {
-    const [emailBody, setEmailBody] = useState('');
+    
 
     const [emailDetails, setEmailDetails] = useState({
         from: '',
