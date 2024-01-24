@@ -25,7 +25,15 @@ const useStyles = makeStyles({
 });
 
 const App = (props) => {
-    const [emailItem, setEmailItem] = useState('');
+    const [emailBody, setEmailBody] = useState('');
+
+    const [emailDetails, setEmailDetails] = useState({
+        from: '',
+        to: [],
+        subject: '',
+        body: '',
+        attachments: []
+    });
 
     // useEffect(() => {
     //     Office.onReady(() => {
@@ -34,7 +42,7 @@ const App = (props) => {
     //         Office.context.mailbox.item.loadCustomPropertiesAsync(function(asyncResult){
     //             if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
     //                 var customProps = asyncResult.value;
-    //                 var emailData = customProps.get("emailItem");
+    //                 var emailData = customProps.get("emailBody");
     //                 setEmailItem(emailData);
     //         }
     //         if (asyncResult.status === Office.AsyncResultStatus.Failed) {
@@ -49,13 +57,28 @@ const App = (props) => {
         // Function to fetch email content
         const getEmailContent = async () => {
             try {
-                await Office.context.mailbox.item.body.getAsync(Office.CoercionType.Text, (result) => {
-                    if (result.status === Office.AsyncResultStatus.Succeeded) {
-                        setEmailItem(result.value);
-                    } else {
-                        console.error('Error retrieving email body:', result.error);
-                    }
+
+                if (Office.context.mailbox.item) {
+                    const item = Office.context.mailbox.item;
+                    setEmailDetails({
+                        from: item.from && item.from.emailAddress,
+                        to: item.to && item.to.map(recipient => recipient.emailAddress),
+                        subject: item.subject,
+                        body: '', // Body is loaded asynchronously
+                        attachments: item.attachments
+                    });
+    
+                    // Load body content asynchronously
+                    item.body.getAsync(Office.CoercionType.Text, (result) => {
+                        if (result.status === Office.AsyncResultStatus.Succeeded) {
+                            setEmailDetails(prevState => ({ ...prevState, body: result.value }));
+                        }
+                        else {
+                            console.error('Error retrieving email body:', result.error);
+                        }
                 });
+                }
+
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -113,18 +136,18 @@ const App = (props) => {
     //     <Login />
     // </div>
     // <div>
-    //     Custom Property Value: {emailItem}
+    //     Custom Property Value: {emailBody}
     // </div>
 
     <Router>
         <Switch> {/* Use Switch to render the first Route that matches the location */}
             <Route exact path="/" component={Login} />
-            {/* <Route exact path="/home" component={Home}  emailItem={emailItem}/> */}
+            {/* <Route exact path="/home" component={Home}  emailBody={emailBody}/> */}
             <Route 
                 exact
                 path="/home" 
                 render={(props) => (
-                    <Home {...props} emailItem={emailItem} />
+                    <Home {...props} emailDetails={emailDetails} />
                 )} 
             />       
             {/* Add other Routes here as needed */}

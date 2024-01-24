@@ -5,7 +5,7 @@ import logo2 from "../../../public/w3.png";
 import logo3 from "../../../public/w4.png";
 import cross from "../../../public/Vector.png";
 
-const Home = ({ emailItem, ...rest  }) => {
+const Home = ({ emailDetails, ...rest  }) => {
   const DelegateBtn = () => {
     alert("Delegate Button is clicked");
   };
@@ -73,8 +73,17 @@ const Home = ({ emailItem, ...rest  }) => {
             <div className="row-frame">
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
+                <div className="content">
+                  { emailDetails.from }
+                  </div>
                   <div className="content">
-                  { emailItem }
+                  { emailDetails.to }
+                  </div>
+                  <div className="content">
+                  { emailDetails.subject }
+                  </div>
+                  <div className="content">
+                  { emailDetails.body }
                   </div>
                 </div>
               </div>
