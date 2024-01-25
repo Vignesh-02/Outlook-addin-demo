@@ -86,21 +86,14 @@ const Home = ({ emailDetails, ...rest  }) => {
             </div>
           </div>
           <div className="mid-frame">
+          <div id="btn1-content" onClick={decreaseFontSize} variant="contained" color="primary">-</div>
+                <div id="btn1-content" onClick={increaseFontSize} variant="contained" color="primary">+</div>
             <div className="row-frame">
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
-                <div id="btn1-content" onClick={decreaseFontSize} variant="contained" color="primary">-</div>
-                <div id="btn1-content" onClick={increaseFontSize} variant="contained" color="primary">+</div>
+
                 
-                <div className="content">
-                  { emailDetails.from }
-                  </div>
-                  <div className="content">
-                  { emailDetails.to }
-                  </div>
-                  <div className="content">
-                  { emailDetails.subject }
-                  </div>
+                
                   <div className="content" style={{ fontSize: `${fontSize}px` }}>
                   { emailDetails.body }
                   </div>

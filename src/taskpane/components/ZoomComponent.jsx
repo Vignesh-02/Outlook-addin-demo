@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 
 const ZoomComponent = () => {
-    const [fontSize, setFontSize] = useState(14); // Default font size
+    const [fontSize, setFontSize] = useState(14); // Default font size 
 
     const increaseFontSize = () => {
         if (fontSize < 20) setFontSize(fontSize + 1);
