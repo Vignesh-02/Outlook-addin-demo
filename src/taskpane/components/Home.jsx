@@ -1,15 +1,27 @@
-import React from "react";
+
+import React, { useState } from 'react';
 import "./styles/Home.css";
 import logo1 from "../../../public/w2.png";
 import logo2 from "../../../public/w3.png";
 import logo3 from "../../../public/w4.png";
 import cross from "../../../public/Vector.png";
 
-
 import { Button } from '@material-ui/core';
 
 
+
 const Home = ({ emailDetails, ...rest  }) => {
+
+    const [fontSize, setFontSize] = useState(14); // Default font size
+
+    const increaseFontSize = () => {
+        if (fontSize < 20) setFontSize(fontSize + 1);
+    };
+
+    const decreaseFontSize = () => {
+        if (fontSize > 14) setFontSize(fontSize - 1);
+    };
+
   const DelegateBtn = () => {
     alert("Delegate Button is clicked");
   };
@@ -77,6 +89,9 @@ const Home = ({ emailDetails, ...rest  }) => {
             <div className="row-frame">
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
+                <Button onClick={decreaseFontSize} variant="contained" color="primary">-</Button>
+                <Button onClick={increaseFontSize} variant="contained" color="primary">+</Button>
+                
                 <div className="content">
                   { emailDetails.from }
                   </div>
@@ -86,7 +101,7 @@ const Home = ({ emailDetails, ...rest  }) => {
                   <div className="content">
                   { emailDetails.subject }
                   </div>
-                  <div className="content">
+                  <div className="content" style={{ fontSize: `${fontSize}px` }}>
                   { emailDetails.body }
                   </div>
                 </div>
