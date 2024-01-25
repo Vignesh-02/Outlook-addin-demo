@@ -6,7 +6,7 @@ import logo2 from "../../../public/w3.png";
 import logo3 from "../../../public/w4.png";
 import cross from "../../../public/Vector.png";
 
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 
 
 
@@ -89,8 +89,8 @@ const Home = ({ emailDetails, ...rest  }) => {
             <div className="row-frame">
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
-                <Button onClick={decreaseFontSize} variant="contained" color="primary">-</Button>
-                <Button onClick={increaseFontSize} variant="contained" color="primary">+</Button>
+                <div id="btn1-content" onClick={decreaseFontSize} variant="contained" color="primary">-</div>
+                <div id="btn1-content" onClick={increaseFontSize} variant="contained" color="primary">+</div>
                 
                 <div className="content">
                   { emailDetails.from }
