@@ -93,7 +93,15 @@ const Home = ({ emailDetails, ...rest  }) => {
 
                 <div className='btn-2'><div id="btn2-content" onClick={decreaseFontSize}  >-</div></div>
                 <div className='btn-2'><div id="btn2-content" onClick={increaseFontSize} >+</div></div>
-            
+
+                 <div className='from'>
+                    { emailDetails.from }
+                    </div>   
+
+                    <div className='from'>
+                    { emailDetails.subject }
+                    </div>   
+
                   <div className="content" style={{ fontSize: `${fontSize}px` }}>
                   { emailDetails.body }
                   </div>

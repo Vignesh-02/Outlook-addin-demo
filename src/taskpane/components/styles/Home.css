@@ -285,6 +285,29 @@
     word-wrap: break-word;
   }
   
+  .from {
+    flex: 1 1 0;
+    align-self: stretch;
+    color: #1c1c1c;
+    font-size: 14px;
+    font-family: Helvetica Neue;
+    font-weight: 100;
+    line-height: 14px;
+    letter-spacing: 0.1px;
+    word-wrap: break-word;
+  }
+
+  .subject {
+    flex: 1 1 0;
+    align-self: stretch;
+    color: #1c1c1c;
+    font-size: 14px;
+    font-family: Helvetica Neue;
+    font-weight: 100;
+    line-height: 14px;
+    letter-spacing: 0.1px;
+    word-wrap: break-word;
+  }
   /* Section - 4 */
   .btn-section {
     width: 289px;
