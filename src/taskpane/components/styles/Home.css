@@ -305,6 +305,16 @@
     gap: 10px;
     display: flex;
   }
+  #btn2-content {
+    color: white;
+    font-size: 14px;
+    font-family: Orbitron;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 1.12px;
+    word-wrap: break-word;
+    cursor: pointer;
+  }
   #btn1-content {
     color: white;
     font-size: 14px;
@@ -315,6 +325,7 @@
     word-wrap: break-word;
     cursor: pointer;
   }
+
   .btn2 {
     flex: 1 1 0;
     height: 34px;

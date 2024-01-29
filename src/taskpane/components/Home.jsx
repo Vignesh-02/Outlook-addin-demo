@@ -86,14 +86,14 @@ const Home = ({ emailDetails, ...rest  }) => {
             </div>
           </div>
           <div className="mid-frame">
-          <div id="btn1-content" onClick={decreaseFontSize} variant="contained" color="primary">-</div>
-                <div id="btn1-content" onClick={increaseFontSize} variant="contained" color="primary">+</div>
+
             <div className="row-frame">
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
 
-                
-                
+                <div className='btn-2'><div id="btn2-content" onClick={decreaseFontSize} variant="contained" color="primary">-</div></div>
+                <div className='btn-2'><div id="btn2-content" onClick={increaseFontSize} variant="contained" color="primary">+</div></div>
+            
                   <div className="content" style={{ fontSize: `${fontSize}px` }}>
                   { emailDetails.body }
                   </div>
