@@ -261,6 +261,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
+    display: flex;
     /* display: inline-flex; */
   }
   .dataGridCell {
@@ -268,6 +269,7 @@
     align-self: stretch;
     padding-top: 10px;
     padding-bottom: 10px;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     display: flex;
@@ -277,6 +279,7 @@
     height: 89px;
     padding-left: 11px;
     padding-right: 16px;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 12px;
