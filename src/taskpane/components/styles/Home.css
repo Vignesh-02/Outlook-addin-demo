@@ -161,7 +161,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 15px;
-    display: inline-flex;
+    display: flex;
   }
   .main-frame {
     height: 402px;
