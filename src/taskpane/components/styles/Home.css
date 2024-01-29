@@ -242,7 +242,7 @@
     gap: 3px;
     display: flex;
   }
-  .row-frame {
+  /* .row-frame {
     align-self: stretch;
     height: 373px;
     border-left: 1px rgba(58, 53, 65, 0.12) solid;
@@ -250,6 +250,17 @@
     border-bottom: 1px rgba(58, 53, 65, 0.12) solid;
     justify-content: flex-start;
     align-items: flex-start;
+    display: inline-flex;
+  } */
+  .column-frame {
+    align-self: stretch;
+    height: 373px;
+    border-left: 1px rgba(58, 53, 65, 0.12) solid;
+    border-right: 1px rgba(58, 53, 65, 0.12) solid;
+    border-bottom: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
     display: inline-flex;
   }
   .dataGridCell {
@@ -339,7 +350,7 @@
     cursor: pointer;
   }
   #btn1-content {
-    color: white;
+    color: black;
     font-size: 14px;
     font-family: Orbitron;
     font-weight: 600;
@@ -352,7 +363,7 @@
   .btn2 {
     flex: 1 1 0;
     height: 34px;
-    width: 15px;
+    width: 30px;
     background: #356f9f;
     border-radius: 5px;
     justify-content: center;

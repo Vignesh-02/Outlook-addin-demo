@@ -87,7 +87,7 @@ const Home = ({ emailDetails, ...rest  }) => {
           </div>
           <div className="mid-frame">
 
-            <div className="row-frame">
+            <div className="column-frame">
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
 
