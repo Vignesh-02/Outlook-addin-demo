@@ -329,6 +329,7 @@
   .btn2 {
     flex: 1 1 0;
     height: 34px;
+    width: 15px;
     background: #356f9f;
     border-radius: 5px;
     justify-content: center;

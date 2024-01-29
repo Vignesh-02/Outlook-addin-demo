@@ -91,8 +91,8 @@ const Home = ({ emailDetails, ...rest  }) => {
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
 
-                <div className='btn-2'><div id="btn2-content" onClick={decreaseFontSize} variant="contained" color="primary">-</div></div>
-                <div className='btn-2'><div id="btn2-content" onClick={increaseFontSize} variant="contained" color="primary">+</div></div>
+                <div className='btn-2'><div id="btn2-content" onClick={decreaseFontSize}  >-</div></div>
+                <div className='btn-2'><div id="btn2-content" onClick={increaseFontSize} >+</div></div>
             
                   <div className="content" style={{ fontSize: `${fontSize}px` }}>
                   { emailDetails.body }
