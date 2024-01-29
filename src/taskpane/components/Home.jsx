@@ -81,7 +81,10 @@ const Home = ({ emailDetails, ...rest  }) => {
                 </div>
               </div>
               <div className="separate-container">
-                <div className="separate-container-child"></div>
+                <div className="separate-container-child">
+                <div className='btn3'><div id="btn2-content" onClick={decreaseFontSize}  >-</div></div>
+                <div className='btn3'><div id="btn2-content" onClick={increaseFontSize} >+</div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -91,8 +94,6 @@ const Home = ({ emailDetails, ...rest  }) => {
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
 
-                <div className='btn3'><div id="btn2-content" onClick={decreaseFontSize}  >-</div></div>
-                <div className='btn3'><div id="btn2-content" onClick={increaseFontSize} >+</div></div>
 
                  <div className='from'>
                     { emailDetails.from }
