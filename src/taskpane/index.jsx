@@ -12,7 +12,7 @@ const rootElement = document.getElementById("container");
 const root = createRoot(rootElement);
 
 /* Render application after Office initializes */
-Office.onReady(() => {
+Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
