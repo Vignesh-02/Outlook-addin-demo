@@ -2,7 +2,9 @@ import * as React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./components/App";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
-import "./index.css";
+import './index.css'
+
+
 
 /* global document, Office, module, require */
 
@@ -12,12 +14,8 @@ const rootElement = document.getElementById("container");
 const root = createRoot(rootElement);
 
 /* Render application after Office initializes */
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Outlook) {
-    document.getElementById("sideload-msg").style.display = "none";
-    document.getElementById("app-body").style.display = "flex";
-  }
-
+Office.onReady(() => {
+    
   root.render(
     <FluentProvider theme={webLightTheme}>
       <App title={title} />
