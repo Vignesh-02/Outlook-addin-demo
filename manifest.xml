@@ -87,6 +87,9 @@
                                     <Action xsi:type="ShowTaskpane">
                                         <SourceLocation resid="Taskpane.Url"/>
                                             <SupportsPinning>true</SupportsPinning>
+                                            <!-- Enables your add-in to activate without the Reading Pane enabled or a message selected. -->
+                                            <SupportsNoItemContext>true</SupportsNoItemContext>
+
                                         <!-- Enables your add-in to activate on multiple selected messages. -->
                                     </Action>
                                 </Control>
