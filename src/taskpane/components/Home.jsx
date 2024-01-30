@@ -79,12 +79,24 @@ const Home = ({ emailDetails, ...rest  }) => {
                 <div className="typography">
                   <div className="typography-text">RFQ</div>
                 </div>
+                <div className="FontSize">
+                  <div className="sizeDecrement">
+                    <div onClick={decreaseFontSize} className="Decrement">
+                      -
+                    </div>
+                  </div>
+                  <div className="sizePercentage">
+                    <div className="Percentage">
+                      {Math.round((fontSize / 14) * 100)}%
+                    </div>
+                  </div>
+                  <div className="sizeIncrement">
+                    <div onClick={increaseFontSize} className="Increment">
+                      +
+                    </div>
+                  </div>
+
               </div>
-              <div className="separate-container">
-                <div className="separate-container-child">
-                <div className='btn3'><div id="btn2-content" onClick={decreaseFontSize}  >-</div></div>
-                <div className='btn3'><div id="btn2-content" onClick={increaseFontSize} >+</div></div>
-                </div>
               </div>
             </div>
           </div>
@@ -94,18 +106,25 @@ const Home = ({ emailDetails, ...rest  }) => {
               <div className="dataGridCell">
                 <div className="dataGridCell-cont">
 
+                
 
-                 <div className='from'>
+                 <div className='from' style={{ fontSize: `${fontSize}px` }}>
                     { emailDetails.from }
                     </div>   
 
-                    <div className='from'>
+                    <div className='from' style={{ fontSize: `${fontSize}px` }}>
                     { emailDetails.subject }
                     </div>   
+                    
+                    <div className="EmailContentDiv">
+                        <div
+                            className="EmailContent"
+                            style={{ fontSize: `${fontSize}px` }}
+                        >
+                        { emailDetails.body }
+                        </div>
+                    </div>
 
-                  <div className="content" style={{ fontSize: `${fontSize}px` }}>
-                  { emailDetails.body }
-                  </div>
                 </div>
               </div>
             </div>
