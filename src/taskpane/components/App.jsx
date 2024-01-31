@@ -92,6 +92,32 @@ const App = (props) => {
         });
     }, []);
 
+    useEffect(() => {
+        // Office.js ready check
+        Office.onReady((info) => {
+          if (info.host === Office.HostType.Outlook) {
+            // Handler for item change event
+            function onItemChanged() {
+              // Logic to handle item change
+              Office.context.mailbox.item.body.getAsync("text", (result) => {
+                if (result.status === Office.AsyncResultStatus.Succeeded) {
+                  console.log(result.value); // Handle the new mail item's content
+                  // Update state or props as necessary
+                }
+              });
+            }
+    
+            // Add the event handler
+            Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, onItemChanged, (addResult) => {
+              if (addResult.status === Office.AsyncResultStatus.Failed) {
+                console.error('Failed to add event handler:', addResult.error);
+              }
+            });
+          }
+        });
+      }, []);
+    
+
     // useEffect(() => {
     //     try{
     //         fetch('https://dummyjson.com/products/1')

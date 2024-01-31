@@ -13,6 +13,8 @@ const title = "Contoso Task Pane Add-in";
 const rootElement = document.getElementById("container");
 const root = createRoot(rootElement);
 
+
+
 /* Render application after Office initializes */
 Office.onReady(() => {
     
