@@ -98,14 +98,40 @@ const App = (props) => {
           if (info.host === Office.HostType.Outlook) {
             // Handler for item change event
             function onItemChanged() {
+                try {
+
+                    if (Office.context.mailbox.item) {
+                        const item = Office.context.mailbox.item;
+                        setEmailDetails({
+                            from: item.from && item.from.emailAddress,
+                            to: item.to && item.to.map(recipient => recipient.emailAddress),
+                            subject: item.subject,
+                            body: '', // Body is loaded asynchronously
+                            attachments: item.attachments
+                        });
+        
+                        // Load body content asynchronously
+                        
+                    
+    
+                
               // Logic to handle item change
-              Office.context.mailbox.item.body.getAsync("text", (result) => {
-                if (result.status === Office.AsyncResultStatus.Succeeded) {
-                  console.log(result.value); // Handle the new mail item's content
-                  // Update state or props as necessary
-                }
-              });
+                        Office.context.mailbox.item.body.getAsync("text", (result) => {
+                            if (result.status === Office.AsyncResultStatus.Succeeded) {
+                                setEmailDetails(prevState => ({ ...prevState, body: result.value }));
+                            }
+                            else {
+                                console.error('Error retrieving email body:', result.error);
+                            }
+
+                        });
+                    }
+            } catch (error) {
+                console.error('Error:', error);
             }
+            }
+        
+           
     
             // Add the event handler
             Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, onItemChanged, (addResult) => {
@@ -113,8 +139,9 @@ const App = (props) => {
                 console.error('Failed to add event handler:', addResult.error);
               }
             });
-          }
+        }
         });
+
       }, []);
     
 
