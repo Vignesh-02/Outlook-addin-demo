@@ -313,8 +313,9 @@
   }
 
   .subject {
-    flex: 1 1 0;
-    align-self: stretch;
+    /* flex: 1 1 0; */
+    /* align-self: stretch; */
+    margin-bottom: 20px;
     color: #080808;
     font-size: 14px;
     font-family: Helvetica Neue;
@@ -458,6 +459,8 @@
     align-items: flex-start;
     gap: 12px;
     display: flex;
+    flex-direction: column; /* Added for vertical stacking */
+
   }
   
   .EmailContent {
@@ -469,7 +472,7 @@
     font-weight: 100;
     line-height: 14px;
     letter-spacing: 0.1px;
-    min-width: 262px;
+    min-width: 250px;
     max-width: 250px;
     white-space: pre;
     overflow-y: auto;
@@ -481,3 +484,6 @@
     word-break: break-all;
   }
   
+  .EmailContent::-webkit-scrollbar { 
+    display: none; 
+  }

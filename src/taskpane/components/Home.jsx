@@ -108,12 +108,10 @@ const Home = ({ emailDetails, ...rest  }) => {
 
                 
 
-                 <div className='from' style={{ fontSize: `${fontSize}px` }}>
-                    { emailDetails.from }
-                    </div>   
+                   
 
-                    <div className='from' style={{ fontSize: `${fontSize}px` }}>
-                    { emailDetails.subject }
+                    <div className='subject' style={{ fontSize: `${fontSize}px` }}>
+                    Subject: { emailDetails.subject }
                     </div>   
                     
                     <div className="EmailContentDiv">
