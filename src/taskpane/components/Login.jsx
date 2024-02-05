@@ -1,3 +1,4 @@
+// import React, { useEffect } from "react";
 import React, { useState } from "react";
 import "./styles/Login.css"
 import logo from "../../../public/logo1.png";
@@ -8,9 +9,8 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useHistory } from "react-router-dom";
 
 
-
 const Login = () => {
-
+    
     const history = useHistory();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -18,24 +18,37 @@ const Login = () => {
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
+
     const handleLogin = () => {
       // Your login logic goes here
       console.log("Login button is clicked");
       history.push('/home');
     };
 
+  
+  
 
-    
+//   const handleCrossClick = () => {
+//     // Close the extension when the cross is clicked
+//     window.close();
+//   };
+
   return (
     <>
-      <div className="page">
-        <div className="cont1">
-          <div id="image">
-            <img src={logo} alt="Logo" />
-          </div>
-          <div className="cont1-child2">
-            <div id="heading">Login</div>
-            <div id="para">
+      <div className="loginPage">
+        <div className="Ellipse-1"></div>
+        <div className="Ellipse-2"></div>
+
+        {/* Container- 1 */}
+        <div className="loginCont-1">
+          <img
+            src={WiseImage}
+            alt="Logo"
+            style={{ width: "89px", height: "90.38px" }}
+          />
+          <div className="LoginCont1-child2">
+            <div className="loginText">Login</div>
+            <div className="Logintext2">
               Lorem ipsum dolor sit amet consectetur.
               <br />
               Orci in pellentesque.
@@ -43,56 +56,38 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="cont2">
-          <label htmlFor="organization" className="label">
-            Organization
-          </label>
-          <select name="org" id="org" className="input">
-            <option>Select your organization</option>
-            <option>Onelab Ventures</option>
-            <option>Turnkey</option>
-          </select>
-
-          <label htmlFor="email" className="label">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="input"
-            placeholder="Enter email"
-          />
-
-          <label htmlFor="password" className="label">
-            Password
-          </label>
-
-          <div className="password-container">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              id="password"
-              placeholder="Enter Password"
-            />
-            <i
-              className={`password-toggle ${showPassword ? "visible" : ""}`}
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            </i>
-          </div>
-
-          <div className="forgot">
-            <div id="forgot-heading">Forgot Password ?</div>
-            <div id="forgot-anchor">
-              <a href="#">Click Here</a>
+        {/* Container - 2 */}
+        <div className="loginCont-2">
+          <div className="LoginCont2-child1">
+            <div className="LoginCont2-child1-a">
+              <div className="LoginCont2-child1-a-1">
+                <div className="LoginOrganization">Organization </div>
+              </div>
+              <div className="LoginCont2-child1-a-2">
+                <select className="loginSelect">
+                  <option>Select your organization</option>
+                  <option>Onelab Ventures</option>
+                  <option>Turnkey</option>
+                </select>
+              </div>
             </div>
           </div>
-          <button onClick={handleLogin} id="loginBtn" type="submit">
-            Login
-          </button>
+          <div  className="GoogleOAuth">
+            {/* <div className="OAuth">
+              <img src={GoogleImage} alt="Google Logo" />
+            </div> */}
+            <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div>
+          </div>
         </div>
+
+        {/* Cross */}
+        {/* <div className="Cross" onClick={handleCrossClick}>
+          <img
+            src={CrossImage}
+            alt="Logo"
+            style={{ width: "10px", height: "10px" }}
+          />
+        </div> */}
       </div>
     </>
   );

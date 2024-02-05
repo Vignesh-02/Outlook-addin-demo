@@ -8,12 +8,29 @@ const Home = ({ emailDetails, ...rest  }) => {
   const [fontSize, setFontSize] = useState(17); // Default font size
   const [fontPercentage, setFontPercentage] = useState(50);
   
+    // max font size = 20
+    // min font size = 14
+    const maxFontSize = 20;
+    const minFontSize = 14;
+    
+    const stepSize = Math.round((maxFontSize - minFontSize) / 5);
 
   const increaseFontSize = () => {
-    adjustFontSize(1.1); // Increase font size by 10%
+    
+    if (fontPercentage < 100) {
+        setFontPercentage(fontPercentage + 10); // Increase percentage by 10
+        const newFontSize = calculateFontSize(fontPercentage);
+        setFontSize(newFontSize)
+    }
+
 };
   const decreaseFontSize = () => {
-    adjustFontSize(0.9); // Increase font size by 10%
+    
+    if (fontPercentage > 0) {
+        setFontPercentage(fontPercentage - 10); // Increase percentage by 10
+        const newFontSize = calculateFontSize(fontPercentage);
+        setFontSize(newFontSize);
+    }
 
 };
 
@@ -27,17 +44,22 @@ const Home = ({ emailDetails, ...rest  }) => {
     // navigate("/queue");
   };
 
-  const adjustFontSize = (factor) => {
-    let newFontSize = fontSize * factor;
+  const calculateFontSize = (percentage) => {
 
-    // Ensuring the font size is within the limits (14px min, 20px max)
-    if (newFontSize < 14) newFontSize = 14;
-    if (newFontSize > 20) newFontSize = 20;
-    setFontSize(newFontSize);
-
-    let percentage = ((fontSize - 14) / (20 - 14)) * 100;
-    setFontPercentage(Math.round(percentage));
+    const stepsFrom50 = (percentage - 50) / 10;
+    return 17 + (stepsFrom50 * stepSize);
   }
+
+//     let newFontSize = fontSize * factor;
+
+//     // Ensuring the font size is within the limits (14px min, 20px max)
+//     if (newFontSize < 14) newFontSize = 14;
+//     if (newFontSize > 20) newFontSize = 20;
+//     setFontSize(newFontSize);
+
+//     let percentage = ((fontSize - 14) / (20 - 14)) * 100;
+//     setFontPercentage(Math.round(percentage));
+//   }
 
 
 
