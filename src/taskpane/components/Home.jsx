@@ -105,7 +105,7 @@ const Home = ({ emailDetails, ...rest  }) => {
                     className="EmailContent"
                     style={{ fontSize: `${fontSize}px` }}
                   >
-                    {body || "No body"}
+                    {emailDetails.body  || "No body"}
                   </div>
                 </div>
               </div>
