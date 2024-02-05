@@ -38,7 +38,7 @@ const Home = ({ emailDetails, ...rest  }) => {
     <div className="homepage">
       {/* Section -1 */}
 
-      <div className="topbar">
+      {/* <div className="topbar">
         <div className="topframe">
           <img src={logo1} alt="Logo" />
           <div className="topframe-b">
@@ -49,7 +49,7 @@ const Home = ({ emailDetails, ...rest  }) => {
         <div className="topframe-c">
           <img src={cross} alt="Logo" />
         </div>
-      </div>
+      </div> */}
 
       {/* Section - 2 */}
       <div className="topbar2">
