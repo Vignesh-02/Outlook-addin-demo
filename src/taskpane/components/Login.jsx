@@ -42,7 +42,7 @@ const Login = () => {
         {/* Container- 1 */}
         <div className="loginCont-1">
           <img
-            src={WiseImage}
+            src={logo}
             alt="Logo"
             style={{ width: "89px", height: "90.38px" }}
           />
