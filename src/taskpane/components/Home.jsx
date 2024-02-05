@@ -67,7 +67,7 @@ const Home = ({ emailDetails, ...rest  }) => {
         <div className="A">
           <div id="A-child">A</div>
         </div>
-      </div>2
+      </div>
 
       {/* Section - 3 */}
 
