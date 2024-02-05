@@ -450,7 +450,7 @@
   }
   
   .EmailContentDiv {
-    flex: 1 1 0;
+    /* flex: 1 1 0; */
   
     height: 100%;
     padding-left: 11px;
@@ -464,8 +464,8 @@
   }
   
   .EmailContent {
-    flex: 1 1 0;
-    align-self: stretch;
+    /* flex: 1 1 0;
+    align-self: stretch; */
     color: #080808;
     font-size: 10px;
     font-family: Helvetica Neue;
