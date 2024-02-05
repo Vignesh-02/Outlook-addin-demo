@@ -5,16 +5,17 @@ import "./styles/Home.css";
 const Home = ({ emailDetails, ...rest  }) => {
 
   
-  const [fontSize, setFontSize] = useState(10); // Default font size
-
+  const [fontSize, setFontSize] = useState(17); // Default font size
+  const [fontPercentage, setFontPercentage] = useState(50);
   
 
   const increaseFontSize = () => {
-    if (fontSize < 20) setFontSize(fontSize + 1);
-  };
+    adjustFontSize(1.1); // Increase font size by 10%
+};
   const decreaseFontSize = () => {
-    if (fontSize > 3) setFontSize(fontSize - 1);
-  };
+    adjustFontSize(0.9); // Increase font size by 10%
+
+};
 
   const DelegateBtn = () => {
     console.log('del');
@@ -25,6 +26,19 @@ const Home = ({ emailDetails, ...rest  }) => {
     console.log('del');
     // navigate("/queue");
   };
+
+  const adjustFontSize = (factor) => {
+    let newFontSize = fontSize * factor;
+
+    // Ensuring the font size is within the limits (14px min, 20px max)
+    if (newFontSize < 14) newFontSize = 14;
+    if (newFontSize > 20) newFontSize = 20;
+    setFontSize(newFontSize);
+
+    let percentage = ((fontSize - 14) / (20 - 14)) * 100;
+    setFontPercentage(Math.round(percentage));
+  }
+
 
 
   return (
@@ -85,7 +99,7 @@ const Home = ({ emailDetails, ...rest  }) => {
                   </div>
                   <div className="sizePercentage">
                     <div className="Percentage">
-                      {Math.round((fontSize / 10) * 100)}%
+                      {fontPercentage}%
                     </div>
                   </div>
                   <div className="sizeIncrement">
