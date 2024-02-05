@@ -67,7 +67,7 @@ const Home = ({ emailDetails, ...rest  }) => {
         <div className="A">
           <div id="A-child">A</div>
         </div>
-      </div>
+      </div>2
 
       {/* Section - 3 */}
 
@@ -87,7 +87,7 @@ const Home = ({ emailDetails, ...rest  }) => {
                   </div>
                   <div className="sizePercentage">
                     <div className="Percentage">
-                      {Math.round((fontSize / 14) * 100)}%
+                    {Math.round((fontSize / 10) * 100)}%
                     </div>
                   </div>
                   <div className="sizeIncrement">

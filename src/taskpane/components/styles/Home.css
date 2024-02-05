@@ -98,7 +98,7 @@
     margin-left: 16px;
   }
   #home-div {
-    color: #1c1c1c;
+    color: #080808;
     font-size: 12px;
     font-family: Helvetica Neue;
     font-weight: 100;
@@ -120,7 +120,7 @@
     display: flex;
   }
   #contact-div {
-    color: #1c1c1c;
+    color: #080808;
     font-size: 12px;
     font-family: Helvetica Neue;
     font-weight: 100;
@@ -290,7 +290,7 @@
   .content {
     flex: 1 1 0;
     align-self: stretch;
-    color: #1c1c1c;
+    color: #080808;
     font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
@@ -303,7 +303,7 @@
   .from {
     flex: 1 1 0;
     align-self: stretch;
-    color: #1c1c1c;
+    color: #080808;
     font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
@@ -315,7 +315,7 @@
   .subject {
     flex: 1 1 0;
     align-self: stretch;
-    color: #1c1c1c;
+    color: #080808;
     font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
@@ -463,7 +463,7 @@
   .EmailContent {
     flex: 1 1 0;
     align-self: stretch;
-    color: #1c1c1c;
+    color: #080808;
     font-size: 10px;
     font-family: Helvetica Neue;
     font-weight: 100;
