@@ -18,30 +18,30 @@
   .Ellipse-1 {
     width: 752px;
     height: 752px;
-    left: -132px;
-    top: 230px;
+    left: -81px;
+    top: 428px;
     position: absolute;
     background: linear-gradient(
       149deg,
       rgba(53, 111, 159, 0.08) 0%,
-      rgba(53, 111, 159, 0) 78%
+      rgba(53, 111, 159, 0) 75%
     );
     border-radius: 9999px;
-    border: 1px #356f9f solid;
+    border: 1px rgba(53, 111, 159, 0.23) solid;
   }
   .Ellipse-2 {
     width: 752px;
     height: 752px;
-    left: -87px;
-    top: 237px;
+    left: -146px;
+    top: 405px;
     position: absolute;
     background: linear-gradient(
       149deg,
       rgba(53, 111, 159, 0.08) 0%,
-      rgba(53, 111, 159, 0) 78%
+      rgba(53, 111, 159, 0) 75%
     );
     border-radius: 9999px;
-    border: 1px #356f9f solid;
+    border: 1px rgba(53, 111, 159, 0.23) solid;
   }
   
   /* Container - 1 */
@@ -67,7 +67,7 @@
     display: flex;
   }
   .loginText {
-    color: #1c1c1c;
+    color: white;
     font-size: 22px;
     font-family: Orbitron;
     font-weight: 500;
@@ -76,7 +76,8 @@
   }
   .Logintext2 {
     align-self: stretch;
-    color: #1c1c1c;
+    color: white;
+    text-align: center;
     font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
