@@ -68,14 +68,15 @@
   }
   .loginText {
     color: white;
-    font-size: 22px;
+    font-size: 25.93px;
     font-family: Orbitron;
     font-weight: 500;
-    letter-spacing: 0.44px;
+    letter-spacing: 0.52px;
     word-wrap: break-word;
   }
   .Logintext2 {
     align-self: stretch;
+    height: 68px;
     color: white;
     text-align: center;
     font-size: 14px;
@@ -90,7 +91,7 @@
   .loginCont-2 {
     height: 135px;
     left: 27px;
-    top: 377px;
+    top: 369px;
     position: absolute;
     flex-direction: column;
     justify-content: flex-start;

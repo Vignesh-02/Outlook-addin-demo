@@ -44,7 +44,7 @@ const Login = () => {
           <img
             src={logo}
             alt="Logo"
-            style={{ width: "89px", height: "90.38px" }}
+            style={{ width: "127.90px", height: "129.89px" }}
           />
           <div className="LoginCont1-child2">
             <div className="loginText">Login</div>
