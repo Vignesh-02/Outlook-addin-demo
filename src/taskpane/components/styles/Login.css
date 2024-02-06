@@ -10,8 +10,10 @@
   .globe {
     width: 338px;
     height: 338px;
-    left: -9px;
+    /* left: -9px; */
     top: 8px;
+    left: calc(50% - 338px/2);
+    /* background: url('animation.gif'); */
      position: absolute;
   }
 

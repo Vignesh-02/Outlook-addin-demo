@@ -36,6 +36,8 @@ const Login = () => {
   return (
     <>
       <div className="loginPage">
+      <img className="globe" src="animation.gif" />
+
         <div className="Ellipse-1"></div>
         <div className="Ellipse-2"></div>
 
