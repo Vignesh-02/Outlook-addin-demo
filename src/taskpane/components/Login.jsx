@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./styles/Login.css"
 import logo from "../../../public/logo1.png";
+import animation from "../../../public/animation.gif";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -36,7 +37,7 @@ const Login = () => {
   return (
     <>
       <div className="loginPage">
-      {/* <img className="globe" src="animation.gif" /> */}
+      <img className="globe" src={animation} />
 
         <div className="Ellipse-1"></div>
         <div className="Ellipse-2"></div>
