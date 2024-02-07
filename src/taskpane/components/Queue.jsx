@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles/Home.css";
+import "./styles/Queue.css";
 import SearchImage from "../../../public/Search.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
