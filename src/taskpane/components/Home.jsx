@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import "./styles/Home.css";
 
 
-const Home = ({ emailDetails, ...rest  }) => {
+const Home = ({ emailDetails, userName, emailAddress, ...rest  }) => {
 
   
   const [fontSize, setFontSize] = useState(17); // Default font size
   const [fontPercentage, setFontPercentage] = useState(50);
   
+  
     // max font size = 20
     // min font size = 14
     const maxFontSize = 20;
     const minFontSize = 14;
-    
+
     const stepSize = Math.round((maxFontSize - minFontSize) / 5);
 
   const increaseFontSize = () => {
@@ -141,8 +142,14 @@ const Home = ({ emailDetails, ...rest  }) => {
                     className="EmailContent"
                     style={{ fontSize: `${fontSize}px` }}
                   >
+                    {userName}
+
+                    {emailAddress}
+                    
                     {emailDetails.body  || "No body"}
                   </div>
+
+                  
                 </div>
               </div>
             </div>

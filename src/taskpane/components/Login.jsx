@@ -23,7 +23,7 @@ const Login = () => {
     const handleLogin = () => {
       // Your login logic goes here
       console.log("Login button is clicked");
-      history.push('/queue');
+      history.push('/home');
     };
 
   

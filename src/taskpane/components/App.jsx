@@ -28,6 +28,9 @@ const useStyles = makeStyles({
 const App = (props) => {
     
 
+    const [emailAddress, setEmailAddress] = useState('');
+    const [userName, setUserName] = useState('');
+
     const [emailDetails, setEmailDetails] = useState({
         from: '',
         to: [],
@@ -61,6 +64,11 @@ const App = (props) => {
 
                 if (Office.context.mailbox.item) {
                     const item = Office.context.mailbox.item;
+                    const emailAddress = Office.context.mailbox.userProfile.emailAddress;
+                    const displayName = Office.context.mailbox.userProfile.displayName;
+                    
+                    setEmailAddress(emailAddress)
+                    setUserName()
                     setEmailDetails({
                         from: item.from && item.from.emailAddress,
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
@@ -203,7 +211,7 @@ const App = (props) => {
                 exact
                 path="/home" 
                 render={(props) => (
-                    <Home {...props} emailDetails={emailDetails} />
+                    <Home {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} />
                 )} 
             />       
             {/* Add other Routes here as needed */}
