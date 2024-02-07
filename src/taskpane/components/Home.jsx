@@ -143,8 +143,10 @@ const Home = ({ emailDetails, userName, emailAddress, ...rest  }) => {
                     style={{ fontSize: `${fontSize}px` }}
                   >
                     {userName}
+                    <br />
 
                     {emailAddress}
+                    <br />
                     
                     {emailDetails.body  || "No body"}
                   </div>

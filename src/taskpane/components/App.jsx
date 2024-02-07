@@ -67,8 +67,8 @@ const App = (props) => {
                     const emailAddress = Office.context.mailbox.userProfile.emailAddress;
                     const displayName = Office.context.mailbox.userProfile.displayName;
                     
-                    setEmailAddress(emailAddress)
-                    setUserName()
+                    setEmailAddress(emailAddress);
+                    setUserName(displayName);
                     setEmailDetails({
                         from: item.from && item.from.emailAddress,
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
