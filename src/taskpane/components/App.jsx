@@ -16,6 +16,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import Home from "./Pages/Home/Home";
 import Login from "./Login";
 import Home from "./Home";
+import Queue from "./Queue";
 
 
 const useStyles = makeStyles({
@@ -196,6 +197,8 @@ const App = (props) => {
         <Switch> {/* Use Switch to render the first Route that matches the location */}
             <Route exact path="/" component={Login} />
             {/* <Route exact path="/home" component={Home}  emailBody={emailBody}/> */}
+            <Route exact path="/queue" component={Queue} />
+
             <Route 
                 exact
                 path="/home" 
