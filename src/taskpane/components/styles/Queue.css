@@ -117,7 +117,7 @@
   }
   .delegate {
     color: #1c1c1c;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
     letter-spacing: 0.36px;
@@ -136,7 +136,7 @@
   }
   .Queue-queue {
     color: #1c1c1c;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
     letter-spacing: 0.36px;
@@ -155,7 +155,7 @@
   }
   .contact {
     color: #1c1c1c;
-    font-size: 12px;
+    font-size: 14px;
     font-family: Helvetica Neue;
     font-weight: 100;
     letter-spacing: 0.36px;
@@ -453,7 +453,7 @@
   }
   .QueueRowCell-1b {
     color: #1c1c1c;
-    font-size: 8px;
+    font-size: 12px;
     font-family: Helvetica Neue;
     font-weight: 100;
     line-height: 20px;
@@ -481,7 +481,7 @@
     align-self: stretch;
     text-align: center;
     color: #f98a09;
-    font-size: 10px;
+    font-size: 12px;
     font-family: Helvetica Neue;
     font-weight: 100;
     line-height: 20px;
@@ -492,7 +492,7 @@
     align-self: stretch;
     text-align: center;
     color: #f98a09;
-    font-size: 10px;
+    font-size: 12px;
     font-family: Helvetica Neue;
     font-weight: 100;
     line-height: 20px;
@@ -533,7 +533,7 @@
   }
   .QueueRowCell-3b {
     color: #1c1c1c;
-    font-size: 8px;
+    font-size: 12px;
     font-family: Helvetica Neue;
     font-weight: 100;
     line-height: 20px;
