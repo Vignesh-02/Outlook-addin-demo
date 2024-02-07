@@ -10,7 +10,7 @@
     align-items: center;
     gap: 3.67px;
     display: inline-flex;
-    border: 2px solid black;
+    /* border: 2px solid black; */
   }
   
   .topbar-frame {
