@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import "./Queue.css";
-import W_Image from "../../../public/w1.png";
-import WiseImage from "../../../public/wise.png";
-import InsideImage from "../../../public/Insidesale.png";
-import cross from "../../../public/Vector.png";
 import SearchImage from "../../../public/Search.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
