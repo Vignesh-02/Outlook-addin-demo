@@ -30,6 +30,7 @@ const App = (props) => {
     // testing mirroring
     const [emailAddress, setEmailAddress] = useState('');
     const [userName, setUserName] = useState('');
+    const [replyMail, setReplyEmail] = useState(true);
 
     const [emailDetails, setEmailDetails] = useState({
         from: '',
@@ -100,6 +101,21 @@ const App = (props) => {
             }
         });
     }, []);
+
+    useEffect(() => {
+
+        const replyToEmail = () => {
+            Office.context.mailbox.item.displayReplyForm({
+              'htmlBody': 'Thanks for your email!<br><br>', // Prepend your reply message with original email body below
+              // Optionally, you can add other fields like cc, attachments, etc.
+            });
+          }
+
+          
+        if (info.host === Office.HostType.Outlook) {
+            replyToEmail();
+          }
+    }, [])
 
     useEffect(() => {
         // Office.js ready check
