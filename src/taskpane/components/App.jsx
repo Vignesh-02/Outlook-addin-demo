@@ -31,6 +31,7 @@ const App = (props) => {
     const [emailAddress, setEmailAddress] = useState('');
     const [userName, setUserName] = useState('');
     const [replyMail, setReplyEmail] = useState(true);
+    const [val, SetVal] = useState('');
 
     const [emailDetails, setEmailDetails] = useState({
         from: '',
@@ -103,6 +104,13 @@ const App = (props) => {
     }, []);
 
     useEffect(() => {
+
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => {
+        console.log(json);
+        setVal(json.title)
+      })
 
         const replyToEmail = () => {
             Office.context.mailbox.item.displayReplyForm({

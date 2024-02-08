@@ -11,6 +11,8 @@
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://outlook-addin-v9y9.onrender.com</AppDomain>
+    <AppDomain>https://jsonplaceholder.typicode.com</AppDomain>
+
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
