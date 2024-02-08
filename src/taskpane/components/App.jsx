@@ -111,11 +111,24 @@ const App = (props) => {
             });
           }
 
-          
-        if (info.host === Office.HostType.Outlook) {
-            replyToEmail();
-          }
-    }, [])
+          Office.onReady((info) => {
+            if (info.host === Office.HostType.Outlook) {
+                replyToEmail();
+              }
+    
+        });
+            }, [])
+
+    // Office.context.mailbox.getCallbackTokenAsync({isRest: true}, function(result){
+    //     if (result.status === "succeeded") {
+    //       var accessToken = result.value;
+      
+    //       // Use the access token.
+    //       getCurrentItem(accessToken);
+    //     } else {
+    //       // Handle the error.
+    //     }
+    //   });
 
     useEffect(() => {
         // Office.js ready check
