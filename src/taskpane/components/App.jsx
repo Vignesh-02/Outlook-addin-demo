@@ -31,7 +31,7 @@ const App = (props) => {
     const [emailAddress, setEmailAddress] = useState('');
     const [userName, setUserName] = useState('');
     const [replyMail, setReplyEmail] = useState(true);
-    const [val, SetVal] = useState('');
+    const [val, setVal] = useState('');
 
     const [emailDetails, setEmailDetails] = useState({
         from: '',
@@ -107,7 +107,7 @@ const App = (props) => {
 
         fetch('https://jsonplaceholder.typicode.com/todos/1')
       .then(response => response.json())
-      .then(json => {
+      .then((json) => {
         console.log(json);
         setVal(json.title)
       })
@@ -125,7 +125,7 @@ const App = (props) => {
               }
     
         });
-            }, [])
+            }, []);
 
     // Office.context.mailbox.getCallbackTokenAsync({isRest: true}, function(result){
     //     if (result.status === "succeeded") {
@@ -248,7 +248,7 @@ const App = (props) => {
                 exact
                 path="/home" 
                 render={(props) => (
-                    <Home {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} />
+                    <Home {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} val={val} />
                 )} 
             />       
             {/* Add other Routes here as needed */}

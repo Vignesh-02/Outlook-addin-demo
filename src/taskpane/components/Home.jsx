@@ -147,8 +147,13 @@ const Home = ({ emailDetails, userName, emailAddress, ...rest  }) => {
 
                     {emailAddress}
                     <br />
-                    
+
+                    {val}
+                    <br />
+
                     {emailDetails.body  || "No body"}
+                    <br />
+
                   </div>
 
                   
