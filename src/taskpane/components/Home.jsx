@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./styles/Home.css";
 
 
-const Home = ({ emailDetails, userName, emailAddress, ...rest  }) => {
+const Home = ({ emailDetails, userName, emailAddress, val, ...rest  }) => {
 
   
   const [fontSize, setFontSize] = useState(17); // Default font size
