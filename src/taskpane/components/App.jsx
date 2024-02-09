@@ -69,11 +69,26 @@ const App = (props) => {
                     const emailAddress = Office.context.mailbox.userProfile.emailAddress;
                     const displayName = Office.context.mailbox.userProfile.displayName;
                     
+                    const extractBusinessName = (email) => {
+                        // Split the email by '@' and take the second part (domain part)
+                        const domainPart = email.split('@')[1];
+                    
+                        // Split the domain part by '.' and take the first part as the business name
+                        const businessName = domainPart.split('.')[0];
+                    
+                        return businessName;
+                    }
+
+                    const businessName = extractBusinessName(emailAddress);
+
+
                     setEmailAddress(emailAddress);
                     setUserName(displayName);
                     setEmailDetails({
                         from: item.from && item.from.emailAddress,
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
+                        cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
+                        company: businessName,
                         subject: item.subject,
                         body: '', // Body is loaded asynchronously
                         attachments: item.attachments

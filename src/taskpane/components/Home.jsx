@@ -151,6 +151,15 @@ const Home = ({ emailDetails, userName, emailAddress, val, ...rest  }) => {
                     {val}
                     <br />
 
+
+                    {emailDetails.cc.map((item)=>{
+                        <div>{item}</div>
+                    })}
+
+                    <br />
+
+                    {emailDetails.company}
+
                     {emailDetails.body  || "No body"}
                     <br />
 
