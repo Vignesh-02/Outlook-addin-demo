@@ -1,5 +1,5 @@
 import React from 'react';
-import '.styles/Customer.css'; // Import the CSS file
+import "./styles/Customer.css"; // Import the CSS file
 import pencil from "../../../public/Pencil.png"
 import CustomerResponsePopup from './CustomerResponsePopup';
 
@@ -7,7 +7,7 @@ const Customer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const togglePopup = () => {
-      setIsPopupOpen(!isPopupOpen);
+             setIsPopupOpen(!isPopupOpen);
     };
 
   return (
