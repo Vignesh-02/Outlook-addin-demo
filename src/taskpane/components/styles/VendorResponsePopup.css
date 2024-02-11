@@ -1,0 +1,179 @@
+.frame21 {
+    width: 289px;
+    height: 415px;
+    background: white;
+    border-radius: 6px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .tableHeader {
+    align-self: stretch;
+    background: #F9F9F9;
+    border-radius: 6px 6px 0 0;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .datagridheader, .container, .typography, .xnixLineCross, .frame16, .row, .frame4, .selectVendor, .frame39, .frame38, .frame37, .vendor1, .datagridcell {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .typographyBody1 {
+    color: rgba(58, 53, 65, 0.87);
+    font-size: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.10px;
+    word-wrap: break-word;
+  }
+  
+  .vector47 {
+    width: 7.50px;
+    height: 7.50px;
+    border: 1px black solid;
+  }
+  
+  /* Add similar styles for other classes, following the inline style patterns provided in the JSX code. */
+  
+  /* Example for .frame4 */
+  .frame16 {
+    align-self: stretch;
+    height: 378px;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+  }
+  
+  .row {
+    align-self: stretch;
+    height: 324px;
+    padding: 10px;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 11px;
+    display: flex;
+  }
+  
+  .frame4 {
+    align-self: stretch;
+    height: 35px;
+    padding: 8px 13px;
+    background: #F9F9F9;
+    border-radius: 6px;
+    border: 0.5px rgba(28, 28, 28, 0.40) solid;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+  }
+  
+  .selectVendor {
+    width: 125px;
+    height: 9px;
+    opacity: 0.40;
+    color: '#080808';
+    font-size: 12px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    letter-spacing: 0.12px;
+    word-wrap: break-word;
+  }
+  
+  .frame39, .frame38, .frame40 {
+    align-self: stretch;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  
+  .frame38 {
+    border-bottom: 1px black solid;
+  }
+  
+  .frame40 {
+    opacity: 0.45;
+  }
+  
+  .frame37 {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+    display: flex;
+  }
+  
+  .vendor1 {
+    color: '#080808';
+    font-size: 9px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.09px;
+    word-wrap: break-word;
+  }
+  
+  .datagridcell {
+    align-self: stretch;
+    justify-content: flex-start;
+    align-items: center;
+    display: inline-flex;
+  }
+  
+  .hiJohnDeoLoremIpsumDolorSitAmetConsectetur {
+    flex: 1 1 0;
+    color: '#080808';
+    font-size: 10px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    line-height: 14px;
+    letter-spacing: 0.10px;
+    word-wrap: break-word;
+  }
+  
+  .frame17 {
+    width: 289px;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    display: inline-flex;
+  }
+  
+  .button {
+    flex: 1 1 0;
+    height: 31px;
+    padding: 8px 15px;
+    background: '#356F9F';
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  
+  .text {
+    color: white;
+    font-size: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.96px;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Continue with other classes like .selectVendor, .frame39, .frame38, etc., translating the inline styles to CSS class definitions. */
+  

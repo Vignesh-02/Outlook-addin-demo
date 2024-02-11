@@ -1,0 +1,54 @@
+.frame27 {
+    width: 269px;
+    height: 106px;
+    background: white;
+    border-radius: 6px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .frame16 {
+    align-self: stretch;
+    height: 106px;
+    padding: 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .row {
+    align-self: stretch;
+    height: 106px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  
+  .datagridcell {
+    justify-content: flex-start;
+    align-items: center;
+    display: inline-flex;
+  }
+  
+  .container {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    display: flex;
+  }
+  
+  .loremIpsum {
+    color: #080808;
+    font-size: 12px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    line-height: 11px;
+    letter-spacing: 0.12px;
+    word-wrap: break-word;
+  }
+  

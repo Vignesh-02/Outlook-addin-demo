@@ -1,0 +1,97 @@
+.frame23 {
+    width: 289px;
+    height: 209px;
+    background: white;
+    border-radius: 6px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .tableHeader, .tableHeaderInner {
+    align-self: stretch;
+    background: #F9F9F9;
+    border-radius: 6px 6px 0 0;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    display: inline-flex;
+  }
+  
+  .datagridheader, .datagridheaderInner {
+    flex: 1;
+    height: 38px;
+    padding: 10px 11px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .container, .containerInner {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .typography, .typographyInner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .typographyBody1, .typographyBody1Inner {
+    color: rgba(58, 53, 65, 0.87);
+    font-size: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.10px;
+    word-wrap: break-word;
+  }
+  
+  .xnixLineCross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    padding: 5.25px;
+  }
+  
+  .vector47 {
+    width: 7.50px;
+    height: 7.50px;
+    border: 1px black solid;
+  }
+  
+  .frame16, .frame18, .frame25, .frame24, .frame27 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .frame17 {
+    width: 289px;
+    padding: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .button {
+    flex: 1;
+    height: 31px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .button.cancel {
+    border: 1px #356F9F solid;
+    color: #356F9F;
+  }
+  
+  .button.regenerate {
+    background: #356F9F;
+    color: white;
+  }
+  

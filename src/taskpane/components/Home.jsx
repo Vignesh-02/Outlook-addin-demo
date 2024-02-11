@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./styles/Home.css";
+import Customer from './Customer';
 
 
 const Home = ({ emailDetails, userName, emailAddress, val, ...rest  }) => {
@@ -137,7 +138,7 @@ const Home = ({ emailDetails, userName, emailAddress, val, ...rest  }) => {
           <div className="homeRowFrame">
             <div className="homeDataGridCell">
               <div className="homeDataGridCell-child">
-                <div className="EmailContentDiv">
+                {/* <div className="EmailContentDiv">
                   <div
                     className="EmailContent"
                     style={{ fontSize: `${fontSize}px` }}
@@ -166,7 +167,9 @@ const Home = ({ emailDetails, userName, emailAddress, val, ...rest  }) => {
                   </div>
 
                   
-                </div>
+                </div> */}
+
+                <Customer />
               </div>
             </div>
           </div>
