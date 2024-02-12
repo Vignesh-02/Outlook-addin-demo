@@ -4,8 +4,34 @@ import cross from "../../../public/Cross.png";
 
 
 const VendorResponsePopup = () => {
+
+    const popupRef = useRef(null); // Define the ref
+
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (popupRef.current && !popupRef.current.contains(event.target)) {
+                close();
+            }
+        };
+
+        // Attach event listener if the popup is open
+        if (isOpen) {
+            document.addEventListener('mousedown', handleOutsideClick);
+        }
+
+        // Cleanup the event listener when the component unmounts or the popup closes
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [isOpen, close]); // Dependencies array ensures effect runs only if isOpen or close changes
+
+
+    if (!isOpen) 
+        return null;
+
   return (
-    <div className="frame21">
+    <div ref={popupRef} className={`frame21 popup-overlay ${isOpen ? 'popup-enter' : ''}`}>
       <div className="tableHeader">
         <div className="datagridheader">
           <div className="container">

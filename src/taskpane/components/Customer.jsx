@@ -11,6 +11,7 @@ const Customer = () => {
     };
 
   return (
+    <div className={`${isPopupOpen ? 'backdrop' : ''}`}>
     <div className="frame20">
       <div className="tableHeader">
         <div className="datagridheader">
@@ -35,6 +36,8 @@ const Customer = () => {
         </div>
       </div>
     </div>
+    </div>
+
   );
 };
 

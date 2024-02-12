@@ -30,6 +30,7 @@ const CustomerResponsePopup = ({ isOpen, close }) => {
         return null;
 
   return (
+    
     <div ref={popupRef} className={`frame20 popup-overlay ${isOpen ? 'popup-enter' : ''}`}>
     <div className="tableHeader">
       <div className="datagridheader">

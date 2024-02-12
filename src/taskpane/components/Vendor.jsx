@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './styles/Vendor.css'; // Import the CSS file for styles
 import pencil from "../../../public/Pencil.png"
+import VendorResponsePopup from './VendorResponsePopup';
 
 
 const Vendor = () => {
+
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const togglePopup = () => {
+             setIsPopupOpen(!isPopupOpen);
+    };
+
   return (
     <div className="Frame19" style={{width: 289, height: 123, borderRadius: 6, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
     <div className="TableHeader" style={{alignSelf: 'stretch', background: '#F9F9F9', borderTopLeftRadius: 6, borderTopRightRadius: 6, border: '1px rgba(58, 53, 65, 0.12) solid', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>
@@ -14,7 +22,8 @@ const Vendor = () => {
           </div>
         </div>
         <div className="XnixLinePencil" style={{width: 18, height: 18, paddingTop: 3.75, paddingBottom: 3.77, paddingLeft: 4.50, paddingRight: 4.50, opacity: 0.70, justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-          <img className="Vector10" style={{width: 9, height: 10.48, border: '1px #080808 solid'}} src={pencil} />
+          <img className="Vector10" style={{width: 9, height: 10.48, border: '1px #080808 solid'}} onClick={togglePopup} src={pencil} />
+          <VendorResponsePopup isOpen={isPopupOpen} close={togglePopup} />
         </div>
       </div>
     </div>
