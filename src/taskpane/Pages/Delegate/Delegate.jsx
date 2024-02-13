@@ -22,12 +22,12 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
   const [btn, setBtn] = useState(false);
 
-  const [body, setBody] = useState(null);
-  const [emailDetails, setEmailDetails] = useState([]);
-  const [senderName, setSenderName] = useState(null);
-  const [senderEmail, setSenderEmail] = useState(null);
-  const [senderCC, setSenderCC] = useState(null);
-  const [senderDomain, setSenderDomain] = useState(null);
+//   const [body, setBody] = useState(null);
+//   const [emailDetails, setEmailDetails] = useState([]);
+//   const [senderName, setSenderName] = useState(null);
+//   const [senderEmail, setSenderEmail] = useState(null);
+//   const [senderCC, setSenderCC] = useState(null);
+//   const [senderDomain, setSenderDomain] = useState(null);
 
   const [fontSize, setFontSize] = useState(10); // Default font size
 
@@ -222,7 +222,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                   <MailPopup
                     isOpen={isPopupOpenMail}
                     close={togglePopupMail}
-                    body={body}
+                    body={emailDetails.body}
                   />
                 )}
               </div>
@@ -233,7 +233,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
               <div className="Quote-RFQ-EmailDiv">
                 <div className="Quote-RFQ-EmailSec">
                   <div className="Quote-RFQ-Email-Cont">
-                    <div className="Quote-RFQ-Email-Content">{body || ""}</div>
+                    <div className="Quote-RFQ-Email-Content">{emailDetails.bodyy || ""}</div>
                   </div>
                 </div>
               </div>
