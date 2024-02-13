@@ -262,7 +262,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                       <div className="Quote-Table-NameValueParent">
                         <div className="Quote-Table-NameValueChild">
                           <div className="Quote-Table-NameValueText">
-                            {senderName || ""}
+                            {emailDetails.senderName || ""}
                           </div>
                         </div>
                       </div>
@@ -337,7 +337,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
                         <div className="Quote-Table-NameValueText">
-                          {senderName || ""}
+                          {emailDetails.senderName || ""}
                         </div>
                       </div>
                     </div>
@@ -363,7 +363,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
                         <div className="Quote-Table-NameValueText">
-                          {senderEmail || ""}
+                          {emailDetails.from || ""}
                         </div>
                       </div>
                     </div>
@@ -389,7 +389,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                     <div className="Quote-Table-CC-ValuesParent">
                       <div className="Quote-Table-CC-ValuesChild1">
                         <div className="Quote-Table-CC-ValuesChild1-text">
-                          {senderCC ? senderCC : ""}
+                          {emailDetails.cc ?  emailDetails.cc : ""}
                         </div>
                       </div>
                       <div className="Quote-Table-CC-ValuesChild1">
@@ -426,7 +426,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
                         <div className="Quote-Table-NameValueText">
-                          {senderDomain || ""}
+                          {emailDetails.company || ""}
                         </div>
                       </div>
                     </div>
