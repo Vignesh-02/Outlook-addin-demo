@@ -15,8 +15,8 @@ import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluen
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import Home from "./Pages/Home/Home";
 import Login from "./Login";
-// import Home from "./Home";
-// import Queue from "./Queue";
+import Home from "./Home";
+import Queue from "./Queue";
 import Delegate from "../Pages/Delegate/Delegate";
 
 
