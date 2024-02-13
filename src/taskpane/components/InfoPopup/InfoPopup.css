@@ -1,0 +1,258 @@
+@keyframes fadeInScaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .popup-enter {
+    animation: fadeInScaleUp 0.3s ease-out forwards;
+  }
+  
+  .overlay1 {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 325px;
+    height: 580px;
+    background-color: transparent;
+    top: 74px;
+    left: 0px;
+  }
+  
+  .Infopopup-Div {
+    width: 289px;
+    height: 202px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 43%;
+  }
+  /* Name */
+  .Infopopup-Name {
+    align-self: stretch;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+  .Infopopup-Name-1 {
+    flex: 1 1 0;
+    height: 30px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background: #f9f9f9;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .Infopopup-Name-2 {
+    flex: 1 1 0;
+    height: 22px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 2px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+  }
+  .Infopopup-Name-Div {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+  }
+  .Infopopup-Name-Sec {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-Name-Text {
+    color: rgba(58, 53, 65, 0.87);
+    font-size: 13px;
+    font-family: Orbitron;
+    font-weight: 500;
+    letter-spacing: 0.13px;
+    word-wrap: break-word;
+  }
+  /* Name : Value */
+  .Infopopup-Name-Val {
+    flex: 1 1 0;
+    align-self: stretch;
+    /* border: 1px solid; */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-Name-ValDiv {
+    align-self: stretch;
+    flex: 1 1 0;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-Name-ValSec {
+    flex: 1 1 0;
+    height: 28px;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+  }
+  .Infopopup-Name-ValParent {
+    flex: 1 1 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 16px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-Name-ValChild {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+  }
+  .Infopopup-Name-Val-Text {
+    color: #080808;
+    font-size: 10px;
+    font-family: Helvetica Neue;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    word-wrap: break-word;
+  }
+  
+  /* CC */
+  .Infopopup-CC {
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+  .Infopopup-CCDiv {
+    flex: 1 1 0;
+    align-self: stretch;
+    padding-left: 2px;
+    padding-right: 2px;
+    background: #f9f9f9;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  /* CC - Value */
+  .Infopopup-CC-val {
+    align-self: stretch;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-CC-valDiv {
+    flex: 1 1 0;
+    height: 68px;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+  }
+  /* SA */
+  .Infopopup-SA {
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+  .Infopopup-SADiv {
+    flex: 1 1 0;
+    align-self: stretch;
+    padding-left: 2px;
+    padding-right: 2px;
+    background: #f9f9f9;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .Infopopup-SASec {
+    flex: 1 1 0;
+    height: 22px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px;
+    padding-right: 2px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+  }
+  /* SA -Value */
+  .Infopopup-SA-Val {
+    flex: 1 1 0;
+    /* border: 1px solid; */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-SA-ValDiv {
+    align-self: stretch;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-SA-ValParent {
+    flex: 1 1 0;
+    height: 48px;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+  }
+  .Infopopup-SA-ValChild {
+    flex: 1 1 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 4px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .Infopopup-SA-ValChild-A {
+    align-self: stretch;
+    height: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+  }
+  .Infopopup-SA-ValChild-Text {
+    align-self: stretch;
+    color: #080808;
+    font-size: 10px;
+    font-family: Helvetica Neue;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    word-wrap: break-word;
+  }
+  

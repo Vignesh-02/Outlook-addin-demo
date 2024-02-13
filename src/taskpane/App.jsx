@@ -15,9 +15,8 @@ import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluen
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // import Home from "./Pages/Home/Home";
 // import Login from "./Login";
-// import Home from "./Home";
+// import Home from "./Home"/;
 // import Queue from "./Queue";
-import Delegate from "../Pages/Delegate/Delegate";
 
 
 const useStyles = makeStyles({
@@ -87,6 +86,7 @@ const App = (props) => {
                     setUserName(displayName);
                     setEmailDetails({
                         from: item.from && item.from.emailAddress,
+                        senderName: item.from && item.from.displayName,
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
                         cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
                         company: businessName,
@@ -258,13 +258,6 @@ const App = (props) => {
         <Switch> {/* Use Switch to render the first Route that matches the location */}
             <Route exact path="/" component={Login} />
             {/* <Route exact path="/home" component={Home}  emailBody={emailBody}/> */}
-            <Route 
-                exact
-                path="/del" 
-                render={(props) => (
-                    <Delegate {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} val={val} />
-                )} 
-            /> 
             <Route exact path="/queue" component={Queue} />
 
             <Route 

@@ -1,0 +1,258 @@
+.Frame21 {
+    width: 289px;
+    height: 415px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .TableHeader {
+    align-self: stretch;
+    background: #F9F9F9;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .DatagridHeader {
+    flex: 1 1 0;
+    height: 38px;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+  }
+  .Container {
+    flex: 1 1 0;
+    height: 13px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+  }
+  .Typography {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+  .TypographyBody1 {
+    color: rgba(58, 53, 65, 0.87);
+    font-size: 10px;
+    font-family: Orbitron;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    word-wrap: break-word;
+  }
+  .XnixLineCross {
+    width: 18px;
+    height: 18px;
+    padding: 5.25px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
+  .Vector47 {
+    width: 7.5px;
+    height: 7.5px;
+    left: 5.25px;
+    top: 5.25px;
+    position: absolute;
+    border: 1px black solid;
+  }
+  .Frame16 {
+    align-self: stretch;
+    height: 378px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    overflow: hidden;
+    border: 1px rgba(58, 53, 65, 0.12) solid;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+  }
+  .Row {
+    align-self: stretch;
+    height: 324px;
+    padding: 10px;
+    border-left: 1px rgba(58, 53, 65, 0.12) solid;
+    border-right: 1px rgba(58, 53, 65, 0.12) solid;
+    border-bottom: 1px rgba(58, 53, 65, 0.12) solid;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 11px;
+    display: flex;
+  }
+  .Frame4 {
+    /* display: 'flex'; */
+    align-self: stretch;
+    height: 20px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: #F9F9F9;
+    border-radius: 6px;
+    border: 0.5px rgba(28, 28, 28, 0.4) solid;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+  }
+  .SelectVendor {
+    align-items: stretch;
+    width: 125px;
+    height: 9px;
+    opacity: 0.4;
+    color: #080808;
+    font-size: 12px;
+    font-family: Helvetica Neue;
+    font-weight: 100;
+    letter-spacing: 0.12px;
+    word-wrap: break-word;
+  }
+  .Frame39 {
+    align-self: stretch;
+    padding-left: 2px;
+    padding-right: 2px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1px;
+    display: inline-flex;
+  }
+  .Frame94 {
+    padding: 6px;
+    opacity: 0.45;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  .Frame38 {
+    padding: 6px;
+    border-bottom: 1px black solid;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  .Dropdown-container {
+    align-items: center;
+    margin-bottom: 50px;
+    width: 240px;
+    height: 20px; /* Make select fill the container */
+    /* padding: 0.5em; */
+  }
+  .Frame37 {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+    display: flex;
+  }
+  .Vendor1 {
+    color: #080808;
+    font-size: 9px;
+    font-family: Orbitron;
+    font-weight: 400;
+    letter-spacing: 0.09px;
+    word-wrap: break-word;
+  }
+  .Frame40 {
+    padding: 6px;
+    opacity: 0.45;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  .Frame41 {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+    display: flex;
+  }
+  .Frame42 {
+    color: #080808;
+    font-size: 9px;
+    font-family: Orbitron;
+    font-weight: 400;
+    letter-spacing: 0.09px;
+    word-wrap: break-word;
+  }
+  .DataGridCell {
+    align-self: stretch;
+    justify-content: flex-start;
+    align-items: center;
+    display: inline-flex;
+  }
+  .Container2 {
+    flex: 1 1 0;
+    height: 180px;
+    padding-left: 8px;
+    padding-right: 8px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    display: flex;
+  }
+  .LongText {
+    flex: 1 1 0;
+    color: #080808;
+    font-size: 10px;
+    font-family: Helvetica Neue;
+    font-weight: 100;
+    line-height: 14px;
+    letter-spacing: 0.1px;
+    word-wrap: break-word;
+  }
+  .Frame17 {
+    width: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    display: inline-flex;
+    /* flex-direction: row;
+    justify-content: stretch;
+    align-items: center; */
+  }
+  .Button {
+    flex: 1 1 0;
+    /* flex-grow: 1; */
+    /* flex: 1; */
+    /* width: 120px; */
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 31px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: #356F9F;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  .Text {
+    color: white;
+    font-size: 12px;
+    font-family: Orbitron;
+    font-weight: 600;
+    letter-spacing: 0.96px;
+    word-wrap: break-word;
+  }
+  

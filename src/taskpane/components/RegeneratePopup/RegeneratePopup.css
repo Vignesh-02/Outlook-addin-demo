@@ -1,23 +1,56 @@
-.frame23 {
+@keyframes fadeInScaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .popup-enter {
+    animation: fadeInScaleUp 0.3s ease-out forwards;
+  }
+  
+  .overlay {
+    position: absolute;
+    width: 325px;
+    height: 580px;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    cursor: pointer;
+  }
+  
+  .frame23 {
+    position: absolute;
+    top: 150px;
+    left: 15px;
     width: 289px;
     height: 209px;
-    background: white;
+    background-color: white;
     border-radius: 6px;
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
-    z-index: 4;
+    z-index: 101;
   }
   
-  .tableHeader, .tableHeaderInner {
+  .tableHeader,
+  .tableHeaderInner {
     align-self: stretch;
-    background: #F9F9F9;
+    background: #f9f9f9;
     border-radius: 6px 6px 0 0;
     border: 1px rgba(58, 53, 65, 0.12) solid;
     display: inline-flex;
   }
   
-  .datagridheader, .datagridheaderInner {
+  .datagridheader,
+  .datagridheaderInner {
     flex: 1;
     height: 38px;
     padding: 10px 11px;
@@ -25,24 +58,27 @@
     align-items: center;
   }
   
-  .container, .containerInner {
+  .container,
+  .containerInner {
     display: flex;
     align-items: center;
     gap: 4px;
   }
   
-  .typography, .typographyInner {
+  .typography,
+  .typographyInner {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
   }
   
-  .typographyBody1, .typographyBody1Inner {
+  .typographyBody1,
+  .typographyBody1Inner {
     color: rgba(58, 53, 65, 0.87);
     font-size: 10px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     font-weight: 400;
-    letter-spacing: 0.10px;
+    letter-spacing: 0.1px;
     word-wrap: break-word;
   }
   
@@ -56,12 +92,16 @@
   }
   
   .vector47 {
-    width: 7.50px;
-    height: 7.50px;
+    width: 7.5px;
+    height: 7.5px;
     border: 1px black solid;
   }
   
-  .frame16, .frame18, .frame25, .frame24, .frame27 {
+  .frame16,
+  .frame18,
+  .frame25,
+  .frame24,
+  .frame27 {
     display: flex;
     flex-direction: column;
   }
@@ -87,12 +127,12 @@
   }
   
   .button.cancel {
-    border: 1px #356F9F solid;
-    color: #356F9F;
+    border: 1px #356f9f solid;
+    color: #356f9f;
   }
   
   .button.regenerate {
-    background: #356F9F;
+    background: #356f9f;
     color: white;
   }
   

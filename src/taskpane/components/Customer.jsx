@@ -4,14 +4,44 @@ import pencil from "../../../public/Pencil.png"
 import CustomerResponsePopup from './CustomerResponsePopup';
 
 const Customer = () => {
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isPopupOpen1, setIsPopupOpen1] = useState(false);
+    const [isPopupOpen2, setIsPopupOpen2] = useState(false);
+    const [isPopupOpen3, setIsPopupOpen3] = useState(false);
+    const [isPopupOpen4, setIsPopupOpen4] = useState(false);
+    const [isRegenerateVendorPopup, setIsRegenerateVendorPopup] = useState(false);
 
-    const togglePopup = () => {
-             setIsPopupOpen(!isPopupOpen);
+    const togglePopup1 = () => {
+             setIsPopupOpen1(!isPopupOpen1);
     };
 
+    const togglePopup2 = () => {
+        setIsPopupOpen2(!isPopupOpen2);
+};
+
+const togglePopup3 = () => {
+    setIsPopupOpen3(!isPopupOpen3);
+};
+
+const togglePopup4 = () => {
+    setIsPopupOpen4(!isPopupOpen4);
+};
+
+const toggleRegnerateVendorPopup = () => {
+    setIsPopupOpen4(!isPopupOpen4);
+};
+
+const regenrateVendorPopup = () => {
+
+}
+
+    const isAnyPopupOpen = () => { 
+       return isPopupOpen1 || isPopupOpen2 || isPopupOpen3 || isPopupOpen4;
+    }
+
+    const 
+
   return (
-    <div className={`${isPopupOpen ? 'backdrop' : ''}`}>
+    <div className={`${isAnyPopupOpen() ? 'backdrop' : ''}`}>
     <div className="frame20">
       <div className="tableHeader">
         <div className="datagridheader">
@@ -21,8 +51,8 @@ const Customer = () => {
             </div>
           </div>
           <div className="xnixLinePencil">
-            <img className="vector10" onClick={togglePopup} src={pencil} alt="pencil" />
-            <CustomerResponsePopup isOpen={isPopupOpen} close={togglePopup} />
+            <img className="vector10" onClick={togglePopup1} src={pencil} alt="pencil" />
+            <CustomerResponsePopup isOpen={isPopupOpen1} close={togglePopup1} />
           </div>
         </div>
       </div>

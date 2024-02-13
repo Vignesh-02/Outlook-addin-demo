@@ -9,18 +9,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 2;
   }
   
   .section {
     align-self: stretch;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .tableHeader {
     height: 30px;
     padding: 2px;
-    background: #F9F9F9;
     border: 1px rgba(58, 53, 65, 0.12) solid;
     display: flex;
     justify-content: center;
