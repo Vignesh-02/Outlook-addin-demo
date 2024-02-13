@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/RegenerateResponsePopup.css'; // Import the CSS file for styles
-import cross from "../../../../public/Cross.png";
+import cross from "../../../public/Cross.png";
 
 const RegenerateResponsePopup = () => {
 
