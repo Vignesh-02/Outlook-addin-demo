@@ -80,17 +80,17 @@ const App = (props) => {
                         return businessName;
                     }
 
-                    const businessName = extractBusinessName(emailAddress);
+                    const companyName = extractBusinessName(item.sender.emailAddress);
 
-
+                    // item.sender?.displayName ? item.sender.displayName :
                     setEmailAddress(emailAddress);
                     setUserName(displayName);
                     setEmailDetails({
                         from: item.sender && item.sender.emailAddress,
-                        senderName: item.sender?.displayName ? item.sender.displayName : "John Doe",
+                        senderName:  "John Doe",
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
                         cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
-                        company: businessName,
+                        company: companyName,
                         subject: item.subject,
                         body: '', // Body is loaded asynchronously
                         attachments: item.attachments
