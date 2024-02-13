@@ -6,6 +6,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import Extend from "../../../../public/extender.png";
 import Manufacturer from "../Manufacturer/Manufacturer";
 import VentMaterial from "../VentMaterial/VentMaterial";
+
 const Stocks = ({
   isPopupOpenStock,
   togglePopupStock,
