@@ -5,7 +5,7 @@ import "@fontsource/orbitron/400.css";
 import CheckIcon from "@mui/icons-material/Check";
 import Extend from "../../../../public/extender.png";
 import Manufacturer from "../Manufacturer/Manufacturer";
-import VentMaterial from "../VentMaterial/VentMaterial";
+// import VentMaterial from "../VentMaterial/VentMaterial";
 
 const Stocks = ({
   isPopupOpenStock,
@@ -80,8 +80,8 @@ const Stocks = ({
               src={Extend}
               onClick={togglePopupStock}
             />
-            <VentMaterial isOpen={isPopupOpenStock} close={togglePopupStock} />
-            {console.log("IspopStock: ", isPopupOpenStock)}
+            {/* <VentMaterial isOpen={isPopupOpenStock} close={togglePopupStock} /> */}
+            {/* {console.log("IspopStock: ", isPopupOpenStock)} */}
           </div>
         </div>
 
