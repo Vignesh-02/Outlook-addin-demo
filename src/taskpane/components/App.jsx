@@ -267,13 +267,13 @@ const App = (props) => {
             /> 
             {/* <Route exact path="/queue" component={Queue} /> */}
 
-            <Route 
+            {/* <Route 
                 exact
                 path="/home" 
                 render={(props) => (
                     <Home {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} val={val} />
                 )} 
-            />       
+            />        */}
             {/* Add other Routes here as needed */}
         </Switch>
     </Router>

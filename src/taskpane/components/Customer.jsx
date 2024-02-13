@@ -38,7 +38,7 @@ const regenrateVendorPopup = () => {
        return isPopupOpen1 || isPopupOpen2 || isPopupOpen3 || isPopupOpen4;
     }
 
-    const 
+    // const 
 
   return (
     <div className={`${isAnyPopupOpen() ? 'backdrop' : ''}`}>
