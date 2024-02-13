@@ -1,5 +1,5 @@
 import React from "react";
-import BulbImage from "../../../public/bulb.png";
+import BulbImage from "../../../../public/bulb.png";
 import "./Decision.css";
 
 const Decision = () => {

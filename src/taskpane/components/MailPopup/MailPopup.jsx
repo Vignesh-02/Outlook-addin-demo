@@ -1,7 +1,7 @@
 // import React from 'react'
 import React, { useRef, useEffect } from "react";
 import "./MailPopup.css";
-import Compress from "../../../public/Compress-2.png";
+import Compress from "../../../../public/Compress-2.png";
 
 const MailPopup = ({ isOpen, close, body }) => {
   const popupRef = useRef(null); // Define the ref

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Vendor.css";
-import Pen_Image from "../../../public/pen.png";
+import Pen_Image from "../../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
 const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, togglePopup}) => {
   return (

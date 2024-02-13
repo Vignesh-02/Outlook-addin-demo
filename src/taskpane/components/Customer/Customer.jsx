@@ -2,7 +2,7 @@
 // import React from "react";
 import React, {useState} from 'react';
 import "./Customer.css"; // Import the CSS file
-import Pen_Image from "../../../public/pen.png";
+import Pen_Image from "../../../../public/pen.png";
 import CustomerResponsePopup from './CustomerResponsePopup';
 import RegeneratePopup from '../RegeneratePopup/RegeneratePopup';
 const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, togglePopup}) => {
