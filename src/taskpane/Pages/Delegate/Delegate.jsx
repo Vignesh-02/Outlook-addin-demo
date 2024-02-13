@@ -233,7 +233,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
               <div className="Quote-RFQ-EmailDiv">
                 <div className="Quote-RFQ-EmailSec">
                   <div className="Quote-RFQ-Email-Cont">
-                    <div className="Quote-RFQ-Email-Content">{emailDetails.bodyy || ""}</div>
+                    <div className="Quote-RFQ-Email-Content">{emailDetails.body || ""}</div>
                   </div>
                 </div>
               </div>
