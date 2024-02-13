@@ -86,8 +86,8 @@ const App = (props) => {
                     setEmailAddress(emailAddress);
                     setUserName(displayName);
                     setEmailDetails({
-                        from: item.from && item.from.emailAddress,
-                        senderName: item.from && item.from.displayName,
+                        from: item.sender && item.sender.emailAddress,
+                        senderName: item.sender?.displayName ? item.sender.displayName : "John Doe",
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
                         cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
                         company: businessName,
