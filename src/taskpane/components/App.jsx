@@ -265,7 +265,7 @@ const App = (props) => {
                     <Delegate {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} val={val} />
                 )} 
             /> 
-            <Route exact path="/queue" component={Queue} />
+            {/* <Route exact path="/queue" component={Queue} /> */}
 
             <Route 
                 exact
