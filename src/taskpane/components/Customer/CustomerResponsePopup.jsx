@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 import './CustomerResponsePopup.css'; // Import the CSS file
-// import cross from "../../../public/Cross.png"
+// import cross from "../../../../public/Cross.png"
 const CustomerResponsePopup = ({ isOpen, close }) => {
   const popupRef = useRef(null); // Define the ref
   useEffect(() => {

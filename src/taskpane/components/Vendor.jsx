@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './styles/Vendor.css'; // Import the CSS file for styles
-import pencil from "../../../public/Pencil.png"
+import pencil from "../../../../public/Pencil.png"
 import VendorResponsePopup from './VendorResponsePopup';
 
 

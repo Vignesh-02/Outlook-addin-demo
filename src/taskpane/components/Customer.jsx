@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./styles/Customer.css"; // Import the CSS file
-import pencil from "../../../public/Pencil.png"
+import pencil from "../../../../public/Pencil.png"
 import CustomerResponsePopup from './CustomerResponsePopup';
 
 const Customer = () => {
