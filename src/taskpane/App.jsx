@@ -13,6 +13,7 @@ import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluen
 
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import Delegate from "./Pages/Delegate/Delegate";
 // import Home from "./Pages/Home/Home";
 // import Login from "./Login";
 // import Home from "./Home"/;
@@ -259,6 +260,14 @@ const App = (props) => {
             <Route exact path="/" component={Login} />
             {/* <Route exact path="/home" component={Home}  emailBody={emailBody}/> */}
             <Route exact path="/queue" component={Queue} />
+            
+            <Route 
+                exact
+                path="/del" 
+                render={(props) => (
+                    <Delegate {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} val={val} />
+                )} 
+            />     
 
             <Route 
                 exact
