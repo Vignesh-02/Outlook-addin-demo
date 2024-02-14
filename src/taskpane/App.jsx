@@ -36,7 +36,10 @@ const App = (props) => {
 
     const [emailDetails, setEmailDetails] = useState({
         from: '',
+        senderName: '',
+        company: '',
         to: [],
+        cc: [],
         subject: '',
         body: '',
         attachments: []
@@ -87,7 +90,7 @@ const App = (props) => {
                     setUserName(displayName);
                     setEmailDetails({
                         from: item.sender && item.sender.emailAddress,
-                        senderName:  "John Doe",
+                        senderName: item.sender && item.sender.displayName,
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
                         cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
                         company: companyName,
