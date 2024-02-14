@@ -13,11 +13,11 @@ import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluen
 
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import Delegate from "./Pages/Delegate/Delegate";
 // import Home from "./Pages/Home/Home";
-import Login from "./Login";
-import Home from "./Home";
-import Queue from "./Queue";
-import Delegate from "../Pages/Delegate/Delegate";
+// import Login from "./Login";
+// import Home from "./Home"/;
+// import Queue from "./Queue";
 
 
 const useStyles = makeStyles({
@@ -36,7 +36,10 @@ const App = (props) => {
 
     const [emailDetails, setEmailDetails] = useState({
         from: '',
+        senderName: '',
+        company: '',
         to: [],
+        cc: [],
         subject: '',
         body: '',
         attachments: []
@@ -80,20 +83,24 @@ const App = (props) => {
                         return businessName;
                     }
 
-                    const businessName = extractBusinessName(emailAddress);
+                    const companyName = extractBusinessName(item.from.emailAddress);
+                     console.log(companyName);
 
-
+                    // item.sender?.displayName ? item.sender.displayName :
                     setEmailAddress(emailAddress);
                     setUserName(displayName);
                     setEmailDetails({
                         from: item.from && item.from.emailAddress,
+                        senderName: item.from && item.from.displayName,
+
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
                         cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
-                        company: businessName,
+                        company: companyName,
                         subject: item.subject,
                         body: '', // Body is loaded asynchronously
                         attachments: item.attachments
                     });
+                    console.log(emailDetails);
     
                     // Load body content asynchronously
                     item.body.getAsync(Office.CoercionType.Text, (result) => {
@@ -128,19 +135,19 @@ const App = (props) => {
         setVal(json.title)
       })
 
-        const replyToEmail = () => {
-            Office.context.mailbox.item.displayReplyForm({
-              'htmlBody': 'Thanks for your email!<br><br>', // Prepend your reply message with original email body below
-              // Optionally, you can add other fields like cc, attachments, etc.
-            });
-          }
+        // const replyToEmail = () => {
+        //     Office.context.mailbox.item.displayReplyForm({
+        //       'htmlBody': 'Thanks for your email!<br><br>', // Prepend your reply message with original email body below
+        //       // Optionally, you can add other fields like cc, attachments, etc.
+        //     });
+        //   }
 
-          Office.onReady((info) => {
-            if (info.host === Office.HostType.Outlook) {
-                replyToEmail();
-              }
+        //   Office.onReady((info) => {
+        //     if (info.host === Office.HostType.Outlook) {
+        //         replyToEmail();
+        //       }
     
-        });
+        // });
             }, []);
 
     // Office.context.mailbox.getCallbackTokenAsync({isRest: true}, function(result){
@@ -164,13 +171,32 @@ const App = (props) => {
 
                     if (Office.context.mailbox.item) {
                         const item = Office.context.mailbox.item;
+
+                        const extractBusinessName = (email) => {
+                            // Split the email by '@' and take the second part (domain part)
+                            const domainPart = email.split('@')[1];
+                        
+                            // Split the domain part by '.' and take the first part as the business name
+                            const businessName = domainPart.split('.')[0];
+                        
+                            return businessName;
+                        }
+    
+                        const companyName = extractBusinessName(item.from.emailAddress);
+
+                         console.log(companyName);
                         setEmailDetails({
-                            from: item.from && item.from.emailAddress,
-                            to: item.to && item.to.map(recipient => recipient.emailAddress),
-                            subject: item.subject,
-                            body: '', // Body is loaded asynchronously
-                            attachments: item.attachments
+                        from: item.from && item.from.emailAddress,
+                        senderName: item.from && item.from.displayName,
+                        to: item.to && item.to.map(recipient => recipient.emailAddress),
+                        cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
+                        company: companyName,
+                        subject: item.subject,
+                        body: '', // Body is loaded asynchronously
+                        attachments: item.attachments
                         });
+
+                         console.log(emailDetails);
         
                         // Load body content asynchronously
                         
@@ -258,14 +284,15 @@ const App = (props) => {
         <Switch> {/* Use Switch to render the first Route that matches the location */}
             <Route exact path="/" component={Login} />
             {/* <Route exact path="/home" component={Home}  emailBody={emailBody}/> */}
+            {/* <Route exact path="/queue" component={Queue} /> */}
+            
             <Route 
                 exact
                 path="/del" 
                 render={(props) => (
                     <Delegate {...props} emailDetails={emailDetails} emailAddress={emailAddress} userName={userName} val={val} />
                 )} 
-            /> 
-            {/* <Route exact path="/queue" component={Queue} /> */}
+            />     
 
             {/* <Route 
                 exact
