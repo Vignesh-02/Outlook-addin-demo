@@ -12,7 +12,6 @@
   <AppDomains>
     <AppDomain>https://outlook-addin-v9y9.onrender.com</AppDomain>
     <AppDomain>https://jsonplaceholder.typicode.com</AppDomain>
-
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -30,8 +29,8 @@
       </DesktopSettings>
     </Form>
   </FormSettings>
-  <!-- <Permissions>ReadWriteItem</Permissions> -->
-  <!-- <Permissions>ReadWriteMailbox</Permissions> -->
+  <Permissions>ReadWriteItem</Permissions>
+  <Permissions>ReadWriteMailbox</Permissions>
   <Rule xsi:type="RuleCollection" Mode="Or">
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
   </Rule>
@@ -45,7 +44,6 @@
         <Hosts>
             <Host xsi:type="MailHost">
                 <DesktopFormFactor>
-
                 <ExtensionPoint xsi:type="MessageComposeCommandSurface">
               <OfficeTab id="TabDefault">
                 <Group id="msgComposeGroup">
@@ -96,8 +94,6 @@
                             </Group>
                         </OfficeTab>
                     </ExtensionPoint>
-
-            
                 </DesktopFormFactor>
             </Host>
         </Hosts>
@@ -113,7 +109,7 @@
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Contoso Add-in"/>
-          <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
+          <bt:String id="TaskpaneButton.Label" DefaultValue="10X Sales Client"/>
         </bt:ShortStrings>
         <bt:LongStrings>
           <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a task pane."/>
