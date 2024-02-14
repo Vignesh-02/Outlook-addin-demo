@@ -100,6 +100,7 @@ const App = (props) => {
                         body: '', // Body is loaded asynchronously
                         attachments: item.attachments
                     });
+                    console.log(emailDetails);
     
                     // Load body content asynchronously
                     item.body.getAsync(Office.CoercionType.Text, (result) => {
@@ -194,6 +195,8 @@ const App = (props) => {
                         body: '', // Body is loaded asynchronously
                         attachments: item.attachments
                         });
+
+                         console.log(emailDetails);
         
                         // Load body content asynchronously
                         
