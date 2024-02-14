@@ -22,6 +22,41 @@ const MailPopup = ({ isOpen, close, body }) => {
   }, [isOpen, close]); // Dependencies array ensures effect runs only if isOpen or close changes
   if (!isOpen) return null;
 
+
+  const [fontSize, setFontSize] = useState(17); // Default font size
+  const [fontPercentage, setFontPercentage] = useState(50);
+  
+  
+    // max font size = 20
+    // min font size = 14
+    const maxFontSize = 16;
+    const minFontSize = 10;
+
+    const stepSize = Math.round((maxFontSize - minFontSize) / 5);
+
+  const increaseFontSize = () => {
+    
+    if (fontPercentage < 100) {
+        setFontPercentage(fontPercentage + 10); // Increase percentage by 10
+        const newFontSize = calculateFontSize(fontPercentage);
+        setFontSize(newFontSize)
+    }
+
+};
+  const decreaseFontSize = () => {
+    
+    if (fontPercentage > 0) {
+        setFontPercentage(fontPercentage - 10); // Increase percentage by 10
+        const newFontSize = calculateFontSize(fontPercentage);
+        setFontSize(newFontSize);
+    }
+  };
+
+  const calculateFontSize = (percentage) => {
+
+    const stepsFrom50 = (percentage - 50) / 10;
+    return 13 + (stepsFrom50 * stepSize);
+  }
   return (
     <div className="overlay">
       <div
@@ -37,18 +72,20 @@ const MailPopup = ({ isOpen, close, body }) => {
                 </div>
                 <div className="MailPopUp-Child-3">
                   <div className="MailPopUp-Child-3B">
-                    <div className="MailPopUp-Child-3C">-</div>
+                    <div className="MailPopUp-Child-3C" 
+                    onClick={decreaseFontSize}>-</div>
                   </div>
                   <div className="MailPopUp-Child-4">
-                    <div className="MailPopUp-Child-4B">30%</div>
+                    <div className="MailPopUp-Child-4B">{fontPercentage}%</div>
                   </div>
                   <div className="MailPopUp-Child-5">
-                    <div className="MailPopUp-Child-5B">+</div>
+                    <div className="MailPopUp-Child-5B"
+                    onClick={increaseFontSize}>+</div>
                   </div>
                 </div>
               </div>
               <div className="MailPopUp-Child-Image">
-                <img className="MailPopUp-Child-Img" src={Compress} />
+                <img className="MailPopUp-Child-Img" src={Compress}  onClick={close}/>
               </div>
             </div>
           </div>
