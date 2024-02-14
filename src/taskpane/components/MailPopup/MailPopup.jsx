@@ -1,5 +1,5 @@
 // import React from 'react'
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./MailPopup.css";
 import Compress from "../../../../public/Compress-2.png";
 
@@ -23,7 +23,7 @@ const MailPopup = ({ isOpen, close, body }) => {
   if (!isOpen) return null;
 
 
-  const [fontSize, setFontSize] = useState(17); // Default font size
+  const [fontSize, setFontSize] = useState(13); // Default font size
   const [fontPercentage, setFontPercentage] = useState(50);
   
   

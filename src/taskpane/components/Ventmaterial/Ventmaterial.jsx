@@ -4,7 +4,7 @@ import Compress from "../../../../public/Compress-2.png";
 import "./VentMaterial.css";
 
 const VentMaterial = ({ isOpen, close }) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(true);
   const [selected1, setSelected1] = useState(false);
   const [selected2, setSelected2] = useState(false);
   const [selected3, setSelected3] = useState(false);
