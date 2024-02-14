@@ -83,14 +83,16 @@ const App = (props) => {
                         return businessName;
                     }
 
-                    const companyName = extractBusinessName(item.sender.emailAddress);
+                    const companyName = extractBusinessName(item.from.emailAddress);
+                     console.log(companyName);
 
                     // item.sender?.displayName ? item.sender.displayName :
                     setEmailAddress(emailAddress);
                     setUserName(displayName);
                     setEmailDetails({
-                        from: item.sender && item.sender.emailAddress,
-                        senderName: item.sender && item.sender.displayName,
+                        from: item.from && item.from.emailAddress,
+                        senderName: item.from && item.from.displayName,
+
                         to: item.to && item.to.map(recipient => recipient.emailAddress),
                         cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
                         company: companyName,
@@ -168,12 +170,29 @@ const App = (props) => {
 
                     if (Office.context.mailbox.item) {
                         const item = Office.context.mailbox.item;
+
+                        const extractBusinessName = (email) => {
+                            // Split the email by '@' and take the second part (domain part)
+                            const domainPart = email.split('@')[1];
+                        
+                            // Split the domain part by '.' and take the first part as the business name
+                            const businessName = domainPart.split('.')[0];
+                        
+                            return businessName;
+                        }
+    
+                        const companyName = extractBusinessName(item.from.emailAddress);
+
+                         console.log(companyName);
                         setEmailDetails({
-                            from: item.from && item.from.emailAddress,
-                            to: item.to && item.to.map(recipient => recipient.emailAddress),
-                            subject: item.subject,
-                            body: '', // Body is loaded asynchronously
-                            attachments: item.attachments
+                        from: item.from && item.from.emailAddress,
+                        senderName: item.from && item.from.displayName,
+                        to: item.to && item.to.map(recipient => recipient.emailAddress),
+                        cc: item.cc && item.cc.map(recipient => recipient.emailAddress),
+                        company: companyName,
+                        subject: item.subject,
+                        body: '', // Body is loaded asynchronously
+                        attachments: item.attachments
                         });
         
                         // Load body content asynchronously
