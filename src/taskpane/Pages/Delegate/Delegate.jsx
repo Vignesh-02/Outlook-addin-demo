@@ -160,7 +160,9 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
   };
 
   return (
+
     <div className={`QuotePage ${isAnyPopupOpen() ? "backdrop" : ""}`}>
+        {console.log(emailDetails)}
       {/* TOP BAR */}
       <div className="topbar-frame">
         {/* Section -1A */}

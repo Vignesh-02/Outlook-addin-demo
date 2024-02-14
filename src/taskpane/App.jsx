@@ -135,19 +135,19 @@ const App = (props) => {
         setVal(json.title)
       })
 
-        const replyToEmail = () => {
-            Office.context.mailbox.item.displayReplyForm({
-              'htmlBody': 'Thanks for your email!<br><br>', // Prepend your reply message with original email body below
-              // Optionally, you can add other fields like cc, attachments, etc.
-            });
-          }
+        // const replyToEmail = () => {
+        //     Office.context.mailbox.item.displayReplyForm({
+        //       'htmlBody': 'Thanks for your email!<br><br>', // Prepend your reply message with original email body below
+        //       // Optionally, you can add other fields like cc, attachments, etc.
+        //     });
+        //   }
 
-          Office.onReady((info) => {
-            if (info.host === Office.HostType.Outlook) {
-                replyToEmail();
-              }
+        //   Office.onReady((info) => {
+        //     if (info.host === Office.HostType.Outlook) {
+        //         replyToEmail();
+        //       }
     
-        });
+        // });
             }, []);
 
     // Office.context.mailbox.getCallbackTokenAsync({isRest: true}, function(result){
