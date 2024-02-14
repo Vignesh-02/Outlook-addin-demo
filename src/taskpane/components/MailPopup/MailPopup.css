@@ -184,7 +184,7 @@
   }
   .MailPopUp-EmailParent {
     flex: 1 1 0;
-    height: 89px;
+    height: 373px;
     padding-left: 16px;
     padding-right: 16px;
     justify-content: flex-start;
@@ -202,5 +202,11 @@
     line-height: 22px;
     letter-spacing: 0.14px;
     word-wrap: break-word;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    -ms-overflow-style: none;
+    overflow-wrap: break-word;
+    word-break: break-all;
   }
   

@@ -317,7 +317,7 @@
   }
   .Quote-RFQ-Email-Cont {
     align-self: stretch;
-    height: 130px;
+    height: 164px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -334,6 +334,12 @@
     line-height: 14px;
     letter-spacing: 0.1px;
     word-wrap: break-word;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    -ms-overflow-style: none;
+    overflow-wrap: break-word;
+    word-break: break-all;
   }
   
   /* DETAILS TABLE */
