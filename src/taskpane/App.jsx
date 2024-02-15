@@ -57,42 +57,42 @@ const App = (props) => {
 
   // }, []);
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    const mailData =  {
-        sender_email: "vigu1401@outlook.com",
-        subject: "WISE 1.0",
-        email_body:
-          "Ref Material Type Size Length 23-0002-XX Gray PVC 1.25 RD 20 lengths @ 10' long 23-0004-01 Gray PVC 1.125 RD 28 Lengths @ 10' of 20mm*45mm*89cm long Integral Machining & Engineering 12060 31st. Ct. N. St. Petersburg FL 33716 Cell #: 727-643-8945 Thank you, Abby Rodriguez Integral Machining Cell# 727-643-8945",
-        Wisecustomer: "INTR100",
-        Customerofcustomer: "200",
-        AcctId: "GY248",
-      };
+//     const mailData =  {
+//         sender_email: "vigu1401@outlook.com",
+//         subject: "WISE 1.0",
+//         email_body:
+//           "Ref Material Type Size Length 23-0002-XX Gray PVC 1.25 RD 20 lengths @ 10' long 23-0004-01 Gray PVC 1.125 RD 28 Lengths @ 10' of 20mm*45mm*89cm long Integral Machining & Engineering 12060 31st. Ct. N. St. Petersburg FL 33716 Cell #: 727-643-8945 Thank you, Abby Rodriguez Integral Machining Cell# 727-643-8945",
+//         Wisecustomer: "INTR100",
+//         Customerofcustomer: "200",
+//         AcctId: "GY248",
+//       };
 
-    fetch("http://50.19.4.239/ml-backend/classify_email/",{
-    method: 'POST', // Specify the method
-    headers: {
-        // Content-Type header is important for sending JSON data
-        'Content-Type': 'application/json',
-        // If authorization is needed, add the Authorization header
-        // 'Authorization': 'Bearer YOUR_TOKEN_HERE'
-    },
-    body: JSON.stringify(mailData)
-    })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json(); // or .text() if the response is text and not JSON
-    })
-      .then((data) => {
-        console.log(json);
-        setVal(json.name); // Process the success response
-      })
-      .catch((error) => {
-        console.error("There was a problem with your fetch operation:", error);
-      });
-  }, []);
+//     fetch("http://50.19.4.239/ml-backend/classify_email/",{
+//     method: 'POST', // Specify the method
+//     headers: {
+//         // Content-Type header is important for sending JSON data
+//         'Content-Type': 'application/json',
+//         // If authorization is needed, add the Authorization header
+//         // 'Authorization': 'Bearer YOUR_TOKEN_HERE'
+//     },
+//     body: JSON.stringify(mailData)
+//     })
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok");
+//       }
+//       return response.json(); // or .text() if the response is text and not JSON
+//     })
+//       .then((data) => {
+//         console.log(json);
+//         setVal(json.name); // Process the success response
+//       })
+//       .catch((error) => {
+//         console.error("There was a problem with your fetch operation:", error);
+//       });
+//   }, []);
 
   useEffect(() => {
     // Function to fetch email content
@@ -155,12 +155,22 @@ const App = (props) => {
   }, []);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setVal(json.title);
-      });
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => {
+    console.log(json);
+    setVal(json);
+  });
 
     // const replyToEmail = () => {
     //     Office.context.mailbox.item.displayReplyForm({
