@@ -40,31 +40,48 @@
     z-index: 101;
   }
   
-  .tableHeader,
-  .tableHeaderInner {
-    align-self: stretch;
-    background: #f9f9f9;
-    border-radius: 6px 6px 0 0;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    display: inline-flex;
+ 
+
+  .tableHeader{
+    align-self: stretch; background: #F9F9F9; border-top-left-radius: 6px; border-top-right-radius: 6px; border: 1px rgba(58, 53, 65, 0.12) solid; justify-content: flex-start; align-items: flex-start; display: inline-flex
   }
-  
-  .datagridheader,
-  .datagridheaderInner {
-    flex: 1;
-    height: 38px;
-    padding: 10px 11px;
-    display: flex;
-    align-items: center;
+
+.frame24{
+    align-self: stretch; height: 30px; justify-content: center; align-items: center; display: inline-flex
+}
+
+  .frame16{
+    align-self: stretch; height: 172px; border-top-left-radius: 6px; border-top-right-radius: 6px; overflow: hidden; border: 1px rgba(58, 53, 65, 0.12) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex
+    }
+
+  .frame18{
+    width: 289px; padding-left: 15px; padding-right: 15px; padding-top: 14px; padding-bottom: 14px; border-radius: 6px; justify-content: center; align-items: center; display: inline-flex
+    }   
+
+  .frame25{
+    flex: 1 1 0; flex-direction: column; justify-content: center; align-items: center; display: inline-flex
+    }
+
+  .datagridheader{
+    flex: 1 1 0; height: 38px; padding-left: 11px; padding-right: 11px; padding-top: 10px; padding-bottom: 10px; justify-content: flex-start; align-items: center; display: flex
+    }
+
+  .tableHeaderInner{
+    flex: 1 1 0; height: 30px; background: #F9F9F9; border: 1px rgba(58, 53, 65, 0.12) solid; justify-content: center; align-items: center; display: flex
   }
-  
-  .container,
-  .containerInner {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+
+  .datagridheaderInner{
+    flex: 1 1 0; height: 19px; padding-top: 3px; padding-bottom: 3px; padding-left: 6px; padding-right: 2px; justify-content: center; align-items: center; gap: 4px; display: flex
   }
-  
+
+ .container{
+    flex: 1 1 0; height: 13px; justify-content: flex-start; align-items: center; gap: 4px; display: flex
+ } 
+
+.containerInner{
+    justify-content: flex-start; align-items: center; gap: 4px; display: flex
+}
+
   .typography,
   .typographyInner {
     display: inline-flex;
