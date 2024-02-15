@@ -26,6 +26,7 @@ const App = (props) => {
   // testing mirroring
   const [emailAddress, setEmailAddress] = useState("");
   const [userName, setUserName] = useState("");
+  const [accessToken, setAccessToken] = useState("");
   const [replyMail, setReplyEmail] = useState(true);
   const [val, setVal] = useState("");
 
@@ -187,16 +188,19 @@ const App = (props) => {
     // });
   }, []);
 
-  // Office.context.mailbox.getCallbackTokenAsync({isRest: true}, function(result){
-  //     if (result.status === "succeeded") {
-  //       var accessToken = result.value;
+  Office.context.mailbox.getCallbackTokenAsync({isRest: true}, function(result){
+      if (result.status === "succeeded") {
+        var accessToken = result.value;
+        console.log(accessToken);
+        setAccessToken(accessToken);
+        // Use the access token.
+        // getCurrentItem(accessToken);
+      } else {
+        console.error("Error retrieving access Token", result.error);
 
-  //       // Use the access token.
-  //       getCurrentItem(accessToken);
-  //     } else {
-  //       // Handle the error.
-  //     }
-  //   });
+        // Handle the error.
+      }
+    });
 
   useEffect(() => {
     // Office.js ready check
