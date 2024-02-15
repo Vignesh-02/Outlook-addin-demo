@@ -30,8 +30,8 @@
     position: absolute;
     top: 150px;
     left: 15px;
-    width: 289px;
-    height: 209px;
+    width: 300px;
+    height: 250px;
     background-color: white;
     border-radius: 6px;
     display: inline-flex;
@@ -55,11 +55,11 @@
     }
 
   .frame18{
-    width: 289px; padding-left: 15px; padding-right: 15px; padding-top: 14px; padding-bottom: 14px; border-radius: 6px; justify-content: center; align-items: center; display: inline-flex
+    width: 289px; padding-left: 15px; padding-right: 15px; padding-top: 14px; padding-bottom: 14px; border-radius: 6px; justify-content: center; align-items: center; 
     }   
 
   .frame25{
-    flex: 1 1 0; flex-direction: column; justify-content: center; align-items: center; display: inline-flex
+    flex: 1 1 0; flex-direction: column; justify-content: center; align-items: center; 
     }
 
   .datagridheader{

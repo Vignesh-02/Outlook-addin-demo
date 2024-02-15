@@ -36,7 +36,7 @@ const RegeneratePopup = ({ isOpen, close }) => {
               </div>
             </div>
             <div className="xnixLineCross">
-              <img className="vector47" alt="cross" />
+              <img className="vector47" alt="cross" onClick={close} />
             </div>
           </div>
         </div>
