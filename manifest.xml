@@ -11,6 +11,7 @@
 <AppDomains>
 <AppDomain>https://outlook-addin-v9y9.onrender.com</AppDomain>
 <AppDomain>https://jsonplaceholder.typicode.com</AppDomain>
+<AppDomain>http://50.19.4.239/ml-backend</AppDomain>
 </AppDomains>
 <Hosts>
 <Host Name="Mailbox"/>
