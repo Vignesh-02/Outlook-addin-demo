@@ -15,7 +15,7 @@
   .overlay {
     position: absolute;
     width: 325px;
-    height: 580px;
+    height: 400px;
     top: 100px;
     left: 0;
     right: 0;
@@ -70,6 +70,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
   }
   
   .typographyBody1,
@@ -135,4 +136,19 @@
     background: #356f9f;
     color: white;
   }
+
+  .text1{
+    color: #356F9F; font-size: 12px; font-family: Orbitron; font-weight: 600; letter-spacing: 0.96px; word-wrap: break-word
+  }
   
+  .button1{
+    flex: 1 1 0; height: 31px; padding-left: 15px; padding-right: 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 5px; border: 1px #356F9F solid; justify-content: center; align-items: center; gap: 10px; display: flex
+  }
+
+  .text2{
+    color: white; font-size: 12px; font-family: Orbitron; font-weight: 600; text-transform: capitalize; letter-spacing: 0.96px; word-wrap: break-word
+  }
+  
+  .button2{
+    flex: 1 1 0; height: 31px; padding-left: 15px; padding-right: 15px; padding-top: 8px; padding-bottom: 8px; background: #356F9F; border-radius: 5px; justify-content: center; align-items: center; gap: 10px; display: flex
+  }

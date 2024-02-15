@@ -424,7 +424,7 @@ const VentMaterial = ({ isOpen, close }) => {
               onClick={toggleSelected}
             >
               <div className="Stock-Vent-Footer-P">
-                {selected && <CheckIcon />}
+                {<CheckIcon />}
               </div>
             </div>
             <div className="Stock-Vent-Footer-C2">

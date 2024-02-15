@@ -59,8 +59,12 @@ const RegeneratePopup = ({ isOpen, close }) => {
             </div>
           </div>
           <div className="frame17">
-            <div className="button cancel">Cancel</div>
-            <div className="button regenerate">Regenerate</div>
+            <div className="button1">
+            <div className="text1">Cancel</div>
+            </div>
+            <div className="button2">
+            <div className="text2">Regenerate</div>
+            </div>
           </div>
         </div>
       </div>
