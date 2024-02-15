@@ -93,7 +93,8 @@ const MailPopup = ({ isOpen, close, body }) => {
             <div className="MailPopUp-EmailDiv">
               <div className="MailPopUp-EmailSec">
                 <div className="MailPopUp-EmailParent">
-                  <div className="MailPopUp-Email-Text">{body}</div>
+                  <div className="MailPopUp-Email-Text" 
+                    style={{ fontSize: `${fontSize}px` }}> {body} </div>
                 </div>
               </div>
             </div>
