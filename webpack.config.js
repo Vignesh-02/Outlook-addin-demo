@@ -146,6 +146,7 @@ module.exports = async (env, options) => {
         "Access-Control-Allow-Origin": "*",
       },
       server: {
+        // type: "http",
         type: "https",
         options: env.WEBPACK_BUILD || options.https !== undefined ? options.https : await getHttpsOptions(),
       },
