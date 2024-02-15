@@ -138,6 +138,12 @@
     line-height: 20px;
     letter-spacing: 0.1px;
     word-wrap: break-word;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    -ms-overflow-style: none;
+    overflow-wrap: break-word;
+    word-break: break-all;
   }
   
   /* CC */

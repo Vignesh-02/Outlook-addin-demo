@@ -5,10 +5,10 @@ import "./VentMaterial.css";
 
 const VentMaterial = ({ isOpen, close }) => {
   const [selected, setSelected] = useState(true);
-  const [selected1, setSelected1] = useState(false);
-  const [selected2, setSelected2] = useState(false);
-  const [selected3, setSelected3] = useState(false);
-  const [selected4, setSelected4] = useState(false);
+  const [selected1, setSelected1] = useState(true);
+  const [selected2, setSelected2] = useState(true);
+  const [selected3, setSelected3] = useState(true);
+  const [selected4, setSelected4] = useState(true);
 
   const popupRef = useRef(null);
   useEffect(() => {
