@@ -16,7 +16,11 @@ import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
 
-const Delegate = () => {
+const Delegate = ({
+    emailDetails,
+    emailAddress,
+    userName, 
+    val, ...props }) => {
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
   const [isDelegateClicked2, setIsDelegateClicked2] = useState(false);
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
@@ -222,7 +226,7 @@ const Delegate = () => {
             </div>
           </div>
           <div className="A-div">
-            <div className="A">A</div>
+            <div className="A">{A}</div>
           </div>
         </div>
       </div>
