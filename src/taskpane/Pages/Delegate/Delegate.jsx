@@ -16,93 +16,147 @@ import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
 
-const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => {
+const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
   const [isDelegateClicked2, setIsDelegateClicked2] = useState(false);
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
   const [btn, setBtn] = useState(false);
 
-//   const [body, setBody] = useState(null);
-//   const [emailDetails, setEmailDetails] = useState([]);
-//   const [senderName, setSenderName] = useState(null);
-//   const [senderEmail, setSenderEmail] = useState(null);
-//   const [senderCC, setSenderCC] = useState(null);
-//   const [senderDomain, setSenderDomain] = useState(null);
+  //   const [body, setBody] = useState(null);
+  //   const [emailDetails, setEmailDetails] = useState([]);
+  //   const [senderName, setSenderName] = useState(null);
+  //   const [senderEmail, setSenderEmail] = useState(null);
+  //   const [senderCC, setSenderCC] = useState(null);
+  //   const [senderDomain, setSenderDomain] = useState(null);
 
   const [fontSize, setFontSize] = useState(10); // Default font size
 
-//   useEffect(() => {
-//     // Listen for messages from background.js
-//     chrome.runtime.onMessage.addListener((message) => {
-//       if (message.action === "updateEmailDetails" && message.emailDetails) {
-//         // Extract the body from the message and update the state
-//         const updatedBody = message.emailDetails.body;
-//         console.log("Email Details in useEffect: ", message.emailDetails);
-//         console.log("CC", message.emailDetails.Cc);
+  //   useEffect(() => {
+  //     // Listen for messages from background.js
+  //     chrome.runtime.onMessage.addListener((message) => {
+  //       if (message.action === "updateEmailDetails" && message.emailDetails) {
+  //         // Extract the body from the message and update the state
+  //         const updatedBody = message.emailDetails.body;
+  //         console.log("Email Details in useEffect: ", message.emailDetails);
+  //         console.log("CC", message.emailDetails.Cc);
 
-//         //  CC
-//         const ccField = message.emailDetails.Cc;
-//         const ccParts = ccField ? ccField.split("<") : [];
-//         const ccEmail =
-//           ccParts.length > 1 ? ccParts[1].replace(">", "").trim() : null;
-//         setSenderCC(ccEmail);
+  //         //  CC
+  //         const ccField = message.emailDetails.Cc;
+  //         const ccParts = ccField ? ccField.split("<") : [];
+  //         const ccEmail =
+  //           ccParts.length > 1 ? ccParts[1].replace(">", "").trim() : null;
+  //         setSenderCC(ccEmail);
 
-//         // Extract sender details
-//         const senderField = message.emailDetails.sender;
-//         const senderParts = senderField.split("<");
+  //         // Extract sender details
+  //         const senderField = message.emailDetails.sender;
+  //         const senderParts = senderField.split("<");
 
-//         // Extracting the name
-//         let senderName = "";
-//         if (senderParts.length > 1) {
-//           senderName = senderParts[0].trim();
-//         }
+  //         // Extracting the name
+  //         let senderName = "";
+  //         if (senderParts.length > 1) {
+  //           senderName = senderParts[0].trim();
+  //         }
 
-//         // Extracting the email
-//         let senderEmail = "";
-//         if (senderParts.length > 1) {
-//           senderEmail = senderParts[1].replace(">", "").trim();
-//         }
+  //         // Extracting the email
+  //         let senderEmail = "";
+  //         if (senderParts.length > 1) {
+  //           senderEmail = senderParts[1].replace(">", "").trim();
+  //         }
 
-//         console.log("Name:", senderName);
-//         setSenderName(senderName);
-//         console.log("Email:", senderEmail);
-//         setSenderEmail(senderEmail);
+  //         console.log("Name:", senderName);
+  //         setSenderName(senderName);
+  //         console.log("Email:", senderEmail);
+  //         setSenderEmail(senderEmail);
 
-//         // senderEmail contains the email address
-//         const senderEmailDomain = senderEmail.split("@")[1];
-//         console.log("Domain:", senderEmailDomain);
-//         setSenderDomain(senderEmailDomain);
+  //         // senderEmail contains the email address
+  //         const senderEmailDomain = senderEmail.split("@")[1];
+  //         console.log("Domain:", senderEmailDomain);
+  //         setSenderDomain(senderEmailDomain);
 
-//         setEmailDetails(message.emailDetails);
-//         setBody(updatedBody);
-//       }
-//     });
-//   }, []);
+  //         setEmailDetails(message.emailDetails);
+  //         setBody(updatedBody);
+  //       }
+  //     });
+  //   }, []);
 
   useEffect(() => {
-    if (emailDetails.body !== null) {
-      const SendEmailDetails = async () => {
-        try {
-          const res = await axios.post("https://api-dev.wise-sales.com/ml-backend", {
-            'subject': emailDetails.subject,
-            'email_body': emailDetails.body,
-            'sender_email': emailDetails.from,
-            'sender_name': emailDetails.senderName,
-            "Wisecustomer": "intr001",
-            "Customerofcustomer": "20917",
-            "AcctId": "239029"
-          
-        }); 
-        console.log("getEmail API response from backend: ", res.data);
-        
-    }
-        catch (error) {
-          console.error("Error occurred while calling API:", error);
-        }
+    if (delegatebtn1) {
+      //   const SendEmailDetails = async () => {
+      //     try {
+      //       const res = await axios.post("https://api-dev.wise-sales.com/ml-backend", {
+      //         'subject': emailDetails.subject,
+      //         'email_body': emailDetails.body,
+      //         'sender_email': emailDetails.from,
+      //         'sender_name': emailDetails.senderName,
+      //         "Wisecustomer": "intr001",
+      //         "Customerofcustomer": "20917",
+      //         "AcctId": "239029"
+
+      //     });
+      //     console.log("getEmail API response from backend: ", res.data);
+
+      // }
+      //     catch (error) {
+      //       console.error("Error occurred while calling API:", error);
+      //     }
+      //   };
+      //   SendEmailDetails();
+      const jsonObj = {
+        RFQ_status: 1,
+        name: "Abby Rodriguez",
+        email: "operations@integralmachining.com",
+        company: "Integral Machining & Engineering",
+        shipping_address: "12060 31st. Ct. N. St. Petersburg FL 33716",
+        cert_need: false,
+        product_1: {
+          material: "PVC",
+          size: {
+            diameter: "1.25 inch RD",
+            thick: null,
+            length: "10 feet",
+            width: null,
+          },
+          shape: "Rod",
+          specification: "23-0002-XX",
+          manufacturer: null,
+          color: "Gray",
+          quantity: "20 lengths",
+        },
+        product_2: {
+          material: "PVC",
+          size: {
+            diameter: "1.125 inch RD",
+            thick: null,
+            length: "10 feet",
+            width: null,
+          },
+          shape: "Rod",
+          specification: "23-0004-01",
+          manufacturer: null,
+          color: "Gray",
+          quantity: "28 Lengths",
+        },
+        RFQ_ID: "intr0012091723902921",
       };
-      SendEmailDetails();
+      setClassifyEmail(jsonObj);
     }
-  }, [emailDetails.body]);
+  }, [delegatebtn1]);
+
+  console.log("Classify Email: ", classifyEmail);
+  useEffect(() => {
+    if (classifyEmail.shipping_address || classifyEmail.RFQ_ID) {
+      setMaterialDetails({
+        shipping_address: classifyEmail.shipping_address || "N/A",
+        RFQ_ID: classifyEmail.RFQ_ID || "N/A",
+      });
+    }
+  }, [classifyEmail]);
+
+  console.log("Classify Email-SA: ", classifyEmail.shipping_address);
+  console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
+
+  const SA = classifyEmail.shipping_address;
+  const RFQID = classifyEmail.RFQID;
 
 
 
@@ -169,9 +223,8 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
   };
 
   return (
-
     <div className={`QuotePage ${isAnyPopupOpen() ? "backdrop" : ""}`}>
-        {console.log(emailDetails)}
+      {console.log(emailDetails)}
       {/* TOP BAR */}
       <div className="topbar-frame">
         {/* Section -1A */}
@@ -273,9 +326,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                     <div className="Quote-Table-NameValueSec">
                       <div className="Quote-Table-NameValueParent">
                         <div className="Quote-Table-NameValueChild">
-                          <div className="Quote-Table-NameValueText">
-                            {emailDetails.senderName || ""}
-                          </div>
+                          <div className="Quote-Table-NameValueText">{emailDetails.senderName || ""}</div>
                         </div>
                       </div>
                     </div>
@@ -314,6 +365,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
               togglePopupStock={togglePopupStock}
               isPopupOpenManufacturer={isPopupOpenManufacturer}
               togglePopupManufacturer={togglePopupManufacturer}
+              classifyEmail={classifyEmail}
             />
 
             {isDelegate2Clicked && <Decision />}
@@ -348,9 +400,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                   <div className="Quote-Table-NameValueSec">
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
-                        <div className="Quote-Table-NameValueText">
-                          {emailDetails.senderName || ""}
-                        </div>
+                        <div className="Quote-Table-NameValueText">{emailDetails.senderName || ""}</div>
                       </div>
                     </div>
                   </div>
@@ -374,9 +424,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                   <div className="Quote-Table-NameValueSec">
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
-                        <div className="Quote-Table-NameValueText">
-                          {emailDetails.from || ""}
-                        </div>
+                        <div className="Quote-Table-NameValueText">{emailDetails.from || ""}</div>
                       </div>
                     </div>
                   </div>
@@ -399,33 +447,27 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                 <div className="Quote-Table-CC-ValuesDi">
                   <div className="Quote-Table-CC-ValuesSec">
                     <div className="Quote-Table-CC-ValuesParent">
-                    {emailDetails.cc ?  emailDetails.cc.map(item => {
-                        return (
+                      {emailDetails.cc ? (
+                        emailDetails.cc.map((item) => {
+                          return (
                             <div className="Quote-Table-CC-ValuesChild1">
-                        <div className="Quote-Table-CC-ValuesChild1-text">
-                                {item}
-                        </div>
-                      </div>
-                        )
-                    }) : <>
-                            <div className="Quote-Table-CC-ValuesChild1">
-                        <div className="Quote-Table-CC-ValuesChild1-text">
-                            {/* Chris.dong@tecan.com */}
-
-                        </div>
-                      </div>
-                      <div className="Quote-Table-CC-ValuesChild1">
-                        <div className="Quote-Table-CC-ValuesChild1-text">
-                          {/* Chris.dong@tecan.com */}
-                        </div>
-                      </div>
-                      <div className="Quote-Table-CC-ValuesChild1">
-                        <div className="Quote-Table-CC-ValuesChild1-text">
-                          {/* Chris.dong@tecan.com */}
-                        </div>
-                      </div>
-                        </>}
-                      
+                              <div className="Quote-Table-CC-ValuesChild1-text">{item}</div>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <>
+                          <div className="Quote-Table-CC-ValuesChild1">
+                            <div className="Quote-Table-CC-ValuesChild1-text">{/* Chris.dong@tecan.com */}</div>
+                          </div>
+                          <div className="Quote-Table-CC-ValuesChild1">
+                            <div className="Quote-Table-CC-ValuesChild1-text">{/* Chris.dong@tecan.com */}</div>
+                          </div>
+                          <div className="Quote-Table-CC-ValuesChild1">
+                            <div className="Quote-Table-CC-ValuesChild1-text">{/* Chris.dong@tecan.com */}</div>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -449,9 +491,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                   <div className="Quote-Table-NameValueSec">
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
-                        <div className="Quote-Table-NameValueText">
-                          {emailDetails.company || ""}
-                        </div>
+                        <div className="Quote-Table-NameValueText">{emailDetails.company || ""}</div>
                       </div>
                     </div>
                   </div>

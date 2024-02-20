@@ -52,9 +52,8 @@ const Login = () => {
           <div className="LoginCont1-child2">
             <div className="loginText">Login</div>
             <div className="Logintext2">
-              Lorem ipsum dolor sit amet consectetur.
-              <br />
-              Orci in pellentesque.
+            Log in now to unlock the potential for 10x sales growth and transform your sales strategy.
+
             </div>
           </div>
         </div>

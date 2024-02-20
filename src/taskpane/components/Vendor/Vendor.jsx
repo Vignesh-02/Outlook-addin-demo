@@ -1,6 +1,6 @@
 import React from "react";
 import "./Vendor.css";
-import Pen_Image from "../../../../public/pen.png";
+import Pen_Image from "../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
 const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, togglePopup}) => {
   return (
@@ -28,25 +28,13 @@ const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, toggle
             <div className="V2-3">
               <div className="V2-4">
                 <div className="V2-5">
-                  Hi John Deo,
+                  Hi John,
                   <br />
-                  Lorem ipsum dolor sit amet consectetur. Tortor mus rutrum sed
-                  dui malesuada risus tempor. Elit auctor eget libero et lacinia
-                  elit purus elit. Tellus egestas quam massa ac aliquam lorem.{" "}
+                  I hope this email finds you well.  My name is Afshan, and I am reaching out to request a quote for some materials that we need for our upcoming project{" "}
                   <br />
-                  Material Cost: 120 $<br />
-                  Lead time: 2 Days
+                  We are interested in procuring PVC in gray color. The specific dimensions we are looking for are a 1.125 inch RD diameter and a length of 10 feet. We will require 28 lengths of this material.  As we plan our production and budgeting, could you please provide us with the following additional information?  1. Lead time 2. Minimum prepaid freight policy 3. Minimum order quantity (MOQ) 4. Price brackets for the quantity specified  Your prompt response to this request will be highly appreciated as it will help us to move forward with our planning process.
                   <br />
-                  Freight Cost: 100 Total cost: 220$
-                  <br />
-                  <br />
-                  Scelerisque dignissim porta libero eu auctor aliquam donec
-                  duis rhoncus. Nunc duis mattis sed dui rhoncus. Sed interdum
-                  dolor lacus a enim vel interdum odio. Lobortis eu enim viverra
-                  gravida nec in sagittis justo.
-                  <br />
-                  <br />
-                  Thanks & Regards, ABC
+                  Thanks & Regards, Afshan
                 </div>
               </div>
             </div>
