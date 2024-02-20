@@ -226,7 +226,7 @@ const Delegate = ({
             </div>
           </div>
           <div className="A-div">
-            <div className="A">{A}</div>
+            <div className="A">{userName}</div>
           </div>
         </div>
       </div>
