@@ -20,7 +20,7 @@ const Decision = () => {
     },
     {
       product_: 2,
-      material : "Acetal",
+      material : "PVC",
       status: "Partial In Stock",
       material_cost: 80,
       margin: 0.25,
@@ -28,16 +28,16 @@ const Decision = () => {
       lead_time: 7,
       freight_cost: 15,
     },
-    {
-      product_: 3,
-      material : "Nylon",
-      status: "Out of Stock",
-      material_cost: 120,
-      margin: 0.15,
-      price: 140,
-      lead_time: 3,
-      freight_cost: 12,
-    },
+    // {
+    //   product_: 3,
+    //   material : "Nylon",
+    //   status: "Out of Stock",
+    //   material_cost: 120,
+    //   margin: 0.15,
+    //   price: 140,
+    //   lead_time: 3,
+    //   freight_cost: 12,
+    // },
   ];
 
   useEffect(() => {
