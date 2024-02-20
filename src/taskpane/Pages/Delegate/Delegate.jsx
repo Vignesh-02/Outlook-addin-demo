@@ -80,7 +80,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
 //   }, []);
 
   useEffect(() => {
-    if (body !== null) {
+    if (emailDetails.body !== null) {
       const SendEmailDetails = async () => {
         try {
           const res = await axios.post("https://api-dev.wise-sales.com/ml-backend", {
@@ -102,7 +102,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
       };
       SendEmailDetails();
     }
-  }, [body]);
+  }, [emailDetails.body]);
 
 
 
