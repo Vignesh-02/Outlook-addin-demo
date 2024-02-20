@@ -59,7 +59,7 @@ const Delegate = ({
     if (delegatebtn1) {
         const SendEmailDetails = async () => {
           try {
-            const res = await axios.post("https://api-dev.wise-sales.com/ml-backend/classify-email", {
+            const res = await axios.post("https://api-dev.wise-sales.com/ml-backend/classify-email/", {
               'subject': emailDetails.subject,
               'email_body': emailDetails.body,
               'sender_email': emailDetails.from,
@@ -70,7 +70,7 @@ const Delegate = ({
 
           });
           console.log("getEmail API response from backend: ", res.data);
-          setClassifyEmail(jsonObj);
+          setClassifyEmail(res.data);
 
       }
           catch (error) {
