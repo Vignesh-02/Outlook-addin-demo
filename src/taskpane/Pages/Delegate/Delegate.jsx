@@ -57,64 +57,64 @@ const Delegate = ({
 
   useEffect(() => {
     if (delegatebtn1) {
-      //   const SendEmailDetails = async () => {
-      //     try {
-      //       const res = await axios.post("https://api-dev.wise-sales.com/ml-backend", {
-      //         'subject': emailDetails.subject,
-      //         'email_body': emailDetails.body,
-      //         'sender_email': emailDetails.from,
-      //         'sender_name': emailDetails.senderName,
-      //         "Wisecustomer": "intr001",
-      //         "Customerofcustomer": "20917",
-      //         "AcctId": "239029"
+        const SendEmailDetails = async () => {
+          try {
+            const res = await axios.post("https://api-dev.wise-sales.com/ml-backend", {
+              'subject': emailDetails.subject,
+              'email_body': emailDetails.body,
+              'sender_email': emailDetails.from,
+              'sender_name': emailDetails.senderName,
+              "Wisecustomer": "intr001",
+              "Customerofcustomer": "20917",
+              "AcctId": "239029"
 
-      //     });
-      //     console.log("getEmail API response from backend: ", res.data);
+          });
+          console.log("getEmail API response from backend: ", res.data);
+          setClassifyEmail(jsonObj);
 
-      // }
-      //     catch (error) {
-      //       console.error("Error occurred while calling API:", error);
-      //     }
-      //   };
-      //   SendEmailDetails();
-      const jsonObj = {
-        RFQ_status: 1,
-        name: "Abby Rodriguez",
-        email: "operations@integralmachining.com",
-        company: "Integral Machining & Engineering",
-        shipping_address: "12060 31st. Ct. N. St. Petersburg FL 33716",
-        cert_need: false,
-        product_1: {
-          material: "PVC",
-          size: {
-            diameter: "1.25 inch RD",
-            thick: null,
-            length: "10 feet",
-            width: null,
-          },
-          shape: "Rod",
-          specification: "23-0002-XX",
-          manufacturer: null,
-          color: "Gray",
-          quantity: "20 lengths",
-        },
-        product_2: {
-          material: "PVC",
-          size: {
-            diameter: "1.125 inch RD",
-            thick: null,
-            length: "10 feet",
-            width: null,
-          },
-          shape: "Rod",
-          specification: "23-0004-01",
-          manufacturer: null,
-          color: "Gray",
-          quantity: "28 Lengths",
-        },
-        RFQ_ID: "intr0012091723902921",
-      };
-      setClassifyEmail(jsonObj);
+      }
+          catch (error) {
+            console.error("Error occurred while calling API:", error);
+          }
+        };
+        SendEmailDetails();
+    //   const jsonObj = {
+    //     RFQ_status: 1,
+    //     name: "Abby Rodriguez",
+    //     email: "operations@integralmachining.com",
+    //     company: "Integral Machining & Engineering",
+    //     shipping_address: "12060 31st. Ct. N. St. Petersburg FL 33716",
+    //     cert_need: false,
+    //     product_1: {
+    //       material: "PVC",
+    //       size: {
+    //         diameter: "1.25 inch RD",
+    //         thick: null,
+    //         length: "10 feet",
+    //         width: null,
+    //       },
+    //       shape: "Rod",
+    //       specification: "23-0002-XX",
+    //       manufacturer: null,
+    //       color: "Gray",
+    //       quantity: "20 lengths",
+    //     },
+    //     product_2: {
+    //       material: "PVC",
+    //       size: {
+    //         diameter: "1.125 inch RD",
+    //         thick: null,
+    //         length: "10 feet",
+    //         width: null,
+    //       },
+    //       shape: "Rod",
+    //       specification: "23-0004-01",
+    //       manufacturer: null,
+    //       color: "Gray",
+    //       quantity: "28 Lengths",
+    //     },
+    //     RFQ_ID: "intr0012091723902921",
+    //   };
     }
   }, [delegatebtn1]);
 
