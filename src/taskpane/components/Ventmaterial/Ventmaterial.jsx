@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import "./Ventmaterial.css";
 import CheckIcon from "@mui/icons-material/Check";
 import Compress from "../../../../public/Compress-2.png";
-import "./Ventmaterial.css";
 
 const Ventmaterial = ({ isOpen, close }) => {
   const [selected, setSelected] = useState(true);
