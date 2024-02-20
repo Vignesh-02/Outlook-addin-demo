@@ -163,21 +163,21 @@
   }
   .A-div {
     height: 22px;
-    width: 20px;
+    width: 50px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 4px;
     padding-bottom: 4px;
     background: #356f9f;
     border-radius: 3px;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: flex-start;
     gap: 10px;
     display: flex;
   }
   .A {
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     font-family: Orbitron;
     font-weight: 400;
     letter-spacing: 0.14px;
