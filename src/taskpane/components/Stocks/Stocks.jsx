@@ -3,7 +3,8 @@ import "./Stocks.css";
 import "@fontsource/orbitron";
 import "@fontsource/orbitron/400.css";
 import Extend from "../../../../public/extender.png";
-import VentMaterial from "../VentMaterial/VentMaterial";
+import Ventmaterial from "../Ventmaterial/Ventmaterial";
+
 
 const Stocks = ({ isPopupOpenStock, togglePopupStock, classifyEmail }) => {
   // const classifyEmail = {
@@ -121,7 +122,7 @@ const Stocks = ({ isPopupOpenStock, togglePopupStock, classifyEmail }) => {
                 alt="Extend"
                 onClick={togglePopupStock}
               />
-               <VentMaterial
+               <Ventmaterial
                 isOpen={isPopupOpenStock}
                 close={togglePopupStock}
               />

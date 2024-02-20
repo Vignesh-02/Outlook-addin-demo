@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import Compress from "../../../../public/Compress-2.png";
-import "./VentMaterial.css";
+import "./Ventmaterial.css";
 
-const VentMaterial = ({ isOpen, close }) => {
+const Ventmaterial = ({ isOpen, close }) => {
   const [selected, setSelected] = useState(true);
   const [selected1, setSelected1] = useState(true);
   const [selected2, setSelected2] = useState(true);
@@ -439,4 +439,4 @@ const VentMaterial = ({ isOpen, close }) => {
   );
 };
 
-export default VentMaterial;
+export default Ventmaterial;
