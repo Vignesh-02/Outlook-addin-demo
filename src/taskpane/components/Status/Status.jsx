@@ -2,7 +2,7 @@ import React from 'react'
 import "./Status.css";
 const Status = () => {
   return (
-    <div className="Quote-StocksDiv" style={{backgroundColor:"white"}}>
+    <div className="Quote-StocksDiv">
             <div className="Quote-StocksDiv-Child-1">
               <div className="Quote-StocksDiv-Child-1-a"></div>
               <div className="Quote-StocksDiv-Child-1-b">In stock</div>

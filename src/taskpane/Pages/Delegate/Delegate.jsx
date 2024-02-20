@@ -79,23 +79,32 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
 //     });
 //   }, []);
 
-  // getEmail API Endpoint
-//   useEffect(() => {
-//     if (body !== null) {
-//       const SendEmailDetails = async () => {
-//         try {
-//           const res = await axios.post("http://127.0.0.1:8000/api/getEmail/", {
-//             emailbody: body,
-//             emailDetails: emailDetails,
-//           });
-//           console.log("getEmail API response from backend: ", res.data);
-//         } catch (error) {
-//           console.error("Error occurred while calling API:", error);
-//         }
-//       };
-//       SendEmailDetails();
-//     }
-//   }, [body]);
+  useEffect(() => {
+    if (body !== null) {
+      const SendEmailDetails = async () => {
+        try {
+          const res = await axios.post("https://api-dev.wise-sales.com/ml-backend", {
+            'subject': emailDetails.subject,
+            'email_body': emailDetails.body,
+            'sender_email': emailDetails.from,
+            'sender_name': emailDetails.senderName,
+            "Wisecustomer": "intr001",
+            "Customerofcustomer": "20917",
+            "AcctId": "239029"
+          
+        }); 
+        console.log("getEmail API response from backend: ", res.data);
+        
+    }
+        catch (error) {
+          console.error("Error occurred while calling API:", error);
+        }
+      };
+      SendEmailDetails();
+    }
+  }, [body]);
+
+
 
   const DelegateBtn = () => {
     setIsDelegateClicked(true);
@@ -225,6 +234,7 @@ const Delegate = ({  emailDetails, userName, emailAddress, val, ...rest  } ) => 
                     isOpen={isPopupOpenMail}
                     close={togglePopupMail}
                     body={emailDetails.body}
+                    subject={emailDetails.subject}
                   />
                 )}
               </div>

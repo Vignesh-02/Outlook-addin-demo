@@ -16,7 +16,7 @@ const Decision = () => {
       </div>
 
       {/* 1 */}
-      <div className="Decision-VentDiv1">
+      <div className="Decision-VentDiv1-Yellow">
         <div className="Decision-VentSec1">
           <div className="Decision-VentSec1-Txt">
             <div>
@@ -37,7 +37,7 @@ const Decision = () => {
             <div>
               <span className="Decision-VentSec1-Text1">Vent Tape</span>
               {/* 100/20 */}
-              <span className="Decision-VentSec2-Text2"> </span>
+              <span className="Decision-VentSec1-Text2"> </span>
               <span className="Decision-VentSec1-Text3">(100/20)</span>
             </div>
           </div>
@@ -47,7 +47,7 @@ const Decision = () => {
         </div>
       </div>
       {/* 3 */}
-      <div className="Decision-VentDiv3">
+      {/* <div className="Decision-VentDiv3">
         <div className="Decision-VentSec1">
           <div className="Decision-VentSec1-Txt">
             <div className="Decision-VentSec1-Text1">Vent Tape</div>
@@ -57,7 +57,7 @@ const Decision = () => {
         <div className="Decision-VentSec1-side1">
           <div className="Decision-VentSec1-side2"></div>
         </div>
-      </div>
+      </div> */}
       {/* 4 */}
       <div className="Decision-VentDiv4">
         <div className="Decision-VentDiv4-Child">
@@ -65,7 +65,7 @@ const Decision = () => {
             <div className="Decision-VentSec1-Txt">
               <div className="Decision-VentSec1-Text1">Vent Tape</div>
             </div>
-            <div className="Decision-VentSec4-Text2">(0/20)</div>
+            <div className="Decision-VentSec1-Text3">(0/20)</div>
           </div>
         </div>
 

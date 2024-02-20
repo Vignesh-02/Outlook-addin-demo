@@ -12,6 +12,7 @@
 <AppDomain>https://outlook-addin-v9y9.onrender.com</AppDomain>
 <AppDomain>https://jsonplaceholder.typicode.com</AppDomain>
 <AppDomain>http://50.19.4.239/ml-backend</AppDomain>
+<AppDomain>https://api-dev.wise-sales.com/ml-backend</AppDomain>
 </AppDomains>
 <Hosts>
 <Host Name="Mailbox"/>
@@ -115,6 +116,16 @@
 <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>
 </bt:LongStrings>
 </Resources>
+<WebApplicationInfo>
+    <Id>5d46bb7b-5f7f-4e1d-a2f5-9ca0bc7fe7b9</Id>
+    <Resource>api://https://outlook-addin-v9y9.onrender.com/5d46bb7b-5f7f-4e1d-a2f5-9ca0bc7fe7b9</Resource>
+    <Scopes>
+        <Scope>openid</Scope>
+        <Scope>user.read</Scope>
+        <Scope>files.read</Scope>
+        <Scope>profile</Scope>
+    </Scopes>
+</WebApplicationInfo>
 </VersionOverrides>
 </VersionOverrides>
 </OfficeApp>

@@ -8,6 +8,7 @@ const InfoPopup = ({
   senderEmail,
   senderCC,
   senderDomain,
+  
 }) => {
   const popupRef = useRef(null);
 

@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import "./MailPopup.css";
 import Compress from "../../../../public/Compress-2.png";
 
-const MailPopup = ({ isOpen, close, body }) => {
+const MailPopup = ({ isOpen, close, body, subject }) => {
   const popupRef = useRef(null); // Define the ref
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -93,8 +93,16 @@ const MailPopup = ({ isOpen, close, body }) => {
             <div className="MailPopUp-EmailDiv">
               <div className="MailPopUp-EmailSec">
                 <div className="MailPopUp-EmailParent">
-                  <div className="MailPopUp-Email-Text" 
-                    style={{ fontSize: `${fontSize}px` }}> {body} </div>
+                <div
+                    className="MailPopUp-Email-Text"
+                    style={{ fontSize: `${fontSize}px` }}
+                  >
+                    {subject}
+                    <br />
+                    <br />
+                    {body}
+                  </div>
+
                 </div>
               </div>
             </div>
