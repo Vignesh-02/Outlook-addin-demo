@@ -121,7 +121,7 @@ const Stocks = ({ isPopupOpenStock, togglePopupStock, classifyEmail }) => {
                 alt="Extend"
                 onClick={togglePopupStock}
               />
-               <Ventmaterial
+               <VentMaterial
                 isOpen={isPopupOpenStock}
                 close={togglePopupStock}
               />

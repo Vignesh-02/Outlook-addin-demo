@@ -34,7 +34,7 @@ const Delegate = ({
 //   const [senderEmail, setSenderEmail] = useState(null);
 //   const [senderCC, setSenderCC] = useState(null);
 //   const [senderDomain, setSenderDomain] = useState(null);
-  const [classifyEmail, setClassifyEmail] = useState([]);
+  const [classifyEmail, setClassifyEmail] = useState({});
   const [materialDetails, setMaterialDetails] = useState({
     shipping_address: "",
     RFQ_ID: "",
