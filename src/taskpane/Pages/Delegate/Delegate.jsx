@@ -436,21 +436,18 @@ const Delegate = ({
                 <div className="Quote-Table-CC-ValuesDi">
                   <div className="Quote-Table-CC-ValuesSec">
                     <div className="Quote-Table-CC-ValuesParent">
-                      <div className="Quote-Table-CC-ValuesChild1">
+                      
+                          {emailDetails.cc ? emailDetails.cc.map((item) => {
+                            return (
+                                <div className="Quote-Table-CC-ValuesChild1">
                         <div className="Quote-Table-CC-ValuesChild1-text">
-                          {emailDetails.cc ? emailDetails.cc : ""}
+                                {item}
                         </div>
                       </div>
-                      <div className="Quote-Table-CC-ValuesChild1">
-                        <div className="Quote-Table-CC-ValuesChild1-text">
-                          {/* Chris.dong@tecan.com */}
-                        </div>
-                      </div>
-                      <div className="Quote-Table-CC-ValuesChild1">
-                        <div className="Quote-Table-CC-ValuesChild1-text">
-                          {/* Chris.dong@tecan.com */}
-                        </div>
-                      </div>
+                            )
+                          }) : ""}
+                        
+                      
                     </div>
                   </div>
                 </div>

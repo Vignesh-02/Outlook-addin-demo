@@ -162,8 +162,8 @@
     word-wrap: break-word;
   }
   .A-div {
-    height: 18px;
-    width: 12px;
+    height: 22px;
+    width: 20px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 4px;
@@ -177,7 +177,7 @@
   }
   .A {
     color: white;
-    font-size: 14px;
+    font-size: 10px;
     font-family: Orbitron;
     font-weight: 400;
     letter-spacing: 0.14px;
@@ -255,7 +255,8 @@
     display: inline-flex;
   }
   .Quote-RFQ-Text {
-    color: rgba(58, 53, 65, 0.87);
+    color: #080808;
+    /* color: rgba(58, 53, 65, 0.87); */
     font-size: 10px;
     font-family: Orbitron;
     font-weight: 400;
@@ -478,7 +479,7 @@
   }
   .Quote-Table-NameValueText {
     color: #080808;
-    font-size: 10px;
+    font-size: 9px;
     font-family: Helvetica Neue;
     font-weight: 400;
     line-height: 20px;
@@ -585,7 +586,7 @@
   }
   .Quote-Table-CC-ValuesChild1-text {
     color: #080808;
-    font-size: 10px;
+    font-size: 9px;
     font-family: Helvetica Neue;
     font-weight: 400;
     line-height: 20px;
