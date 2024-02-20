@@ -16,68 +16,40 @@ import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
 
-const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
+const Delegate = () => {
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
   const [isDelegateClicked2, setIsDelegateClicked2] = useState(false);
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
+  const [delegatebtn1, setDelegatebtn1] = useState(false);
   const [btn, setBtn] = useState(false);
 
-  //   const [body, setBody] = useState(null);
-  //   const [emailDetails, setEmailDetails] = useState([]);
-  //   const [senderName, setSenderName] = useState(null);
-  //   const [senderEmail, setSenderEmail] = useState(null);
-  //   const [senderCC, setSenderCC] = useState(null);
-  //   const [senderDomain, setSenderDomain] = useState(null);
+  const [body, setBody] = useState(null);
+//   const [emailSubject, setEmailSubject] = useState(null);
+//   const [emailDetails, setEmailDetails] = useState([]);
+//   const [senderName, setSenderName] = useState(null);
+//   const [senderEmail, setSenderEmail] = useState(null);
+//   const [senderCC, setSenderCC] = useState(null);
+//   const [senderDomain, setSenderDomain] = useState(null);
+  const [classifyEmail, setClassifyEmail] = useState([]);
+  const [materialDetails, setMaterialDetails] = useState({
+    shipping_address: "",
+    RFQ_ID: "",
+  });
 
-  const [fontSize, setFontSize] = useState(10); // Default font size
 
-  //   useEffect(() => {
-  //     // Listen for messages from background.js
-  //     chrome.runtime.onMessage.addListener((message) => {
-  //       if (message.action === "updateEmailDetails" && message.emailDetails) {
-  //         // Extract the body from the message and update the state
-  //         const updatedBody = message.emailDetails.body;
-  //         console.log("Email Details in useEffect: ", message.emailDetails);
-  //         console.log("CC", message.emailDetails.Cc);
 
-  //         //  CC
-  //         const ccField = message.emailDetails.Cc;
-  //         const ccParts = ccField ? ccField.split("<") : [];
-  //         const ccEmail =
-  //           ccParts.length > 1 ? ccParts[1].replace(">", "").trim() : null;
-  //         setSenderCC(ccEmail);
+  // function to click Delegate Button on screen 1
+  const DelegateBtn = () => {
+    setDelegatebtn1(true); // set to true when  Delegate Button on screen 1 is clicked
 
-  //         // Extract sender details
-  //         const senderField = message.emailDetails.sender;
-  //         const senderParts = senderField.split("<");
+    setIsDelegateClicked(true);
+    setIsDelegateClicked2(true);
+    var quoteRfqSection = document.querySelector(".Quote-RFQ-Section");
+    var quoteRfqEmailParent = document.querySelector(".Quote-RFQ-EmailParent");
 
-  //         // Extracting the name
-  //         let senderName = "";
-  //         if (senderParts.length > 1) {
-  //           senderName = senderParts[0].trim();
-  //         }
-
-  //         // Extracting the email
-  //         let senderEmail = "";
-  //         if (senderParts.length > 1) {
-  //           senderEmail = senderParts[1].replace(">", "").trim();
-  //         }
-
-  //         console.log("Name:", senderName);
-  //         setSenderName(senderName);
-  //         console.log("Email:", senderEmail);
-  //         setSenderEmail(senderEmail);
-
-  //         // senderEmail contains the email address
-  //         const senderEmailDomain = senderEmail.split("@")[1];
-  //         console.log("Domain:", senderEmailDomain);
-  //         setSenderDomain(senderEmailDomain);
-
-  //         setEmailDetails(message.emailDetails);
-  //         setBody(updatedBody);
-  //       }
-  //     });
-  //   }, []);
+    quoteRfqSection.style.height = "54px";
+    quoteRfqEmailParent.style.height = "27px";
+  };
 
   useEffect(() => {
     if (delegatebtn1) {
@@ -142,6 +114,8 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
     }
   }, [delegatebtn1]);
 
+
+  // Log the state outside of the useEffect to see the updated value
   console.log("Classify Email: ", classifyEmail);
   useEffect(() => {
     if (classifyEmail.shipping_address || classifyEmail.RFQ_ID) {
@@ -157,18 +131,6 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
 
   const SA = classifyEmail.shipping_address;
   const RFQID = classifyEmail.RFQID;
-
-
-
-  const DelegateBtn = () => {
-    setIsDelegateClicked(true);
-    setIsDelegateClicked2(true);
-    var quoteRfqSection = document.querySelector(".Quote-RFQ-Section");
-    var quoteRfqEmailParent = document.querySelector(".Quote-RFQ-EmailParent");
-
-    quoteRfqSection.style.height = "54px";
-    quoteRfqEmailParent.style.height = "27px";
-  };
 
   const DelegeBtn2 = () => {
     setBtn(true);
@@ -222,9 +184,13 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
     );
   };
 
+  const handleCrossClick = () => {
+    // Close the extension when the cross is clicked
+    window.close();
+  };
+
   return (
     <div className={`QuotePage ${isAnyPopupOpen() ? "backdrop" : ""}`}>
-      {console.log(emailDetails)}
       {/* TOP BAR */}
       <div className="topbar-frame">
         {/* Section -1A */}
@@ -237,7 +203,7 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
             </div>
           </div>
           <div className="topframe-c">
-            <img src={cross} alt="Logo" />
+            <img onClick={handleCrossClick} src={cross} alt="Logo" />
           </div>
         </div>
 
@@ -269,7 +235,14 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
             <div className="Quote-RFQ-Parent">
               <div className="Quote-RFQ-Child">
                 <div className="Quote-RFQ-TextParent">
-                  <div className="Quote-RFQ-Text">RFQ (ABC30OFF)</div>
+                  {/* <div className="Quote-RFQ-Text"> RFQ {materialDetails.RFQ_ID || "RFQ"}</div> */}
+                  <div className="Quote-RFQ-Text">
+                    {" "}
+                    RFQ{" "}
+                    {materialDetails.RFQ_ID
+                      ? `{${materialDetails.RFQ_ID}}`
+                      : ""}
+                  </div>
                 </div>
               </div>
               <div className="Quote-RFQ-Image">
@@ -286,8 +259,8 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
                   <MailPopup
                     isOpen={isPopupOpenMail}
                     close={togglePopupMail}
-                    body={emailDetails.body}
                     subject={emailDetails.subject}
+                    body={emailDetails.body}
                   />
                 )}
               </div>
@@ -298,7 +271,12 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
               <div className="Quote-RFQ-EmailDiv">
                 <div className="Quote-RFQ-EmailSec">
                   <div className="Quote-RFQ-Email-Cont">
-                    <div className="Quote-RFQ-Email-Content">{emailDetails.body || ""}</div>
+                    <div className="Quote-RFQ-Email-Content">
+                      {emailDetails.subject || ""}
+                      <br />
+                      <br />
+                      {emailDetails.body || ""}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -326,7 +304,9 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
                     <div className="Quote-Table-NameValueSec">
                       <div className="Quote-Table-NameValueParent">
                         <div className="Quote-Table-NameValueChild">
-                          <div className="Quote-Table-NameValueText">{emailDetails.senderName || ""}</div>
+                          <div className="Quote-Table-NameValueText">
+                            {emailDetails.senderName || ""}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -352,6 +332,8 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
                         senderEmail={emailDetails.from}
                         senderCC={emailDetails.cc}
                         senderDomain={emailDetails.company}
+                        shipping_address={materialDetails.shipping_address}
+                        // shipping_address={SA}
                       />
                     )}
                   </div>
@@ -359,16 +341,15 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
               </div>
             </div>
 
-            <Status />
             <Stocks
               isPopupOpenStock={isPopupOpenStock}
               togglePopupStock={togglePopupStock}
-              isPopupOpenManufacturer={isPopupOpenManufacturer}
-              togglePopupManufacturer={togglePopupManufacturer}
               classifyEmail={classifyEmail}
             />
+            {isDelegate2Clicked && <Status />}
 
             {isDelegate2Clicked && <Decision />}
+
             {isDelegate2Clicked && (
               <Buttoncv
                 isPopupOpen1={isPopupOpen1}
@@ -400,7 +381,9 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
                   <div className="Quote-Table-NameValueSec">
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
-                        <div className="Quote-Table-NameValueText">{emailDetails.senderName || ""}</div>
+                        <div className="Quote-Table-NameValueText">
+                          {emailDetails.senderName || ""}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -424,7 +407,9 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
                   <div className="Quote-Table-NameValueSec">
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
-                        <div className="Quote-Table-NameValueText">{emailDetails.from || ""}</div>
+                        <div className="Quote-Table-NameValueText">
+                          {emailDetails.from || ""}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -447,27 +432,21 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
                 <div className="Quote-Table-CC-ValuesDi">
                   <div className="Quote-Table-CC-ValuesSec">
                     <div className="Quote-Table-CC-ValuesParent">
-                      {emailDetails.cc ? (
-                        emailDetails.cc.map((item) => {
-                          return (
-                            <div className="Quote-Table-CC-ValuesChild1">
-                              <div className="Quote-Table-CC-ValuesChild1-text">{item}</div>
-                            </div>
-                          );
-                        })
-                      ) : (
-                        <>
-                          <div className="Quote-Table-CC-ValuesChild1">
-                            <div className="Quote-Table-CC-ValuesChild1-text">{/* Chris.dong@tecan.com */}</div>
-                          </div>
-                          <div className="Quote-Table-CC-ValuesChild1">
-                            <div className="Quote-Table-CC-ValuesChild1-text">{/* Chris.dong@tecan.com */}</div>
-                          </div>
-                          <div className="Quote-Table-CC-ValuesChild1">
-                            <div className="Quote-Table-CC-ValuesChild1-text">{/* Chris.dong@tecan.com */}</div>
-                          </div>
-                        </>
-                      )}
+                      <div className="Quote-Table-CC-ValuesChild1">
+                        <div className="Quote-Table-CC-ValuesChild1-text">
+                          {emailDetails.cc ? emailDetails.cc : ""}
+                        </div>
+                      </div>
+                      <div className="Quote-Table-CC-ValuesChild1">
+                        <div className="Quote-Table-CC-ValuesChild1-text">
+                          {/* Chris.dong@tecan.com */}
+                        </div>
+                      </div>
+                      <div className="Quote-Table-CC-ValuesChild1">
+                        <div className="Quote-Table-CC-ValuesChild1-text">
+                          {/* Chris.dong@tecan.com */}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -491,7 +470,9 @@ const Delegate = ({ emailDetails, userName, emailAddress, val, ...rest }) => {
                   <div className="Quote-Table-NameValueSec">
                     <div className="Quote-Table-NameValueParent">
                       <div className="Quote-Table-NameValueChild">
-                        <div className="Quote-Table-NameValueText">{emailDetails.company || ""}</div>
+                        <div className="Quote-Table-NameValueText">
+                          {emailDetails.company || ""}
+                        </div>
                       </div>
                     </div>
                   </div>
