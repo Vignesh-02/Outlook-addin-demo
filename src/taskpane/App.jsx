@@ -202,9 +202,8 @@ const App = (props) => {
 
         Office.auth.getAccessToken({
             allowSignInPrompt: true,
-            allowConsentPrompt: true,
-            forMSGraphAccess: true,
-        }).then(result => {
+            allowConsentPrompt: true
+            }).then(result => {
             const accesstoken = result.value;
             setAccessToken(accesstoken);
             sendMail(accesstoken);
