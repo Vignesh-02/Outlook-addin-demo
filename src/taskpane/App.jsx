@@ -191,28 +191,26 @@ const App = (props) => {
   useEffect( () => {
 
     const fetchToken = async() => {
-        let middletierToken = await Office.auth.getAccessToken({
-            allowSignInPrompt: true,
-            allowConsentPrompt: true,
-            forMSGraphAccess: true,
-          }, function(result){
-            if (result.status === "succeeded") {
-              var accessToken = result.value;
-              console.log(accessToken);
-              setAccessToken(accessToken);
-              // Use the access token.
-              // getCurrentItem(accessToken);
-            } else {
+        try{
+            let middletierToken = await Office.auth.getAccessToken({
+                allowSignInPrompt: true,
+                allowConsentPrompt: true,
+                forMSGraphAccess: true,
+              });
+              console.log('Access Token', middletierToken )
+                  setAccessToken(middletierToken);
+        }
+        catch(error){
+
               console.error("Error retrieving access Token", result.error);
-      
-              // Handle the error.
-            }});
-    }
+        }
+        
+    };
 
     fetchToken();
 
     
-  })
+  }, [])
   
 
   useEffect(() => {
