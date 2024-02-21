@@ -155,65 +155,92 @@ const App = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-  method: 'POST',
-  body: JSON.stringify({
-    title: 'foo',
-    body: 'bar',
-    userId: 1,
-  }),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-})
-  .then((response) => response.json())
-  .then((json) => {
-    console.log(json);
-    setVal(json);
-  });
 
-    // const replyToEmail = () => {
-    //     Office.context.mailbox.item.displayReplyForm({
-    //       'htmlBody': 'Thanks for your email!<br><br>', // Prepend your reply message with original email body below
-    //       // Optionally, you can add other fields like cc, attachments, etc.
-    //     });
-    //   }
-
-    //   Office.onReady((info) => {
-    //     if (info.host === Office.HostType.Outlook) {
-    //         replyToEmail();
-    //       }
-
-    // });
-  }, []);
 
   
 
-  useEffect( () => {
-    
-    const fetchToken = async() => {
-        try{
-            let middletierToken = await Office.auth.getAccessToken({
-                allowSignInPrompt: true,
-                allowConsentPrompt: true,
-                forMSGraphAccess: true,
-              });
-              console.log('Access Token', middletierToken )
-                  setAccessToken(middletierToken);
-        }
-        catch(error){
+  useEffect(() => {
 
-              console.error("Error retrieving access Token", result.error);
-        }
-        
-    };
+    function sendMail(accessToken) {
+        // Example function to send an email using Microsoft Graph and the access token
+        const sendMailUrl = 'https://graph.microsoft.com/v1.0/me/sendMail';
+        const emailData = {
+          message: {
+            subject: "Hello from Office Add-in",
+            body: {
+              contentType: "Text",
+              content: "This is a test email sent from an Office Add-in!"
+            },
+            toRecipients: [{
+              emailAddress: {
+                address: "example@example.com" // Specify the recipient's email address
+              }
+            }]
+          }
+        };
+      
+        fetch(sendMailUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(emailData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log("Mail sent successfully", data);
+        })
+        .catch(error => {
+          console.error("Error sending mail", error);
+        });
+      }
 
-    Office.onReady(() => {
-        fetchToken();    
-    });
-
+      
+    Office.onReady().then(function() {
+        // Ensure Office is ready
+        Office.context.auth.getAccessTokenAsync({forceConsent: false}, function(result) {
+          if (result.status === "succeeded") {
+            // Use this token to call Microsoft Graph
+            const accesstoken = result.value;
+            setAccessToken(accesstoken);
+            sendMail(accesstoken);
+          } else {
+            // Handle error cases
+            console.error("Error obtaining access token", result.error);
+          }
+        });
+      });
   }, [])
+  
+  
+  
+
+
+//   useEffect( () => {
+    
+//     const fetchToken = async () => {
+//         try{
+//             let middletierToken = await Office.auth.getAccessToken({
+//                 allowSignInPrompt: true,
+//                 allowConsentPrompt: true,
+//                 forMSGraphAccess: true,
+//               });
+//               console.log('Access Token', middletierToken )
+//                   setAccessToken(middletierToken);
+//         }
+//         catch(error){
+
+//               console.error("Error retrieving access Token", result.error);
+//         }
+        
+//     };
+
+//     Office.onReady(() => {
+//         fetchToken();    
+//     });
+
+//   }, [])
   
 
   useEffect(() => {
