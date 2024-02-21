@@ -196,20 +196,23 @@ const App = (props) => {
         });
       }
 
-      
+
     Office.onReady().then(function() {
         // Ensure Office is ready
-        Office.context.auth.getAccessTokenAsync({forceConsent: false}, function(result) {
-          if (result.status === "succeeded") {
-            // Use this token to call Microsoft Graph
+
+        Office.auth.getAccessToken({
+            allowSignInPrompt: true,
+            allowConsentPrompt: true,
+            forMSGraphAccess: true,
+        }).then(result => {
             const accesstoken = result.value;
             setAccessToken(accesstoken);
             sendMail(accesstoken);
-          } else {
-            // Handle error cases
-            console.error("Error obtaining access token", result.error);
-          }
+            console.log(result);
+        }).catch(err => {
+            console.log("Error obtaining token", err);
         });
+
       });
   }, [])
   
