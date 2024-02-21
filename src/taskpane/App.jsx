@@ -201,8 +201,7 @@ const App = (props) => {
         // Ensure Office is ready
 
         Office.auth.getAccessToken({
-            allowSignInPrompt: true,
-            allowConsentPrompt: true
+            allowSignInPrompt: true
             }).then(result => {
             const accesstoken = result.value;
             setAccessToken(accesstoken);
