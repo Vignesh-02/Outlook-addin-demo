@@ -188,8 +188,10 @@ const App = (props) => {
     // });
   }, []);
 
-  useEffect( () => {
+  
 
+  useEffect( () => {
+    
     const fetchToken = async() => {
         try{
             let middletierToken = await Office.auth.getAccessToken({
@@ -207,9 +209,10 @@ const App = (props) => {
         
     };
 
-    fetchToken();
+    Office.onReady(() => {
+        fetchToken();    
+    });
 
-    
   }, [])
   
 
