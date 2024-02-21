@@ -1,5 +1,5 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
-<Id>86c64e2e-8665-4684-9d25-98c9287abcde</Id>
+<Id>1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Id>
 <Version>1.2</Version>
 <ProviderName>Contoso</ProviderName>
 <DefaultLocale>en-US</DefaultLocale>
@@ -117,13 +117,14 @@
 </bt:LongStrings>
 </Resources>
 <WebApplicationInfo>
-    <Id>5d46bb7b-5f7f-4e1d-a2f5-9ca0bc7fe7b9</Id>
-    <Resource>api://https://outlook-addin-v9y9.onrender.com/5d46bb7b-5f7f-4e1d-a2f5-9ca0bc7fe7b9</Resource>
+    <Id>1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Id>
+    <Resource>api://outlook-addin-v9y9.onrender.com/1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Resource>
     <Scopes>
         <Scope>openid</Scope>
         <Scope>user.read</Scope>
         <Scope>files.read</Scope>
         <Scope>profile</Scope>
+	    <Scope>Mail.Send</Scope>
     </Scopes>
 </WebApplicationInfo>
 </VersionOverrides>
