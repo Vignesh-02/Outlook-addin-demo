@@ -69,7 +69,7 @@ const Delegate = ({
               "AcctId": "239029"
 
           });
-          console.log("getEmail API response from backend: ", res.data);
+          console.log("classify API response from backend: ", res.data);
           setClassifyEmail(res.data);
 
       }
