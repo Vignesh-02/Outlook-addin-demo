@@ -3,7 +3,7 @@ import './styles/VendorResponsePopup.css'; // Import the CSS file for styles
 import cross from "../../../public/Cross.png";
 import RegenerateResponsePopup from './RegenerateResponsePopup';
 
-const VendorResponsePopup = () => {
+const VendorResponsePopup = ({ close, vendorBody }) => {
 
     const popupRef = useRef(null); // Define the ref
 

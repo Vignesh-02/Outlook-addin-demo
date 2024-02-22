@@ -1,4 +1,26 @@
-.Decision-VentDiv {
+@keyframes fadeInScaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .Modal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 289px;
+    height: 377px;
+    top: 10%;
+    left: 5%;
+    animation: fadeInScaleUp 0.3s ease-out forwards;
+  }
+  
+  .Decision-VentDiv {
     width: 288px;
     height: 323px;
     background: #f9f9f9;
@@ -192,7 +214,7 @@
   /* 4 */
   .Decision-VentDiv4 {
     align-self: stretch;
-    height: 219px;
+    height: 244px;
     padding-top: 3px;
     padding-bottom: 9px;
     padding-left: 11px;
@@ -338,7 +360,7 @@
     color: #080808;
     font-size: 10px;
     font-family: Helvetica Neue;
-    font-weight: 400;
+    font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.1px;
     word-wrap: break-word;
@@ -375,5 +397,60 @@
     left: 0px;
     top: 0px;
     position: absolute;
+  }
+  
+  /* Footer */
+  .Stock-Vent-FooterDiv {
+    height: 22px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 0px 0px;
+    display: inline-flex;
+    position: relative;
+  }
+  .Stock-Vent-FooterSec {
+    background: #356f9f;
+    /* background: ${selectedRFQ ? "#356f9f" : "white"}; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 3px;
+    position: relative;
+    flex: 0 0 auto;
+    /* background-color: var(--primary); */
+    border-radius: 3px;
+  }
+  .Stock-Vent-FooterSec:active {
+    background-color: gainsboro;
+  }
+  .Stock-Vent-Footer-P {
+    position: relative;
+    width: 12px;
+    height: 12px;
+  }
+  .Stock-Vent-Footer-C {
+    width: 7px;
+    height: 4.5px;
+    border: 1px white solid;
+  }
+  .Stock-Vent-Footer-C2 {
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 0 0 auto;
+    display: inline-flex;
+    position: relative;
+  }
+  .Stock-Vent-Footer-C3 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Orbitron-Regular", Helvetica;
+    font-weight: 400;
+    color: #3a3541de;
+    font-size: 10px;
+    letter-spacing: 0.1px;
+    line-height: normal;
   }
   

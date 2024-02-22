@@ -116,7 +116,22 @@
     line-height: 14px;
     letter-spacing: 0.1px;
     word-wrap: break-word;
+    overflow-y: auto;
   }
+
+  .V2-5::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  .V2-5::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  
+  .V2-5::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  
   #PenCV {
     width: 18px;
     height: 18px;

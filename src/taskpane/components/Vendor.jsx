@@ -2,7 +2,7 @@ import React from "react";
 import "./Vendor.css";
 import Pen_Image from "../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
-const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, togglePopup}) => {
+const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, togglePopup, vendorBody}) => {
   return (
     <div>
       <div className="VendorSec2">
@@ -16,7 +16,7 @@ const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, toggle
             <div className="Vendor-Img">
               <img id="PenCV" alt="Logo" src={Pen_Image} onClick={togglePopup}/>
               {
-                      isOpen && <VendorResponsePopup isOpen={isOpen} close={togglePopup}/>
+                      isOpen && <VendorResponsePopup isOpen={isOpen} close={togglePopup} vendorBody={vendorBody} />
                 }
           {console.log("Ispopcutomer: ", isOpen)};
             </div>

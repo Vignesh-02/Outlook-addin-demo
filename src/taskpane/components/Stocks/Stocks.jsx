@@ -3,10 +3,8 @@ import "./Stocks.css";
 import "@fontsource/orbitron";
 import "@fontsource/orbitron/400.css";
 import Extend from "../../../../public/extender.png";
-import Ventmaterial from "../Ventmaterial/Ventmaterial";
 
-
-const Stocks = ({ isPopupOpenStock, togglePopupStock, classifyEmail }) => {
+const Stocks = ({classifyEmail }) => {
   // const classifyEmail = {
   //   "RFQ_status": 1,
   //   "name": "Abby Rodriguez",
@@ -116,17 +114,6 @@ const Stocks = ({ isPopupOpenStock, togglePopupStock, classifyEmail }) => {
               </div>
             </div>
             <div className="Stock-VentSec4-side1">
-              <img
-                style={{ width: "10.50px", height: "10.50px" }}
-                src={Extend}
-                alt="Extend"
-                onClick={togglePopupStock}
-              />
-               <Ventmaterial
-                isOpen={isPopupOpenStock}
-                close={togglePopupStock}
-              />
-              {console.log("IspopStock: ", isPopupOpenStock)}
             </div>
           </div>
 
@@ -179,7 +166,7 @@ const Stocks = ({ isPopupOpenStock, togglePopupStock, classifyEmail }) => {
                                 color: "#080808",
                                 fontSize: "10px",
                                 fontFamily: "Helvetica Neue",
-                                fontWeight: 400,
+                                fontWeight: 100,
                                 lineHeight: "20px",
                                 letterSpacing: "0.50px",
                                 wordWrap: "break-word",
@@ -234,7 +221,10 @@ const Stocks = ({ isPopupOpenStock, togglePopupStock, classifyEmail }) => {
                     <div className="Stock-Vent-Value1Sec-Shape-Val-P">
                       <div className="Stock-Vent-Value1Sec-Shape-Val-C">
                         <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
-                          <span className="Stock-Vent-Value1Sec-Shape-Value">Unit</span>
+                          <span className="Stock-Vent-Value1Sec-Shape-Value">
+                          {/* Unit */}
+                          {products[selectedProduct - 1]?.unit || ""}
+                          </span>
                         </div>
                       </div>
                     </div>

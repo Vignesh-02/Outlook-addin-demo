@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import BulbImage from "../../../../public/bulb.png";
+import CheckIcon from "@mui/icons-material/Check";
 import "./Decision.css";
+import Extend from "../../../../public/extender.png";
+import Ventmaterial from "../Ventmaterial/Ventmaterial";
+import Modal from "react-modal";
 
-const Decision = () => {
+const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
   const [selectedProduct, setSelectedProduct] = useState(1); // Default to product 1
   const [selectedProductStatus, setSelectedProductStatus] = useState(null); // Default to no selected product status
+  const [selectedRFQ, setSelectedRFQ] = useState(true);
+  const toggleSelectedRFQ = () => {
+    setSelectedRFQ(!selectedRFQ);
+  };
 
   // Dummy Data
   const materials = [
@@ -40,6 +48,7 @@ const Decision = () => {
     // },
   ];
 
+
   useEffect(() => {
     // Set the status of the default selected product
     const defaultProduct = materials.find(
@@ -52,9 +61,6 @@ const Decision = () => {
     setSelectedProduct(productId);
     setSelectedProductStatus(status);
   };
-
-
-  
 
   return (
     <div className="Decision-VentDiv">
@@ -139,13 +145,42 @@ const Decision = () => {
               <div className="Decision-VentSec1-Txt">
                 <div className="Decision-VentSec1-Text1">
                   {/* {`Product- ${selectedProduct}`} */}
-                  {materials.find(product => product.product_ === selectedProduct)?.material || ""}
-                  </div>
+                  {materials.find(
+                    (product) => product.product_ === selectedProduct
+                  )?.material || ""}
+                </div>
               </div>
+
               {materials[selectedProduct - 1]?.status === "In Stock" && (
                 <div className="Decision-VentSec1-Text3">(100/20)</div>
               )}
             </div>
+            <img
+              style={{ width: "15px", height: "15px" }}
+              src={Extend}
+              alt="Extend"
+              onClick={togglePopupStock}
+            />
+            <Modal
+              isOpen={isPopupOpenStock}
+              onRequestClose={togglePopupStock}
+              className="Modal"
+              // overlayClassName="Overlay"
+              style={{
+                overlay: {
+                  position: "fixed",
+                  top: "38px",
+                  width: "325px",
+                  height: "586px",
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                },
+              }}
+            >
+              <Ventmaterial
+                // isOpen={isPopupOpenStock}
+                close={togglePopupStock}
+              />
+            </Modal>
           </div>
           {/* Decision Section */}
           <div className="Decision-ShapeDiv">
@@ -320,6 +355,28 @@ const Decision = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="Stock-Vent-FooterDiv">
+            <div
+              className={`Stock-Vent-FooterSec ${
+                selectedRFQ ? "selected" : ""
+              }`}
+              onClick={toggleSelectedRFQ}
+              style={{ background: selectedRFQ ? "#356f9f" : "white" }}
+            >
+              <div className="Stock-Vent-Footer-P">
+                {selectedRFQ && (
+                  <CheckIcon style={{ width: "20px", color: "white" }} />
+                )}
+              </div>
+            </div>
+            <div className="Stock-Vent-Footer-C2">
+              <div className="Stock-Vent-Footer-C3">
+                Request manufacturer RFQ
               </div>
             </div>
           </div>

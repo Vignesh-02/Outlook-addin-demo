@@ -4,28 +4,7 @@ import cross from "../../../public/Cross.png"
 
 
 const CustomerResponsePopup = ({ isOpen, close }) => {
-    const popupRef = useRef(null); // Define the ref
-
-
-    useEffect(() => {
-        const handleOutsideClick = (event) => {
-            if (popupRef.current && !popupRef.current.contains(event.target)) {
-                close();
-            }
-        };
-
-        // Attach event listener if the popup is open
-        if (isOpen) {
-            document.addEventListener('mousedown', handleOutsideClick);
-        }
-
-        // Cleanup the event listener when the component unmounts or the popup closes
-        return () => {
-            document.removeEventListener('mousedown', handleOutsideClick);
-        };
-    }, [isOpen, close]); // Dependencies array ensures effect runs only if isOpen or close changes
-
-
+    
     if (!isOpen) 
         return null;
 

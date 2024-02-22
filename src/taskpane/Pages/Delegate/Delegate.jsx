@@ -21,13 +21,16 @@ const Delegate = ({
     emailAddress,
     userName, 
     val, ...props }) => {
+
+  const [customerBody, setCustomerBody] = useState(null);
+  const [vendorBody, setVendorBody] = useState(null);      
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
   const [isDelegateClicked2, setIsDelegateClicked2] = useState(false);
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
   const [delegatebtn1, setDelegatebtn1] = useState(false);
   const [btn, setBtn] = useState(false);
 
-  const [body, setBody] = useState(null);
+//   const [body, setBody] = useState(null);
 //   const [emailSubject, setEmailSubject] = useState(null);
 //   const [emailDetails, setEmailDetails] = useState([]);
 //   const [senderName, setSenderName] = useState(null);
@@ -178,6 +181,38 @@ const Delegate = ({
     setBtn(true);
     setIsDelegate2Clicked(true);
   };
+
+  useEffect(() => {
+    if (isDelegate2Clicked) {
+      const generateEmail = async () => {
+        try {
+          const res = await axios.post(
+            "https://api-dev.wise-sales.com/ml-backend/generate_email/",
+            {
+              classifyEmail: classifyEmail,
+            }
+          );
+
+         const customerResponse = res.data.Customer_quote.Body;
+         const VendorResponse = res.data.vendor_1.Body
+          setCustomerBody(customerResponse);
+          setVendorBody(res.data.vendor_1.Body);
+          console.log("Customer's Body:", customerBody);
+          console.log("Vendor's Body:", vendorBody); 
+
+          // Fetching the body of the customer from the response
+          // const customerBody = res.data.Customer_quote.Body;
+          // console.log("Customer's Body:", customerBody);
+          
+          console.log("generate Email API response from backend: ", res.data);
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
+        }
+      };
+      generateEmail();
+    }
+  }, [isDelegate2Clicked]);
+
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
@@ -390,7 +425,13 @@ const Delegate = ({
             />
             {isDelegate2Clicked && <Status />}
 
-            {isDelegate2Clicked && <Decision />}
+            {isDelegate2Clicked && (
+              <Decision
+                isPopupOpenStock={isPopupOpenStock}
+                togglePopupStock={togglePopupStock}
+              />
+            )}
+
 
             {isDelegate2Clicked && (
               <Buttoncv
@@ -400,6 +441,9 @@ const Delegate = ({
                 togglePopupRegenerate={togglePopupRegenerate}
                 isPopupOpen2={isPopupOpen2}
                 togglePopup2={togglePopup2}
+                customerBody={customerBody}
+                setCustomerBody={setCustomerBody}
+                vendorBody={vendorBody}
               />
             )}
           </div>

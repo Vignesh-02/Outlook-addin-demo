@@ -1,31 +1,25 @@
 @keyframes fadeInScaleUp {
     from {
-        opacity: 0;
-        transform: scale(0.95);
+      opacity: 0;
+      transform: scale(0.95);
     }
     to {
-        opacity: 1;
-        transform: scale(1);
+      opacity: 1;
+      transform: scale(1);
     }
-}
-.popup-enter {
+  }
+  .popup-enter {
     animation: fadeInScaleUp 0.3s ease-out forwards;
-}
-.overlay8 {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 322px;
-    height: 555px;
-    background-color: red;
-}
-.Frame20 {
+  }
+  
+  .Frame20 {
     position: absolute;
-    top: 125px;
-    left: 17px;
     width: 289px;
     height: 377px;
+    top: 125px;
+    left: 17px;
+    animation: fadeInScaleUp 0.3s ease-out forwards;
+
     /* opacity: 1 !important; */
     /* background-color: rgba(255, 255, 255, 1); */
     background-color: white;
@@ -35,25 +29,25 @@
     align-items: flex-start;
     z-index: 100;
     /* opacity: 1; */
-}
-.TableHeader {
+  }
+  .TableHeader {
     align-self: stretch;
-    background: #F9F9F9;
+    background: #f9f9f9;
     border-radius: 6px 6px 0 0;
     border: 1px rgba(58, 53, 65, 0.12) solid;
     display: inline-flex;
     justify-content: flex-start;
     align-items: flex-start;
-}
-.Datagridheader {
+  }
+  .Datagridheader {
     flex: 1 1 0;
     height: 38px;
     padding: 10px 11px;
     display: inline-flex;
     align-items: flex-start;
     justify-content: flex-start;
-}
-.Container {
+  }
+  .Container {
     flex: 1 1 0;
     height: 13px;
     padding: 10px 11px;
@@ -61,35 +55,35 @@
     align-items: center;
     gap: 4px;
     justify-content: flex-start;
-}
-.Typography {
+  }
+  .Typography {
     align-items: flex-start;
     justify-content: flex-start;
     display: inline-flex;
     flex-direction: column;
-}
-.TypographyBody1 {
+  }
+  .TypographyBody1 {
     color: rgba(58, 53, 65, 0.87);
     font-size: 10px;
     font-family: "Orbitron", sans-serif;
     font-weight: 400;
     letter-spacing: 0.1px;
     word-wrap: break-word;
-}
-.XnixLineCross {
+  }
+  .XnixLineCross {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 18px;
     height: 18px;
     padding: 5.25px;
-}
-.Vector47 {
+  }
+  .Vector47 {
     width: 7.5px;
     height: 7.5px;
     border: 1px black solid;
-}
-.Frame16 {
+  }
+  .Frame16 {
     align-self: stretch;
     height: 340px;
     border-radius: 6px 6px 0 0;
@@ -99,26 +93,33 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-}
-.Row {
+  }
+  .Row {
     align-self: stretch;
     padding: 10px;
     border: 1px rgba(58, 53, 65, 0.12) solid;
     display: inline-flex;
     align-items: flex-start;
     justify-content: flex-start;
-}
-.Datagridcell {
+  }
+  .Datagridcell {
     flex: 1 1 0;
     height: 266px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-}
-.Container2{
-    flex: 1 1 0; height: 266px; padding-left: 8px; padding-right: 8px; justify-content: flex-start; align-items: flex-start; gap: 12px; display: flex
-}
-.LongText {
+  }
+  .Container2 {
+    flex: 1 1 0;
+    height: 266px;
+    padding-left: 8px;
+    padding-right: 8px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    display: flex;
+  }
+  .LongText {
     flex: 1 1 0;
     color: #080808;
     font-size: 10px;
@@ -127,8 +128,22 @@
     line-height: 14px;
     letter-spacing: 0.1px;
     word-wrap: break-word;
-}
-.Frame17 {
+    overflow-y: auto;
+  }
+
+  .LongText::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  .LongText::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  
+  .LongText::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .Frame17 {
     width: 289px;
     padding: 12px 20px;
     padding: 20px;
@@ -136,24 +151,25 @@
     justify-content: center;
     align-items: center;
     gap: 14px;
-}
-.Button {
+  }
+  .Button {
     flex: 1 1 0;
     height: 31px;
     padding: 8px 15px;
-    background: #356F9F;
+    background: #356f9f;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     display: flex;
-}
-.Text{
+  }
+  .Text {
     color: white;
     font-size: 12px;
     font-family: "Orbitron", sans-serif;
     font-weight: 600;
     text-transform: capitalize;
     letter-spacing: 0.96px;
-}
+  }
+  

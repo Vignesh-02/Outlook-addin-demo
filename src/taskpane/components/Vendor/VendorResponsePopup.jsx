@@ -1,75 +1,86 @@
-/* eslint-disable react/prop-types */
-import React, {useState} from 'react'
-import './VendorResponsePopup.css'
-const VendorResponsePopup = () => {
-    const [selectedValue, setSelectedValue] = useState('');
-    // Handler for when the selection changes
-    const handleChange = (event) => {
-      setSelectedValue(event.target.value);
-    };
-  
-       
+import React from 'react';
+import './styles/VendorResponsePopup.css'; // Import the CSS file for styles
+import cross from "../../../public/Cross.png";
+import RegenerateResponsePopup from './RegenerateResponsePopup';
+
+const VendorResponsePopup = ({ close, vendorBody }) => {
+
+    const popupRef = useRef(null); // Define the ref
+
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (popupRef.current && !popupRef.current.contains(event.target)) {
+                close();
+            }
+        };
+
+        // Attach event listener if the popup is open
+        if (isOpen) {
+            document.addEventListener('mousedown', handleOutsideClick);
+        }
+
+        // Cleanup the event listener when the component unmounts or the popup closes
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [isOpen, close]); // Dependencies array ensures effect runs only if isOpen or close changes
+
+
+    if (!isOpen) 
+        return null;
+
   return (
-    <div className="Frame21">
-        <div className="TableHeader">
-            <div className="DatagridHeader">
-                <div className="Container">
-                    <div className="Typography">
-                        <div className="TypographyBody1">Vendor Response</div>
-                    </div>
-                </div>
-                <div className="XnixLineCross">
-                    <img className="Vector47" alt="Close" />
-                </div>
+    <div ref={popupRef} className={`frame21 popup-overlay ${isOpen ? 'popup-enter' : ''}`}>
+      <div className="tableHeader">
+        <div className="datagridheader">
+          <div className="container">
+            <div className="typography">
+              <div className="typographyBody1">Vendor Response</div>
             </div>
+          </div>
+          <div className="xnixLineCross">
+            <img className="vector47" src={cross} alt="icon"/>
+          </div>
         </div>
-        <div className="Frame16">
-            <div className="Row">
-                <div className="Frame4">
-                    <div className="SelectVendor">
-                    <select className="Dropdown-container" value={selectedValue} onChange={handleChange}>
-        <option value="">Select an Option</option>
-        <option value="option1">Vendor 1</option>
-        <option value="option2">Vendor 2</option>
-        <option value="option3">Vendor 3</option>
-      </select>
-                    </div>
-                </div>
-                <div className="Frame39">
-                    <div className="Frame38">
-                        <div className="Frame37">
-                            <div className="Frame42">Vendor 1</div>
-                        </div>
-                    </div>
-                    <div className="Frame94">
-                        <div className="Frame37">
-                            <div className="Frame42">Vendor 2</div>
-                        </div>
-                    </div>
-                    <div className="Frame40">
-                        <div className="Frame41">
-                            <div className="Frame42">Vendor 3</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="Datagridcell">
-                    <div className="Container2">
-                        <div className="LongText">
-                        Hi John Deo,Lorem ipsum dolor sit amet consectetur. Tortor mus rutrum sed dui malesuada risus tempor. Elit auctor eget libero et lacinia elit purus elit. Tellus egestas quam massa ac aliquam lorem. Material Cost: Acriylic Quantity: 20 Scelerisque dignissim porta libero eu auctor aliquam donec duis rhoncus. Nunc duis mattis sed dui rhoncus. Sed interdum dolor lacus a enim vel interdum odio. Lobortis eu enim viverra gravida nec in sagittis justo. Thanks & Regards,ABC
-                        </div>
-                    </div>
-                </div>
+      </div>
+      <div className="frame16">
+        <div className="row">
+          <div className="frame4">
+            <div className="selectVendor">Select vendor</div>
+          </div>
+          <div className="frame39">
+            <div className="frame38">
+              <div className="frame37">
+                <div className="vendor1">Vendor 1</div>
+              </div>
             </div>
-            <div className="Frame17">
-                <div className="Button">
-                    <div className="Text">Regenerate</div>
-                </div>
-                <div className="Button">
-                    <div className="Text">Save</div>
-                </div>
+            <div className="frame39">
+              <div className="frame37">
+                <div className="vendor1">Vendor 2</div>
+              </div>
             </div>
+            <div className="frame40">
+              <div className="frame37">
+                <div className="vendor1">Vendor 3</div>
+              </div>
+            </div>
+          </div>
+          <div className="datagridcell">
+            <div className="container">
+              <div className="hiJohnDeoLoremIpsumDolorSitAmet">
+                {vendorBody}
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div className="frame17">
+        <div className="button regenerate">Regenerate</div>
+        <div className="button save">Save</div>
+      </div>
     </div>
-  )
-}
+  );
+};
+
 export default VendorResponsePopup;
