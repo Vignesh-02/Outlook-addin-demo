@@ -25,7 +25,6 @@ const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, toggle
               <img id="PenCV" alt="Logo" src={Pen_Image} onClick={togglePopup}/>
             
               {
-                      isPopupOpen1 && 
                       <Modal
                             isOpen={isOpen}
                             onRequestClose={togglePopup}
