@@ -200,7 +200,7 @@ const App = (props) => {
     Office.onReady().then(function() {
         // Ensure Office is ready
 
-        Office.auth.getAccessToken({
+        OfficeRuntime.auth.getAccessToken({
             allowSignInPrompt: true
             }).then(result => {
             const accesstoken = result.value;
