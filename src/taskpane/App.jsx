@@ -8,6 +8,8 @@ import TextInsertion from "./components/TextInsertion";
 import { makeStyles } from "@fluentui/react-components";
 import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluentui/react-icons";
 
+import jwt_decode from "jwt-decode";
+
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Delegate from "./Pages/Delegate/Delegate";
 // import Home from "./Pages/Home/Home";
@@ -169,11 +171,11 @@ const App = (props) => {
             subject: "Hello from Office Add-in",
             body: {
               contentType: "Text",
-              content: "This is a test email sent from an Office Add-in!"
+              content: "Hello, This is a test email sent from an Office Add-in! from Vigu"
             },
             toRecipients: [{
               emailAddress: {
-                address: "example@example.com" // Specify the recipient's email address
+                address: "laserlikefocus000@gmail.com" // Specify the recipient's email address
               }
             }]
           }
@@ -197,21 +199,32 @@ const App = (props) => {
       }
 
 
-    Office.onReady().then(function() {
+   
         // Ensure Office is ready
 
-        OfficeRuntime.auth.getAccessToken({
-            allowSignInPrompt: true
-            }).then(result => {
-            const accesstoken = result.value;
-            setAccessToken(accesstoken);
-            sendMail(accesstoken);
-            console.log(result);
-        }).catch(err => {
-            console.log("Error obtaining token", err);
-        });
+        async function getIDToken() {
+            try {
+              let userTokenEncoded = await OfficeRuntime.auth.getAccessToken({
+                allowSignInPrompt: true,
+              });
+              let userToken = jwt_decode(userTokenEncoded);
+              //you can use oid from userToken
+              console.log('This is the access token ', userTokenEncoded);
+              console.log('This is the decoded access token ', userToken);
+              sendMail(userTokenEncoded);
+          
+            } catch (error) {
+              console.log(error);
+            }
+          }
 
-      });
+Office.onReady((info) => {
+  if (info.host === Office.HostType.Outlook) {
+     getIDToken();
+  }
+});
+
+
   }, [])
   
   
