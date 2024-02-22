@@ -1,6 +1,6 @@
 import React from "react";
 import "./Vendor.css";
-import Pen_Image from "../../../public/pen.png";
+import Pen_Image from "../../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
 const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, togglePopup, vendorBody}) => {
   return (
@@ -16,7 +16,27 @@ const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, toggle
             <div className="Vendor-Img">
               <img id="PenCV" alt="Logo" src={Pen_Image} onClick={togglePopup}/>
               {
-                      isOpen && <VendorResponsePopup isOpen={isOpen} close={togglePopup} vendorBody={vendorBody} />
+                      isPopupOpen1 && 
+                      <Modal
+                            isOpen={isOpen}
+                            onRequestClose={togglePopup}
+                            className="Modal"
+                            // overlayClassName="Overlay"
+                            style={{
+                                overlay: {
+                                        position: 'fixed',
+                                        top: '98px',
+                                        width: '325px',
+                                        height: '586px',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+                            
+                                }
+                            }}
+                        >
+                            {/* setVendorBody={setVendorBody} */}
+                            <VendorResponsePopup close={togglePopup1} vendorBody={vendorBody} />
+                      </Modal>
+
                 }
           {console.log("Ispopcutomer: ", isOpen)};
             </div>
