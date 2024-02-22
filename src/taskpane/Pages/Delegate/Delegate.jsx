@@ -193,7 +193,7 @@ const Delegate = ({
             }
           );
 
-         const customerResponse = res.data.Customer_quote.Body;
+         const customerResponse = res.data.Customer_quote.body;
          const VendorResponse = res.data.vendor_1.Body
           setCustomerBody(customerResponse);
           setVendorBody(res.data.vendor_1.Body);

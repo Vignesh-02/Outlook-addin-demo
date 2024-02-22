@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./CustomerResponsePopup.css"; // Import the CSS file
 // import cross from "../../../public/Cross.png"
 const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
