@@ -5,6 +5,7 @@ import "./Customer.css"; // Import the CSS file
 import Pen_Image from "../../../../public/pen.png";
 import CustomerResponsePopup from './CustomerResponsePopup';
 import RegeneratePopup from '../RegeneratePopup/RegeneratePopup';
+import Modal from 'react-modal';
 const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, togglePopup, customerBody, setCustomerBody}) => {
   
   // const [isPopupOpen, setIsPopupOpen] = useState(false);

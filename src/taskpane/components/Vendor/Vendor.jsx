@@ -2,6 +2,8 @@ import React from "react";
 import "./Vendor.css";
 import Pen_Image from "../../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
+import Modal from 'react-modal';
+
 const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, togglePopup, vendorBody}) => {
   return (
     <div>
