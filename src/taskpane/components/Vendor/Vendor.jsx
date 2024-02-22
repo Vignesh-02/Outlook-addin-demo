@@ -34,7 +34,7 @@ const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, toggle
                             }}
                         >
                             {/* setVendorBody={setVendorBody} */}
-                            <VendorResponsePopup close={togglePopup1} vendorBody={vendorBody} />
+                            <VendorResponsePopup close={togglePopup} vendorBody={vendorBody} />
                       </Modal>
 
                 }

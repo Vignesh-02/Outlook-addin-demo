@@ -42,7 +42,7 @@ const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, toggle
                                 }
                             }}
                         >
-                            <CustomerResponsePopup close={togglePopup1} customerBody={customerBody} setCustomerBody={setCustomerBody}/>
+                            <CustomerResponsePopup close={togglePopup} customerBody={customerBody} setCustomerBody={setCustomerBody}/>
                       </Modal>
 
                 }
