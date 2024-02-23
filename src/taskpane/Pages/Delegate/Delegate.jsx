@@ -105,9 +105,10 @@ const Delegate = ({
               'email_body': emailDetails.body,
               'sender_email': emailDetails.from,
               'sender_name': emailDetails.senderName,
-              "wisecustomer": "intr001",
-              "customerofcustomer": "20917",
-              "acctId": "239029"
+              "wisecustomer": "INTR100",
+                "customerofcustomer": "200",
+                "acctId": "GY248"
+
 
           });
           console.log("classify API response from backend: ", res.data);
