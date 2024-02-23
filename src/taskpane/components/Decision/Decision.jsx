@@ -169,7 +169,7 @@ const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
               style={{
                 overlay: {
                   position: "fixed",
-                  top: "38px",
+                //   top: "38px",
                   width: "325px",
                   height: "586px",
                   backgroundColor: "rgba(0, 0, 0, 0.5)",
