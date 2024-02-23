@@ -193,8 +193,8 @@ const Delegate = ({
             }
           );
 
-         const customerResponse = res.data.Customer_quote.body;
-         const VendorResponse = res.data.vendor_1.Body
+         const customerResponse = res.data.Customer_quote.Body;
+         const vendorResponse = res.data.vendor_1.Body
           setCustomerBody(customerResponse);
           setVendorBody(res.data.vendor_1.Body);
           console.log("Customer's Body:", customerBody);
