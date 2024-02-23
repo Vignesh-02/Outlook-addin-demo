@@ -12,8 +12,8 @@
 
 .Modal{
     position: absolute;
-    top: 125px;
-    left: 17px;
+    /* top: 125px */
+    top: 70px;
     width: 289px;
     height: 377px;
     animation: fadeInScaleUp 0.3s ease-out forwards;

@@ -34,7 +34,7 @@ const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, toggle
                             style={{
                                 overlay: {
                                         position: 'fixed',
-                                        top: '98px',
+                                        // top: '98px',
                                         width: '325px',
                                         height: '586px',
                                         backgroundColor: 'rgba(0, 0, 0, 0.5)'

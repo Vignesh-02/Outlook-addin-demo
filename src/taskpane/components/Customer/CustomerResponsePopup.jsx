@@ -40,6 +40,7 @@ const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
                         onChange={handleTextChange}
                         onBlur={toggleEdit}
                         autoFocus
+                        style={{ width: '100%', height: '100%', boxSizing: 'border-box' }} 
                         />
                     ) : (
                         <div onClick={toggleEdit} style={{ cursor: 'pointer' }}>
