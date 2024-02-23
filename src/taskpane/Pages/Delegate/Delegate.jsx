@@ -105,9 +105,9 @@ const Delegate = ({
               'email_body': emailDetails.body,
               'sender_email': emailDetails.from,
               'sender_name': emailDetails.senderName,
-              "Wisecustomer": "intr001",
-              "Customerofcustomer": "20917",
-              "AcctId": "239029"
+              "wisecustomer": "intr001",
+              "customerofcustomer": "20917",
+              "acctId": "239029"
 
           });
           console.log("classify API response from backend: ", res.data);
@@ -188,9 +188,7 @@ const Delegate = ({
         try {
           const res = await axios.post(
             "https://api-dev.wise-sales.com/ml-backend/generate_email/",
-            {
-              classifyEmail: classifyEmail,
-            }
+            classifyEmail,
           );
          console.log(res);
         //  const customerResponse = res.data.Customer_quote.Body;
