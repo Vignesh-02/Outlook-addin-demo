@@ -16,9 +16,7 @@
     position: absolute;
     width: 289px;
     height: 377px;
-    top: 125px;
-    left: 17px;
-    animation: fadeInScaleUp 0.3s ease-out forwards;
+    animation: fadeInScaleUp 0.7s ease-out forwards;
 
     /* opacity: 1 !important; */
     /* background-color: rgba(255, 255, 255, 1); */

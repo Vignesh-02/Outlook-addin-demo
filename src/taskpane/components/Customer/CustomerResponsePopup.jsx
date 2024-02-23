@@ -60,6 +60,6 @@ const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
           </div>
         </div>
       </div>
-  );
+  )
 };
 export default CustomerResponsePopup;
