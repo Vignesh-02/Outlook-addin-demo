@@ -41,10 +41,9 @@ const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
                         onBlur={toggleEdit}
                         autoFocus
                         className="LongText"
-                        style={{  boxSizing: 'border-box' }} 
                         />
                     ) : (
-                        <div  className="LongText" onClick={toggleEdit} style={{ cursor: 'pointer' }}>
+                        <div  className="LongText" onClick={toggleEdit}>
                         {customerBody}
                         </div>
                 )}
