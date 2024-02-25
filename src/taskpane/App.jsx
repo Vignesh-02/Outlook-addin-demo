@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from 'react';
+import Office from '@microsoft/office-js';
 
 import PropTypes from "prop-types";
 import Header from "./components/Header";
@@ -25,6 +26,52 @@ const useStyles = makeStyles({
 });
 
 const App = (props) => {
+
+    // const [loginDialog, setLoginDialog] = useState(null);
+
+    // const processLoginMessage = useCallback(async (args) => {
+    //     let messageFromDialog = JSON.parse(args.message);
+    //     if (messageFromDialog.status === 'success') {
+    //       loginDialog.close();
+    //       console.log(messageFromDialog.result.accessToken);
+    //       // You might want to do something with the accessToken here,
+    //       // like storing it in your component's state or in global state
+    //     } else {
+    //       // Something went wrong with authentication or the authorization of the web application.
+    //       loginDialog.close();
+    //     }
+    //   }, [loginDialog]);
+    
+    //   useEffect(() => {
+    //     const dialogLoginUrl = `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}/login.html`;
+    
+    //     const openDialog = async () => {
+    //       await Office.context.ui.displayDialogAsync(
+    //         dialogLoginUrl,
+    //         { height: 40, width: 30 },
+    //         (result) => {
+    //           if (result.status === Office.AsyncResultStatus.Failed) {
+    //             // Handle error
+    //           } else {
+    //             const dialog = result.value;
+    //             setLoginDialog(dialog);
+    //             dialog.addEventHandler(Office.EventType.DialogMessageReceived, processLoginMessage);
+    //           }
+    //         }
+    //       );
+    //     };
+    
+    //     openDialog();
+        
+    //     // Clean up the dialog on component unmount
+    //     return () => {
+    //       if (loginDialog) {
+    //         loginDialog.close();
+    //       }
+    //     };
+    //   }, [processLoginMessage]);
+    
+
   // testing mirroring
   const [emailAddress, setEmailAddress] = useState("");
   const [userName, setUserName] = useState("");
@@ -33,6 +80,7 @@ const App = (props) => {
   const [val, setVal] = useState("");
 
   const [emailDetails, setEmailDetails] = useState({
+    msgId: "",
     from: "",
     senderName: "",
     company: "",
@@ -43,6 +91,7 @@ const App = (props) => {
     attachments: [],
   });
 
+  
   // useEffect(() => {
   //     Office.onReady(() => {
 
@@ -103,6 +152,8 @@ const App = (props) => {
       try {
         if (Office.context.mailbox.item) {
           const item = Office.context.mailbox.item;
+          console.log(item);
+          console.log(item.itemId);
           const emailAddress = Office.context.mailbox.userProfile.emailAddress;
           const displayName = Office.context.mailbox.userProfile.displayName;
 
@@ -123,6 +174,7 @@ const App = (props) => {
           setEmailAddress(emailAddress);
           setUserName(displayName);
           setEmailDetails({
+            msgId: item.itemId,
             from: item.from && item.from.emailAddress,
             senderName: item.from && item.from.displayName,
 
