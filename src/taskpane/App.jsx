@@ -1,5 +1,5 @@
 import * as React from "react";
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Office from '@microsoft/office-js';
 
 import PropTypes from "prop-types";
