@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback, useEffect, useState } from 'react';
-import Office from '@microsoft/office-js';
+// import Office from '@microsoft/office-js';
 
 import PropTypes from "prop-types";
 import Header from "./components/Header";

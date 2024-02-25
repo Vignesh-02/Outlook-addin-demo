@@ -32,7 +32,6 @@ const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
           <div className="Row">
             <div className="Datagridcell">
               <div className="Container2">
-                <div >
                 {isEditing ? (
                         <input
                         type="text"
@@ -40,14 +39,14 @@ const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
                         onChange={handleTextChange}
                         onBlur={toggleEdit}
                         autoFocus
-                        className="LongText"
+                        // className="Container2"
+                        style={{ width: '100%', height: '100%', boxSizing: 'border-box' }} // Make input fill its parent
                         />
                     ) : (
                         <div  className="LongText" onClick={toggleEdit}>
                         {customerBody}
                         </div>
                 )}
-                </div>
               </div>
             </div>
           </div>
