@@ -13,7 +13,7 @@ const VendorResponsePopup = ({  close, vendorBody }) => {
 
     
   
-  return (π
+  return (
     <div className="Frame21">
         <div className="TableHeader">
             <div className="DatagridHeader">
