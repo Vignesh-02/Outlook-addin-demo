@@ -26,9 +26,9 @@ const Vendor = ({ isOpen, togglePopup, vendordetail }) => {
                 src={Pen_Image}
                 onClick={togglePopup}
               />
-              {/* {isOpen && (
+              {isOpen && (
                 <VendorResponsePopup isOpen={isOpen} close={togglePopup} />
-              )} */}
+              )}
             </div>
           </div>
         </div>

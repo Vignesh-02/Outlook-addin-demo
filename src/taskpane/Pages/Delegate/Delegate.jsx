@@ -23,7 +23,11 @@ const Delegate = ({
     val, ...props }) => {
 
   const [customerBody, setCustomerBody] = useState(null);
-  const [vendorBody, setVendorBody] = useState(null);      
+  const [vendorBody, setVendorBody] = useState(null);     
+
+  const [vendordetail, setVendorDetails] = useState([]);
+  const [vendoremails, setVendorEmails] = useState([])
+
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
   const [isDelegateClicked2, setIsDelegateClicked2] = useState(false);
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
@@ -238,6 +242,21 @@ const Delegate = ({
           setVendorBody(vendorResponse);
           console.log("Customer's Body:", customerBody);
           console.log("Vendor's Body:", vendorBody); 
+
+          const vendorEmails = Object.values(res.data)
+          .filter(obj => obj.Vendor_Email)
+          .map(obj => obj.Vendor_Email);
+        setVendorEmails(vendorEmails)
+
+        setVendorDetails(res.data);
+
+
+
+
+        //     const vendorDEt = Object.values(res.data)
+        //     .filter(obj => obj.Vendor_Email)
+        //     .map(obj => obj.Vendor_Email);
+        //   setVendorEmails(vendorEmails);
 
           // Fetching the body of the customer from the response
           // const customerBody = res.data.Customer_quote.Body;
@@ -483,6 +502,7 @@ const Delegate = ({
                 customerBody={customerBody}
                 setCustomerBody={setCustomerBody}
                 vendorBody={vendorBody}
+                vendordetail={vendordetail}
               />
             )}
           </div>
