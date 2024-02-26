@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Vendor.css';
-import Pen_Image from "../../../public/pen.png";
+import Pen_Image from "../../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
 const Vendor = ({ isOpen, togglePopup, vendordetail }) => {
   // State to keep track of selected vendor

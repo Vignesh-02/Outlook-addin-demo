@@ -65,7 +65,7 @@ const Delegate = ({
   };
 
   const handleLaunch = () => {
-    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAARGNUneAf2anl0WYK17UGOMsJculbYW+PbeW2SCxezl3nk91spVXl53Am4j8UyeP4ofVsBRaRDUUjzLzYMkFZVcQ8ZLow+/aHcLAdTAAdUt2ulEU2rRAXD4ZOeN4GUu4ywVlr+Il6hT6e0rfwLw9Cj/BVOM/URnw/5UXGoh7KCsPAwEalUNa0qfYnn78eJ3R5eYJT+uQznAfC+7mWoIe1Kz4m9PQaj0bCL4HyVFLP7ncwF1KL8ibrXbX/SUnSRzRcX9lXHAvYBmNm7CkqMz90aE0tgiylXCbm1dGzGei73ulnom49il9jsh3Q3LbCjhnx7Vz9t6BP7+yiO93eYwxqyoDZgAACEEa76M/XhY8QAJb4E5jQADcqX1k1N6H3fF1EZHoyDFR1/fPdFvW3wZQepV57sFL94Vn4u1DGV7/VkYy+776UdWctA67bke5ngUR7VXBjWT+WtT3L7QcYt+qPHL7O0h4wtzh6T0lHgmJcDytRP9Kzh4IBsHvWr4Ai62EOLKNk68NYxe790KHqX1u4UkBFAMuIPgqVphFRX5u6qgm2SvyyTPkOeGM7HWCFoRABBtUROGKwqA8bztcUMqjwuvYP/y9Rqn0wj5hziwewa9aro9ffbCseVlz5mlS+u67/wSJF4ajL+U7DQHb7d7PHRG5LPSmxIXbDlnIP2Yo0qQroXKdd/IpKUccvO6lrlAAPJVQ5G/ccyJZCkMgpxTDQRGrP7xlvYbTOR1+VbeRaKPyYxT6C2oeNccVDxJCtmiK1YV0aBTBOdvjI1yMTjLpLj32JASXGH3jd9BWedtJryckP9mNrcIgwTSHY5FPScxuJwDzw9ViosCKoMRsoPHEUY0O7xBEHEVb/4albsGFGUA4Ek1CskZccmsyxH8sljcdxyawHsQJbr511nAcNK9C+RrDd8+jdmtNIkzRl/vA6ETjOKY12PmzqvPFkk4VTR0YG4aMqRaFBPM7EHlvTOprG0wBPS81v1uZVK9y16+frUhhZmMrCNYfayceWbV2fjfbd8whvqMPhUFRYfYr/zNUYFph7qGzi2B4e3HmF3kmO7aDybK9L73rfdX6/EwdCAjgjpc29f7TuR8S4NA2le9qLsBODUPZKxjRmMGpDkOeN5V9Ag==';
+    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAX6LMbJt/yUVkrDAcQEE0uv3Y4h/gVTpT85UR5+0fNQfL7ljehdwY325zHr6VdSd4OW2yZGJc0J75FUUd4HlhcLjPLDRkG+15vB08ZymjD4LzEMh0qQpsKmROfJJhFFn15A7WGVCIgSuZ/kIbxFgB8WZJhTAMKfP2glsdKsuXTxUrLpDBRGo1cF6dqxoSimQE7D4dktw7fk714yolDrh3ithoyE58a7c0Onh7VdWEa2ST3fZ3ZygwJRq4pgWPCH3PtqzTkh2MWD6KTpCjXtCPxr+OfnOD1Pcmezs6dDwa7Lzdfs7qdVJFi8DX87wG/GQcYlPMWjC7P7j4edzv6FkGyQDZgAACIP2AebdWafQQAKkkNgAt/uncJdwm40WVRAs3MJntV4baeHSrHzXkVtmkKDWzbob+/seUy8vGl8StpwxdBnsTuAE4U9xw+KfC0CnuBiPXGeqWM1Hzvpq82gWhi4yPUNhh3Wo86fcCxrqNMmj28A248EiCE5eebeTgWeptxMZQo7gz8W18RuPMYGuc2EOPTDmBjPaKGEafjTmsHxETPMHB6Vo3daAD21kyRP3EYWIP7XkhRFUYhp+44jY7vnLF4E6xvDQtXqzCp0oviyTk1i3edUeoMNCNTFA4O9ChvD/Na6vymVNQgg0ZHkPDF4z1chZX5n09iTAJxX846nJhWs0tBHqmgZX2oK1ebc0vylKO7hColrmqVLcasmW/6l6brSAJ77VM+TdBZb6kQXfWyeW/gV8kqdyQZlG9fJjonUB/9gQ7EVwcculo5Z2mIXBlYDI6Z4GakmzqXgYpxT6k+bG9hy9d3ineAq83c8VfE5hewrjHEJW8aPCGdMM+9JBD+T6TJOelLIJlI+qpVAkmY8msFq/PAreoKYs8hkPdAPwGI4Fycx1/Ydcv+SgVYDgtmmCJxqB2llNPuTk9XC0KMr1tzPabJwJGbEnACTiV+u22IzkkefqyWYUsgSLppqsjFSa4m3QqyhArHR91ULgFx8VB+G+lM6x8eYo7+IYf0WyOFaVM5rL+OwAhqyWAHqnldcrzcaIpMvmx3Z2cuOxpIbIGRtFU3Pxnfuw0yJ89gUBk2NnEnU9oCq48NekzYXjI51w9rPMsXJDBp7PiKF9Ag==';
     const sendMailReply = 'https://graph.microsoft.com/v1.0/me/messages/AQMkADAwATM0MDAAMS02OGVmLWEyN2EtMDACLTAwCgBGAAADpd4QqRN3K0yHpymIIakdnQcA54fYm3+x4Uy3lcgUc2eXoQAAAgEMAAAA54fYm3+x4Uy3lcgUc2eXoQAAABfpxN8AAAA=/reply';
         const emailData = {
           message: {
@@ -94,7 +94,12 @@ const Delegate = ({
           "toRecipients": [
             {
               "emailAddress": {
+                // "address": vendorEmails,
                 "address": "laserlikefocus000@gmail.com"
+              },
+              "emailAddress": {
+                // "address": vendorEmails,
+                "address": "saiavenue512@gmail.com"
               }
             }
           ],
