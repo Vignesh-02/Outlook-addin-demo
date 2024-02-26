@@ -14,7 +14,7 @@ const Buttoncv = ({
   customerBody,
   setCustomerBody,
   vendorBody,
-  vendorEmails
+  vendordetail
 
 }) => {
   return (
