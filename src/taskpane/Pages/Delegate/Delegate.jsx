@@ -83,46 +83,47 @@ const Delegate = ({
     // const sendMailVendor = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcwMknoqsvsOzI53PHE81tR3yjSouoADaGAZj7X4jhDGAFCSBeh8FuSj5uYAJRLE3GNZE2s/dTxQs9ylM4dnsu9wF2rkdu1EGSftSurh0NYtqYjiHKxQR07M1oaTlD6qIi7COlQ9BZ/lg7mKIacMFn9c3yGxuC82z9Qq4/khuGBAYarAqEYJabYkI+R/64QcXjtb/lo/45kra4p0mqakT84ezTvSFG4WI/WVHPjLw0px0UzAaPVANUHSzAGc6uZuq+I4mtNYHEUznOUXhCa3gV//kIjeBElK3fVbR2ldMianYHetmfQyEZgUNCjzw1OrUwyJy27UJ+B/snUrKGmq/G4DZgAACLzS+AZ/Zx/UQAKsaxbO+vQK1wrFyO1Jo20IbsbuPS+GQ1ZfHz7NeLFa7t10xza0quNUggAYFBhU/X3jcmJ+zJbMuMqI4TlzQkqTo8wR158s/v3CUJWxFPEEZkK0vUaLRaufy9CoBtagvT1uK9bWNPc0ESS8IbLF4ie0ZTVxc+aLo7rauh/mPQTwzLvQT/SykSOYtrwTnhcFaiJvMwjNlrd7CEt77dAXeDsR+fxyet+YIBznNBO/DGfz5SWVq0t/wArk0fz2grz+sglWqm4oQwqMtjCDVX7d7OJl0jExfi5ZZJvqmRLMAWJTVpmYlRHfWN1fP5WXHRrLZedbo+ZaSamaWixOWvJS4qwuezy9QOZ3NjGUqOFWcd4fW+wTUSG2GMd76izFc2ohaD+b5twnvn+8RMmNklcyseKFhhjbhEh9adge2h0f6iPByFO6YXahBhrgTa/sIw9HXKYOfgM3H5dhGWG/eYwvLBxhOdiPCqHgFJTi+DhLoDkUhBe/Q7cbpeXoXysZrZBO+E7LaQq7drSMYJe8ZEd3mwlfg109qi5NfdkEU8ba6kqSVSAJ1ETM7DPX8ksQYzoiXOxj/hDpwx5CnV8QjlN51+hU7NanhhlspZyVNXAWMK2nqgN1iJxD3Ma9I0ouC8bZ1Nsvj95/6HuiKILbrwy5dqW3gRjbP5SZBdBq30Sb+1gKX/QsRwVgNUB/vV2v4wJykMnNAUWJAj6u5NCemwWl+ZxZzmFNXIcnpuSbkPB+HsgRacllzMZZZW27WZq1Ikf2zv59Ag=='
     const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';  
     const emailData1 = {
-        "message": {
-          "subject": "Meet for lunch?",
-          "body": {
-            "contentType": "Text",
-            "content": "The new cafeteria is open."
+        message: {
+          subject: "Meet for lunch?",
+          body: {
+            contentType: "Text",
+            content: "The new cafeteria is open."
           },
-          "toRecipients": [
+          toRecipients: [
             {
-              "emailAddress": {
+              emailAddress: {
                 // "address": vendorEmails,
-                "address": "laserlikefocus000@gmail.com"
+                address: "afshankhan252@gmail.com"
               },
             },
             {
-              "emailAddress": {
+  
+                emailAddress: {
                 // "address": vendorEmails,
-                "address": "saiavenue512@gmail.com"
+                address: "laserlikefocus000@gmail.com"
               }
             }
           ],
         },
-        "saveToSentItems": "false"
+        saveToSentItems: "false"
       };
 
 
-        // fetch(sendMailReply, {
-        //   method: 'POST',
-        //   headers: {
-        //     'Authorization': `Bearer ${accessToken}`,
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify(emailData)
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //   console.log("Mail sent successfully", data);
-        // })
-        // .catch(error => {
-        //   console.error("Error sending mail", error);
-        // });
+        fetch(sendMailReply, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(emailData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log("Mail sent successfully", data);
+        })
+        .catch(error => {
+          console.error("Error sending mail", error);
+        });
    
 
       fetch(sendMailVendor, {
