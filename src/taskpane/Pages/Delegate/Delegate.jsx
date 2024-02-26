@@ -61,22 +61,22 @@ const Delegate = ({
   };
 
   const handleLaunch = () => {
-    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcTrjr5ebfMwIqqERsk3WY49wdOEF8JCiugJqx2Va009nQTZ30ZEjMDJVIt+r/Mljk+k4JGs0Cg/KYZnx9GmUqjQqfX4apKe5qyz/ihriXozUJpp2mGzfsiVOxFLrVSegu2Y+7N5zKVtNCEUNiFGWLPA6NKF40Zz/oAMdPQGsJ4NeIHvm1ZbfG4OX4zj1yNaOCjAlcozhuNg5bO8Iifh9LQsO2bhqItNQAtWjeNzlntwuId0Mbm1kIAbjP2JHCtxftMqck8K+4Xgs2j8/0ipeOfzP1GPOd2en2wG+i8yLHaMkF0HCVWs3XV6tD0rhw6QvCMeaT754ZLAroiHCBqNKbMDZgAACKO63vt6nkzYQAKCgYq3zrrF9hl+11KB1SWlE2bmXP49f0k/ouyyWVEicxXc1lQrDLFcyEBNrBcIlt2JY2de52uRpeyco+rfm42Gq+xgHh0OlEKZCf8Lr+EKPoT366nDVsxDsxW9JyGUaT9YsDV9r4Ht7dcSowXuiIV7B6l/HbWJgJqvEmAD0jrWTFaxaNn+E2YHAQ7AX9HbIWwQqutTjTCsW2l6Z3XH+V4nfFcfSfCau71/yx1pPYvpR4eBry9N9/bVAHzRdeMwVAruu0+9iWMUGf+QBDqF5BzvJeT9GBIt4OmGrbvIBCHll9phZGFGadrl2XJG3At1eJPcMm9Kya8kBKDnGYFJKjMe0xZkTgKIHPjZDQYnNisc9PBzMO3Viop+txHElmg1g9pe8HZpsSDpI0fMbWFSP43yN8WK8bHSg1t5YN2CoM4QC5PXy1tDWSG3ADF4Gu+8ehh0OE5PSLfmG/ZjQdfJUTu0otvkXwmFoabhdsjXyGwBnyC7JGYqQ51AW3GOaepYqhSLeSvJgd4XAF3fDb2uNJuFeOILbxB1FIEHBrywaXIUiHhyBm+m7S5ljDlk6+h+riyDW4C7/pCQ3dlUc+GEpyhpI8QQOiGN+pSzasDAGZFfwcNKtSlYyJdD/h1KOMMFDrqoXn9buufiTD0x5k+PXLIe1wxCzxs9zbziN/4p51k56YI3w22ep3q08FIH/KoeZYZRLd9p8qxErbiBXpbIuW0AvurzHmLyrSHOP9GxMktSTp0ilUHYU0D3UPJ2I2X7Rap9Ag=='
-    const sendMailUrl = 'https://graph.microsoft.com/v1.0/me/sendMail';
+    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcTrjr5ebfMwIqqERsk3WY49wdOEF8JCiugJqx2Va009nQTZ30ZEjMDJVIt+r/Mljk+k4JGs0Cg/KYZnx9GmUqjQqfX4apKe5qyz/ihriXozUJpp2mGzfsiVOxFLrVSegu2Y+7N5zKVtNCEUNiFGWLPA6NKF40Zz/oAMdPQGsJ4NeIHvm1ZbfG4OX4zj1yNaOCjAlcozhuNg5bO8Iifh9LQsO2bhqItNQAtWjeNzlntwuId0Mbm1kIAbjP2JHCtxftMqck8K+4Xgs2j8/0ipeOfzP1GPOd2en2wG+i8yLHaMkF0HCVWs3XV6tD0rhw6QvCMeaT754ZLAroiHCBqNKbMDZgAACKO63vt6nkzYQAKCgYq3zrrF9hl+11KB1SWlE2bmXP49f0k/ouyyWVEicxXc1lQrDLFcyEBNrBcIlt2JY2de52uRpeyco+rfm42Gq+xgHh0OlEKZCf8Lr+EKPoT366nDVsxDsxW9JyGUaT9YsDV9r4Ht7dcSowXuiIV7B6l/HbWJgJqvEmAD0jrWTFaxaNn+E2YHAQ7AX9HbIWwQqutTjTCsW2l6Z3XH+V4nfFcfSfCau71/yx1pPYvpR4eBry9N9/bVAHzRdeMwVAruu0+9iWMUGf+QBDqF5BzvJeT9GBIt4OmGrbvIBCHll9phZGFGadrl2XJG3At1eJPcMm9Kya8kBKDnGYFJKjMe0xZkTgKIHPjZDQYnNisc9PBzMO3Viop+txHElmg1g9pe8HZpsSDpI0fMbWFSP43yN8WK8bHSg1t5YN2CoM4QC5PXy1tDWSG3ADF4Gu+8ehh0OE5PSLfmG/ZjQdfJUTu0otvkXwmFoabhdsjXyGwBnyC7JGYqQ51AW3GOaepYqhSLeSvJgd4XAF3fDb2uNJuFeOILbxB1FIEHBrywaXIUiHhyBm+m7S5ljDlk6+h+riyDW4C7/pCQ3dlUc+GEpyhpI8QQOiGN+pSzasDAGZFfwcNKtSlYyJdD/h1KOMMFDrqoXn9buufiTD0x5k+PXLIe1wxCzxs9zbziN/4p51k56YI3w22ep3q08FIH/KoeZYZRLd9p8qxErbiBXpbIuW0AvurzHmLyrSHOP9GxMktSTp0ilUHYU0D3UPJ2I2X7Rap9Ag==';
+    const sendMailUrl = 'https://graph.microsoft.com/v1.0/me/messages/AQMkADAwATM0MDAAMS02OGVmLWEyN2EtMDACLTAwCgBGAAADpd4QqRN3K0yHpymIIakdnQcA54fYm3+x4Uy3lcgUc2eXoQAAAgEMAAAA54fYm3+x4Uy3lcgUc2eXoQAAABfpxN8AAAA=/reply';
         const emailData = {
           message: {
-            subject: "Hello from Office Add-in",
-            body: {
-              contentType: "Text",
-              content: "This is a test email sent from an Office Add-in!"
+            message: {
+                toRecipients: [
+                    {
+                        emailAddress: {
+                            address: "rudranil@onelabventures.com"
+                        }
+                    }
+                ]
             },
-            toRecipients: [{
-              emailAddress: {
-                address: "laserlikefocus000@gmail.com" // Specify the recipient's email address
-              }
-            }]
-          }
-        };
+            comment: "<b>testing reply</b>"
+        }
+    };
       
         fetch(sendMailUrl, {
           method: 'POST',
