@@ -191,13 +191,13 @@ const Delegate = ({
             "https://api-dev.wise-sales.com/ml-backend/generate_email/",
             classifyEmail,
           );
-         console.log(res);
-         const customerResponse = res.data.Customer_quote.Body;
-         const vendorResponse = res.data.vendor_1.Body
-          setCustomerBody(customerResponse);
-          setVendorBody(res.data.vendor_1.Body);
-          console.log("Customer's Body:", customerBody);
-          console.log("Vendor's Body:", vendorBody); 
+         console.log(res.data);
+        //  const customerResponse = res.data.Customer_quote.Body;
+        //  const vendorResponse = res.data.vendor_1.Body
+        //   setCustomerBody(customerResponse);
+        //   setVendorBody(res.data.vendor_1.Body);
+        //   console.log("Customer's Body:", customerBody);
+        //   console.log("Vendor's Body:", vendorBody); 
 
           // Fetching the body of the customer from the response
           // const customerBody = res.data.Customer_quote.Body;
