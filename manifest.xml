@@ -14,7 +14,8 @@
 <AppDomain>http://50.19.4.239/ml-backend</AppDomain>
 <AppDomain>https://api-dev.wise-sales.com</AppDomain>
 <AppDomain>https://graph.microsoft.com/</AppDomain>
-<AppDomain>https://login.microsoftonline.com</AppDomain>
+<AppDomain>https://login.microsoftonline.com/</AppDomain>
+<AppDomain>https://localhost:3000</AppDomain>
 
 </AppDomains>
 <Hosts>

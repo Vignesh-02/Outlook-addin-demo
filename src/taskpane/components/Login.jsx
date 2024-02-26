@@ -33,7 +33,7 @@ const Login = () => {
     const scope = "Mail.Send";
     const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&response_mode=query`;
 
-    Office.context.ui.displayDialogAsync(authUrl, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
+    Office.context.ui.displayDialogAsync(redirectUri, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         const dialog = result.value;
         dialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
