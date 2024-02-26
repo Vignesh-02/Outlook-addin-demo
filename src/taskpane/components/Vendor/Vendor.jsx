@@ -1,13 +1,20 @@
-import React from "react";
-import "./Vendor.css";
-import Pen_Image from "../../../../public/pen.png";
+import React, { useState } from 'react';
+import './Vendor.css';
+import Pen_Image from "../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
-import Modal from 'react-modal';
 
-const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, togglePopup, vendorBody}) => {
+const Vendor = ({ isOpen, togglePopup, vendordetail }) => {
+  // State to keep track of selected vendor
+  const [selectedVendor, setSelectedVendor] = useState(null);
+
+  // Filter out the "Customer_quote" key from vendordetail
+  const vendors = Object.keys(vendordetail).filter(key => key !== "Customer_quote");
+
   return (
-    <div>
+    <div className="vendorPage">
+      {/* Vendors section */}
       <div className="VendorSec2">
+        {/* Vendor 1 */}
         <div className="Vendor1">
           <div className="V2">
             <div className="V3">
@@ -16,40 +23,43 @@ const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, toggle
               </div>
             </div>
             <div className="Vendor-Img">
-              <img id="PenCV" alt="Logo" src={Pen_Image} onClick={togglePopup}/>
-              {
-                      <Modal
-                            isOpen={isOpen}
-                            onRequestClose={togglePopup}
-                            className="Modal"
-                            // overlayClassName="Overlay"
-                            style={{
-                                overlay: {
-                                        position: 'fixed',
-                                        top: '98px',
-                                        width: '325px',
-                                        height: '586px',
-                                        backgroundColor: 'rgba(0, 0, 0, 0.5)'
-                            
-                                }
-                            }}
-                        >
-                            {/* setVendorBody={setVendorBody} */}
-                            <VendorResponsePopup close={togglePopup} vendorBody={vendorBody} />
-                      </Modal>
-
-                }
-          {console.log("Ispopcutomer: ", isOpen)};
+              <img
+                id="PenCV"
+                alt="Logo"
+                src={Pen_Image}
+                onClick={togglePopup}
+              />
+              {isOpen && (
+                <VendorResponsePopup isOpen={isOpen} close={togglePopup} />
+              )}
             </div>
           </div>
         </div>
-        
-        <div className="V2-1">
-          <div className="V2-2">
-            <div className="V2-3">
-              <div className="V2-4">
-                <div className="V2-5">
-                  {vendorBody}
+
+        {/* Vendor content section */}
+        <div className="vendorSecB">
+          <div className="vendorSecB-1">
+            <div className="vendorSecB-2">
+              <div className="vendorSecB-3">
+                {/* Iterate over vendors */}
+                {vendors.map((vendor, index) => (
+                  <div className={`vendorSecB-4 ${selectedVendor === vendor ? 'selected' : ''}`} key={index} onClick={() => setSelectedVendor(vendor)}>
+                    <div className="vendorSecB-4b">
+                      <div className="vendorSecB-4c">{vendor.replace('_', ' ')}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Vendor email content */}
+              <div className="vendorSecB-Email">
+                <div className="vendorSecB-EmailCont">
+                  {/* Display selected vendor email body */}
+                  {selectedVendor && (
+                    <div>
+                      {vendordetail[selectedVendor].Body}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -57,11 +67,12 @@ const Vendor = ({  isPopupOpenRegenerate, togglePopupRegenerate,  isOpen, toggle
         </div>
       </div>
 
-      <div className="Quote-DelegateBtnDiv">
-        <div className="Quote-DelegateBtn">Regenerate</div>
+      {/* Footer */}
+      <div className="vendor-footer">
+        <div className="vendor-footer-btn">Regenerate</div>
       </div>
     </div>
   );
-};
+}
 
 export default Vendor;
