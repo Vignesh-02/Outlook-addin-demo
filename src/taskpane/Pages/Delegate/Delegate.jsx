@@ -23,16 +23,12 @@ const Delegate = ({
     val, ...props }) => {
 
   const [customerBody, setCustomerBody] = useState(null);
-  // const [vendorBody, setVendorBody] = useState(null);      
+  const [vendorBody, setVendorBody] = useState(null);      
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
   const [isDelegateClicked2, setIsDelegateClicked2] = useState(false);
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
   const [delegatebtn1, setDelegatebtn1] = useState(false);
   const [btn, setBtn] = useState(false);
-
-  const [isvendorBody, setVendorBody] = useState(null);
-  const [vendordetail, setVendorDetails] = useState([]);
-  const [vendoremails, setVendorEmails] = useState([])
 
 //   const [body, setBody] = useState(null);
 //   const [emailSubject, setEmailSubject] = useState(null);
@@ -65,7 +61,7 @@ const Delegate = ({
   };
 
   const handleLaunch = () => {
-    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcwMknoqsvsOzI53PHE81tR3yjSouoADaGAZj7X4jhDGAFCSBeh8FuSj5uYAJRLE3GNZE2s/dTxQs9ylM4dnsu9wF2rkdu1EGSftSurh0NYtqYjiHKxQR07M1oaTlD6qIi7COlQ9BZ/lg7mKIacMFn9c3yGxuC82z9Qq4/khuGBAYarAqEYJabYkI+R/64QcXjtb/lo/45kra4p0mqakT84ezTvSFG4WI/WVHPjLw0px0UzAaPVANUHSzAGc6uZuq+I4mtNYHEUznOUXhCa3gV//kIjeBElK3fVbR2ldMianYHetmfQyEZgUNCjzw1OrUwyJy27UJ+B/snUrKGmq/G4DZgAACLzS+AZ/Zx/UQAKsaxbO+vQK1wrFyO1Jo20IbsbuPS+GQ1ZfHz7NeLFa7t10xza0quNUggAYFBhU/X3jcmJ+zJbMuMqI4TlzQkqTo8wR158s/v3CUJWxFPEEZkK0vUaLRaufy9CoBtagvT1uK9bWNPc0ESS8IbLF4ie0ZTVxc+aLo7rauh/mPQTwzLvQT/SykSOYtrwTnhcFaiJvMwjNlrd7CEt77dAXeDsR+fxyet+YIBznNBO/DGfz5SWVq0t/wArk0fz2grz+sglWqm4oQwqMtjCDVX7d7OJl0jExfi5ZZJvqmRLMAWJTVpmYlRHfWN1fP5WXHRrLZedbo+ZaSamaWixOWvJS4qwuezy9QOZ3NjGUqOFWcd4fW+wTUSG2GMd76izFc2ohaD+b5twnvn+8RMmNklcyseKFhhjbhEh9adge2h0f6iPByFO6YXahBhrgTa/sIw9HXKYOfgM3H5dhGWG/eYwvLBxhOdiPCqHgFJTi+DhLoDkUhBe/Q7cbpeXoXysZrZBO+E7LaQq7drSMYJe8ZEd3mwlfg109qi5NfdkEU8ba6kqSVSAJ1ETM7DPX8ksQYzoiXOxj/hDpwx5CnV8QjlN51+hU7NanhhlspZyVNXAWMK2nqgN1iJxD3Ma9I0ouC8bZ1Nsvj95/6HuiKILbrwy5dqW3gRjbP5SZBdBq30Sb+1gKX/QsRwVgNUB/vV2v4wJykMnNAUWJAj6u5NCemwWl+ZxZzmFNXIcnpuSbkPB+HsgRacllzMZZZW27WZq1Ikf2zv59Ag==';
+    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAARGNUneAf2anl0WYK17UGOMsJculbYW+PbeW2SCxezl3nk91spVXl53Am4j8UyeP4ofVsBRaRDUUjzLzYMkFZVcQ8ZLow+/aHcLAdTAAdUt2ulEU2rRAXD4ZOeN4GUu4ywVlr+Il6hT6e0rfwLw9Cj/BVOM/URnw/5UXGoh7KCsPAwEalUNa0qfYnn78eJ3R5eYJT+uQznAfC+7mWoIe1Kz4m9PQaj0bCL4HyVFLP7ncwF1KL8ibrXbX/SUnSRzRcX9lXHAvYBmNm7CkqMz90aE0tgiylXCbm1dGzGei73ulnom49il9jsh3Q3LbCjhnx7Vz9t6BP7+yiO93eYwxqyoDZgAACEEa76M/XhY8QAJb4E5jQADcqX1k1N6H3fF1EZHoyDFR1/fPdFvW3wZQepV57sFL94Vn4u1DGV7/VkYy+776UdWctA67bke5ngUR7VXBjWT+WtT3L7QcYt+qPHL7O0h4wtzh6T0lHgmJcDytRP9Kzh4IBsHvWr4Ai62EOLKNk68NYxe790KHqX1u4UkBFAMuIPgqVphFRX5u6qgm2SvyyTPkOeGM7HWCFoRABBtUROGKwqA8bztcUMqjwuvYP/y9Rqn0wj5hziwewa9aro9ffbCseVlz5mlS+u67/wSJF4ajL+U7DQHb7d7PHRG5LPSmxIXbDlnIP2Yo0qQroXKdd/IpKUccvO6lrlAAPJVQ5G/ccyJZCkMgpxTDQRGrP7xlvYbTOR1+VbeRaKPyYxT6C2oeNccVDxJCtmiK1YV0aBTBOdvjI1yMTjLpLj32JASXGH3jd9BWedtJryckP9mNrcIgwTSHY5FPScxuJwDzw9ViosCKoMRsoPHEUY0O7xBEHEVb/4albsGFGUA4Ek1CskZccmsyxH8sljcdxyawHsQJbr511nAcNK9C+RrDd8+jdmtNIkzRl/vA6ETjOKY12PmzqvPFkk4VTR0YG4aMqRaFBPM7EHlvTOprG0wBPS81v1uZVK9y16+frUhhZmMrCNYfayceWbV2fjfbd8whvqMPhUFRYfYr/zNUYFph7qGzi2B4e3HmF3kmO7aDybK9L73rfdX6/EwdCAjgjpc29f7TuR8S4NA2le9qLsBODUPZKxjRmMGpDkOeN5V9Ag==';
     const sendMailReply = 'https://graph.microsoft.com/v1.0/me/messages/AQMkADAwATM0MDAAMS02OGVmLWEyN2EtMDACLTAwCgBGAAADpd4QqRN3K0yHpymIIakdnQcA54fYm3+x4Uy3lcgUc2eXoQAAAgEMAAAA54fYm3+x4Uy3lcgUc2eXoQAAABfpxN8AAAA=/reply';
         const emailData = {
           message: {
@@ -98,13 +94,6 @@ const Delegate = ({
               }
             }
           ],
-          "ccRecipients": [
-            {
-              "emailAddress": {
-                "address": "{{UserName}}"
-              }
-            }
-          ]
         },
         "saveToSentItems": "false"
       };
@@ -125,7 +114,7 @@ const Delegate = ({
         .catch(error => {
           console.error("Error sending mail", error);
         });
-      }
+   
 
       fetch(sendMailVendor, {
         method: 'POST',
@@ -133,7 +122,7 @@ const Delegate = ({
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(emailData)
+        body: JSON.stringify(emailData1)
       })
       .then(response => response.json())
       .then(data => {
@@ -239,25 +228,21 @@ const Delegate = ({
       const generateEmail = async () => {
         try {
           const res = await axios.post(
-            "http://127.0.0.1:8000/api/generate_email/",
-            {
-              classifyEmail: classifyEmail,
-            }
+            "https://api-dev.wise-sales.com/ml-backend/generate_email/",
+            classifyEmail,
           );
-          // Extracting vendor emails and storing them in state
-          const vendorEmails = Object.values(res.data)
-            .filter(obj => obj.Vendor_Email)
-            .map(obj => obj.Vendor_Email);
-          setVendorEmails(vendorEmails);
+         console.log(res.data);
+         const customerResponse = res.data.Customer_quote.Body;
+         const vendorResponse = res.data.vendor_1.Body
+          setCustomerBody(customerResponse);
+          setVendorBody(vendorResponse);
+          console.log("Customer's Body:", customerBody);
+          console.log("Vendor's Body:", vendorBody); 
+
+          // Fetching the body of the customer from the response
+          // const customerBody = res.data.Customer_quote.Body;
+          // console.log("Customer's Body:", customerBody);
           
-          // Further processing of other data as needed
-          setCustomerBody(res.data.Customer_quote.Body);
-          setVendorBody(res.data.vendor_1.Body);
-          setVendorDetails(res.data);
-          
-          console.log("Vendor Emails:", vendorEmails);
-          console.log("Customer's Body:", res.data.Customer_quote.Body);
-          console.log("Vendor's Body:", res.data.vendor_1.Body);
           console.log("generate Email API response from backend: ", res.data);
         } catch (error) {
           console.error("Error occurred while calling API:", error);
@@ -266,35 +251,6 @@ const Delegate = ({
       generateEmail();
     }
   }, [isDelegate2Clicked]);
-
-  // useEffect(() => {
-  //   if (isDelegate2Clicked) {
-  //     const generateEmail = async () => {
-  //       try {
-  //         const res = await axios.post(
-  //           "https://api-dev.wise-sales.com/ml-backend/generate_email/",
-  //           classifyEmail,
-  //         );
-  //        console.log(res.data);
-  //        const customerResponse = res.data.Customer_quote.Body;
-  //        const vendorResponse = res.data.vendor_1.Body
-  //         setCustomerBody(customerResponse);
-  //         setVendorBody(vendorResponse);
-  //         console.log("Customer's Body:", customerBody);
-  //         console.log("Vendor's Body:", vendorBody); 
-
-  //         // Fetching the body of the customer from the response
-  //         // const customerBody = res.data.Customer_quote.Body;
-  //         // console.log("Customer's Body:", customerBody);
-          
-  //         console.log("generate Email API response from backend: ", res.data);
-  //       } catch (error) {
-  //         console.error("Error occurred while calling API:", error);
-  //       }
-  //     };
-  //     generateEmail();
-  //   }
-  // }, [isDelegate2Clicked]);
 
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
@@ -526,8 +482,7 @@ const Delegate = ({
                 togglePopup2={togglePopup2}
                 customerBody={customerBody}
                 setCustomerBody={setCustomerBody}
-                vendorBody={isvendorBody}
-                vendordetail={vendordetail}
+                vendorBody={vendorBody}
               />
             )}
           </div>
