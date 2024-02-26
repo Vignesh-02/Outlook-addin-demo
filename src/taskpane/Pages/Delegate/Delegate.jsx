@@ -23,12 +23,16 @@ const Delegate = ({
     val, ...props }) => {
 
   const [customerBody, setCustomerBody] = useState(null);
-  const [vendorBody, setVendorBody] = useState(null);      
+  // const [vendorBody, setVendorBody] = useState(null);      
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
   const [isDelegateClicked2, setIsDelegateClicked2] = useState(false);
   const [isDelegate2Clicked, setIsDelegate2Clicked] = useState(false);
   const [delegatebtn1, setDelegatebtn1] = useState(false);
   const [btn, setBtn] = useState(false);
+
+  const [isvendorBody, setVendorBody] = useState(null);
+  const [vendordetail, setVendorDetails] = useState([]);
+  const [vendoremails, setVendorEmails] = useState([])
 
 //   const [body, setBody] = useState(null);
 //   const [emailSubject, setEmailSubject] = useState(null);
@@ -188,21 +192,25 @@ const Delegate = ({
       const generateEmail = async () => {
         try {
           const res = await axios.post(
-            "https://api-dev.wise-sales.com/ml-backend/generate_email/",
-            classifyEmail,
+            "http://127.0.0.1:8000/api/generate_email/",
+            {
+              classifyEmail: classifyEmail,
+            }
           );
-         console.log(res.data);
-         const customerResponse = res.data.Customer_quote.Body;
-         const vendorResponse = res.data.vendor_1.Body
-          setCustomerBody(customerResponse);
-          setVendorBody(vendorResponse);
-          console.log("Customer's Body:", customerBody);
-          console.log("Vendor's Body:", vendorBody); 
-
-          // Fetching the body of the customer from the response
-          // const customerBody = res.data.Customer_quote.Body;
-          // console.log("Customer's Body:", customerBody);
+          // Extracting vendor emails and storing them in state
+          const vendorEmails = Object.values(res.data)
+            .filter(obj => obj.Vendor_Email)
+            .map(obj => obj.Vendor_Email);
+          setVendorEmails(vendorEmails);
           
+          // Further processing of other data as needed
+          setCustomerBody(res.data.Customer_quote.Body);
+          setVendorBody(res.data.vendor_1.Body);
+          setVendorDetails(res.data);
+          
+          console.log("Vendor Emails:", vendorEmails);
+          console.log("Customer's Body:", res.data.Customer_quote.Body);
+          console.log("Vendor's Body:", res.data.vendor_1.Body);
           console.log("generate Email API response from backend: ", res.data);
         } catch (error) {
           console.error("Error occurred while calling API:", error);
@@ -211,6 +219,35 @@ const Delegate = ({
       generateEmail();
     }
   }, [isDelegate2Clicked]);
+
+  // useEffect(() => {
+  //   if (isDelegate2Clicked) {
+  //     const generateEmail = async () => {
+  //       try {
+  //         const res = await axios.post(
+  //           "https://api-dev.wise-sales.com/ml-backend/generate_email/",
+  //           classifyEmail,
+  //         );
+  //        console.log(res.data);
+  //        const customerResponse = res.data.Customer_quote.Body;
+  //        const vendorResponse = res.data.vendor_1.Body
+  //         setCustomerBody(customerResponse);
+  //         setVendorBody(vendorResponse);
+  //         console.log("Customer's Body:", customerBody);
+  //         console.log("Vendor's Body:", vendorBody); 
+
+  //         // Fetching the body of the customer from the response
+  //         // const customerBody = res.data.Customer_quote.Body;
+  //         // console.log("Customer's Body:", customerBody);
+          
+  //         console.log("generate Email API response from backend: ", res.data);
+  //       } catch (error) {
+  //         console.error("Error occurred while calling API:", error);
+  //       }
+  //     };
+  //     generateEmail();
+  //   }
+  // }, [isDelegate2Clicked]);
 
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
@@ -442,7 +479,8 @@ const Delegate = ({
                 togglePopup2={togglePopup2}
                 customerBody={customerBody}
                 setCustomerBody={setCustomerBody}
-                vendorBody={vendorBody}
+                vendorBody={isvendorBody}
+                vendordetail={vendordetail}
               />
             )}
           </div>
