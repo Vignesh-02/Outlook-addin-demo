@@ -11,6 +11,8 @@ import { useHistory } from "react-router-dom";
 
 
 const Login = () => {
+    let loginDialog = null;
+
     
     const history = useHistory();
 
