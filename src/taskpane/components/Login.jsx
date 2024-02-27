@@ -28,14 +28,10 @@ const Login = () => {
 
     const loginWithOAuth = () => {
 
-    const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    const redirectUri = "https://https://outlook-addin-v9y9.onrender.com/login.html";
-    const scope = "Mail.Send";
-    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&response_mode=query`;
-
-    Office.context.ui.displayDialogAsync(redirectUri, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
+    
+    const authPage = "https://outlook-addin-v9y9.onrender.com/auth-dialog.html";
+    Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
-        const dialog = result.value;
         dialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
       } else {
         console.error('Failed to open dialog:', result.error);

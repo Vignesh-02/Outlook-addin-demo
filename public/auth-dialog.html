@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authenticate</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+</head>
+<body>
+    <script>
+            window.onload = function() {
+        const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
+    const redirectUri = "https://outlook-addin-v9y9.onrender.com/login.html";
+    const scope = "Mail.Send";
+    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&response_mode=query`;;
+    
+        // Redirect to the Microsoft OAuth login page
+        window.location.href = authUrl;
+    };
+    </script>
+    
+</body>
+</html>
