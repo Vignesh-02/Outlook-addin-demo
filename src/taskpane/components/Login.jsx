@@ -40,19 +40,23 @@ const Login = () => {
   }
 
   const handleMessageReceived = (arg) => {
+    console.log(arg);
     const message = JSON.parse(arg.message);
+    console.log('Received Message', message);
     if (message.status === 'success') {
       // Close the dialog window
       arg.source.close();
       // Exchange the authorization code for a token
+      console.log('exchangeCode is called')
       exchangeCodeForToken(message.code);
     }
   }
 
   const exchangeCodeForToken = (code) => {
+    console.log('inside exchange code', code)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    const redirectUri = "https://https://outlook-addin-v9y9.onrender.com/login.html";
+    const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
