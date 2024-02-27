@@ -64,7 +64,6 @@ const Delegate = ({
     quoteRfqEmailParent.style.height = "27px";
   };
 
-<<<<<<< HEAD
 //   const handleLaunch = () => {
     
 //     const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcwMknoqsvsOzI53PHE81tR3yjSouoADaGAZj7X4jhDGAFCSBeh8FuSj5uYAJRLE3GNZE2s/dTxQs9ylM4dnsu9wF2rkdu1EGSftSurh0NYtqYjiHKxQR07M1oaTlD6qIi7COlQ9BZ/lg7mKIacMFn9c3yGxuC82z9Qq4/khuGBAYarAqEYJabYkI+R/64QcXjtb/lo/45kra4p0mqakT84ezTvSFG4WI/WVHPjLw0px0UzAaPVANUHSzAGc6uZuq+I4mtNYHEUznOUXhCa3gV//kIjeBElK3fVbR2ldMianYHetmfQyEZgUNCjzw1OrUwyJy27UJ+B/snUrKGmq/G4DZgAACLzS+AZ/Zx/UQAKsaxbO+vQK1wrFyO1Jo20IbsbuPS+GQ1ZfHz7NeLFa7t10xza0quNUggAYFBhU/X3jcmJ+zJbMuMqI4TlzQkqTo8wR158s/v3CUJWxFPEEZkK0vUaLRaufy9CoBtagvT1uK9bWNPc0ESS8IbLF4ie0ZTVxc+aLo7rauh/mPQTwzLvQT/SykSOYtrwTnhcFaiJvMwjNlrd7CEt77dAXeDsR+fxyet+YIBznNBO/DGfz5SWVq0t/wArk0fz2grz+sglWqm4oQwqMtjCDVX7d7OJl0jExfi5ZZJvqmRLMAWJTVpmYlRHfWN1fP5WXHRrLZedbo+ZaSamaWixOWvJS4qwuezy9QOZ3NjGUqOFWcd4fW+wTUSG2GMd76izFc2ohaD+b5twnvn+8RMmNklcyseKFhhjbhEh9adge2h0f6iPByFO6YXahBhrgTa/sIw9HXKYOfgM3H5dhGWG/eYwvLBxhOdiPCqHgFJTi+DhLoDkUhBe/Q7cbpeXoXysZrZBO+E7LaQq7drSMYJe8ZEd3mwlfg109qi5NfdkEU8ba6kqSVSAJ1ETM7DPX8ksQYzoiXOxj/hDpwx5CnV8QjlN51+hU7NanhhlspZyVNXAWMK2nqgN1iJxD3Ma9I0ouC8bZ1Nsvj95/6HuiKILbrwy5dqW3gRjbP5SZBdBq30Sb+1gKX/QsRwVgNUB/vV2v4wJykMnNAUWJAj6u5NCemwWl+ZxZzmFNXIcnpuSbkPB+HsgRacllzMZZZW27WZq1Ikf2zv59Ag==';
@@ -185,88 +184,6 @@ const handleLaunch = (vendordetail) => {
     });
   });
 }
-=======
-  const handleLaunch = () => {
-    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAeJ11VoWDbmrzeerwQgxxgOWiAK8bXIRFEiygmBltQlV2cfr+l6KTEzRycFQt7cKYSDOnKrmm2ubuwxfiHaAWMlCtLRN1n/UduS/NBz07aC8Xq+xQF9jpLvWLwFlYK5mFN3uJnCbCgjVeGGnOA6c2H8Ur5yayvTCC48d4ttgJCzUT/xysXtHN1IrFk0LtwxQEdKWbvDsOyeAbHKpPgHnx9GTdf3P/N7CML3yi0A78ubdcCjZ7VD7ez5llSSZAE9ECvLJHExKonfNlvZwvd2ZZH8l0VG+m+ct08Jy9BSQM5DLvpwu01ZCh/kmOAgFqOJjOnNttA/IxPM+yyQ9S0Ng55YDZgAACDSNR4pm7xW8QAJ6jUyYEqlRZ/R77ACfWhdpydo6H9B+JnF/vJNQHuoTwECbKx+NiJ/dkaHV20OjT/xl2BzHpMX8S4DbXWcN1VLvL78mt1MIeFoTXWMNNe+5PJ5a7NE/fVnXeEp77ScOY7ZxhD/jQ+/Pk9J0Me7sJ9f7oRZZ2RF1cme+jZCCKnD9l7+Sl2ImxZl7cL1kWXgyUD674kRdi3uN2cFzzFKGAEWyZK3hQ4pROdx0IiPLpyVopesQyHf1vSHXL3to/BcRfEGSkKY9/2VU7yxY+byzhMAUtgD0vF1VRdS7PyuGykwZvGm4cOWpr+1Ve1+eaXpN5i61cH7T/wvztzhqnPWufdirL+tvOIKaIyibPeyqwpnIWOBO+r6BYe/RUOer7ujs+hM9s2/2fzpF541kCBTrz+Go6ax8lTZKNHCZUJ4GU4pXh1iUY3JoF6faMXTstCuW/eyGyepGJx7FZWopfwXqe/SvTihsA7+xZjPqvYQEx31HMMai/2VUPN4BinbCFil44ohONLwxwVgXV67viANzIXcgz8+dDSaV8VtQbLU7ReI5vCk+NL3j5IXvU1rwK8KDG0of60xWutauy1m1RmRBgxRc90BYxnY6tSTULmQeibJmlrk+XPWAQvy3cIo0KwRTbu6Hr0jNhALibvA2sH5X2QGtCZ6p0CdHf406B9wzuD/cj2ivmo6BH/bNTkClGOi4BFISm459Mo7u7Ipstpl8zf0CJX5jw2y81dF5xP6HdqtWRDAXjoFzHtgoK+lC8V+3oJh9Ag==';
-    const sendMailReply = 'https://graph.microsoft.com/v1.0/me/messages/AQMkADAwATM0MDAAMS02OGVmLWEyN2EtMDACLTAwCgBGAAADpd4QqRN3K0yHpymIIakdnQcA54fYm3+x4Uy3lcgUc2eXoQAAAgEMAAAA54fYm3+x4Uy3lcgUc2eXoQAAABfpxN8AAAA=/reply';
-        const emailData = {
-            message: {
-                toRecipients: [
-                    {
-                        emailAddress: {
-                            address: "rudranil@onelabventures.com"
-                        }
-                    }
-                ]
-            },
-            comment: customerBody
-    };
-
-    // const sendMailVendor = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcwMknoqsvsOzI53PHE81tR3yjSouoADaGAZj7X4jhDGAFCSBeh8FuSj5uYAJRLE3GNZE2s/dTxQs9ylM4dnsu9wF2rkdu1EGSftSurh0NYtqYjiHKxQR07M1oaTlD6qIi7COlQ9BZ/lg7mKIacMFn9c3yGxuC82z9Qq4/khuGBAYarAqEYJabYkI+R/64QcXjtb/lo/45kra4p0mqakT84ezTvSFG4WI/WVHPjLw0px0UzAaPVANUHSzAGc6uZuq+I4mtNYHEUznOUXhCa3gV//kIjeBElK3fVbR2ldMianYHetmfQyEZgUNCjzw1OrUwyJy27UJ+B/snUrKGmq/G4DZgAACLzS+AZ/Zx/UQAKsaxbO+vQK1wrFyO1Jo20IbsbuPS+GQ1ZfHz7NeLFa7t10xza0quNUggAYFBhU/X3jcmJ+zJbMuMqI4TlzQkqTo8wR158s/v3CUJWxFPEEZkK0vUaLRaufy9CoBtagvT1uK9bWNPc0ESS8IbLF4ie0ZTVxc+aLo7rauh/mPQTwzLvQT/SykSOYtrwTnhcFaiJvMwjNlrd7CEt77dAXeDsR+fxyet+YIBznNBO/DGfz5SWVq0t/wArk0fz2grz+sglWqm4oQwqMtjCDVX7d7OJl0jExfi5ZZJvqmRLMAWJTVpmYlRHfWN1fP5WXHRrLZedbo+ZaSamaWixOWvJS4qwuezy9QOZ3NjGUqOFWcd4fW+wTUSG2GMd76izFc2ohaD+b5twnvn+8RMmNklcyseKFhhjbhEh9adge2h0f6iPByFO6YXahBhrgTa/sIw9HXKYOfgM3H5dhGWG/eYwvLBxhOdiPCqHgFJTi+DhLoDkUhBe/Q7cbpeXoXysZrZBO+E7LaQq7drSMYJe8ZEd3mwlfg109qi5NfdkEU8ba6kqSVSAJ1ETM7DPX8ksQYzoiXOxj/hDpwx5CnV8QjlN51+hU7NanhhlspZyVNXAWMK2nqgN1iJxD3Ma9I0ouC8bZ1Nsvj95/6HuiKILbrwy5dqW3gRjbP5SZBdBq30Sb+1gKX/QsRwVgNUB/vV2v4wJykMnNAUWJAj6u5NCemwWl+ZxZzmFNXIcnpuSbkPB+HsgRacllzMZZZW27WZq1Ikf2zv59Ag=='
-    const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';  
-    const emailData1 = {
-        message: {
-          subject: "Mail from ISR ",
-          body: {
-            contentType: "Text",
-            content: "Testing mail from ISR."
-          },
-          toRecipients: [
-            {
-              emailAddress: {
-                // "address": vendorEmails,
-                address: "afshankhan252@gmail.com"
-              },
-            },
-            {
-  
-                emailAddress: {
-                // "address": vendorEmails,
-                address: "laserlikefocus000@gmail.com"
-              }
-            }
-          ],
-        },
-        saveToSentItems: "false"
-      };
-
-
-        fetch(sendMailReply, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(emailData)
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log("Mail sent successfully", data);
-        })
-        .catch(error => {
-          console.error("Error sending mail", error);
-        });
-   
-
-      fetch(sendMailVendor, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(emailData1)
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Mail sent successfully", data);
-      })
-      .catch(error => {
-        console.error("Error sending mail", error);
-      });
-    }
-
-
->>>>>>> e0c1e3a6ef614ef4aad7246802d79aef84e0c4e1
 
 
   useEffect(() => {
