@@ -12,7 +12,7 @@
             // var msg = this.location.href;
             // console.log(msg)
             const urlParams = new URLSearchParams(window.location.search);
-            const myParam = urlParams.get('code');
+            const code = urlParams.get('code');
             console.log('myParam ', code)
             SendBackURI(code);
 
@@ -22,10 +22,10 @@
       
         function SendBackURI(msg) {
             try {
-                Office.initialize = function (reason) {
+                Office.onReady(() => {
 
                     Office.context.ui.messageParent(msg);
-                };
+                });
             }
             catch (err) {
                 console.log(err);

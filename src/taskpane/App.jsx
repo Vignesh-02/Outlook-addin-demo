@@ -231,6 +231,7 @@ const App = (props) => {
               }
             }]
           }
+          
         };
       
         fetch(sendMailUrl, {
