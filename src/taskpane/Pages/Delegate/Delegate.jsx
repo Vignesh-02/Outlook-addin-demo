@@ -64,40 +64,126 @@ const Delegate = ({
     quoteRfqEmailParent.style.height = "27px";
   };
 
-  const handleLaunch = () => {
-    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcTrjr5ebfMwIqqERsk3WY49wdOEF8JCiugJqx2Va009nQTZ30ZEjMDJVIt+r/Mljk+k4JGs0Cg/KYZnx9GmUqjQqfX4apKe5qyz/ihriXozUJpp2mGzfsiVOxFLrVSegu2Y+7N5zKVtNCEUNiFGWLPA6NKF40Zz/oAMdPQGsJ4NeIHvm1ZbfG4OX4zj1yNaOCjAlcozhuNg5bO8Iifh9LQsO2bhqItNQAtWjeNzlntwuId0Mbm1kIAbjP2JHCtxftMqck8K+4Xgs2j8/0ipeOfzP1GPOd2en2wG+i8yLHaMkF0HCVWs3XV6tD0rhw6QvCMeaT754ZLAroiHCBqNKbMDZgAACKO63vt6nkzYQAKCgYq3zrrF9hl+11KB1SWlE2bmXP49f0k/ouyyWVEicxXc1lQrDLFcyEBNrBcIlt2JY2de52uRpeyco+rfm42Gq+xgHh0OlEKZCf8Lr+EKPoT366nDVsxDsxW9JyGUaT9YsDV9r4Ht7dcSowXuiIV7B6l/HbWJgJqvEmAD0jrWTFaxaNn+E2YHAQ7AX9HbIWwQqutTjTCsW2l6Z3XH+V4nfFcfSfCau71/yx1pPYvpR4eBry9N9/bVAHzRdeMwVAruu0+9iWMUGf+QBDqF5BzvJeT9GBIt4OmGrbvIBCHll9phZGFGadrl2XJG3At1eJPcMm9Kya8kBKDnGYFJKjMe0xZkTgKIHPjZDQYnNisc9PBzMO3Viop+txHElmg1g9pe8HZpsSDpI0fMbWFSP43yN8WK8bHSg1t5YN2CoM4QC5PXy1tDWSG3ADF4Gu+8ehh0OE5PSLfmG/ZjQdfJUTu0otvkXwmFoabhdsjXyGwBnyC7JGYqQ51AW3GOaepYqhSLeSvJgd4XAF3fDb2uNJuFeOILbxB1FIEHBrywaXIUiHhyBm+m7S5ljDlk6+h+riyDW4C7/pCQ3dlUc+GEpyhpI8QQOiGN+pSzasDAGZFfwcNKtSlYyJdD/h1KOMMFDrqoXn9buufiTD0x5k+PXLIe1wxCzxs9zbziN/4p51k56YI3w22ep3q08FIH/KoeZYZRLd9p8qxErbiBXpbIuW0AvurzHmLyrSHOP9GxMktSTp0ilUHYU0D3UPJ2I2X7Rap9Ag==';
-    const sendMailUrl = 'https://graph.microsoft.com/v1.0/me/messages/AQMkADAwATM0MDAAMS02OGVmLWEyN2EtMDACLTAwCgBGAAADpd4QqRN3K0yHpymIIakdnQcA54fYm3+x4Uy3lcgUc2eXoQAAAgEMAAAA54fYm3+x4Uy3lcgUc2eXoQAAABfpxN8AAAA=/reply';
-        const emailData = {
-          message: {
-            message: {
-                toRecipients: [
-                    {
-                        emailAddress: {
-                            address: "rudranil@onelabventures.com"
-                        }
-                    }
-                ]
-            },
-            comment: "<b>testing reply</b>"
-        }
-    };
+//   const handleLaunch = () => {
+    
+//     const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcwMknoqsvsOzI53PHE81tR3yjSouoADaGAZj7X4jhDGAFCSBeh8FuSj5uYAJRLE3GNZE2s/dTxQs9ylM4dnsu9wF2rkdu1EGSftSurh0NYtqYjiHKxQR07M1oaTlD6qIi7COlQ9BZ/lg7mKIacMFn9c3yGxuC82z9Qq4/khuGBAYarAqEYJabYkI+R/64QcXjtb/lo/45kra4p0mqakT84ezTvSFG4WI/WVHPjLw0px0UzAaPVANUHSzAGc6uZuq+I4mtNYHEUznOUXhCa3gV//kIjeBElK3fVbR2ldMianYHetmfQyEZgUNCjzw1OrUwyJy27UJ+B/snUrKGmq/G4DZgAACLzS+AZ/Zx/UQAKsaxbO+vQK1wrFyO1Jo20IbsbuPS+GQ1ZfHz7NeLFa7t10xza0quNUggAYFBhU/X3jcmJ+zJbMuMqI4TlzQkqTo8wR158s/v3CUJWxFPEEZkK0vUaLRaufy9CoBtagvT1uK9bWNPc0ESS8IbLF4ie0ZTVxc+aLo7rauh/mPQTwzLvQT/SykSOYtrwTnhcFaiJvMwjNlrd7CEt77dAXeDsR+fxyet+YIBznNBO/DGfz5SWVq0t/wArk0fz2grz+sglWqm4oQwqMtjCDVX7d7OJl0jExfi5ZZJvqmRLMAWJTVpmYlRHfWN1fP5WXHRrLZedbo+ZaSamaWixOWvJS4qwuezy9QOZ3NjGUqOFWcd4fW+wTUSG2GMd76izFc2ohaD+b5twnvn+8RMmNklcyseKFhhjbhEh9adge2h0f6iPByFO6YXahBhrgTa/sIw9HXKYOfgM3H5dhGWG/eYwvLBxhOdiPCqHgFJTi+DhLoDkUhBe/Q7cbpeXoXysZrZBO+E7LaQq7drSMYJe8ZEd3mwlfg109qi5NfdkEU8ba6kqSVSAJ1ETM7DPX8ksQYzoiXOxj/hDpwx5CnV8QjlN51+hU7NanhhlspZyVNXAWMK2nqgN1iJxD3Ma9I0ouC8bZ1Nsvj95/6HuiKILbrwy5dqW3gRjbP5SZBdBq30Sb+1gKX/QsRwVgNUB/vV2v4wJykMnNAUWJAj6u5NCemwWl+ZxZzmFNXIcnpuSbkPB+HsgRacllzMZZZW27WZq1Ikf2zv59Ag==';
+// const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
+//     const emailData1 = {
+//         "message": {
+//           "subject": "Meet for lunch?",
+//           "body": {
+//             "contentType": "Text",
+//             "content": "The new cafeteria is open."
+//           },
+//           "toRecipients": [
+//             {
+//               "emailAddress": {
+//                 "address": "afshankhan252@gmail.com"
+//               }
+//             }
+//           ]
+//         },
+//         "saveToSentItems": "false"
+//       };
+// fetch(sendMailVendor, {
+//         method: 'POST',
+//         headers: {
+//           'Authorization': `Bearer ${accessToken}`,
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(emailData1)
+//       })
+//       .then(response => response.json())
+//       .then(data => {
+//         console.log("Mail sent successfully", data);
+//       })
+//       .catch(error => {
+//         console.error("Error sending mail", error);
+//       });
+
+//     // }
+    
+//     // const sendMailUrl = 'https://graph.microsoft.com/v1.0/me/messages/AQMkADAwATM0MDAAMS02OGVmLWEyN2EtMDACLTAwCgBGAAADpd4QqRN3K0yHpymIIakdnQcA54fYm3+x4Uy3lcgUc2eXoQAAAgEMAAAA54fYm3+x4Uy3lcgUc2eXoQAAABfpxN8AAAA=/reply';
+//     //     const emailData = {
+//     //       message: {
+//     //         message: {
+//     //             toRecipients: [
+//     //                 {
+//     //                     emailAddress: {
+//     //                         address: "rudranil@onelabventures.com"
+//     //                     }
+//     //                 }
+//     //             ]
+//     //         },
+//     //         comment: "<b>testing reply</b>"
+//     //     }
+//     // };
       
-        fetch(sendMailUrl, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(emailData)
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log("Mail sent successfully", data);
-        })
-        .catch(error => {
-          console.error("Error sending mail", error);
-        });
-      }
+//         // fetch(sendMailUrl, {
+//         //   method: 'POST',
+//         //   headers: {
+//         //     'Authorization': `Bearer ${accessToken}`,
+//         //     'Content-Type': 'application/json'
+//         //   },
+//         //   body: JSON.stringify(emailData)
+//         // })
+//         // .then(response => response.json())
+//         // .then(data => {
+//         //   console.log("Mail sent successfully", data);
+//         // })
+//         // .catch(error => {
+//         //   console.error("Error sending mail", error);
+//         // });
+
+
+//       }
+
+
+// change
+const handleLaunch = (vendordetail) => {
+  const accessToken = 'abcd';
+  const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
+
+  // Iterate over each vendor detail
+  Object.values(vendordetail).forEach(vendor => {
+    const { Vendor_Email, Subject, Body } = vendor;
+
+    const emailData = {
+      "message": {
+        "subject": Subject,
+        "body": {
+          "contentType": "Text",
+          "content": Body
+        },
+        "toRecipients": [
+          {
+            "emailAddress": {
+              "address": Vendor_Email
+            }
+          }
+        ]
+      },
+      "saveToSentItems": "false"
+    };
+
+    // Send email to the vendor
+    fetch(sendMailVendor, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(emailData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Mail sent successfully to", Vendor_Email, data);
+    })
+    .catch(error => {
+      console.error("Error sending mail to", Vendor_Email, error);
+    });
+  });
+}
 
 
   useEffect(() => {
