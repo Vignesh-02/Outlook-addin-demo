@@ -44,7 +44,7 @@ const Login = () => {
 
   const handleMessageReceived = (arg) => {
     console.log(arg);
-    const message = JSON.parse(arg.message);
+    const message = arg.message;
     console.log('Received Message', message);
     if (message) {
       // Close the dialog window
