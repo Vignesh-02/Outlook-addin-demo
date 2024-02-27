@@ -26,7 +26,61 @@ const Login = () => {
       history.push('/del');
     };
 
-  
+    const loginWithOAuth = () => {
+
+    
+    const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
+    Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
+      if (result.status === Office.AsyncResultStatus.Succeeded) {
+        dialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
+      } else {
+        console.error('Failed to open dialog:', result.error);
+      }
+    });
+  }
+
+  const handleMessageReceived = (arg) => {
+    console.log(arg);
+    const message = JSON.parse(arg.message);
+    console.log('Received Message', message);
+    if (message.status === 'success') {
+      // Close the dialog window
+      arg.source.close();
+      // Exchange the authorization code for a token
+      console.log('exchangeCode is called')
+      exchangeCodeForToken(message.code);
+    }
+  }
+
+  const exchangeCodeForToken = (code) => {
+    console.log('inside exchange code', code)
+    const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
+    const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
+    const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
+    const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
+
+    // Prepare the form data to post
+    const formData = new FormData();
+    formData.append('client_id', clientId);
+    formData.append('scope', 'Mail.Send');
+    formData.append('code', code);
+    formData.append('redirect_uri', redirectUri);
+    formData.append('grant_type', 'authorization_code');
+    formData.append('client_secret', clientSecret); // Only if required
+
+    // Use fetch or similar to post to the token URL
+    fetch(tokenUrl, {
+      method: 'POST',
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Token:', data.access_token);
+      // Here you can store the token securely and use it to make API calls
+    })
+    .catch(error => console.error('Error fetching token:', error));
+  }
+
   
 
 //   const handleCrossClick = () => {
@@ -78,7 +132,7 @@ const Login = () => {
             {/* <div className="OAuth">
               <img src={GoogleImage} alt="Google Logo" />
             </div> */}
-            <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div>
+            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div>
           </div>
         </div>
 

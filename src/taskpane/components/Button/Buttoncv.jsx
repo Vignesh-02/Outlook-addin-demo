@@ -13,7 +13,8 @@ const Buttoncv = ({
   togglePopup2,
   customerBody,
   setCustomerBody,
-  vendorBody
+  vendorBody,
+  vendordetail
 
 }) => {
   return (
@@ -25,7 +26,7 @@ const Buttoncv = ({
       {console.log("istogglepopup", togglePopup1)}
       <Vendor 
       isPopupOpenRegenerate={isPopupOpenRegenerate} togglePopupRegenerate={togglePopupRegenerate}
-      isOpen={isPopupOpen2} togglePopup={togglePopup2} vendorBody={vendorBody} />
+      isOpen={isPopupOpen2} togglePopup={togglePopup2} vendorBody={vendorBody}  vendordetail={vendordetail} />
     </div>
   );
 };

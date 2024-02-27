@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Vendor.css';
-import Pen_Image from "../../../../public/pen.png";
+import Pen_Image from "../../../public/pen.png";
 import VendorResponsePopup from "./VendorResponsePopup";
 const Vendor = ({ isOpen, togglePopup, vendordetail }) => {
   // State to keep track of selected vendor
@@ -26,9 +26,9 @@ const Vendor = ({ isOpen, togglePopup, vendordetail }) => {
                 src={Pen_Image}
                 onClick={togglePopup}
               />
-              {/* {isOpen && (
+              {isOpen && (
                 <VendorResponsePopup isOpen={isOpen} close={togglePopup} />
-              )} */}
+              )}
             </div>
           </div>
         </div>
