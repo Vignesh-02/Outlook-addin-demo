@@ -12,7 +12,7 @@
     const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
     const scope = "Mail.Send";
     const state="12345";
-    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}&response_mode=query`;;
+    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&state=${encodeURIComponent(state)}&response_mode=query`;;
     
         
         window.location.replace(authUrl);
