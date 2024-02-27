@@ -46,12 +46,13 @@ const Login = () => {
     console.log(arg);
     const message = JSON.parse(arg.message);
     console.log('Received Message', message);
-    if (message.status === 'success') {
+    if (message) {
       // Close the dialog window
-      arg.source.close();
+    //   arg.source.close();
+    loginDialog.close();
       // Exchange the authorization code for a token
-      console.log('exchangeCode is called')
-      exchangeCodeForToken(message.code);
+      console.log('exchangeCode is called with code ', message)
+      exchangeCodeForToken(message);
     }
   }
 
