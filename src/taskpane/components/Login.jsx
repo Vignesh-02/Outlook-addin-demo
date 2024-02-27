@@ -128,7 +128,7 @@ const Login = () => {
             {/* <div className="OAuth">
               <img src={GoogleImage} alt="Google Logo" />
             </div> */}
-            <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div>
+            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div>
           </div>
         </div>
 
