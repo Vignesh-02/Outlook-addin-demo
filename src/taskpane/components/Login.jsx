@@ -34,7 +34,8 @@ const Login = () => {
     const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
     Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
-        dialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
+        loginDialog = result.value;
+        loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
       } else {
         console.error('Failed to open dialog:', result.error);
       }
