@@ -44,16 +44,21 @@ const Login = () => {
 
   const handleMessageReceived = (arg) => {
     console.log(arg);
-    const message = arg.message;
-    console.log('Received Message', message);
-    if (message) {
+    // const message = arg.message;
+    console.log('test 1')
+    console.log(Object.keys(arg));
+    console.log(Object.values(arg));
+    console.log('test 2');
+    // console.log('Received Message', message);
+    // if (message) {
       // Close the dialog window
     //   arg.source.close();
     loginDialog.close();
       // Exchange the authorization code for a token
-      console.log('exchangeCode is called with code ', message)
-      exchangeCodeForToken(message);
-    }
+    //   console.log('exchangeCode is called with code ', message)
+    //   exchangeCodeForToken(message);
+    console.log('test 3');
+    // }
   }
 
   const exchangeCodeForToken = (code) => {
