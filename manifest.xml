@@ -3,7 +3,7 @@
 <Version>1.2</Version>
 <ProviderName>Contoso</ProviderName>
 <DefaultLocale>en-US</DefaultLocale>
-<DisplayName DefaultValue="Wise Sales"/>
+<DisplayName DefaultValue="Test Sales"/>
 <Description DefaultValue="A template to get started."/>
 <IconUrl DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/wise-sales-logo-64.png"/>
 <HighResolutionIconUrl DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-128.png"/>
