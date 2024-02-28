@@ -80,6 +80,10 @@ const Login = () => {
     fetch(tokenUrl, {
       method: 'POST',
       body: formData,
+    }, {
+        headers: {
+            origin: "https://outlook-addin-v9y9.onrender.com/assets/login.html"
+        }
     })
     .then(response => response.json())
     .then(data => {
