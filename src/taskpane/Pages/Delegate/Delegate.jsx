@@ -25,7 +25,7 @@ const Delegate = ({
   const [customerBody, setCustomerBody] = useState(null);
   const [vendorBody, setVendorBody] = useState(null);     
 
-  const [vendordetail, setVendorDetails] = useState(null);
+  const [vendordetail, setVendorDetails] = useState([]);
   const [vendoremails, setVendorEmails] = useState([])
 
   const [isDelegateClicked, setIsDelegateClicked] = useState(false);
