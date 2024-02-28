@@ -3,21 +3,21 @@ import { useCallback, useEffect, useState } from 'react';
 // import Office from '@microsoft/office-js';
 
 import PropTypes from "prop-types";
-import Header from "./components/Header";
-import HeroList from "./components/HeroList";
-import TextInsertion from "./components/TextInsertion";
+import Header from "./Header";
+import HeroList from "./HeroList";
+import TextInsertion from "./TextInsertion";
 import { makeStyles } from "@fluentui/react-components";
 import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluentui/react-icons";
 
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import Delegate from "./Pages/Delegate/Delegate";
+import Delegate from "../Pages/Delegate/Delegate";
 // import Home from "./Pages/Home/Home";
 // import Login from "./Login";
 // import Home from "./Home"/;
 // import Queue from "./Queue";
-import Login from "./components/Login";
+import Login from "./Login";
 
 const useStyles = makeStyles({
   root: {
@@ -213,72 +213,72 @@ const App = (props) => {
 
   
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    function sendMail(accessToken) {
-        // Example function to send an email using Microsoft Graph and the access token
-        const sendMailUrl = 'https://graph.microsoft.com/v1.0/me/sendMail';
-        const emailData = {
-          message: {
-            subject: "Hello from Office Add-in",
-            body: {
-              contentType: "Text",
-              content: "Hello, This is a test email sent from an Office Add-in! from Vigu"
-            },
-            toRecipients: [{
-              emailAddress: {
-                address: "laserlikefocus000@gmail.com" // Specify the recipient's email address
-              }
-            }]
-          }
+//     function sendMail(accessToken) {
+//         // Example function to send an email using Microsoft Graph and the access token
+//         const sendMailUrl = 'https://graph.microsoft.com/v1.0/me/sendMail';
+//         const emailData = {
+//           message: {
+//             subject: "Hello from Office Add-in",
+//             body: {
+//               contentType: "Text",
+//               content: "Hello, This is a test email sent from an Office Add-in! from Vigu"
+//             },
+//             toRecipients: [{
+//               emailAddress: {
+//                 address: "laserlikefocus000@gmail.com" // Specify the recipient's email address
+//               }
+//             }]
+//           }
           
-        };
+//         };
       
-        fetch(sendMailUrl, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(emailData)
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log("Mail sent successfully", data);
-        })
-        .catch(error => {
-          console.error("Error sending mail", error);
-        });
-      }
+//         fetch(sendMailUrl, {
+//           method: 'POST',
+//           headers: {
+//             'Authorization': `Bearer ${accessToken}`,
+//             'Content-Type': 'application/json'
+//           },
+//           body: JSON.stringify(emailData)
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//           console.log("Mail sent successfully", data);
+//         })
+//         .catch(error => {
+//           console.error("Error sending mail", error);
+//         });
+//       }
 
 
    
-        // Ensure Office is ready
+//         // Ensure Office is ready
 
-        async function getIDToken() {
-            try {
-              let userTokenEncoded = await OfficeRuntime.auth.getAccessToken({
-                allowSignInPrompt: true,
-              });
-              let userToken = jwt_decode(userTokenEncoded);
-              //you can use oid from userToken
-              console.log('This is the access token ', userTokenEncoded);
-              console.log('This is the decoded access token ', userToken);
-              sendMail(userTokenEncoded);
+//         async function getIDToken() {
+//             try {
+//               let userTokenEncoded = await OfficeRuntime.auth.getAccessToken({
+//                 allowSignInPrompt: true,
+//               });
+//               let userToken = jwt_decode(userTokenEncoded);
+//               //you can use oid from userToken
+//               console.log('This is the access token ', userTokenEncoded);
+//               console.log('This is the decoded access token ', userToken);
+//               sendMail(userTokenEncoded);
           
-            } catch (error) {
-              console.log(error);
-            }
-          }
+//             } catch (error) {
+//               console.log(error);
+//             }
+//           }
 
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Outlook) {
-     getIDToken();
-  }
-});
+// Office.onReady((info) => {
+//   if (info.host === Office.HostType.Outlook) {
+//      getIDToken();
+//   }
+// });
 
 
-  }, [])
+//   }, [])
   
   
   
