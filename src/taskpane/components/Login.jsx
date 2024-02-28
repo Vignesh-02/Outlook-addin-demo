@@ -55,7 +55,9 @@ const Login = () => {
     loginDialog.close();
       // Exchange the authorization code for a token
     //   console.log('exchangeCode is called with code ', message) 
-      exchangeCodeForToken(message);
+    //   exchangeCodeForToken(message);
+    history.push('/del');
+
     console.log('test 3');
     // }
   }
