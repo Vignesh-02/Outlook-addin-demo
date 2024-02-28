@@ -147,29 +147,92 @@ const Delegate = ({
 
   // change
 
-  let allVendorEmails = vendordetail;
-  console.log("allvendorEmails", allVendorEmails)
+  // let allVendorEmails = vendordetail;
+  // console.log("allvendorEmails", allVendorEmails)
 
-  const handleLaunch = (allVendorEmails) => {
-    console.log("Vendor Details in outlook: ", allVendorEmails)
-    const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO1g7G8HPmNofTFX0dqkv0g3OglL+RKxaRwVloaFeIcNdazS52H54+bxAjP3eeW+qcafjVt/TJ7E6Es2vUVRMGJ3XeTN/2hXd9dHUOqYgabr1HNtRazAHtEQ0YiHAtIzzemEsQ/AD7qZOvKCurg64iGM4pDDWeRPv8KyKZmnB8ap4gEAv3UPua/Cm9bXo7BUayacA4Xb5K9jiQ9J4wOgKf0aYXXioI8ccemiF+kO8PpNKrYGM8OWTkUCFUP7f0lreJTVm2bNDWkYqoeE+B1WWgI00eNwZQzWMelRJ4Gat/KNgeEEUxvks4wbYAN3ZBlLWkSvnQDZgAACMiXWbqcxuAQQALCA20RVra0n+ox/+fu51U9Hy+PvnVA7rLsDaYigjufm0w7tZzLYHjdqNGLGBlx3xo/sTMp5+VjDO3wQZT5gX9WZNf5kb84SAKvcC4QUfmabqAjmBMyCmEW0TxU+hFxVQrcTG94MaNpDp5/BHqn6UaS+5gNCXg5wt/+/bPf11x0DawUiiavuLCe4Us0NQ9zaHFbA57d79U2Hn8SrNJ5dMCsgjRCMOsi9rjFwpkOswxzZGuBGWF6RomKtKjRe6MEHUfp5b3kvUF/28iIS6Be7TCd7fvW740wAPV2wRPjdfuBU17BdMUrqqQpc28tCRtHr23YvOcYRJrb60JSQZkDeFmeyd0fCgJS4FzaogLtPjKnUg8YxRDs1kpJxwuEtdkuffcVM2r5N2+F6l1j553lLTIGI8VR0IYfGsFCl6PhF2uBPl5stmuL6M2HwSixwZt4VrfgFTNk72WKdAwsNeXZbfPwhR/+m5lCwIH1n288q9Fix+LRnyfoGPF1l+6BYCmAc0eV5Posy2jpF1hpL+nl8rZsDA4ANsYvgbtIMd9Cr5zS6EwVkYjRSk6g8XdlxDkwclzOcx7kiTBRvMguIoq6bq7P/qAxUAuDukB66rHDDmzG5Lba+DiC5JPDh6W+rbqEpIw/27IDLzikHA9pzKofDHrL/m3h0JmvGOsDqf1uJkd2wIFzmxL+Z+hhSlRByBG73kMiBtT9Bct80jIzvnoRYTU9w9yypCqYJTvTwH3SRyX9QQJoFGcJcILTVMJDOZHuz7B9Ag==';
-    const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
+  // const handleLaunch = (allVendorEmails) => {
+  //   console.log("Vendor Details in outlook: ", allVendorEmails)
+  //   const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO1g7G8HPmNofTFX0dqkv0g3OglL+RKxaRwVloaFeIcNdazS52H54+bxAjP3eeW+qcafjVt/TJ7E6Es2vUVRMGJ3XeTN/2hXd9dHUOqYgabr1HNtRazAHtEQ0YiHAtIzzemEsQ/AD7qZOvKCurg64iGM4pDDWeRPv8KyKZmnB8ap4gEAv3UPua/Cm9bXo7BUayacA4Xb5K9jiQ9J4wOgKf0aYXXioI8ccemiF+kO8PpNKrYGM8OWTkUCFUP7f0lreJTVm2bNDWkYqoeE+B1WWgI00eNwZQzWMelRJ4Gat/KNgeEEUxvks4wbYAN3ZBlLWkSvnQDZgAACMiXWbqcxuAQQALCA20RVra0n+ox/+fu51U9Hy+PvnVA7rLsDaYigjufm0w7tZzLYHjdqNGLGBlx3xo/sTMp5+VjDO3wQZT5gX9WZNf5kb84SAKvcC4QUfmabqAjmBMyCmEW0TxU+hFxVQrcTG94MaNpDp5/BHqn6UaS+5gNCXg5wt/+/bPf11x0DawUiiavuLCe4Us0NQ9zaHFbA57d79U2Hn8SrNJ5dMCsgjRCMOsi9rjFwpkOswxzZGuBGWF6RomKtKjRe6MEHUfp5b3kvUF/28iIS6Be7TCd7fvW740wAPV2wRPjdfuBU17BdMUrqqQpc28tCRtHr23YvOcYRJrb60JSQZkDeFmeyd0fCgJS4FzaogLtPjKnUg8YxRDs1kpJxwuEtdkuffcVM2r5N2+F6l1j553lLTIGI8VR0IYfGsFCl6PhF2uBPl5stmuL6M2HwSixwZt4VrfgFTNk72WKdAwsNeXZbfPwhR/+m5lCwIH1n288q9Fix+LRnyfoGPF1l+6BYCmAc0eV5Posy2jpF1hpL+nl8rZsDA4ANsYvgbtIMd9Cr5zS6EwVkYjRSk6g8XdlxDkwclzOcx7kiTBRvMguIoq6bq7P/qAxUAuDukB66rHDDmzG5Lba+DiC5JPDh6W+rbqEpIw/27IDLzikHA9pzKofDHrL/m3h0JmvGOsDqf1uJkd2wIFzmxL+Z+hhSlRByBG73kMiBtT9Bct80jIzvnoRYTU9w9yypCqYJTvTwH3SRyX9QQJoFGcJcILTVMJDOZHuz7B9Ag==';
+  //   const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
   
-    // Iterate over each vendor detail
-    Object.values(allVendorEmails).forEach(vendor => {
-      const { Vendor_Email, Subject, Body } = vendor;
+  //   // Iterate over each vendor detail
+  //   Object.values(allVendorEmails).forEach(vendor => {
+  //     const { Vendor_Email, Subject, Body } = vendor;
   
+  //     const emailData = {
+  //       "message": {
+  //         "subject": Subject,
+  //         "body": {
+  //           "contentType": "Text",
+  //           "content": Body
+  //         },
+  //         "toRecipients": [
+  //           {
+  //             "emailAddress": {
+  //               "address": Vendor_Email
+  //             }
+  //           }
+  //         ]
+  //       },
+  //       "saveToSentItems": "false"
+  //     };
+  
+  //     // Send email to the vendor
+  //     fetch(sendMailVendor, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Authorization': `Bearer ${accessToken}`,
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(emailData)
+  //     })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log("Mail sent successfully to", Vendor_Email, data);
+  //     })
+  //     .catch(error => {
+  //       console.error("Error sending mail to", Vendor_Email, error);
+  //     });
+  //   });
+  // }
+
+
+  const handleLaunch = () => {
+    // Log all vendor details received from the generate API
+    console.log("Vendor Details:", vendordetail);
+  
+    // Define a variable to store all vendor emails
+    let allVendorEmails = {};
+  
+    // Iterate over each vendor detail and store their emails
+    Object.values(vendordetail).forEach(vendor => {
+      const { Vendor_Email } = vendor;
+      allVendorEmails[Vendor_Email] = vendor;
+    });
+  
+    // Log all vendor emails
+    console.log("All Vendor Emails:", allVendorEmails);
+  
+    // Call the function to send emails to vendors
+    sendEmailsToVendors(allVendorEmails);
+  };
+  
+  // Function to send emails to vendors
+  const sendEmailsToVendors = (allVendorEmails) => {
+    // Iterate over each vendor email and send an email
+    Object.entries(allVendorEmails).forEach(([email, vendor]) => {
+      // Define email data
       const emailData = {
         "message": {
-          "subject": Subject,
+          "subject": vendor.Subject,
           "body": {
             "contentType": "Text",
-            "content": Body
+            "content": vendor.Body
           },
           "toRecipients": [
             {
               "emailAddress": {
-                "address": Vendor_Email
+                "address": email
               }
             }
           ]
@@ -178,23 +241,21 @@ const Delegate = ({
       };
   
       // Send email to the vendor
-      fetch(sendMailVendor, {
-        method: 'POST',
+      axios.post('https://graph.microsoft.com/v1.0/me/sendMail', emailData, {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(emailData)
+        }
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Mail sent successfully to", Vendor_Email, data);
+      .then(response => {
+        console.log("Mail sent successfully to", email, response.data);
       })
       .catch(error => {
-        console.error("Error sending mail to", Vendor_Email, error);
+        console.error("Error sending mail to", email, error);
       });
     });
-  }
+  };
+  
 
 
 
