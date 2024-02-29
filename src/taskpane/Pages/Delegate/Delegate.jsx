@@ -15,12 +15,18 @@ import Buttoncv from "../../components/Button/Buttoncv";
 import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
+import Model from 'react-modal'
+import Success from "../../Components/Success/Success";
+
 
 const Delegate = ({
     emailDetails,
     emailAddress,
     userName, 
     val, ...props }) => {
+
+  const [visible, setVisible] = useState(false);
+
 
   const [customerBody, setCustomerBody] = useState(null);
   const [vendorBody, setVendorBody] = useState(null);     
@@ -46,6 +52,20 @@ const Delegate = ({
     shipping_address: "",
     RFQ_ID: "",
   });
+
+  useEffect(() => {
+    let closePopupTimer;
+    if (visible) {
+      closePopupTimer = setTimeout(() => {
+        setVisible(false);
+      }, 2000); // 2 seconds
+    }
+
+    return () => {
+      clearTimeout(closePopupTimer);
+    };
+  }, [visible]);
+
 
 
 
@@ -200,7 +220,7 @@ const Delegate = ({
   const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZMd50lHP7Tx3mwJmA0OpYVF6ClX6/WDl0XivyWX5/tPjj7nJMTja/Ufvcfr/x0e4xuEjIxfsZnwfWe0ztJ1dmbFRrf7cSldwGOwCTru2gzZL8M4yAdPkxioX/rhWhyb7EphHuFFA56NkVtvdetElaahPWKh7LimoxDyPw/uAwDJhu6pWa3NRq1LJDWA3c3LYT1biPu1vw630OEHWb80jeB7+j9RZG0NT7Cto6H8C8WdIwtgO5Ks3TN8gvB0c1n3EnMiJheyYVOjyfr1EE/DX8jJXsr/StqqjC1ifBBoek9jgcTklDedTeKUozFMSs52VADAJfLRhXa2L26QeeQvEqEDZgAACCaMLg/GiBV+QAKqopRJI3B0yJuCY/CL96+COLGn926W5Hx6/kaZRr57WoyT9oeeb9SJ+1SyoR36dh26xnowSsywGMQZWNQSQhYZSb6DCQBd4UZ6WiktqX+Rh2rg6cIocs+TaEMSQZ/BHbwc/WxEsfLIQ5kK5F0+mrGx66jnnfzj+rL2x8KtgdgaUw5pBGpuJOgUJ2AbUvZRIOHLZfJ2VQmG8jWt/vrjYOamQznJE5wGT2LsMh7BEaygifLUwZrTA4eHyynip34GYtvy08fKnTT2dEKFCiqcFUyzhQ3xK6OCQr7FmHpbkY+/73FJuDk40tPpK+yiLwBW3pa5f8pBXTEVg52iFjaLooqLasBGyNOUp0hZVOCR4J39oALnNljrHGCJekkQcOJXaPVCJl1Ts/WBFpmbsBzgWeeqClgUnh1Q3Oo2gfZLIzw4mQ4c+G6cOSfW8fXhppnEmESr/9OLELfK925bN3rQbWj2cCh+03Ax3r9eQxD3D1FFOKai1pbPVwyF6pN8DRSfpVEdW9Xs9rvHW2gv6DO9bYMoTKBNRK2QHU+HuZP2/TyVPGzF9qPovPIzc/WeYkdhnm3psBia39gnlmD5u5+FsP3OJlcA8QZsOuOGSoboDY7HdazI9QEj+DRkoYTtN5bwn4931Nfx6uEWzDwZ5JJzUbwGd8oSWCCgltRbRVYq2ofoqAVE9MP/vf2WeKaSA6Bxho0yo8vru1JtSpSaufhJuaXK+4z2Gx/SeOsOUQ5WMXXaplmxxYNgStrTqCHoV6Y75Dt9Ag=="
   const handleLaunch = () => {
    
-    
+    setVisible(true);
     // Log all vendor details received from the generate API
     console.log("Vendor Details:", vendordetail);
   
@@ -758,7 +778,11 @@ const Delegate = ({
 
       {btn ? (
         <div className="Quote-DelegateBtnDiv" onClick={handleLaunch}>
-          <div className="Quote-DelegateBtn">Launch</div>
+          <div className="Quote-DelegateBtn">Launch
+          <Model isOpen={visible} onRequestClose={()=>setVisible(false)} className="overlaySuccess">
+                <Success />
+           </Model>
+          </div>
         </div>
       ) : isDelegateClicked2 ? (
         <div className="DEL-Buttons">
