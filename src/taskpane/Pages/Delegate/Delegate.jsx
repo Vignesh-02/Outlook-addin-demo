@@ -354,9 +354,17 @@ const Delegate = ({
     if (isDelegate2Clicked) {
       const generateEmail = async () => {
         try {
+           // Add tone field to classifyEmail
+           const emailWithTone = {
+            ...classifyEmail,
+            tone: "Professional"
+        };
           const res = await axios.post(
             "https://api-dev.wise-sales.com/ml-backend/generate_email/",
-            classifyEmail,
+            
+            {
+              classifyEmail: emailWithTone,
+            }
           );
          console.log(res.data);
          const customerResponse = res.data.Customer_quote.Body;
