@@ -1,5 +1,5 @@
 // import React, { useEffect } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/Login.css"
 import logo from "../../../public/logo1.png";
 import animation from "../../../public/animation.gif";
@@ -8,10 +8,13 @@ import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useHistory } from "react-router-dom";
+import lottie from "lottie-web"; // Import Lottie library
+import animationData from "./animation.json"; // Import your animation JSON file
 
 
 const Login = () => {
-    let loginDialog = null;
+
+  const [loading, setLoading] = useState(true); // State to track loading
 
     
     const history = useHistory();
@@ -83,6 +86,29 @@ const Login = () => {
     .catch(error => console.error('Error fetching token:', error));
   }
 
+  useEffect(() => {
+    // Load animation on component mount
+    const anim = lottie.loadAnimation({
+      container: document.getElementById("animation"), // Specify the container for the animation
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: animationData, // Pass the animation data from the JSON file
+    });
+
+    // Simulate loading delay
+    const timeout = setTimeout(() => {
+      setLoading(false); // After the timeout, set loading to false
+      anim.stop(); // Stop the animation after 2 seconds
+    }, 2300); // Change 2300 to the desired delay time in milliseconds
+
+    // Clean up the timeout to avoid memory leaks
+    return () => {
+      clearTimeout(timeout);
+      anim.destroy();
+    };
+  }, []);
+
   
 
 //   const handleCrossClick = () => {
@@ -92,6 +118,9 @@ const Login = () => {
 
   return (
     <>
+     {loading ? ( // Display the animation while loading
+        <div id="animation" style={{ width: "320px", height: "568px"}} />
+      ) : (
       <div className="loginPage">
       <img className="globe" src={animation} />
 
@@ -134,7 +163,7 @@ const Login = () => {
             {/* <div className="OAuth">
               <img src={GoogleImage} alt="Google Logo" />
             </div> */}
-            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div>
+            <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div>
           </div>
         </div>
 
@@ -147,6 +176,7 @@ const Login = () => {
           />
         </div> */}
       </div>
+        )}
     </>
   );
 };

@@ -15,12 +15,17 @@ import Buttoncv from "../../components/Button/Buttoncv";
 import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
+import Model from 'react-modal'
+import Success from "../../components/Success/Success";
 
 const Delegate = ({
     emailDetails,
     emailAddress,
     userName, 
     val, ...props }) => {
+
+  const [visible, setVisible] = useState(false);
+
 
   const [customerBody, setCustomerBody] = useState(null);
   const [vendorBody, setVendorBody] = useState(null);     
@@ -47,6 +52,18 @@ const Delegate = ({
     RFQ_ID: "",
   });
 
+  useEffect(() => {
+    let closePopupTimer;
+    if (visible) {
+      closePopupTimer = setTimeout(() => {
+        setVisible(false);
+      }, 2000); // 2 seconds
+    }
+
+    return () => {
+      clearTimeout(closePopupTimer);
+    };
+  }, [visible]);
 
 
   // function to click Delegate Button on screen 1
@@ -139,26 +156,46 @@ const Delegate = ({
 //       }
 
 
-// change
-const handleLaunch = (vendordetail) => {
-  const accessToken = 'abcd';
-  const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
+// corrrect
+const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO1g7G8HPmNofTFX0dqkv0g3OglL+RKxaRwVloaFeIcNdazS52H54+bxAjP3eeW+qcafjVt/TJ7E6Es2vUVRMGJ3XeTN/2hXd9dHUOqYgabr1HNtRazAHtEQ0YiHAtIzzemEsQ/AD7qZOvKCurg64iGM4pDDWeRPv8KyKZmnB8ap4gEAv3UPua/Cm9bXo7BUayacA4Xb5K9jiQ9J4wOgKf0aYXXioI8ccemiF+kO8PpNKrYGM8OWTkUCFUP7f0lreJTVm2bNDWkYqoeE+B1WWgI00eNwZQzWMelRJ4Gat/KNgeEEUxvks4wbYAN3ZBlLWkSvnQDZgAACOlulm3m8NK9QAKC9+hZWAYzGh1EE+oZT9iGQ+8er+67CwomYFR3vQqlW95YX9AutsoRbzCOa0Svs6Dx0BfAJz8CqsMwMh5xYwHXibGc5z3Ki7bXJt1pu8r5zhnWfbjUIRtu1Tlfs4w0Qd0c6wBBwWc2I8IP9cEuvL+ODol6dYecJegKY2J4qHRIIGjJaJy9F/i+RnRnZd5U4ajHeMxJxWtvDWznTjCL627nluSy2jcNpBSQoeIB/fzhU3GlABw4f5O4GgSdBiQwMiTu8s1V627sCcxWTlaysL4+ZxstXZ4fuCKqZsFSCdV1lHGX4JaYkWKjn6uZon8iw+m+f9X0pLfCi/ZI3GF65b1C6+cecC31pBOi44O0LJ6Wvtaxmg48g106oJPF7olRzh6N5UkHRiJnIFxb/RGe/UOh48pT6YReu8+iPw7fGTiR6TQzTDgfPr9Wy7lijKvX+zo2DsQkbZ6J1ZatKRNxcSmo0RxVVvLbNWAtzWBMVPJjOqGXapdWGVNSfk6ZEvn8uL7tBu7QKhJiLXoC4sG68gGbaWEzKLNNPs7IB7o3AK0XCZZLdfr2GGaNOAMCxkP6ZEYFx2LjCHA9ZYL8BMocdtCmbM92ETTbZfsVyugtEUYpZFJHf/A3+TkPe9/QuceAAgqBESEpU1DBMwIcOq2KajBeZzlc8V/UHTmlTqjwzhiu6qfSzkXpBzBDncRw+n6iMvRoTtkYMH8VZUNB4BfIZZFQ2yjTo0Y1faq77ZNzvJw0QHR43IHIn/YnfZuGG6mNVPJ9Ag=="
+const handleLaunch = () => {
+ 
+  setVisible(true);
+  // Log all vendor details received from the generate API
+  console.log("Vendor Details:", vendordetail);
 
-  // Iterate over each vendor detail
+  // Define a variable to store all vendor emails
+  let allVendorEmails = {};
+
+  // Iterate over each vendor detail and store their emails
   Object.values(vendordetail).forEach(vendor => {
-    const { Vendor_Email, Subject, Body } = vendor;
+    const { Vendor_Email } = vendor;
+    allVendorEmails[Vendor_Email] = vendor;
+  });
 
+  // Log all vendor emails
+  console.log("All Vendor Emails:", allVendorEmails);
+
+  // Call the function to send emails to vendors
+  sendEmailsToVendors(allVendorEmails);
+};
+
+// Function to send emails to vendors
+const sendEmailsToVendors = (allVendorEmails) => {
+  // Iterate over each vendor email and send an email
+  Object.entries(allVendorEmails).forEach(([email, vendor]) => {
+    // Define email data
     const emailData = {
       "message": {
-        "subject": Subject,
+        "subject": vendor.Subject,
         "body": {
           "contentType": "Text",
-          "content": Body
+          "content": vendor.Body
         },
         "toRecipients": [
           {
             "emailAddress": {
-              "address": Vendor_Email
+              "address": email
             }
           }
         ]
@@ -167,23 +204,20 @@ const handleLaunch = (vendordetail) => {
     };
 
     // Send email to the vendor
-    fetch(sendMailVendor, {
-      method: 'POST',
+    axios.post('https://graph.microsoft.com/v1.0/me/sendMail', emailData, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(emailData)
+      }
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Mail sent successfully to", Vendor_Email, data);
+    .then(response => {
+      console.log("Mail sent successfully to", email, response.data);
     })
     .catch(error => {
-      console.error("Error sending mail to", Vendor_Email, error);
+      console.error("Error sending mail to", email, error);
     });
   });
-}
+};
 
 
   useEffect(() => {
@@ -673,7 +707,11 @@ const handleLaunch = (vendordetail) => {
 
       {btn ? (
         <div className="Quote-DelegateBtnDiv" onClick={handleLaunch}>
-          <div className="Quote-DelegateBtn">Launch</div>
+          <div className="Quote-DelegateBtn">Launch
+          <Model isOpen={visible} onRequestClose={()=>setVisible(false)} className="overlaySuccess">
+                <Success />
+           </Model>
+          </div>
         </div>
       ) : isDelegateClicked2 ? (
         <div className="DEL-Buttons">
