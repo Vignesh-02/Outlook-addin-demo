@@ -16,8 +16,8 @@ import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
 import Model from 'react-modal'
-import Success from "../../Components/Success/Success";
-
+// import Success from "../../Components/Success/Success";
+import Success from "../../components/Success/Success";
 
 const Delegate = ({
     emailDetails,
