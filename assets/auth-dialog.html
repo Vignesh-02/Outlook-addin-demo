@@ -11,8 +11,9 @@
         const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
     const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
     const scope = "Mail.Send";
+    const state="12345";
     const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&response_mode=query`;;
-    
+    // &state=${encodeURIComponent(state)}
         
         window.location.replace(authUrl);
     };

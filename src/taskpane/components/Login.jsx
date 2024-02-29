@@ -37,7 +37,8 @@ const Login = () => {
     const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
     Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
-        dialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
+        loginDialog = result.value;
+        loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
       } else {
         console.error('Failed to open dialog:', result.error);
       }
@@ -46,15 +47,22 @@ const Login = () => {
 
   const handleMessageReceived = (arg) => {
     console.log(arg);
-    const message = JSON.parse(arg.message);
-    console.log('Received Message', message);
-    if (message.status === 'success') {
+    const message = arg.message;
+    console.log('test 1')
+    console.log(message)
+    
+    // console.log('Received Message', message);
+    // if (message) {
       // Close the dialog window
-      arg.source.close();
+    //   arg.source.close();
+    loginDialog.close();
       // Exchange the authorization code for a token
-      console.log('exchangeCode is called')
-      exchangeCodeForToken(message.code);
-    }
+    //   console.log('exchangeCode is called with code ', message) 
+    //   exchangeCodeForToken(message);
+    history.push('/del');
+
+    console.log('test 3');
+    // }
   }
 
   const exchangeCodeForToken = (code) => {
@@ -77,6 +85,10 @@ const Login = () => {
     fetch(tokenUrl, {
       method: 'POST',
       body: formData,
+    }, {
+        headers: {
+            origin: "https://outlook-addin-v9y9.onrender.com/assets/login.html"
+        }
     })
     .then(response => response.json())
     .then(data => {

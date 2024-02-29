@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App";
+import App from "./components/App";
 import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 import "./index.css";
 
@@ -22,7 +22,7 @@ Office.onReady(() => {
 
 if (module.hot) {
   module.hot.accept("./components/App", () => {
-    const NextApp = require("./App").default;
+    const NextApp = require("./components/App").default;
     root.render(NextApp);
   });
 }
