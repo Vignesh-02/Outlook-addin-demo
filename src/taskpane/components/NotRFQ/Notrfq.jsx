@@ -1,8 +1,8 @@
 import React from 'react'
 import "./Notrfq.css";
-// import cross from "../../../public/Vector.png";
-import action from "../../../public/Actions.png";
-import alert from "../../../public/AlertError.png";
+
+import alert from "../../../../public/AlertError.png";
+import action from "../../../../public/Actions.png";
 
 
 
