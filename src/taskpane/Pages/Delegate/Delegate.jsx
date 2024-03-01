@@ -300,6 +300,7 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
     if (delegatebtn1) {
         const SendEmailDetails = async () => {
           try {
+            setShowLoader(true); 
             const res = await axios.post("https://api-dev.wise-sales.com/ml-backend/classify_email/", {
               'subject': emailDetails.subject,
               'email_body': emailDetails.body,
@@ -317,6 +318,8 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
       }
           catch (error) {
             console.error("Error occurred while calling API:", error);
+          } finally {
+            setShowLoader(false); // Hide loader regardless of success or failure
           }
         };
         SendEmailDetails();
