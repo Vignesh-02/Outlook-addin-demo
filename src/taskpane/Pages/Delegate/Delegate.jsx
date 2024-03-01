@@ -18,6 +18,7 @@ import axios from "axios";
 import Model from 'react-modal'
 // import Success from "../../Components/Success/Success";
 import Success from "../../components/Success/Success";
+import Notrfq from "../../components/NotRFQ/Notrfq";
 
 const Delegate = ({
     emailDetails,
@@ -26,6 +27,8 @@ const Delegate = ({
     val, ...props }) => {
 
   const [visible, setVisible] = useState(false);
+  const [showLoader, setShowLoader] = useState(true); // State to manage loader display
+  const [visible2, setVisible2] = useState(false);
 
 
   const [customerBody, setCustomerBody] = useState(null);
@@ -218,9 +221,8 @@ const Delegate = ({
 
   // corrrect
 const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO1g7G8HPmNofTFX0dqkv0g3OglL+RKxaRwVloaFeIcNdazS52H54+bxAjP3eeW+qcafjVt/TJ7E6Es2vUVRMGJ3XeTN/2hXd9dHUOqYgabr1HNtRazAHtEQ0YiHAtIzzemEsQ/AD7qZOvKCurg64iGM4pDDWeRPv8KyKZmnB8ap4gEAv3UPua/Cm9bXo7BUayacA4Xb5K9jiQ9J4wOgKf0aYXXioI8ccemiF+kO8PpNKrYGM8OWTkUCFUP7f0lreJTVm2bNDWkYqoeE+B1WWgI00eNwZQzWMelRJ4Gat/KNgeEEUxvks4wbYAN3ZBlLWkSvnQDZgAACOlulm3m8NK9QAKC9+hZWAYzGh1EE+oZT9iGQ+8er+67CwomYFR3vQqlW95YX9AutsoRbzCOa0Svs6Dx0BfAJz8CqsMwMh5xYwHXibGc5z3Ki7bXJt1pu8r5zhnWfbjUIRtu1Tlfs4w0Qd0c6wBBwWc2I8IP9cEuvL+ODol6dYecJegKY2J4qHRIIGjJaJy9F/i+RnRnZd5U4ajHeMxJxWtvDWznTjCL627nluSy2jcNpBSQoeIB/fzhU3GlABw4f5O4GgSdBiQwMiTu8s1V627sCcxWTlaysL4+ZxstXZ4fuCKqZsFSCdV1lHGX4JaYkWKjn6uZon8iw+m+f9X0pLfCi/ZI3GF65b1C6+cecC31pBOi44O0LJ6Wvtaxmg48g106oJPF7olRzh6N5UkHRiJnIFxb/RGe/UOh48pT6YReu8+iPw7fGTiR6TQzTDgfPr9Wy7lijKvX+zo2DsQkbZ6J1ZatKRNxcSmo0RxVVvLbNWAtzWBMVPJjOqGXapdWGVNSfk6ZEvn8uL7tBu7QKhJiLXoC4sG68gGbaWEzKLNNPs7IB7o3AK0XCZZLdfr2GGaNOAMCxkP6ZEYFx2LjCHA9ZYL8BMocdtCmbM92ETTbZfsVyugtEUYpZFJHf/A3+TkPe9/QuceAAgqBESEpU1DBMwIcOq2KajBeZzlc8V/UHTmlTqjwzhiu6qfSzkXpBzBDncRw+n6iMvRoTtkYMH8VZUNB4BfIZZFQ2yjTo0Y1faq77ZNzvJw0QHR43IHIn/YnfZuGG6mNVPJ9Ag=="
-  const handleLaunch = () => {
+  const handleLaunch = () => {   
    
-    setVisible(true);
     // Log all vendor details received from the generate API
     console.log("Vendor Details:", vendordetail);
   
@@ -242,6 +244,10 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
   
   // Function to send emails to vendors
   const sendEmailsToVendors = (allVendorEmails) => {
+
+    // Counter to keep track of successful emails sent
+  let successfulEmailsSent = 0;
+
     // Iterate over each vendor email and send an email
     Object.entries(allVendorEmails).forEach(([email, vendor]) => {
       // Define email data
@@ -272,6 +278,13 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
       })
       .then(response => {
         console.log("Mail sent successfully to", email, response.data);
+        successfulEmailsSent++;
+
+      // Check if all emails have been successfully sent
+      if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
+        // If all emails have been sent successfully, set setVisible to true
+        setVisible(true);
+      }
       })
       .catch(error => {
         console.error("Error sending mail to", email, error);
@@ -512,6 +525,25 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
           </div>
         </div>
       </div>
+
+
+      {
+       classifyEmail && classifyEmail.RFQ_status === 0 &&
+        <Model isOpen={visible2} onRequestClose={()=>setVisible2(false)} className="overlayNoRFQ">
+          <Notrfq />
+       </Model> 
+       }
+       
+
+      {isDelegateClicked && showLoader ? (
+         <div className="L1">
+         <div className="L2"></div>
+         <div className="L3"></div>
+         <div className="L4"></div>
+         </div>
+        ) : (
+          <>
+
 
       {/* SECTION - 2 */}
       <div className="Quote-Sec-2">
@@ -828,6 +860,8 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
           />
         </div>
       </div>
+      </>
+        )}
     </div>
   );
 };

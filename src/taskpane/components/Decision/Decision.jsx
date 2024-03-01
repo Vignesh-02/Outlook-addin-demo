@@ -6,6 +6,9 @@ import Extend from "../../../../public/extender.png";
 import Ventmaterial from "../Ventmaterial/Ventmaterial";
 import Modal from "react-modal";
 
+
+
+
 // const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
 //   const [selectedProduct, setSelectedProduct] = useState(1); // Default to product 1
 //   const [selectedProductStatus, setSelectedProductStatus] = useState(null); // Default to no selected product status
