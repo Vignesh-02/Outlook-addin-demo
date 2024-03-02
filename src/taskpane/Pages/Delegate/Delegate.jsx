@@ -875,6 +875,10 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
         </div>
       )}
 
+      </>
+        )}
+
+        
       {/* FOOTER SECTION */}
       <div className="Quote-Footer">
         <div className="Quote-Footer-Text">Made by</div>
@@ -902,8 +906,6 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
           />
         </div>
       </div>
-      </>
-        )}
     </div>
   );
 };
