@@ -21,7 +21,6 @@ const Buttoncv = ({
 }) => {
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: document.getElementById("animationCV"),
@@ -31,16 +30,35 @@ const Buttoncv = ({
       animationData: animationData,
     });
   
-    const timeout = setTimeout(() => {
+    if (customerBody && vendordetail) {
       setLoading(false);
       anim.stop();
-    }, 5000);
+    }
   
     return () => {
-      clearTimeout(timeout);
       anim.destroy();
     };
-  }, []);
+  }, [customerBody, vendordetail]);
+
+  // useEffect(() => {
+  //   const anim = lottie.loadAnimation({
+  //     container: document.getElementById("animationCV"),
+  //     renderer: "svg",
+  //     loop: true,
+  //     autoplay: true,
+  //     animationData: animationData,
+  //   });
+  
+  //   const timeout = setTimeout(() => {
+  //     setLoading(false);
+  //     anim.stop();
+  //   }, 5000);
+  
+  //   return () => {
+  //     clearTimeout(timeout);
+  //     anim.destroy();
+  //   };
+  // }, []);
 
 
 
