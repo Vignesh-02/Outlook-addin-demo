@@ -391,15 +391,54 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
       const generateEmail = async () => {
         try {
            // Add tone field to classifyEmail
-           const emailWithTone = {
-            ...classifyEmail,
-            tone: "Professional"
-        };
+        //    const emailWithTone = {
+        //     ...classifyEmail,
+        //     tone: "Professional"
+        // };
           const res = await axios.post(
             "https://api-dev.wise-sales.com/ml-backend/generate_email/",
             
             {
-              classifyEmail: emailWithTone,
+              classifyEmail: {
+                "RFQ_status": 1,
+                "name": "Abby Rodriguez",
+                "email": "afshankhan252@gmail.com",
+                "company": "Integral Machining & Engineering",
+                "shipping_address": "12060 31st. Ct. N. St. Petersburg FL 33716",
+                "cert_need": false,
+                "product_1": {
+                    "material": "PVC",
+                    "size": {
+                        "diameter": "1.25 inch RD",
+                        "thick": null,
+                        "length": "10 feet",
+                        "width": null
+                    },
+                    "shape": "Rod",
+                    "specification": "23-0002-XX",
+                    "manufacturer": null,
+                    "color": "Gray",
+                    "quantity": "20",
+                    "unit": "lengths"
+                },
+                "product_2": {
+                    "material": "PVC",
+                    "size": {
+                        "diameter": "1.125 inch RD",
+                        "thick": null,
+                        "length": "89 cm",
+                        "width": "20 mm, 45 mm"
+                    },
+                    "shape": "Rod",
+                    "specification": "23-0004-01",
+                    "manufacturer": "Integral Machining & Engineering",
+                    "color": "Gray",
+                    "quantity": "28",
+                    "unit": "Lengths"
+                },
+                "RFQ_ID": "INTR100200GY24821",
+                "tone": "Professional"
+            },
             }
           );
          console.log(res.data);
