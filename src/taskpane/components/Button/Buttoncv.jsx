@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Customer from "../Customer/Customer";
 import Vendor from "../Vendor/Vendor";
 import "./Buttoncv.css";
+import animationData from "./per.json";
+import lottie from "lottie-web";
 
 const Buttoncv = ({
     isPopupOpenRegenerate,
@@ -17,24 +19,36 @@ const Buttoncv = ({
   vendordetail
 
 }) => {
-  const [showLoader, setShowLoader] = useState(true);
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
-    // Show loader until both customerBody and vendordetail are available
-    if (customerBody && vendordetail) {
-        setShowLoader(false);
-    }
-}, [customerBody, vendordetail]);
+    const anim = lottie.loadAnimation({
+      container: document.getElementById("animationCV"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+    });
+  
+    const timeout = setTimeout(() => {
+      setLoading(false);
+      anim.stop();
+    }, 5000);
+  
+    return () => {
+      clearTimeout(timeout);
+      anim.destroy();
+    };
+  }, []);
 
 
 
   return (
     <div className="cvButtondiv">
-       {showLoader ? (
-                <div className="loader">
-                    {/* Loading... */}
-                </div>
-            ) : (
+      {loading ? (
+        <div id="animationCV" />
+      ) : (
                 <>
       <Customer  
       isPopupOpenRegenerate={isPopupOpenRegenerate} togglePopupRegenerate={togglePopupRegenerate}
