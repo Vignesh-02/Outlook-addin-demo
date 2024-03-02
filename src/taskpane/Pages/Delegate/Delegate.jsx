@@ -55,6 +55,8 @@ const Delegate = ({
     shipping_address: "",
     RFQ_ID: "",
   });
+  const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(false);
+
 
   useEffect(() => {
     let closePopupTimer;
@@ -69,7 +71,9 @@ const Delegate = ({
     };
   }, [visible]);
 
-
+  const togglePopupnotRFQ = () => {
+    setIsPopupOpennotrfq(!isPopupOpennotrfq);
+  };
 
 
   // function to click Delegate Button on screen 1
@@ -570,12 +574,13 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
 
 
       {
-       classifyEmail && classifyEmail.RFQ_status === 0 &&
-        <Model isOpen={visible2} onRequestClose={()=>setVisible2(false)} className="overlayNoRFQ">
-          <Notrfq />
-       </Model> 
-       }
-       
+  classifyEmail && classifyEmail.RFQ_status === 0 && (
+    <Model isOpen={true} onRequestClose={() => setVisible2(false)} className="overlayNoRFQ">
+      <Notrfq close={togglePopupnotRFQ}/>
+    </Model>
+  )
+}
+
 
       {isDelegateClicked && showLoader ? (
          <div className="L1">

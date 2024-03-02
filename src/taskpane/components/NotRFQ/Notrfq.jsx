@@ -6,7 +6,7 @@ import action from "../../../../public/Actions.png";
 
 
 
-const Notrfq = () => {
+const Notrfq = ({close}) => {
   return (
     <div className="NOT-RFQDiv">
     <div className="NOT-RFQDiv-1">
@@ -22,7 +22,7 @@ const Notrfq = () => {
                 <div className="NOT-RFQDiv-3c">
                     <div className="NOT-RFQDiv-3d">
                         <div className="NOT-RFQDiv-3e">
-                        <img src={action} alt="" /> 
+                        <img src={action} alt=""  onClick={close}/> 
                         </div>
                     </div>
                 </div>
