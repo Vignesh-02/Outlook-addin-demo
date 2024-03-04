@@ -55,7 +55,7 @@ const Delegate = ({
     shipping_address: "",
     RFQ_ID: "",
   });
-  const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(false);
+  const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(true);
 
 
   useEffect(() => {
@@ -72,7 +72,9 @@ const Delegate = ({
   }, [visible]);
 
   const togglePopupnotRFQ = () => {
+    console.log("toggle not rfq")
     setIsPopupOpennotrfq(!isPopupOpennotrfq);
+    console.log(isPopupOpennotrfq)
   };
 
 
@@ -572,10 +574,9 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
         </div>
       </div>
 
-
       {
   classifyEmail && classifyEmail.RFQ_status === 0 && (
-    <Model isOpen={true} onRequestClose={() => setVisible2(false)} className="overlayNoRFQ">
+    <Model isOpen={isPopupOpennotrfq} onRequestClose={togglePopupnotRFQ} className="overlayNoRFQ">
       <Notrfq close={togglePopupnotRFQ}/>
     </Model>
   )
