@@ -51,7 +51,7 @@ const Login = ({ emailAddress, ...props}) => {
           history.push('/unauthorized'); // Change '/unauthorized' to your desired route
         }
 
-    const authPage = "https://localhost:3001/assets/auth-dialog.html";
+    const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
     Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         loginDialog = result.value;
