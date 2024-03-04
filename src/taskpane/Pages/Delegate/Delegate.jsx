@@ -864,7 +864,7 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
            </Model>
           </div>
         </div>
-      ) : isDelegateClicked2 ? (
+      ) : isDelegateClicked2 && classifyEmail && classifyEmail.RFQ_status === 1 ? (
         <div className="DEL-Buttons">
           <div className="Launch-btnParent">
             <div onClick={DelegeBtn2} id="Launch-btn">
