@@ -1,0 +1,8 @@
+.editor__content table td, 
+.editor__content table th { 
+    min-width: 1em; border: 2px solid #ddd; padding: 3px 5px; vertical-align: top; -webkit-box-sizing: border-box; box-sizing: border-box; position: relative; }
+
+.tiptap{
+    width: 250px;
+    height: 400px;
+}

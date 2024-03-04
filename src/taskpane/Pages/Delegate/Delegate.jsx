@@ -16,11 +16,20 @@ import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
 
+import { useLocation } from "react-router-dom";
+
+   
+
 const Delegate = ({
     emailDetails,
     emailAddress,
     userName, 
     val, ...props }) => {
+
+        const location = useLocation();
+        console.log(location);
+        const token = location?.state.token;
+        console.log(token)
 
   const [customerBody, setCustomerBody] = useState(null);
   const [vendorBody, setVendorBody] = useState(null);     
@@ -140,49 +149,138 @@ const Delegate = ({
 
 
 // change
-const handleLaunch = (vendordetail) => {
-  const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAXplotE/VKFoQOL6g8AwFtNQgeD2VAkHfSqyrdN2iPoTFOuZrTOcbYly49O7WbmnZN6uXy1eMPBqoBLQuiJhtyVVZlj2Ezq7P2tasjFDi+i2hlgl4NpmQ0329QAyGqZy7ZUr5K5d6DWh7P+GPxKG/f483H9OLh7/H0aj5FKjOz3rjX93I4hERZ8iTm5ApBcowBJ6/2suzGbi2epfI/J+e0H/6bpDNe1QD6O3sTZDweHmDllU0McCsRMjgNxZ2aePLODa5orMxoNDK2Sq+RXlI4k1RQVLumPSRx8kMzXRyEAlK/nnMl4WO2bzgSShdcJj75qd3Q7qDMOh/D/c2XwQ2BQDZgAACDJdmrx46RngQALNqwwCgJPJO2I5nF//63BSZQUbqh0M+whYrkR5kCg+twVjSDZxCj0OAJjUzaZZ4lwwaR3mks1Q/AhKKe2rg6lRlhQK/fToW89ooUYF8W0onxc6+C+YgmI+mvf9viwmUwugjqqKV14ktsX/CknD+fXNurOXjSP7rbz1uERDIA98vU3CpvUJTOwvXM9Cu0r+Th3+iL7pleOoAx0++u9gJ1t0ytIAyeiPhrqbmWo0Z+jvD9u5jPvFE0hczcvxu3PjFGgklSdQyaSYO9gESUwh6yc2OH7w3o/7AYE8cc5ViEqT0oED608X6HLcdFKTENG3lRWTrmqYz7l+ssA/UdjRv8XDDVDwnqKQvtbJARblfQcJ1fI2Zqj3RPuddD38dVMZKB0mHRBTok1TOEg4isPiccX6fLMboDDJf5WzMMFF3YOnTiJYt+leHQimXWxEJ6anzmGJtK0ksAgjF/6XAKZk32BRH+RDRXLrcG6Int27un3OGmQZ1tAx7UlbNch1aTqpl6jp3ByXN2BTDU0p0uDmteRpSRWZVIdjsXZKq6jr239pmL+HIKYSsbGBv5tyewV8qiQVjI+6LW2CAGMI6TE6Qsp0jJI9j+blo66EhL118EMQiFs6Bp30LFL3vQJFJI62Rjwx89hZrHwitKUFXnCRgTORPUUnM20aU0mOG2zTwpEGG0xqf1L0SdNObI7jgOAFrV913IrMc3bWktjq7RdietkzHyOT9xeK4J8BLTuUStMiTmpcN+n2hn+MRZDfVhMCreZ9Ag==';
+const handleLaunch = () => {
+  const accessToken = token;
   const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
 
+
+
   // Iterate over each vendor detail
-  Object.values(vendordetail).forEach(vendor => {
-    const { Vendor_Email, Subject, Body } = vendor;
+//   Object.keys(vendordetail).forEach(vendor => {
+//         console.log('vendor', vendor)
+//             const { Vendor_Email, Subject, Body } = vendor;
+        
+//             const emailData = {
+//               "message": {
+//                 "subject": Subject,
+//                 "body": {
+//                   "contentType": "Html",
+//                   "content": Body
+//                 },
+//                 "toRecipients": [
+//                   {
+//                     "emailAddress": {
+//                       "address": Vendor_Email
+//                     }
+//                   }
+//                 ]
+//               },
+//               "saveToSentItems": "false"
+//             };
+        
+//             // Send email to the vendor
+//             fetch(sendMailVendor, {
+//               method: 'POST',
+//               headers: {
+//                 'Authorization': `Bearer ${accessToken}`,
+//                 'Content-Type': 'application/json'
+//               },
+//               body: JSON.stringify(emailData)
+//             })
+//             .then(response => response.json())
+//             .then(data => {
+//               console.log("Mail sent successfully to", Vendor_Email, data);
+//             })
+//             .catch(error => {
+//               console.error("Error sending mail to", Vendor_Email, error);
+//             });
+//           });
 
-    const emailData = {
-      "message": {
-        "subject": Subject,
-        "body": {
-          "contentType": "Text",
-          "content": Body
-        },
-        "toRecipients": [
-          {
-            "emailAddress": {
-              "address": Vendor_Email
-            }
+//    
+
+console.log("Vendor Details:", vendordetail);
+// Define a variable to store all vendor emails
+let allVendorEmails = {};
+// Iterate over each vendor detail and store their emails
+Object.values(vendordetail).forEach(vendor => {
+  const { Vendor_Email } = vendor;
+  allVendorEmails[Vendor_Email] = vendor;
+});
+// Log all vendor emails
+console.log("All Vendor Emails:", allVendorEmails);
+// Call the function to send emails to vendors
+
+// Iterate over each vendor email and send an email
+Object.entries(allVendorEmails).forEach(([email, vendor]) => {
+  // Define email data
+  const emailData = {
+    "message": {
+      "subject": vendor.Subject,
+      "body": {
+        "contentType": "Html",
+        "content": vendor.Body
+      },
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "address": email
           }
-        ]
-      },
-      "saveToSentItems": "false"
-    };
+        }
+      ]
+    },
+    "saveToSentItems": "false"
+  };
+//   Send email to the vendor
 
-    // Send email to the vendor
-    fetch(sendMailVendor, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(emailData)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Mail sent successfully to", Vendor_Email, data);
-    })
-    .catch(error => {
-      console.error("Error sending mail to", Vendor_Email, error);
-    });
-  });
+            fetch(sendMailVendor, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(emailData)
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log("Mail sent successfully to", Vendor_Email, data);
+            })
+            .catch(error => {
+              console.error("Error sending mail to", Vendor_Email, error);
+            });
+          });
+
+    
+
+
+      const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
+        const emailData = {
+            message: {
+                toRecipients: [
+                    {
+                        emailAddress: {
+                            address: emailDetails.from
+                        }
+                    }
+                ]
+            },
+            comment: customerBody
+    };
+      
+        fetch(sendCustomerReplyUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(emailData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log("Mail sent successfully", data);
+        })
+        .catch(error => {
+          console.error("Error sending mail", error);
+        });
 }
 
 
@@ -276,25 +374,68 @@ const handleLaunch = (vendordetail) => {
   useEffect(() => {
     if (isDelegate2Clicked) {
       const generateEmail = async () => {
+        
+        
+        const generateEmailInput = {
+                "tone": "Professional",
+                "RFQ_status": 1,
+                "name": "Abby Rodriguez",
+                "email": "operations@integralmachining.com",
+                "company": "Integral Machining & Engineering",
+                "shipping_address": "12060 31st. Ct. N. St. Petersburg FL 33716",
+                "cert_need": false,
+                "product_1": {
+                    "material": "PVC",
+                    "size": {
+                        "diameter": "1.25 inch RD",
+                        "thick": null,
+                        "length": "10 feet",
+                        "width": null
+                    },
+                    "shape": "Rod",
+                    "specification": null,
+                    "manufacturer": null,
+                    "color": "Gray",
+                    "quantity": "20",
+                    "unit": "lengths"
+                },
+                "product_2": {
+                    "material": "PVC",
+                    "size": {
+                        "diameter": "1.125 inch RD",
+                        "thick": null,
+                        "length": "10 feet",
+                        "width": null
+                    },
+                    "shape": "Rod",
+                    "specification": "23-0004-01",
+                    "manufacturer": null,
+                    "color": "Gray",
+                    "quantity": "28",
+                    "unit": "Lengths"
+                },
+                "RFQ_ID": "intr0012091723902921"
+        }
+
         try {
+            
           const res = await axios.post(
             "https://api-dev.wise-sales.com/ml-backend/generate_email/",
-            classifyEmail,
+            generateEmailInput
           );
          console.log(res.data);
          const customerResponse = res.data.Customer_quote.Body;
-         const vendorResponse = res.data.vendor_1.Body
+        //  const vendorResponse = res.data.vendor_1.Body
           setCustomerBody(customerResponse);
-          setVendorBody(vendorResponse);
           console.log("Customer's Body:", customerBody);
-          console.log("Vendor's Body:", vendorBody); 
+        //   console.log("Vendor's Body:", vendorBody); 
 
-          const vendorEmails = Object.values(res.data)
+          const vendorDetails = Object.values(res.data)
           .filter(obj => obj.Vendor_Email)
-          .map(obj => obj.Vendor_Email);
-        setVendorEmails(vendorEmails)
+          console.log(vendorDetails);
+        // setVendorEmails(vendorEmails)
 
-        setVendorDetails(res.data);
+        setVendorDetails(vendorDetails);
 
 
 

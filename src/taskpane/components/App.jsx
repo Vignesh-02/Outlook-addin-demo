@@ -13,11 +13,12 @@ import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluen
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Delegate from "../Pages/Delegate/Delegate";
-// import Home from "./Pages/Home/Home";
-// import Login from "./Login";
-// import Home from "./Home"/;
-// import Queue from "./Queue";
 import Login from "./Login";
+
+
+import Unauthorized from "./Unauthorized/Unauthorized";
+// import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles({
   root: {
@@ -27,6 +28,8 @@ const useStyles = makeStyles({
 
 const App = (props) => {
 
+
+    // const history = useHistory();
     // const [loginDialog, setLoginDialog] = useState(null);
 
     // const processLoginMessage = useCallback(async (args) => {
@@ -146,6 +149,8 @@ const App = (props) => {
 //       });
 //   }, []);
 
+
+
   useEffect(() => {
     // Function to fetch email content
     const getEmailContent = async () => {
@@ -172,6 +177,7 @@ const App = (props) => {
 
           // item.sender?.displayName ? item.sender.displayName :
           setEmailAddress(emailAddress);
+          console.log(emailAddress);
           setUserName(displayName);
           setEmailDetails({
             msgId: item.itemId,
@@ -422,9 +428,21 @@ const App = (props) => {
       <Switch>
         {" "}
         {/* Use Switch to render the first Route that matches the location */}
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" 
+            render={(props) => (
+                <Login {...props} emailAddress={emailAddress} />
+            )}
+        />
         {/* <Route exact path="/home" component={Home}  emailBody={emailBody}/> */}
         {/* <Route exact path="/queue" component={Queue} /> */}
+
+        <Route  path="/unauthorized"
+            render={(props) => (
+                <Unauthorized {...props} />
+            )}
+         />
+
+
         <Route
           exact
           path="/del"

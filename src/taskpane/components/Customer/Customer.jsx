@@ -12,6 +12,8 @@ const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, toggle
   // const togglePopup = () => {
   //          setIsPopupOpen(!isPopupOpen);
   // };
+
+//   const htmlBody = () => customerBody
   return (
     <div>
       <div className="VendorSec">

@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./CustomerResponsePopup.css"; // Import the CSS file
 // import cross from "../../../public/Cross.png"
+import  Tiptap from "./Tiptap";
+
 const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
 
     const [isEditing, setIsEditing] = useState(false);
@@ -63,10 +65,10 @@ const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
           </div>
         </div>
         <div className="Frame16">
-          <div className="Row">
-            <div className="Datagridcell">
+          {/* <div className="Row"> */}
+            {/* <div className="Datagridcell"> */}
               <div className="Container2">
-                {isEditing ? (
+                {/* {isEditing ? (
                         <input
                         type="text"
                         value={customerBody}
@@ -78,11 +80,12 @@ const CustomerResponsePopup = ({  close, customerBody, setCustomerBody }) => {
                         />
                     ) : (
                         <div  className="LongText" onClick={toggleEdit}>
-                        {customerBody}
+                        <Tiptap />
                         </div>
-                )}
-              </div>
-            </div>
+                )} */}
+                <Tiptap />
+              {/* </div> */}
+            {/* </div> */}
           </div>
           <div className="Frame17">
             <div className="Button">

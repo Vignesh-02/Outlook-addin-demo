@@ -15,7 +15,7 @@
 <AppDomain>https://api-dev.wise-sales.com</AppDomain>
 <AppDomain>https://graph.microsoft.com/</AppDomain>
 <AppDomain>https://login.microsoftonline.com/</AppDomain>
-<AppDomain>https:/localhost:3001</AppDomain>
+<AppDomain>https://localhost:3001</AppDomain>
 
 </AppDomains>
 <Hosts>
@@ -103,9 +103,9 @@
 </Hosts>
 <Resources>
 <bt:Images>
-<bt:Image id="Icon.16x16" DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-16.png"/>
-<bt:Image id="Icon.32x32" DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-32.png"/>
-<bt:Image id="Icon.80x80" DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-80.png"/>
+<bt:Image id="Icon.16x16" DefaultValue="https//:localhost:3001/assets/icon-16.png"/>
+<bt:Image id="Icon.32x32" DefaultValue="https//:localhost:3001/assets/icon-32.png"/>
+<bt:Image id="Icon.80x80" DefaultValue="https//:localhost:3001/assets/icon-80.png"/>
 </bt:Images>
 <bt:Urls>
 <bt:Url id="Commands.Url" DefaultValue="https://outlook-addin-v9y9.onrender.com/commands.html"/>
