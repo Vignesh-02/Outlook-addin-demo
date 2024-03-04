@@ -22,7 +22,7 @@ const Notrfq = ({close}) => {
                 <div className="NOT-RFQDiv-3c">
                     <div className="NOT-RFQDiv-3d">
                         <div className="NOT-RFQDiv-3e">
-                        <img src={action} alt=""  onClick={close}/> 
+                        <img src={action} alt="" onClick={close}/> 
                         </div>
                     </div>
                 </div>
