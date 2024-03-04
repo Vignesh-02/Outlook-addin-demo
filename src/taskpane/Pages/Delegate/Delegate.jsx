@@ -17,6 +17,8 @@ import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
 import Model from 'react-modal'
 import Success from "../../components/Success/Success";
+import Notrfq from "../../components/NotRFQ/Notrfq";
+
 
 const Delegate = ({
     emailDetails,
@@ -24,7 +26,11 @@ const Delegate = ({
     userName, 
     val, ...props }) => {
 
-  const [visible, setVisible] = useState(false);
+      onst [visible, setVisible] = useState(false);
+  const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(true);
+
+  const [showLoader, setShowLoader] = useState(true); // State to manage loader display
+
 
 
   const [customerBody, setCustomerBody] = useState(null);
@@ -64,6 +70,12 @@ const Delegate = ({
       clearTimeout(closePopupTimer);
     };
   }, [visible]);
+
+  const togglePopupnotRFQ = () => {
+    console.log("toggle not rfq")
+    setIsPopupOpennotrfq(!isPopupOpennotrfq);
+    console.log(isPopupOpennotrfq)
+  };
 
 
   // function to click Delegate Button on screen 1
@@ -442,6 +454,25 @@ const sendEmailsToVendors = (allVendorEmails) => {
         </div>
       </div>
 
+      
+      {
+  classifyEmail && classifyEmail.RFQ_status === 0 && (
+    <Model isOpen={isPopupOpennotrfq} onRequestClose={togglePopupnotRFQ} className="overlayNoRFQ">
+      <Notrfq close={togglePopupnotRFQ}/>
+    </Model>
+  )
+}
+
+
+{isDelegateClicked && showLoader ? (
+         <div className="L1">
+         <div className="L2"></div>
+         <div className="L3"></div>
+         <div className="L4"></div>
+         </div>
+        ) : (
+          <>
+
       {/* SECTION - 2 */}
       <div className="Quote-Sec-2">
         {/* RFQ - SECTION */}
@@ -729,6 +760,8 @@ const sendEmailsToVendors = (allVendorEmails) => {
           <div className="Quote-DelegateBtn">Delegate</div>
         </div>
       )}
+       </>
+        )}
 
       {/* FOOTER SECTION */}
       <div className="Quote-Footer">
