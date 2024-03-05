@@ -1,0 +1,94 @@
+.nav-table2 {
+  height: 46px;
+  width: 320px;
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+  justify-content: space-between;
+  align-items: center;
+  display: inline-flex;
+  /* background-color: yellow; */
+}
+.nav-table2Div {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-left: 16px;
+  /* background-color: red; */
+}
+.nav-table2Div-back {
+  width: 5px;
+  height: 10px;
+  border: 1.5px black solid;
+}
+.nav-table2-Div2 {
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  display: flex;
+  /* background-color: pink; */
+}
+.nav-table2-Div2-a {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  opacity: 0.8;
+  /* border-bottom: 1px solid; */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  cursor: pointer;
+}
+.nav-table2-Div2-a2 {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  opacity: 0.8;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  cursor: pointer;
+}
+.nav-table2-Div2-b {
+  color: #080808;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.36px;
+  word-wrap: break-word;
+}
+.nav-table2-NameDiv {
+  /* height: 26px; */
+  height: 18px;
+  width: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: #356f9f;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  cursor: pointer;
+  margin-right: 16px;
+}
+.nav-table2-NameDiv-b {
+  color: white;
+  font-size: 14px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.14px;
+  word-wrap: break-word;
+}
+.active {
+  border-bottom: 1px solid; /* Choose your desired active style */
+}
