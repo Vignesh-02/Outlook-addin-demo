@@ -5,6 +5,13 @@ import "./Decision.css";
 import Extend from "../../../../public/extender.png";
 import Ventmaterial from "../Ventmaterial/Ventmaterial";
 import Modal from "react-modal";
+import { useSelector } from "react-redux";
+import { productAdd } from "../../../Store/action/productAction";
+
+
+
+
+
 
 // const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
 //   const [selectedProduct, setSelectedProduct] = useState(1); // Default to product 1
@@ -388,6 +395,15 @@ import Modal from "react-modal";
 
 
 const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
+
+
+    const  {product_1, product_2, product_3}  = useSelector(
+        (state) => state.product
+      );
+    //   console.log('Store product_1 data', product_1)
+    //   console.log('Store product_2 data', product_2)
+    //   console.log('Store products_3 data', product_3)
+
   const [selectedProduct, setSelectedProduct] = useState(1); // Default to product 1
   const [selectedProductData, setSelectedProductData] = useState(null); // Data for the selected product
   const [selectedProductStatus, setSelectedProductStatus] = useState(null); // Default to no selected product status
@@ -405,12 +421,14 @@ const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
   });
 
     // Load saved data from localStorage on component mount
-    useEffect(() => {
-      const savedData = localStorage.getItem("selectedProductData");
-      if (savedData) {
-        setSelectedProductData(JSON.parse(savedData));
-      }
-    }, []);
+    
+    // useEffect(() => {
+    //   const savedData = window.localStorage.getItem("selectedProductData");
+    //   console.log('saved Data in local Storage', savedData);
+    //   if (savedData) {
+    //     setSelectedProductData(JSON.parse(savedData));
+    //   }
+    // }, []);
 
     const handleFieldChange = (event, field) => {
       if (event.key === 'Enter') {
@@ -419,7 +437,10 @@ const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
           [field]: event.target.value
         };
         // Save data to local storage
-        localStorage.setItem(`selectedProductData_${selectedProduct}`, JSON.stringify(newData));
+        // window.localStorage.setItem(`selectedProductData_${selectedProduct}`, JSON.stringify(newData));
+        // console.log(newData);
+        productAdd(newData, selectedProduct);
+
         setSelectedProductData(newData);
         setEditableFields(prevState => ({
           ...prevState,
@@ -471,9 +492,22 @@ const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
 
   // Load saved data from localStorage on component mount
 useEffect(() => {
-  const savedData = localStorage.getItem(`selectedProductData_${selectedProduct}`);
-  if (savedData) {
-    setSelectedProductData(JSON.parse(savedData));
+//   const savedData = window.localStorage.getItem(`selectedProductData_${selectedProduct}`);
+let getProductData = null;
+
+if(selectedProduct == 1){
+    getProductData = product_1
+}
+if(selectedProduct == 2){
+    getProductData = product_2
+}
+if(selectedProduct == 3){
+    getProductData = product_3
+}
+
+
+if (getProductData) {
+    setSelectedProductData(getProductData);
   } else {
     // If no saved data found, set the default data for the selected product
     const defaultProduct = materials.find(

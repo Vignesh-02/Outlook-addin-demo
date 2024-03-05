@@ -166,7 +166,7 @@ const Stocks = ({classifyEmail }) => {
                                 color: "#080808",
                                 fontSize: "10px",
                                 fontFamily: "Helvetica Neue",
-                                fontWeight: 100,
+                                fontWeight: 400,
                                 lineHeight: "20px",
                                 letterSpacing: "0.50px",
                                 wordWrap: "break-word",

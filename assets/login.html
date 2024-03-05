@@ -9,26 +9,23 @@
         
         window.onload = function() {
 
-            var msg = this.location.href;
-            console.log(msg)
-            SendBackURI(msg);
+            // var msg = this.location.href;
+            // console.log(msg)
             const urlParams = new URLSearchParams(window.location.search);
-            const myParam = urlParams.get('myParam');
-            console.log('urlParams', urlParams);
-            console.log('myParam ', myParam)
+            const code = urlParams.get('code');
+            console.log('myParam ', code)
+            SendBackURI(code);
+
+
     };
 
-        function Load(e) {
-            var msg = this.location.href;
-            SendBackURI(msg);
-        }
-
+      
         function SendBackURI(msg) {
             try {
-                Office.initialize = function (reason) {
+                Office.onReady(() => {
 
                     Office.context.ui.messageParent(msg);
-                };
+                });
             }
             catch (err) {
                 console.log(err);
