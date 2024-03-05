@@ -13,7 +13,7 @@ import jwt_decode from "jwt-decode";
 
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Delegate from "./Pages/Delegate/Delegate";
-import Contact from "./Pages/Contact/Contact";
+import Contact from "./components/Contact";
 // import Home from "./Pages/Home/Home";
 // import Login from "./Login";
 // import Home from "./Home"/;
@@ -438,7 +438,7 @@ Office.onReady((info) => {
             />
           )}
         />
-         {/* <Route exact path="/contact" component={Contact} /> */}
+         <Route exact path="/contact" component={Contact} />
          
         
       </Switch>
