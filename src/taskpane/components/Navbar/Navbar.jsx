@@ -15,7 +15,7 @@ const Navbar = ({ activePage }) => {
       <div className="nav-table2-Div2">
         <div
           className={`nav-table2-Div2-a ${activePage === "Delegate" ? "active" : ""}`}
-          onClick={() => navigate("/delegate")}
+          onClick={() => navigate("/del")}
         >
           <div className="nav-table2-Div2-b">Delegate</div>
         </div>
