@@ -14,7 +14,9 @@ import animationData from "./animation.json"; // Import your animation JSON file
 
 const Login = ({ emailAddress, ...props}) => {
     let loginDialog = null;
+
   const [loading, setLoading] = useState(true); // State to track loading
+
 
     
     const history = useHistory();

@@ -1,0 +1,29 @@
+/* FOOTER SECTION */
+.Quote-Footer {
+  width: 300px;
+  height: 32.12px;
+  padding-top: 4px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #356f9f;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  display: inline-flex;
+  margin-bottom: -5.6px;
+}
+.Quote-Footer-Text {
+  text-align: center;
+  color: white;
+  font-size: 12.93px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.39px;
+  word-wrap: break-word;
+}
+.Quote-Footer-Images {
+  width: 117.18px;
+  height: 21.12px;
+  position: relative;
+}
