@@ -160,8 +160,8 @@ const App = (props) => {
           console.log(item);
           console.log(item.itemId);
           const emailAddress = Office.context.mailbox.userProfile.emailAddress;
-          const displayName = Office.context.mailbox.userProfile.displayName;
-
+          let displayName = Office.context.mailbox.userProfile.displayName;
+            displayName = displayName.split(" ")[0]
           const extractBusinessName = (email) => {
             // Split the email by '@' and take the second part (domain part)
             const domainPart = email.split("@")[1];

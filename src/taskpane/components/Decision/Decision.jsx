@@ -413,7 +413,7 @@ const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
   };
   const [editableFields, setEditableFields] = useState({
     status: false,
-    material: false,
+    material_cost: false,
     margin: false,
     price: false,
     leadTime: false,
@@ -431,11 +431,15 @@ const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
     // }, []);
 
     const handleFieldChange = (event, field) => {
+
       if (event.key === 'Enter') {
-        const newData = {
-          ...selectedProductData,
-          [field]: event.target.value
-        };
+        
+            const newData = {
+                ...selectedProductData,
+                [field]: event.target.value
+              };
+        
+        
         // Save data to local storage
         // window.localStorage.setItem(`selectedProductData_${selectedProduct}`, JSON.stringify(newData));
         // console.log(newData);
@@ -662,16 +666,18 @@ if (getProductData) {
                     </div>
                   </div>
                 </div>
-                <div className="Decision-Shape-Value">
+                <div className="Decision-Shape-Value"
+                onDoubleClick={() => toggleEditMode("status")}>
                 <div className="Decision-Shape-ValueP">
                     <div className="Decision-Shape-ValueP1">
                       <div className="Decision-Shape-ValueP2">
                         <div className="Decision-Shape-ValueC1">
                   {editableFields.status ? (
                     <input
+                    required={true}
                       type="text"
                       value={selectedProductData.status}
-                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, status: e.target.value }))}
+                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, status: e.target.value.replace(/[^a-zA-Z\s_]/g, '') }))}
                       onBlur={() => setEditableFields(prevState => ({ ...prevState, status: false }))}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
@@ -683,7 +689,6 @@ if (getProductData) {
                   ) : (
                     <div
                       className="Decision-Shape-ValueC2"
-                      onDoubleClick={() => toggleEditMode("status")}
                     >
                       {selectedProductData.status}
                       {/* {materials[selectedProduct - 1]?.status || ""} */}
@@ -708,20 +713,21 @@ if (getProductData) {
                     </div>
                   </div>
                 </div>
-                <div className="Decision-Shape-Value">
+                <div className="Decision-Shape-Value"
+                onDoubleClick={() => toggleEditMode("material_cost")}>
                 <div className="Decision-Shape-ValueP">
                     <div className="Decision-Shape-ValueP1">
                       <div className="Decision-Shape-ValueP2">
                         <div className="Decision-Shape-ValueC1">
-                  {editableFields.material ? (
+                  {editableFields.material_cost ? (
                     <input
                       type="text"
-                      value={selectedProductData.material}
-                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, material: e.target.value }))}
-                      onBlur={() => setEditableFields(prevState => ({ ...prevState, material: false }))}
+                      value={selectedProductData.material_cost}
+                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, material_cost: e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1') }))}
+                      onBlur={() => setEditableFields(prevState => ({ ...prevState, material_cost: false }))}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
-                          handleFieldChange(e, "material");
+                          handleFieldChange(e, "material_cost");
                         }
                       }}
                       style={{width: '100%', border: "transparent"}}
@@ -729,11 +735,9 @@ if (getProductData) {
                     />
                   ) : (
                     <div
-                      className="Decision-Shape-ValueC2"
-                      onDoubleClick={() => toggleEditMode("material")}
-                    >
+                      className="Decision-Shape-ValueC2">
                       {/* {selectedProductData.status} */}
-                      {selectedProductData.material}
+                      {selectedProductData.material_cost}
                       {/* {materials[selectedProduct - 1]?.material || ""} */}
                     </div>
                   )}
@@ -755,7 +759,8 @@ if (getProductData) {
                     </div>
                   </div>
                 </div>
-                <div className="Decision-Shape-Value">
+                <div className="Decision-Shape-Value"
+                onDoubleClick={() => toggleEditMode("margin")}>
                 <div className="Decision-Shape-ValueP">
                     <div className="Decision-Shape-ValueP1">
                       <div className="Decision-Shape-ValueP2">
@@ -764,7 +769,7 @@ if (getProductData) {
                     <input
                       type="text"
                       value={selectedProductData.margin}
-                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, margin: e.target.value }))}
+                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, margin: e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1') }))}
                       onBlur={() => setEditableFields(prevState => ({ ...prevState, margin: false }))}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
@@ -777,9 +782,7 @@ if (getProductData) {
                     />
                   ) : (
                     <div
-                      className="Decision-Shape-ValueC2"
-                      onDoubleClick={() => toggleEditMode("margin")}
-                    >
+                      className="Decision-Shape-ValueC2">
                       {selectedProductData.margin}
                       {/* {materials[selectedProduct - 1]?.margin || ""} */}
                     </div>
@@ -802,7 +805,8 @@ if (getProductData) {
                     </div>
                   </div>
                 </div>
-                <div className="Decision-Shape-Value">
+                <div className="Decision-Shape-Value"
+                onDoubleClick={() => toggleEditMode("price")}>
                 <div className="Decision-Shape-ValueP">
                     <div className="Decision-Shape-ValueP1">
                       <div className="Decision-Shape-ValueP2">
@@ -811,7 +815,7 @@ if (getProductData) {
                     <input
                       type="text"
                       value={selectedProductData.price}
-                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, price: e.target.value }))}
+                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, price: e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1') }))}
                       onBlur={() => setEditableFields(prevState => ({ ...prevState, price: false }))}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
@@ -823,9 +827,7 @@ if (getProductData) {
                     />
                   ) : (
                     <div
-                      className="Decision-Shape-ValueC2"
-                      onDoubleClick={() => toggleEditMode("price")}
-                    >
+                      className="Decision-Shape-ValueC2">
                       {selectedProductData.price}
                       {/* {materials[selectedProduct - 1]?.price || ""} */}
                     </div>
@@ -847,7 +849,8 @@ if (getProductData) {
                     </div>
                   </div>
                 </div>
-                <div className="Decision-Shape-Value">
+                <div className="Decision-Shape-Value"
+                onDoubleClick={() => toggleEditMode("lead_time")}>
                 <div className="Decision-Shape-ValueP">
                     <div className="Decision-Shape-ValueP1">
                       <div className="Decision-Shape-ValueP2">
@@ -856,7 +859,7 @@ if (getProductData) {
                     <input
                       type="text"
                       value={selectedProductData.lead_time}
-                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, lead_time: e.target.value }))}
+                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, lead_time: e.target.value.replace(/[^0-9.]/g, '') }))}
                       onBlur={() => setEditableFields(prevState => ({ ...prevState, lead_time: false }))}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
@@ -868,9 +871,7 @@ if (getProductData) {
                     />
                   ) : (
                     <div
-                      className="Decision-Shape-ValueC2"
-                      onDoubleClick={() => toggleEditMode("leadTime")}
-                    >
+                      className="Decision-Shape-ValueC2">
                       {selectedProductData.lead_time}
                       {/* {materials[selectedProduct - 1]?.lead_time|| ""} */}
                     </div>
@@ -893,7 +894,8 @@ if (getProductData) {
                     </div>
                   </div>
                 </div>
-                <div className="Decision-Shape-Value">
+                <div className="Decision-Shape-Value"
+                onDoubleClick={() => toggleEditMode("freight_cost")}>
                    <div className="Decision-Shape-ValueP">
                     <div className="Decision-Shape-ValueP1">
                       <div className="Decision-Shape-ValueP2">
@@ -902,7 +904,7 @@ if (getProductData) {
                     <input
                       type="text"
                       value={selectedProductData.freight_cost}
-                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, freight_cost: e.target.value }))}
+                      onChange={(e) => setSelectedProductData(prevData => ({ ...prevData, freight_cost: e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1') }))}
                       onBlur={() => setEditableFields(prevState => ({ ...prevState, freight_cost: false }))}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
@@ -914,9 +916,7 @@ if (getProductData) {
                     />
                   ) : (
                     <div
-                      className="Decision-Shape-ValueC2"
-                      onDoubleClick={() => toggleEditMode("freightCost")}
-                    >
+                      className="Decision-Shape-ValueC2">
                       {selectedProductData.freight_cost}
                       {/* {materials[selectedProduct - 1]?.freight_cost || ""} */}
                     </div>

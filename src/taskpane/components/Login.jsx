@@ -102,7 +102,7 @@ const Login = ({ emailAddress, ...props}) => {
     console.log('inside refreshAccess Token code', token)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    // const redirectUri = "https://localhost:3001/assets/login.html";
+    // const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
