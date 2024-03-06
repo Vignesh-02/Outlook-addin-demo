@@ -15,6 +15,10 @@ import Buttoncv from "../../components/Button/Buttoncv";
 import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
+import Model from 'react-modal'
+import Success from "../../components/Success/Success";
+import Notrfq from "../../components/NotRFQ/Notrfq";
+
 
 import { useLocation } from "react-router-dom";
 
@@ -30,6 +34,13 @@ const Delegate = ({
         console.log(location);
         const token = location?.state.token;
         console.log(token)
+      const [visible, setVisible] = useState(false);
+  const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(true);
+
+  const [showLoader, setShowLoader] = useState(true); // State to manage loader display
+
+  const [emailDetailsFetched, setEmailDetailsFetched] = useState(false);
+  const [rfq_id, setRfq_id] = useState(null)
 
   const [customerBody, setCustomerBody] = useState(null);
   const [vendorBody, setVendorBody] = useState(null);     
@@ -56,6 +67,24 @@ const Delegate = ({
     RFQ_ID: "",
   });
 
+  useEffect(() => {
+    let closePopupTimer;
+    if (visible) {
+      closePopupTimer = setTimeout(() => {
+        setVisible(false);
+      }, 2000); // 2 seconds
+    }
+
+    return () => {
+      clearTimeout(closePopupTimer);
+    };
+  }, [visible]);
+
+  const togglePopupnotRFQ = () => {
+    console.log("toggle not rfq")
+    setIsPopupOpennotrfq(!isPopupOpennotrfq);
+    console.log(isPopupOpennotrfq)
+  };
 
 
   // function to click Delegate Button on screen 1
@@ -301,6 +330,7 @@ Object.entries(allVendorEmails).forEach(([email, vendor]) => {
           });
           console.log("classify API response from backend: ", res.data);
           setClassifyEmail(res.data);
+          setRfq_id(res.data.RFQ_ID);
 
       }
           catch (error) {
@@ -459,6 +489,37 @@ Object.entries(allVendorEmails).forEach(([email, vendor]) => {
   }, [isDelegate2Clicked]);
 
 
+  useEffect(() => {
+    if (emailDetails && !emailDetailsFetched) {
+      const getEmailDetails = async () => {
+        try {
+          // Make sure the RFQ_status is 1 before making the API call
+          if (classifyEmail.RFQ_status === 1) {
+            const res = await axios.post(
+              "http://127.0.0.1:8000/api/getEmailDetails/",
+              {
+                getEmailDetails: emailDetails,
+                RFQ_ID: rfq_id
+              }
+            );
+  
+            console.log("getEmailDetails API response from backend: ", res.data);
+            console.log("RFQ 2", rfq_id)
+            // Set the state variable to true indicating that the API call has been made
+            setEmailDetailsFetched(true);
+          } else {
+            console.log("RFQ_status is not 1, skipping API call.");
+          }
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
+        } 
+      };
+      getEmailDetails();
+    }
+  }, [classifyEmail, emailDetails, emailDetailsFetched]);
+  
+
+
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
 
@@ -548,6 +609,25 @@ Object.entries(allVendorEmails).forEach(([email, vendor]) => {
           </div>
         </div>
       </div>
+
+      
+      {
+  classifyEmail && classifyEmail.RFQ_status === 0 && (
+    <Model isOpen={isPopupOpennotrfq} onRequestClose={togglePopupnotRFQ} className="overlayNoRFQ">
+      <Notrfq close={togglePopupnotRFQ}/>
+    </Model>
+  )
+}
+
+
+{isDelegateClicked && showLoader ? (
+         <div className="L1">
+         <div className="L2"></div>
+         <div className="L3"></div>
+         <div className="L4"></div>
+         </div>
+        ) : (
+          <>
 
       {/* SECTION - 2 */}
       <div className="Quote-Sec-2">
@@ -814,7 +894,11 @@ Object.entries(allVendorEmails).forEach(([email, vendor]) => {
 
       {btn ? (
         <div className="Quote-DelegateBtnDiv" onClick={handleLaunch}>
-          <div className="Quote-DelegateBtn">Launch</div>
+          <div className="Quote-DelegateBtn">Launch
+          <Model isOpen={visible} onRequestClose={()=>setVisible(false)} className="overlaySuccess">
+                <Success />
+           </Model>
+          </div>
         </div>
       ) : isDelegateClicked2 ? (
         <div className="DEL-Buttons">
@@ -832,6 +916,8 @@ Object.entries(allVendorEmails).forEach(([email, vendor]) => {
           <div className="Quote-DelegateBtn">Delegate</div>
         </div>
       )}
+       </>
+        )}
 
       {/* FOOTER SECTION */}
       <div className="Quote-Footer">
