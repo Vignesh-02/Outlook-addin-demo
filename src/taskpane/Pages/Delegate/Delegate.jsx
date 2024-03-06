@@ -19,7 +19,7 @@ import Model from 'react-modal'
 // import Success from "../../Components/Success/Success";
 import Success from "../../components/Success/Success";
 import Notrfq from "../../components/NotRFQ/Notrfq";
-import { useNavigate } from "react-router-dom";
+import {useHistory} from 'react-router-dom'
 
 
 const Delegate = ({
@@ -27,7 +27,7 @@ const Delegate = ({
     emailAddress,
     userName, 
     val, ...props }) => {
-  const navigate = useNavigate();
+  const history = useHistory();
 
 
   const [visible, setVisible] = useState(false);
@@ -536,9 +536,7 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
     window.close();
   };
 
-  const contactNavigation = () => {
-    navigate("/contact")
- }
+ 
 
 
   return (
@@ -569,7 +567,7 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
             <div className="queue-div">
               <div className="queue">Queue</div>
             </div>
-            <div className="contact-div" onClick={contactNavigation}>
+            <div className="contact-div" onClick={()=> history.push('/contact')}>
               <div className="contact">Contact Us</div>
             </div>
           </div>

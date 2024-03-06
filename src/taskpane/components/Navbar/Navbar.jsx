@@ -1,11 +1,11 @@
 import React from "react";
 import "./Navbar.css";
 import ArrowLeft from "../../../../public/ArrowLeft.png";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 const Navbar = ({ activePage }) => {
-  const navigate = useNavigate();
+  const history = useHistory()
 
   return (
     <div className="nav-table2">
@@ -15,7 +15,7 @@ const Navbar = ({ activePage }) => {
       <div className="nav-table2-Div2">
         <div
           className={`nav-table2-Div2-a ${activePage === "Delegate" ? "active" : ""}`}
-          onClick={() => navigate("/del")}
+          onClick={() => history.push("/del")}
         >
           <div className="nav-table2-Div2-b">Delegate</div>
         </div>
@@ -24,7 +24,7 @@ const Navbar = ({ activePage }) => {
         </div>
         <div
           className={`nav-table2-Div2-a2 ${activePage === "Contact" ? "active" : ""}`}
-          onClick={() => navigate("/contact")}
+          onClick={() => history.push("/contact")}
         >
           <div className="nav-table2-Div2-b">Contact Us</div>
         </div>
