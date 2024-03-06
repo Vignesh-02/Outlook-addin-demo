@@ -47,7 +47,7 @@ const Login = ({ emailAddress, ...props}) => {
     const loginWithOAuth = () => {
        console.log(window.localStorage);
         window.localStorage.setItem('emailAddress', emailAddress);   
-        const permittedEmails = ['vigu1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com'];
+        const permittedEmails = ['vigu1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com', ' anumunde123@outlook.com'];
         console.log('emailAddress ', emailAddress);
         // localStorage.setItem('emailAddress', emailAddress);
         // Check if the user's email is in the permittedEmails array
