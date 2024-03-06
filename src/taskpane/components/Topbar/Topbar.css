@@ -1,0 +1,29 @@
+.contactPage-topDiv {
+  width: 100%;
+  height: 27px;
+  justify-content: space-between;
+  align-items: center;
+  display: inline-flex;
+  /* background-color: greenyellow; */
+  margin-top: 7px;
+  /* margin-bottom: 6px; */
+}
+.contactPage-topDiv img {
+  width: 128px;
+  height: 27px;
+  margin-left: 22px;
+}
+.contactPage-topDiv-Child1 {
+  width: 24px;
+  height: 24px;
+  padding: 7px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-right: 22px;
+  cursor: pointer;
+}
+.contactPage-topDiv-Child1 img {
+  width: 10px;
+  height: 10px;
+}

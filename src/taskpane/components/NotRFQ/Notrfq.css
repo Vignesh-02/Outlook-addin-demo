@@ -1,0 +1,121 @@
+.NOT-RFQDiv {
+  width: 145px;
+  height: 126.32px;
+  padding-top: 5.01px;
+  padding-bottom: 24px;
+  padding-left: 13.35px;
+  padding-right: 13.35px;
+  /* background: linear-gradient(0deg, #f44336 0%, #f44336 100%),
+    linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(255, 255, 255, 0.88) 100%
+    ); */
+  background-color:rgb(255, 222, 227);
+  border-radius: 4.17px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+  border: 1px solid black;
+}
+.NOT-RFQDiv-1 {
+  align-self: stretch;
+  justify-content: space-between;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.NOT-RFQDiv-2 {
+  padding-top: 5.84px;
+  padding-bottom: 5.84px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.NOT-RFQDiv-2b {
+  width: 18.36px;
+  height: 18.36px;
+  padding: 1.53px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.NOT-RFQDiv-2b-child {
+  width: 15.3px;
+  height: 15.3px;
+  cursor: pointer;
+  /* background: #e04347; */
+}
+.NOT-RFQDiv-3 {
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.NOT-RFQDiv-3b {
+  padding-top: 3.34px;
+  padding-bottom: 3.34px;
+  border-radius: 40.05px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.NOT-RFQDiv-3c {
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.NOT-RFQDiv-3d {
+  width: 16.69px;
+  height: 16.69px;
+  position: relative;
+}
+.NOT-RFQDiv-3e {
+  width: 9.73px;
+  height: 9.73px;
+  left: 3.48px;
+  top: 3.48px;
+  position: absolute;
+  cursor: pointer;
+  /* background: linear-gradient(0deg, #ff4c51 0%, #ff4c51 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%); */
+}
+
+/* footer */
+.NOT-RFQDiv-footer {
+  align-self: stretch;
+  height: 67.28px;
+  padding-top: 6.67px;
+  padding-bottom: 6.67px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7.93px;
+  display: flex;
+}
+.NOT-RFQDiv-footer-1 {
+  align-self: stretch;
+  text-align: center;
+  /* color: rgba(0, 0, 0, 0.1); */
+  color: #ff4c51;
+  font-size: 13.35px;
+  font-family: Orbitron;
+  font-weight: 500;
+  line-height: 20.02px;
+  letter-spacing: 0.13px;
+  word-wrap: break-word;
+  /* background-color: yellow; */
+ 
+}
+.NOT-RFQDiv-footer-2 {
+  align-self: stretch;
+  text-align: center;
+  color: #ff4c51;
+  font-size: 11.68px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.13px;
+  word-wrap: break-word;
+  
+}
