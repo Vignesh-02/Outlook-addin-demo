@@ -112,8 +112,8 @@ const Queue = () => {
   }, []); 
 
   // Filter data based on the search query
-  const filteredData = data.filter((rowData) =>
-    rowData.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredData = queueData.filter((rowData) =>
+    rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
