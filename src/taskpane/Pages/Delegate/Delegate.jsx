@@ -564,7 +564,7 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
               <div className="DEL-delegate">Delegate</div>
             </div>
 
-            <div className="queue-div">
+            <div className="queue-div" onClick={()=> history.push('/queue')}>
               <div className="queue">Queue</div>
             </div>
             <div className="contact-div" onClick={()=> history.push('/contact')}>
