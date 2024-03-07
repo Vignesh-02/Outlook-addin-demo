@@ -91,134 +91,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     quoteRfqEmailParent.style.height = "27px";
   };
 
-  // const handleLaunch = () => {
-  //   const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAeJ11VoWDbmrzeerwQgxxgOWiAK8bXIRFEiygmBltQlV2cfr+l6KTEzRycFQt7cKYSDOnKrmm2ubuwxfiHaAWMlCtLRN1n/UduS/NBz07aC8Xq+xQF9jpLvWLwFlYK5mFN3uJnCbCgjVeGGnOA6c2H8Ur5yayvTCC48d4ttgJCzUT/xysXtHN1IrFk0LtwxQEdKWbvDsOyeAbHKpPgHnx9GTdf3P/N7CML3yi0A78ubdcCjZ7VD7ez5llSSZAE9ECvLJHExKonfNlvZwvd2ZZH8l0VG+m+ct08Jy9BSQM5DLvpwu01ZCh/kmOAgFqOJjOnNttA/IxPM+yyQ9S0Ng55YDZgAACDSNR4pm7xW8QAJ6jUyYEqlRZ/R77ACfWhdpydo6H9B+JnF/vJNQHuoTwECbKx+NiJ/dkaHV20OjT/xl2BzHpMX8S4DbXWcN1VLvL78mt1MIeFoTXWMNNe+5PJ5a7NE/fVnXeEp77ScOY7ZxhD/jQ+/Pk9J0Me7sJ9f7oRZZ2RF1cme+jZCCKnD9l7+Sl2ImxZl7cL1kWXgyUD674kRdi3uN2cFzzFKGAEWyZK3hQ4pROdx0IiPLpyVopesQyHf1vSHXL3to/BcRfEGSkKY9/2VU7yxY+byzhMAUtgD0vF1VRdS7PyuGykwZvGm4cOWpr+1Ve1+eaXpN5i61cH7T/wvztzhqnPWufdirL+tvOIKaIyibPeyqwpnIWOBO+r6BYe/RUOer7ujs+hM9s2/2fzpF541kCBTrz+Go6ax8lTZKNHCZUJ4GU4pXh1iUY3JoF6faMXTstCuW/eyGyepGJx7FZWopfwXqe/SvTihsA7+xZjPqvYQEx31HMMai/2VUPN4BinbCFil44ohONLwxwVgXV67viANzIXcgz8+dDSaV8VtQbLU7ReI5vCk+NL3j5IXvU1rwK8KDG0of60xWutauy1m1RmRBgxRc90BYxnY6tSTULmQeibJmlrk+XPWAQvy3cIo0KwRTbu6Hr0jNhALibvA2sH5X2QGtCZ6p0CdHf406B9wzuD/cj2ivmo6BH/bNTkClGOi4BFISm459Mo7u7Ipstpl8zf0CJX5jw2y81dF5xP6HdqtWRDAXjoFzHtgoK+lC8V+3oJh9Ag==';
-  //   const sendMailReply = 'https://graph.microsoft.com/v1.0/me/messages/AQMkADAwATM0MDAAMS02OGVmLWEyN2EtMDACLTAwCgBGAAADpd4QqRN3K0yHpymIIakdnQcA54fYm3+x4Uy3lcgUc2eXoQAAAgEMAAAA54fYm3+x4Uy3lcgUc2eXoQAAABfpxN8AAAA=/reply';
-  //       const emailData = {
-  //           message: {
-  //               toRecipients: [
-  //                   {
-  //                       emailAddress: {
-  //                           address: "rudranil@onelabventures.com"
-  //                       }
-  //                   }
-  //               ]
-  //           },
-  //           comment: customerBody
-  //   };
-
-  //   // const sendMailVendor = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAcwMknoqsvsOzI53PHE81tR3yjSouoADaGAZj7X4jhDGAFCSBeh8FuSj5uYAJRLE3GNZE2s/dTxQs9ylM4dnsu9wF2rkdu1EGSftSurh0NYtqYjiHKxQR07M1oaTlD6qIi7COlQ9BZ/lg7mKIacMFn9c3yGxuC82z9Qq4/khuGBAYarAqEYJabYkI+R/64QcXjtb/lo/45kra4p0mqakT84ezTvSFG4WI/WVHPjLw0px0UzAaPVANUHSzAGc6uZuq+I4mtNYHEUznOUXhCa3gV//kIjeBElK3fVbR2ldMianYHetmfQyEZgUNCjzw1OrUwyJy27UJ+B/snUrKGmq/G4DZgAACLzS+AZ/Zx/UQAKsaxbO+vQK1wrFyO1Jo20IbsbuPS+GQ1ZfHz7NeLFa7t10xza0quNUggAYFBhU/X3jcmJ+zJbMuMqI4TlzQkqTo8wR158s/v3CUJWxFPEEZkK0vUaLRaufy9CoBtagvT1uK9bWNPc0ESS8IbLF4ie0ZTVxc+aLo7rauh/mPQTwzLvQT/SykSOYtrwTnhcFaiJvMwjNlrd7CEt77dAXeDsR+fxyet+YIBznNBO/DGfz5SWVq0t/wArk0fz2grz+sglWqm4oQwqMtjCDVX7d7OJl0jExfi5ZZJvqmRLMAWJTVpmYlRHfWN1fP5WXHRrLZedbo+ZaSamaWixOWvJS4qwuezy9QOZ3NjGUqOFWcd4fW+wTUSG2GMd76izFc2ohaD+b5twnvn+8RMmNklcyseKFhhjbhEh9adge2h0f6iPByFO6YXahBhrgTa/sIw9HXKYOfgM3H5dhGWG/eYwvLBxhOdiPCqHgFJTi+DhLoDkUhBe/Q7cbpeXoXysZrZBO+E7LaQq7drSMYJe8ZEd3mwlfg109qi5NfdkEU8ba6kqSVSAJ1ETM7DPX8ksQYzoiXOxj/hDpwx5CnV8QjlN51+hU7NanhhlspZyVNXAWMK2nqgN1iJxD3Ma9I0ouC8bZ1Nsvj95/6HuiKILbrwy5dqW3gRjbP5SZBdBq30Sb+1gKX/QsRwVgNUB/vV2v4wJykMnNAUWJAj6u5NCemwWl+ZxZzmFNXIcnpuSbkPB+HsgRacllzMZZZW27WZq1Ikf2zv59Ag=='
-  //   const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
-  //   const emailData1 = {
-  //       message: {
-  //         subject: "Mail from ISR ",
-  //         body: {
-  //           contentType: "Text",
-  //           content: "Testing mail from ISR."
-  //         },
-  //         toRecipients: [
-  //           {
-  //             emailAddress: {
-  //               // "address": vendorEmails,
-  //               address: "afshankhan252@gmail.com"
-  //             },
-  //           },
-  //           {
-
-  //               emailAddress: {
-  //               // "address": vendorEmails,
-  //               address: "laserlikefocus000@gmail.com"
-  //             }
-  //           }
-  //         ],
-  //       },
-  //       saveToSentItems: "false"
-  //     };
-
-  //       fetch(sendMailReply, {
-  //         method: 'POST',
-  //         headers: {
-  //           'Authorization': `Bearer ${accessToken}`,
-  //           'Content-Type': 'application/json'
-  //         },
-  //         body: JSON.stringify(emailData)
-  //       })
-  //       .then(response => response.json())
-  //       .then(data => {
-  //         console.log("Mail sent successfully", data);
-  //       })
-  //       .catch(error => {
-  //         console.error("Error sending mail", error);
-  //       });
-
-  //     fetch(sendMailVendor, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Authorization': `Bearer ${accessToken}`,
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(emailData1)
-  //     })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log("Mail sent successfully", data);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error sending mail", error);
-  //     });
-  //   }
-
-  // change
-
-  // let allVendorEmails = vendordetail;
-  // console.log("allvendorEmails", allVendorEmails)
-
-  // const handleLaunch = (allVendorEmails) => {
-  //   console.log("Vendor Details in outlook: ", allVendorEmails)
-  //   const accessToken = 'EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO1g7G8HPmNofTFX0dqkv0g3OglL+RKxaRwVloaFeIcNdazS52H54+bxAjP3eeW+qcafjVt/TJ7E6Es2vUVRMGJ3XeTN/2hXd9dHUOqYgabr1HNtRazAHtEQ0YiHAtIzzemEsQ/AD7qZOvKCurg64iGM4pDDWeRPv8KyKZmnB8ap4gEAv3UPua/Cm9bXo7BUayacA4Xb5K9jiQ9J4wOgKf0aYXXioI8ccemiF+kO8PpNKrYGM8OWTkUCFUP7f0lreJTVm2bNDWkYqoeE+B1WWgI00eNwZQzWMelRJ4Gat/KNgeEEUxvks4wbYAN3ZBlLWkSvnQDZgAACMiXWbqcxuAQQALCA20RVra0n+ox/+fu51U9Hy+PvnVA7rLsDaYigjufm0w7tZzLYHjdqNGLGBlx3xo/sTMp5+VjDO3wQZT5gX9WZNf5kb84SAKvcC4QUfmabqAjmBMyCmEW0TxU+hFxVQrcTG94MaNpDp5/BHqn6UaS+5gNCXg5wt/+/bPf11x0DawUiiavuLCe4Us0NQ9zaHFbA57d79U2Hn8SrNJ5dMCsgjRCMOsi9rjFwpkOswxzZGuBGWF6RomKtKjRe6MEHUfp5b3kvUF/28iIS6Be7TCd7fvW740wAPV2wRPjdfuBU17BdMUrqqQpc28tCRtHr23YvOcYRJrb60JSQZkDeFmeyd0fCgJS4FzaogLtPjKnUg8YxRDs1kpJxwuEtdkuffcVM2r5N2+F6l1j553lLTIGI8VR0IYfGsFCl6PhF2uBPl5stmuL6M2HwSixwZt4VrfgFTNk72WKdAwsNeXZbfPwhR/+m5lCwIH1n288q9Fix+LRnyfoGPF1l+6BYCmAc0eV5Posy2jpF1hpL+nl8rZsDA4ANsYvgbtIMd9Cr5zS6EwVkYjRSk6g8XdlxDkwclzOcx7kiTBRvMguIoq6bq7P/qAxUAuDukB66rHDDmzG5Lba+DiC5JPDh6W+rbqEpIw/27IDLzikHA9pzKofDHrL/m3h0JmvGOsDqf1uJkd2wIFzmxL+Z+hhSlRByBG73kMiBtT9Bct80jIzvnoRYTU9w9yypCqYJTvTwH3SRyX9QQJoFGcJcILTVMJDOZHuz7B9Ag==';
-  //   const sendMailVendor = 'https://graph.microsoft.com/v1.0/me/sendMail';
-
-  //   // Iterate over each vendor detail
-  //   Object.values(allVendorEmails).forEach(vendor => {
-  //     const { Vendor_Email, Subject, Body } = vendor;
-
-  //     const emailData = {
-  //       "message": {
-  //         "subject": Subject,
-  //         "body": {
-  //           "contentType": "Text",
-  //           "content": Body
-  //         },
-  //         "toRecipients": [
-  //           {
-  //             "emailAddress": {
-  //               "address": Vendor_Email
-  //             }
-  //           }
-  //         ]
-  //       },
-  //       "saveToSentItems": "false"
-  //     };
-
-  //     // Send email to the vendor
-  //     fetch(sendMailVendor, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Authorization': `Bearer ${accessToken}`,
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(emailData)
-  //     })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log("Mail sent successfully to", Vendor_Email, data);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error sending mail to", Vendor_Email, error);
-  //     });
-  //   });
-  // }
-
   // corrrect
   const accessToken =
     "EwBwA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAbJjzy9ND2/EGBCOvFy/h40clVa4wb+Mp9HduizWgXcar2b952DyHmY/kYVyl8B7S28IqWX5CdEQr7qY+EBT01jvBQ8eT0g6LVurfqUlIumCHSgucQwkOr1xJ7a1y5poZwiMkfDGXUwwy0Zj5PvMPDq/iRnGo7/SfLfqvxXVJtjspbQSdjzgcg1IjzWHFuSZ5AWOD2W28zhTPC+sG4vpF58441pZUxdxkECyBcPWO/1kwNqt1ItRPiTSHNQQ120mTNyyEYTo7kGKi41noelEE2/7QEUGsuBRLTpbE3ROPeZFkO/qfIVFemKzA0JOD+joP8UiEOOJp1nG+A/NLeesmXQDZgAACCC4EpC5KHPbQAI+mvTT5rbs1ZmW3AsndtJH8tkGG+9cZV2oeyFHc8rIF9tZG4wbWjTsbKCVhLsoVcNa9ikf6CkzWxtHy8lBQrdAGQWToJ2mXbll4mR2Km0iXPZu0CTiZaR+iduM/I32rhqsvEl+3VIYsUq4wYdOA2qdDEvbyiVGbu2cKPT9l4UADUfgNtoNJYXiTu/L+8WnIZ7l9tSyGLw5Tjw+/azicblP8RaXkTel7vMBraK0CRVX1t/l/FHzig/qU9PO2kQiJMvuRN4bFAVXZ6LTOKrHmb/I/LuEWV1klbFANGvVWLov+Y/lPZZgp1D/LUao8NCMSUbZZbOUCQkN4RerNAyqtdPGAQHjEosPDGagT/N2k8nrcdAmOx539eriOBrLjMDzIAK2OXjncuSwK326+VBYq1nhQ1H8iI5NiTYGINf24QNYNLjWR+4igXvuhjfPNaskLZ80x01pcHLl0iavOaEu+tLmt6cIMQESWD8C5j7cb1X6M1vYDSNfIWqrWmX9OPGT0wQRrGZ5Vu36qzEMGmUM+WX24ZIID8snsNRxPxBFYWJZrmr1TVZsAa37SyFt4yM11VDmp81ecET9aqXviXkPhahqNh0Z5ftU5J+sAuMiqqCY7XoOH8QdAfcZ4HfXlgRwkp0NXPD+n5oZ6oP3D+wvJafbSKYuAIZRORX4VEWRCJjoju4kpY7/IXOkFYDCFXG9Jl01ZhwGcMDAarIk72g0RYxC89foEQ3NFq+g2an7AMJug6uuz9elBqc2hCmPFBBsEFp9Ag==";
@@ -241,6 +113,36 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
     // Call the function to send emails to vendors
     sendEmailsToVendors(allVendorEmails);
+
+    const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
+    const emailData = {
+      message: {
+        toRecipients: [
+          {
+            emailAddress: {
+              address: emailDetails.from,
+            },
+          },
+        ],
+      },
+      comment: customerBody,
+    };
+
+    fetch(sendCustomerReplyUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Mail sent successfully to customer", data);
+      })
+      .catch((error) => {
+        console.error("Error sending mail", error);
+      });
   };
 
   // Function to send emails to vendors
