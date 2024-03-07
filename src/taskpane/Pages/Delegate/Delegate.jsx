@@ -33,6 +33,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   console.log(location);
   const token = location?.state.token;
   console.log(token);
+
+  const [queueDetails, setQueueDetails] = useState(false);
+
   const [visible, setVisible] = useState(false);
   const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(true);
 
@@ -176,49 +179,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     const accessToken = token;
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
 
-    // Iterate over each vendor detail
-    //   Object.keys(vendordetail).forEach(vendor => {
-    //         console.log('vendor', vendor)
-    //             const { Vendor_Email, Subject, Body } = vendor;
-
-    //             const emailData = {
-    //               "message": {
-    //                 "subject": Subject,
-    //                 "body": {
-    //                   "contentType": "Html",
-    //                   "content": Body
-    //                 },
-    //                 "toRecipients": [
-    //                   {
-    //                     "emailAddress": {
-    //                       "address": Vendor_Email
-    //                     }
-    //                   }
-    //                 ]
-    //               },
-    //               "saveToSentItems": "false"
-    //             };
-
-    //             // Send email to the vendor
-    //             fetch(sendMailVendor, {
-    //               method: 'POST',
-    //               headers: {
-    //                 'Authorization': `Bearer ${accessToken}`,
-    //                 'Content-Type': 'application/json'
-    //               },
-    //               body: JSON.stringify(emailData)
-    //             })
-    //             .then(response => response.json())
-    //             .then(data => {
-    //               console.log("Mail sent successfully to", Vendor_Email, data);
-    //             })
-    //             .catch(error => {
-    //               console.error("Error sending mail to", Vendor_Email, error);
-    //             });
-    //           });
-
-    //
-
+   
     console.log("Vendor Details:", vendordetail);
     // Define a variable to store all vendor emails
     let allVendorEmails = {};
@@ -263,7 +224,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Mail sent successfully to", Vendor_Email, data);
+          console.log("Mail sent successfully to Vendor", Vendor_Email, data);
+          console.log("Queue details have been sent")
+          setQueueDetails(true);
         })
         .catch((error) => {
           console.error("Error sending mail to", Vendor_Email, error);
@@ -294,12 +257,31 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Mail sent successfully", data);
+        console.log("Mail sent successfully to customer", data);
       })
       .catch((error) => {
         console.error("Error sending mail", error);
       });
   };
+
+  useEffect(() => {
+    if (queueDetails) {
+      const sendQueuedetails = async () => {
+        try {
+          const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
+            customer_name: classifyEmail.name,
+            RFQ_ID: rfq_id,
+            status: "Sent",
+          });
+          console.log("send queue details API response from backend: ", result.data);
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
+        }
+      };
+      sendQueuedetails();
+    }
+  }, [queueDetails]);
+
 
   useEffect(() => {
     if (delegatebtn1) {
