@@ -32,7 +32,10 @@ const initialState = {
         lead_time: 3,
         freight_cost: 12,
       }
+      
   };
+
+
 
   const productData = (state = initialState, action) => {
     switch (action.type) {
