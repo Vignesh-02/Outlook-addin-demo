@@ -407,10 +407,10 @@ const accessToken = "EwBwA8l6BAAUs5+HQn0N+h2FxWzLS31ZgQVuHsYAAZKdupM2A49TuPnoshO
            // Add tone field to classifyEmail
            const emailWithTone = {
             ...classifyEmail,
-            tone: "Professional"
-        };
+            tone: "Professional",
+          };
           const res = await axios.post(
-            "https://api-dev.wise-sales.com/ml-backend/generate_email/",
+            "http://127.0.0.1:8000/api/generate_email/",
             
             {
               classifyEmail: emailWithTone,
