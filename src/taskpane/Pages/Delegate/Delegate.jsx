@@ -113,6 +113,12 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     // Log all vendor emails
     console.log("All Vendor Emails:", allVendorEmails);
 
+
+    // Check if there are no vendor emails then only save customer details with "Sent" status
+    if (Object.keys(allVendorEmails).length === 0) {
+      setQueueCustomer(true);
+    }
+
     // Call the function to send emails to vendors
     sendEmailsToVendors(allVendorEmails);
 
@@ -141,7 +147,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Mail sent successfully to customer", data);
-        setQueueCustomer(true);
+        // setQueueCustomer(true);
       })
       .catch((error) => {
         console.error("Error sending mail", error);
