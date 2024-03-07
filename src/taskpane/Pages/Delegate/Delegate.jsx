@@ -395,6 +395,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const DelegeBtn2 = () => {
     setBtn(true);
     setIsDelegate2Clicked(true);
+    setQueueDetails(true);
   };
 
   useEffect(() => {
