@@ -417,9 +417,12 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           );
           console.log(res.data);
           const customerResponse = res.data.Customer_quote.Body;
-          const vendorResponse = res.data.vendor_1.Body;
           setCustomerBody(customerResponse);
+          const vendorResponse = res.data.vendor_1.Body;
           setVendorBody(vendorResponse);
+           // Logging bodies
+        console.log("Customer's response:", customerResponse);
+        console.log("Vendor's response:", vendorResponse);
           console.log("Customer's Body:", customerBody);
           console.log("Vendor's Body:", vendorBody);
 
@@ -447,6 +450,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       generateEmail();
     }
   }, [isDelegate2Clicked]);
+
+  console.log("Customer's Body2:", customerBody);
+  console.log("Vendor's Body2:", vendorBody);
 
   useEffect(() => {
     if (emailDetails && !emailDetailsFetched) {
