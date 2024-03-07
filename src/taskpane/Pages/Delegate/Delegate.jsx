@@ -223,6 +223,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const accessToken =
     "EwBwA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAWf5/rul6HMQzNr6ZtcAWVpMqFT3KGnjnwZLu3YPWzeeCfc38KGTxRzsFPbhjPQ6ImqzGJN7ix6tWkP8OG2Q1w5CQ6+UsXVMwabXFoqfPiu3CVv5zP6okgeBOxtuswVGERx+DTHnsBMty5OAzIUB8cRH1MHFD+rBlYJyth+pvGwDTqjXf6o0TLFS60Z0B+14KahrDYegKZZh1azWbcNOmROSwdQGHJOsfpGAalnIveMdKlFUt0q2l2ZwbFHWERNG1k1T/N0EHH81LQJEEZrvN7BP1dBFJ3LCrj2beM0gjc23LV+Y8BVlrOkmd2XKI+NV8xGixuvSai0g4qWkMTpF4FEDZgAACPnpYCyDv75OQALvE6s1Z2ytzuWkUb6+fd4ChdZ3Ncx6qKaOHEQCea7iawfVy6Y9UNYmy717bZ7h0rxTEItVERfsKJLWCTTcXLIdW8RyIYwF3EyBQED22jijM33OKy/SJB0LgjwNRHYKb4HV4AqAqCkbxzdDcotKQnHkUBxIFj/so6J5zfHvwwxEQKvANAT/Oge8Jg187wa2rgqGu0XDjBckCQkm3l0PGcd7duZm6QtEwbMHmeZosZQM2/7VPXCUmapv6Gke+q0Kddk3K0c+5C2bUNy22XA/3D2Az+A/L6bB5D1Mg3OprNUGGCNR2+jogbKKe45ohUgmKz5KlZ7NiAEpZRjPPDJ+qlGkD5kue7yZiSliCKjDQlCb0b6uG7MGqwBl19cIb2dXL+El8eWBZpq7Qp46tVdXl5P9GqPdp4LEIYw5AmEcjsQkUFxCnuIw9REe+YP2mzTYPptVgg77ctKcWzF3E8Bt3QLT6IzmAtb064Vtjuq+Cm+F6iIC5kllyDPRPYEPxxaK9txiU00D5vk68gcLR5uH9DkR+F3C3zg9pHFZ8gLe195Y95Q5QcjH971D0f4/SSn80P/fRCGM91xjsh34EmvHT+7dQO3yuCQiHifNfNEhYCG5Baw3cP8aJwWZUZUOCvm4bLlV/bQH4KT1xQJcpjXcehDg7dD3/6cRd2UgJ1RFTTbPTVmh6/G+wuCitacWw2k+8iE5Gi0QYcpCiuTe5twUzu+IW1nYU0pwFY037U0xXFtlmzcIzA7f+2+kScIOQ38u/RV9Ag==";
   const handleLaunch = () => {
+    setQueueDetails(true);
     // Log all vendor details received from the generate API
     console.log("Vendor Details:", vendordetail);
 
@@ -284,7 +285,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
             // If all emails have been sent successfully, set setVisible to true
             setVisible(true);
-            setQueueDetails(true);
+            // setQueueDetails(true);
           }
         })
         .catch((error) => {
@@ -395,7 +396,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const DelegeBtn2 = () => {
     setBtn(true);
     setIsDelegate2Clicked(true);
-    setQueueDetails(true);
+    // setQueueDetails(true);
   };
 
   useEffect(() => {
