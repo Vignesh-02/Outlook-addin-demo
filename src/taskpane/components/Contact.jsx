@@ -1,14 +1,8 @@
 import React from "react";
-import "./Contact.css";
-import W_Image from "../../../public/w1.png";
-import WiseImage from "../../../public/wise.png";
-import WiseImage2 from "../../../public/wise3.png";
-import InsideImage from "../../../public/Insidesale.png";
-import cross from "../../../public/Vector.png";
-import interState from "../../../public/interstate.png";
-import Navbar from "../../Components/Navbar/Navbar";
-import Topbar from "../../Components/Topbar/Topbar";
-import Footer from "../../Components/Footer/Footer";
+import "./styles/Contact.css"; // Import the CSS file
+import Navbar from "./Navbar/Navbar";
+import Topbar from "./Topbar/Topbar";
+import Footer from "./Footer/Footer";
 import "@fontsource/orbitron";
 import "@fontsource/orbitron/400.css";
 
