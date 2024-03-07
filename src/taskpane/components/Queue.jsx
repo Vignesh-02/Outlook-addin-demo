@@ -5,6 +5,7 @@ import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import { useHistory } from "react-router-dom";
 import Topbar from "./Topbar/Topbar";
+import Navbar from "./Navbar/Navbar";
 import axios from 'axios'
 
 const Queue = () => {
@@ -119,41 +120,13 @@ const Queue = () => {
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-      <div className="topbar-frame">
-        {/* Section -1 */}
-        {/* <div className="topbar">
-          <div className="topframe">
-            <img src={W_Image} alt="Logo" />
-            <div className="topframe-b">
-              <img src={WiseImage} alt="Logo" id="b1" />
-              <img src={InsideImage} alt="Logo" id="b2" />
-            </div>
-          </div>
-          <div onClick={handleCrossClick} className="topframe-c">
-            <img src={cross} alt="Logo" />
-          </div>
-        </div> */}
+
         <Topbar />
+        <Navbar />
 
-        {/* Section - 2 */}
+       
 
-        <div className="topbar2">
-          <div className="navbar">
-            <div className="delegate-div" onClick={()=>history.push('/del')}>
-              <div className="delegate">Delegate</div>
-            </div>
-            <div className="Queue-queue-div">
-              <div className="Queue-queue">Queue</div>
-            </div>
-            <div className="contact-div" onClick={()=>history.push('/contact')}>
-              <div className="contact">Contact Us</div>
-            </div>
-          </div>
-          <div className="A-div">
-            <div className="A">A</div>
-          </div>
-        </div>
-      </div>
+        
 
       {/* Search - Bar */}
 
