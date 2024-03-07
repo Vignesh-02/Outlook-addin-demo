@@ -24,7 +24,9 @@ import { useHistory } from "react-router-dom";
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const history = useHistory();
 
-  const [queueDetails, setQueueDetails] = useState(false);
+  // const [queueDetails, setQueueDetails] = useState(false);
+  const [queueCustomer, setQueueCustomer] = useState(false);
+  const [queueVendor, setQueueVendor] = useState(false);
 
   const [visible, setVisible] = useState(false);
   const [showLoader, setShowLoader] = useState(true); // State to manage loader display
@@ -93,7 +95,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   // corrrect
   const accessToken =
-    "EwBwA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAbJjzy9ND2/EGBCOvFy/h40clVa4wb+Mp9HduizWgXcar2b952DyHmY/kYVyl8B7S28IqWX5CdEQr7qY+EBT01jvBQ8eT0g6LVurfqUlIumCHSgucQwkOr1xJ7a1y5poZwiMkfDGXUwwy0Zj5PvMPDq/iRnGo7/SfLfqvxXVJtjspbQSdjzgcg1IjzWHFuSZ5AWOD2W28zhTPC+sG4vpF58441pZUxdxkECyBcPWO/1kwNqt1ItRPiTSHNQQ120mTNyyEYTo7kGKi41noelEE2/7QEUGsuBRLTpbE3ROPeZFkO/qfIVFemKzA0JOD+joP8UiEOOJp1nG+A/NLeesmXQDZgAACCC4EpC5KHPbQAI+mvTT5rbs1ZmW3AsndtJH8tkGG+9cZV2oeyFHc8rIF9tZG4wbWjTsbKCVhLsoVcNa9ikf6CkzWxtHy8lBQrdAGQWToJ2mXbll4mR2Km0iXPZu0CTiZaR+iduM/I32rhqsvEl+3VIYsUq4wYdOA2qdDEvbyiVGbu2cKPT9l4UADUfgNtoNJYXiTu/L+8WnIZ7l9tSyGLw5Tjw+/azicblP8RaXkTel7vMBraK0CRVX1t/l/FHzig/qU9PO2kQiJMvuRN4bFAVXZ6LTOKrHmb/I/LuEWV1klbFANGvVWLov+Y/lPZZgp1D/LUao8NCMSUbZZbOUCQkN4RerNAyqtdPGAQHjEosPDGagT/N2k8nrcdAmOx539eriOBrLjMDzIAK2OXjncuSwK326+VBYq1nhQ1H8iI5NiTYGINf24QNYNLjWR+4igXvuhjfPNaskLZ80x01pcHLl0iavOaEu+tLmt6cIMQESWD8C5j7cb1X6M1vYDSNfIWqrWmX9OPGT0wQRrGZ5Vu36qzEMGmUM+WX24ZIID8snsNRxPxBFYWJZrmr1TVZsAa37SyFt4yM11VDmp81ecET9aqXviXkPhahqNh0Z5ftU5J+sAuMiqqCY7XoOH8QdAfcZ4HfXlgRwkp0NXPD+n5oZ6oP3D+wvJafbSKYuAIZRORX4VEWRCJjoju4kpY7/IXOkFYDCFXG9Jl01ZhwGcMDAarIk72g0RYxC89foEQ3NFq+g2an7AMJug6uuz9elBqc2hCmPFBBsEFp9Ag==";
+    "EwBwA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAWutXOBgWftO43czhUs9+NQF+FyDTBfJO9Q5YamNQfPrRme0Rsm0A2NBeHn2XpQn0OaGiH9/8GdOSFiB9KJjpgU8RX97mu5eauuMxKHa5tFnPsjrUKEyjCy0heOn2XzVBHl2OkVs4D7f8EdAiidu87Jw8t4ttODEGuSqr5buHwyfV1p1T99PTIX39/LqOjJCi2jpjfIA6W7boEI8QlUQZabwhf/MQPf966TxhRJMf20weSpECHpI2hUZ/xTJufhkR+Bb1xyn/+08NvN8w05tF3QAUclNxBLzRyjFpOY8cdOXFy5QAalQZBg83vGDNYgS/+8wscem3uVM9cTpPJTqNdsDZgAACBRdahoKoiWuQAJ/xkSrcd8lQZGwhozgrmYa5yuWT5kW91UT9sMLNekqJtBsMONpckWuCAjtCIr2M2bqPb6iTHKZpCqMq8kfitd3VzXZ4x+N+/ai7VGd9+GckXeMj4jDUF5KsT5FmtNJp1ciZStgS39QAikY64X/6qhhL5NFccuXZsf5WCRKN0/La0rleucbDySdwk/puffDiGhuP/Qrjw8Xrox2H3Bfj/xI+gJYU+l5mKxDGvbu0yZLI269M99n+6y1n5V7bWL54O5eRMlKgs8ERqFfsZCEev+oJaxLNBrCyKCgA8WTxj4j0ov5TFXHH6PRRq9UUvfNeOp4aNbL7U4mjfxhFCRaoQmfNO0Z7DFFGy0ZSeiI/ez7D6GtRVTQXho23bMOg1BoOXJRkbdg/SbTT8kMCnGf/OJApPK07ZEXxt5a4M5RzrII7GsTULlcXWfpOaof+imlpkgSIbNdJi8P7acTiPanDCp6+tgLZMOHqHdBctPnBm8PN5mIqTxSg0NbMHurJ41B+16ghQvuPZHh0EJSqSfwzixhx3ofSkjL1hOLY49EGsvXxx1KBoL8hIxRizOFfCcapBeyEtBcb2HoujvYSYB9gJPPIQsiSfw/lXmItkb1IhcisnPx4yo8ormCrhz64gLrOSLj59bMsNSAK+oiJ1KxM3282kgUhELisYLHT/WmNcpJ/wyUFuVmi45rVrJPemneQltw0v5GxIMUzTOIyB5NrGUvnpj+zR1BExMSWVnKwaPGla5Z4IEdvZgfR9ydvhpsxEJ9Ag==";
   const handleLaunch = () => {
   
     // Log all vendor details received from the generate API
@@ -139,6 +141,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Mail sent successfully to customer", data);
+        setQueueCustomer(true);
       })
       .catch((error) => {
         console.error("Error sending mail", error);
@@ -181,8 +184,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         })
         .then((response) => {
 
-          console.log("Mail sent successfully to", email, response.data);
-          setQueueDetails(true);
+          console.log("Mail sent successfully to Vendor", email, response.data);
+          // setQueueDetails(true);
+          setQueueVendor(true);
           successfulEmailsSent++;
 
           // Check if all emails have been successfully sent
@@ -199,8 +203,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   };
 
   useEffect(() => {
-    if (queueDetails) {
-      const sendQueuedetails = async () => {
+    if (queueCustomer) {
+      const sendQueueDetailsToCustomer = async () => {
         try {
           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
             customer_name: classifyEmail.name,
@@ -212,9 +216,28 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           console.error("Error occurred while calling API:", error);
         }
       };
-      sendQueuedetails();
+      sendQueueDetailsToCustomer();
     }
-  }, [queueDetails]);
+  }, [queueCustomer]);
+
+  useEffect(() => {
+    if (queueVendor) {
+      const sendQueueDetailsToVendor = async () => {
+        try {
+          const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
+            customer_name: classifyEmail.name,
+            RFQ_ID: rfq_id,
+            status: "Vendor quote pending",
+            day: "2 days"
+          });
+          console.log("send queue vendor details API response from backend: ", result.data);
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
+        }
+      };
+      sendQueueDetailsToVendor();
+    }
+  }, [queueVendor]);
 
   useEffect(() => {
     if (delegatebtn1) {
