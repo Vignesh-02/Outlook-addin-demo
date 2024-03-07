@@ -3,8 +3,10 @@ import "./styles/Queue.css";
 import SearchImage from "../../../public/Search.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
+import { useHistory } from "react-router-dom";
 
 const Queue = () => {
+  const history = useHistory();
   // Dummy data
   const data = [
     {
@@ -124,13 +126,13 @@ const Queue = () => {
 
         <div className="topbar2">
           <div className="navbar">
-            <div className="delegate-div">
+            <div className="delegate-div"  onClick={()=> history.push('/del')}>
               <div className="delegate">Delegate</div>
             </div>
             <div className="Queue-queue-div">
               <div className="Queue-queue">Queue</div>
             </div>
-            <div className="contact-div">
+            <div className="contact-div" onClick={()=> history.push('/contact')}>
               <div className="contact">Contact Us</div>
             </div>
           </div>
