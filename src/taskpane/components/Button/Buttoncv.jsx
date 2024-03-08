@@ -59,12 +59,18 @@ const Buttoncv = ({
 
   return (
     <div className="cvButtondiv">
+     {
+       <div className="L1">
+       <div className="L2"></div>
+       <div className="L3"></div>
+       <div className="L4"></div>
+     </div>
+     }
       {loadingPercentage < 100 ? (
-        <div className="L1">
-        <div className="L2"></div>
-        <div className="L3"></div>
-        <div className="L4"></div>
-      </div>
+        <div id="loadingProgress">
+          {/* Loading... {loadingPercentage.toFixed(2)}% */}
+          Loading... {loadingPercentage.toFixed(0)}% {/* Removed decimal points */}
+        </div>
       ) : (
         <>
           <Customer
