@@ -115,6 +115,7 @@
     align-items: flex-start;
     gap: 12px;
     display: flex;
+    flex-direction: column;
     overflow-y: auto;
     overflow-x: auto;
   }
@@ -174,3 +175,8 @@
     letter-spacing: 0.96px;
   }
   
+  table {
+    width: 100%; /* Make the table take up the full width of the container */
+    table-layout: inherit; /* Optional: helps with even column width */
+    border-collapse: collapse; /* Optional: for styling */
+  }

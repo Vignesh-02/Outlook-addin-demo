@@ -13,7 +13,7 @@ const Notrfq = ({close}) => {
         <div className="NOT-RFQDiv-2">
             <div className="NOT-RFQDiv-2b">
                 <div className="NOT-RFQDiv-2b-child">
-                    <img src={alert} alt="" />
+                    <img src={alert} alt="alert" />
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@ const Notrfq = ({close}) => {
                 <div className="NOT-RFQDiv-3c">
                     <div className="NOT-RFQDiv-3d">
                         <div className="NOT-RFQDiv-3e">
-                        <img src={action} alt="" onClick={close}/> 
+                        <img src={action} alt="action" onClick={close}/> 
                         </div>
                     </div>
                 </div>

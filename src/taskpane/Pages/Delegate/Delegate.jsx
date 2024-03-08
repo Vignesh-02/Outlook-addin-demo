@@ -337,6 +337,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     if (delegatebtn1) {
       const SendEmailDetails = async () => {
         try {
+            setShowLoader(true);
           const res = await axios.post("https://api-dev.wise-sales.com/ml-backend/classify_email/", {
             subject: emailDetails.subject,
             email_body: emailDetails.body,
@@ -346,11 +347,15 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             customerofcustomer: "200",
             acctId: "GY248",
           });
+        
           console.log("classify API response from backend: ", res.data);
           setClassifyEmail(res.data);
           setRfq_id(res.data.RFQ_ID);
         } catch (error) {
           console.error("Error occurred while calling API:", error);
+        }
+        finally{
+            setShowLoader(false);
         }
       };
       SendEmailDetails();
@@ -493,31 +498,31 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     }
   }, [isDelegate2Clicked]);
 
-  useEffect(() => {
-    if (emailDetails && !emailDetailsFetched) {
-      const getEmailDetails = async () => {
-        try {
-          // Make sure the RFQ_status is 1 before making the API call
-          if (classifyEmail.RFQ_status === 1) {
-            const res = await axios.post("http://127.0.0.1:8000/api/getEmailDetails/", {
-              getEmailDetails: emailDetails,
-              RFQ_ID: rfq_id,
-            });
+//   useEffect(() => {
+//     if (emailDetails && !emailDetailsFetched) {
+//       const getEmailDetails = async () => {
+//         try {
+//           // Make sure the RFQ_status is 1 before making the API call
+//           if (classifyEmail.RFQ_status === 1) {
+//             const res = await axios.post("http://127.0.0.1:8000/api/getEmailDetails/", {
+//               getEmailDetails: emailDetails,
+//               RFQ_ID: rfq_id,
+//             });
 
-            console.log("getEmailDetails API response from backend: ", res.data);
-            console.log("RFQ 2", rfq_id);
-            // Set the state variable to true indicating that the API call has been made
-            setEmailDetailsFetched(true);
-          } else {
-            console.log("RFQ_status is not 1, skipping API call.");
-          }
-        } catch (error) {
-          console.error("Error occurred while calling API:", error);
-        }
-      };
-      getEmailDetails();
-    }
-  }, [classifyEmail, emailDetails, emailDetailsFetched]);
+//             console.log("getEmailDetails API response from backend: ", res.data);
+//             console.log("RFQ 2", rfq_id);
+//             // Set the state variable to true indicating that the API call has been made
+//             setEmailDetailsFetched(true);
+//           } else {
+//             console.log("RFQ_status is not 1, skipping API call.");
+//           }
+//         } catch (error) {
+//           console.error("Error occurred while calling API:", error);
+//         }
+//       };
+//       getEmailDetails();
+//     }
+//   }, [classifyEmail, emailDetails, emailDetailsFetched]);
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);

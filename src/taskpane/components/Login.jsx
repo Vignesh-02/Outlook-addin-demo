@@ -47,7 +47,7 @@ const Login = ({ emailAddress, ...props}) => {
     const loginWithOAuth = () => {
        console.log(window.localStorage);
         window.localStorage.setItem('emailAddress', emailAddress);   
-        const permittedEmails = ['vigu1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com'];
+        const permittedEmails = ['vigu1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com', ' anumunde123@outlook.com'];
         console.log('emailAddress ', emailAddress);
         // localStorage.setItem('emailAddress', emailAddress);
         // Check if the user's email is in the permittedEmails array
@@ -107,7 +107,7 @@ const Login = ({ emailAddress, ...props}) => {
     console.log('inside refreshAccess Token code', token)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    // const redirectUri = "https://localhost:3001/assets/login.html";
+    // const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
