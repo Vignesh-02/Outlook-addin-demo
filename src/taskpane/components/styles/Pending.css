@@ -1,0 +1,362 @@
+.PendingPage {
+  width: 320px;
+  height: 568px;
+  /* background-color: aqua; */
+  border: 2px solid black;
+}
+
+/* middle Frame*/
+.PendingPage-middleDiv {
+  width: 289px;
+  height: 419px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  display: inline-flex;
+  /* background-color: greenyellow; */
+  margin-left: 16px;
+  
+}
+.PendingPage-middleDiv-A {
+  width: 289px;
+  height: 57px;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  /* background-color: red; */
+}
+.PendingPage-middleDiv-A-child {
+  width: 289px;
+  height: 30px;
+  align-self: stretch;
+  background: #f9f9f9;
+  /* background-color: pink; */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.PendingPage-middleDiv-A-child-val1 {
+  flex: 1 1 0;
+  height: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 2px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 9px;
+  display: flex;
+}
+.PendingPage-middleDiv-A-child-val2 {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.PendingPage-middleDiv-A-child-val3 {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.PendingPage-middleDiv-A-child-customer {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 10px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+.PendingPage-middleDiv-A-child-side1 {
+  width: 2px;
+  height: 24px;
+  position: relative;
+}
+.PendingPage-middleDiv-A-child-side2 {
+  width: 2px;
+  height: 14px;
+  left: 0px;
+  top: 5px;
+  position: absolute;
+  background: rgba(58, 53, 65, 0.12);
+}
+
+/* material */
+.PendingPage-middleDiv-A-child2-val1 {
+  flex: 1 1 0;
+  height: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 11px;
+  padding-right: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.PendingPage-middleDiv-A-child2-val2 {
+  flex: 1 1 0;
+  height: 13px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+/* Quantity */
+.PendingPage-middleDiv-A-child3-val1 {
+  flex: 1 1 0;
+  height: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+/* shipping */
+.PendingPage-middleDiv-A-child4-val1 {
+  flex: 1 1 0;
+  height: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 9px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 9px;
+  display: flex;
+}
+
+/* Values */
+.PendingPage-ValueDiv {
+  /* background-color: blue; */
+  align-self: stretch;
+  width: 289px;
+  height: 28px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  overflow: hidden;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.PendingPage-ValueDiv-sec1 {
+  align-self: stretch;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.PendingPage-ValueDiv-sec1-val1 {
+  flex: 1 1 0;
+  height: 28px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.PendingPage-ValueDiv-sec1-val2 {
+  flex: 1 1 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.PendingPage-ValueDiv-sec1-val3 {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.PendingPage-ValueDiv-sec1-val4 {
+  color: #080808;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  word-wrap: break-word;
+}
+
+/* value 2nd */
+.PendingPage-ValueDiv-sec2-val2 {
+  flex: 1 1 0;
+  height: 28px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 11px;
+  padding-right: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+.PendingPage-ValueDiv-sec2-val3 {
+  color: #080808;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+
+/* value 4th */
+.PendingPage-ValueDiv-sec4-val2 {
+  flex: 1 1 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 9px;
+  padding-right: 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+
+/* 2nd conatiner */
+.PendingPage-Cont2 {
+  width: 289px;
+  height: 459px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  display: flex;
+  /* overflow-y: auto; */
+  /* background-color: orange; */
+}
+
+.PendingPage-Cont2-Sec1 {
+  align-self: stretch;
+  flex: 1 1 0;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.PendingPage-Cont2-Sec1-child1 {
+  align-self: stretch;
+  height: 24px;
+  background: #f9f9f9;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.PendingPage-Cont2-Sec1-child2 {
+  flex: 1 1 0;
+  height: 24px;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.PendingPage-Cont2-Sec1-child3 {
+  flex: 1 1 0;
+  height: 13px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.PendingPage-Cont2-Sec1-child4 {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.PendingPage-Cont2-Sec1-CustomerMail {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 10px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+
+/* cont2 - val2 */
+.PendingPage-Cont2-Sec2-child1 {
+  align-self: stretch;
+  flex: 1 1 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  overflow: hidden;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  /* background-color: yellow; */
+  overflow-y: auto;
+}
+.PendingPage-Cont2-Sec2-child1::-webkit-scrollbar {
+  width: 0px;
+}
+
+.PendingPage-Cont2-Sec2-child1::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.PendingPage-Cont2-Sec2-child1::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.PendingPage-Cont2-Sec2-child2 {
+  align-self: stretch;
+  flex: 1 1 0;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-left: 1px rgba(58, 53, 65, 0.12) solid;
+  border-right: 1px rgba(58, 53, 65, 0.12) solid;
+  border-bottom: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.PendingPage-Cont2-Sec2-child3 {
+  flex: 1 1 0;
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.PendingPage-Cont2-Sec2-child4 {
+  flex: 1 1 0;
+  align-self: stretch;
+  padding-left: 8px;
+  padding-right: 8px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  display: flex;
+}
+.PendingPage-Cont2-Sec2-mailContent {
+  flex: 1 1 0;
+  align-self: stretch;
+  color: #080808;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}

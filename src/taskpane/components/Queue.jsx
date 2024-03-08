@@ -128,6 +128,11 @@ const Queue = () => {
                           ? "rgba(52, 168, 83, 1)" // Green color for "Received quotes"
                           : "inherit", // Default color
                     }}
+                    onClick={() => {
+                      if (rowData.status === "Sent") {
+                        history.push("/pending");
+                      }
+                    }}
                   >
                     {rowData.status}
                   </div>
