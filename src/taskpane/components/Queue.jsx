@@ -1,99 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./styles/Queue.css";
 import SearchImage from "../../../public/Search.png";
+import SortImage from "../../../public/sort.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
+import Footer from "./Footer/Footer";
 import axios from "axios";
 
 const Queue = () => {
-  // Dummy data
-  const data = [
-    {
-      name: "Afshan",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Ryan Alu",
-      code: "ABC30OFF",
-      status: "Sent",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Rahul",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-
-    {
-      name: "Lina",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Aditya",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Vignesh",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "John Deo",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Santiago",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Merim",
-      code: "ABC30OYU",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "19/02/2024",
-      time: "12:00 pm",
-    },
-    {
-      name: "Suraksha",
-      code: "ABC50OMN",
-      status: "Sent",
-      day: "3 days",
-      date: "15/03/2024",
-      time: "02:00 pm",
-    },
-  ];
   const [queueData, setQueueData] = useState([]);
-  
+
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -118,25 +36,28 @@ const Queue = () => {
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-
       <Topbar />
+
       <Navbar />
 
       {/* Search - Bar */}
 
-      <div className="SearchBar">
-        <div className="SearchParent">
-          <div className="SearchChild">
-            <img src={SearchImage} alt="Logo" />
+      <div className="queueSearch">
+        <div className="queueSearch-sec1">
+          <div className="queueSearch-sec1-A">
+            <img src={SearchImage} alt="Logo" className="searchImage" />
           </div>
+          <input
+            type="text"
+            className="SearchText"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
-        <input
-          type="text"
-          className="SearchText"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        <div className="queueSearch-sec1-Sort">
+          <img src={SortImage} alt="Logo" className="queueSearch-sec1-Sort-2" />
+        </div>
       </div>
 
       {/* Section - 3 */}
@@ -221,6 +142,8 @@ const Queue = () => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

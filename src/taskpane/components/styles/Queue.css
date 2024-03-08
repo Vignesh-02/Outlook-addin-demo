@@ -1,543 +1,412 @@
 .queuePage {
-    width: 320px;
-    height: 568px;
-    display: flex;
-    padding-top: 10px;
-    padding-bottom: 6px;
-    background: white;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 3.67px;
-    display: inline-flex;
-    /* border: 2px solid black; */
-  }
-  
-  .topbar-frame {
-    width: 320px;
-    height: 87.33px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-    display: inline-flex;
-  }
-  
-  /* Section - 1 */
-  .topbar {
-    width: 284px;
-    height: 33.33px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 113px;
-    display: inline-flex;
-  }
-  
-  .topframe {
-    width: 147px;
-    height: 33.33px;
-    position: relative;
-  }
-  .topframe img {
-    width: 38.78px;
-    height: 33.33px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-  }
-  .topframe-b {
-    width: 115.55px;
-    height: 25.74px;
-    left: 31.45px;
-    top: 7.33px;
-    position: absolute;
-  }
-  #b1 {
-    width: 115.55px;
-    height: 13.17px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-  }
-  #b2 {
-    width: 66.46px;
-    height: 8.38px;
-    left: 7.18px;
-    top: 17.36px;
-    position: absolute;
-  }
-  .topframe-c {
-    width: 24px;
-    height: 24px;
-    padding: 7px;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  
-  .topframe-c img {
-    width: 10px;
-    height: 10px;
-    border: 1.5px black solid;
-    padding: 7px;
-    border: 0;
-    cursor: pointer;
-  }
-  
-  /* Section - 2 */
-  .topbar2 {
-    width: 288px;
-    height: 26px;
-    align-self: stretch;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 1px rgba(0, 0, 0, 0.12) solid;
-    justify-content: space-between;
-    align-items: center;
-    display: inline-flex;
-  }
-  .navbar {
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8px;
-    display: flex;
-  }
-  .delegate-div {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    opacity: 0.8;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .delegate {
-    color: #1c1c1c;
-    font-size: 14px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    letter-spacing: 0.36px;
-    word-wrap: break-word;
-  }
-  .Queue-queue-div {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px black solid;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .Queue-queue {
-    color: #1c1c1c;
-    font-size: 14px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    letter-spacing: 0.36px;
-    word-wrap: break-word;
-  }
-  .contact-div {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    opacity: 0.8;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .contact {
-    color: #1c1c1c;
-    font-size: 14px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    letter-spacing: 0.36px;
-    word-wrap: break-word;
-  }
-  .A-div {
-    height: 18px;
-    width: 12px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background: #356f9f;
-    border-radius: 3px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .A {
-    color: white;
-    font-size: 14px;
-    font-family: Orbitron;
-    font-weight: 400;
-    letter-spacing: 0.14px;
-    word-wrap: break-word;
-  }
-  
-  /* Search Bar */
-  .SearchBar {
-    width: 263px;
-    height: 19px;
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background: #f9f9f9;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    border: 0.5px rgba(28, 28, 28, 0.4) solid;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-  }
-  .SearchParent {
-    width: 19px;
-    height: 19px;
-    padding: 3.96px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .SearchChild {
-    width: 11.08px;
-    height: 11.08px;
-    position: relative;
-  }
-  .SearchText {
-    /* width: 57px; */
-    width: 100px;
-    height: 12px;
-    opacity: 0.4;
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    letter-spacing: 0.12px;
-    word-wrap: break-word;
-    border: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Section - 3 */
-  .queueMiddle {
-    width: 289px;
-    height: 426px;
-    border-radius: 6px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .QueueMid {
-    width: 289px;
-    height: 40px;
-    align-self: stretch;
-    background: #f9f9f9;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .QueueRFQDiv {
-    /* height: 40px; */
-    width: 61px;
-    height: 24px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 11px;
-    padding-right: 8px;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-  }
-  .QueueRFQParent {
-    flex: 1 1 0;
-    height: 15px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .QueueRFQChild {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .QueueRFQ {
-    color: rgba(58, 53, 65, 0.87);
-    font-size: 12px;
-    font-family: Orbitron;
-    font-weight: 400;
-    letter-spacing: 0.12px;
-    word-wrap: break-word;
-  }
-  .QueueMid-1 {
-    width: 12px;
-    height: 24px;
-    position: relative;
-  }
-  .QueueMid-1Child {
-    width: 2px;
-    height: 14px;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-    background: rgba(58, 53, 65, 0.12);
-  }
-  .QueueStatusDiv {
-    width: 93px;
-    height: 24px;
-    /* height: 40px; */
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 9px;
-    padding-right: 16px;
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-  }
-  .QueueStatusParent {
-    flex: 1 1 0;
-    height: 15px;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .QueueStatusChild {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    display: inline-flex;
-  }
-  .QueueStatus {
-    color: rgba(58, 53, 65, 0.87);
-    font-size: 12px;
-    font-family: Orbitron;
-    font-weight: 400;
-    letter-spacing: 0.12px;
-    word-wrap: break-word;
-  }
-  .QueueMid-2 {
-    width: 12px;
-    height: 24px;
-    position: relative;
-  }
-  .QueueMid-2Child {
-    width: 2px;
-    height: 14px;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-    background: rgba(58, 53, 65, 0.12);
-  }
-  .QueueDateDiv {
-    width: 76px;
-    height: 24px;
-    /* height: 40px; */
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 6px;
-    padding-right: 9px;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-  }
-  .QueueDateParent {
-    flex: 1 1 0;
-    height: 15px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .QueueDateChild {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .QueueDate {
-    color: rgba(58, 53, 65, 0.87);
-    font-size: 12px;
-    font-family: Orbitron;
-    font-weight: 400;
-    letter-spacing: 0.12px;
-    word-wrap: break-word;
-  }
-  .QueueMid-3 {
-    width: 12px;
-    height: 24px;
-    position: relative;
-  }
-  .QueueMid-3Child {
-    width: 2px;
-    height: 14px;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-    background: rgba(58, 53, 65, 0.12);
-  }
-  
-  /* Queue section mid - 2 */
-  .QueueRow {
-    width: 289px;
-    height: 387px;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  
-  /* For Webkit browsers (Chrome, Safari) */
-  .QueueRow::-webkit-scrollbar {
-    width: 0px;
-  }
-  
-  .QueueRow::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-  
-  .QueueRow::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  .QueueRowParent-1 {
-    width: 289px;
-    height: 64px;
-    align-self: stretch;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  .QueueRowParent-1a {
-    width: 80px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .QueueRowChild-1b {
-    align-self: stretch;
-    height: 62px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 11px;
-    padding-right: 16px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    display: flex;
-  }
-  .QueueRowCell-1a {
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.12px;
-    word-wrap: break-word;
-  }
-  .QueueRowCell-1b {
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.08px;
-    word-wrap: break-word;
-  }
-  .QueueRowParent-2a {
-    flex: 1 1 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  .QueueRowChild-2b {
-    align-self: stretch;
-    height: 62px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .QueueRowCell-2a {
-    align-self: stretch;
-    text-align: center;
-    color: #f98a09;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.3px;
-    word-wrap: break-word;
-  }
-  .QueueRowCell-2b {
-    align-self: stretch;
-    text-align: center;
-    color: #f98a09;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.3px;
-    word-wrap: break-word;
-  }
-  .QueueRowParent-3a {
-    height: 64px;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-  }
-  .QueueRowChild-3b {
-    flex: 1 1 0;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 9px;
-    padding-right: 16px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    display: inline-flex;
-  }
-  .QueueRowCellParent-3 {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: flex;
-  }
-  .QueueRowCell-3a {
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.12px;
-    word-wrap: break-word;
-  }
-  .QueueRowCell-3b {
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.08px;
-    word-wrap: break-word;
-  }
-  
+  width: 320px;
+  height: 568px;
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  background: white;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3.67px;
+  display: inline-flex;
+  border: 2px solid black;
+}
+
+/* Search Bar */
+
+/* .SearchText {
+  width: 100px;
+  height: 12px;
+  opacity: 0.4;
+  color: #1c1c1c;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.12px;
+  word-wrap: break-word;
+  border: none;
+  transition: background-color 0.3s ease;
+} */
+
+/* Section - 3 */
+.queueMiddle {
+  width: 289px;
+  height: 379px;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.QueueMid {
+  width: 289px;
+  height: 40px;
+  align-self: stretch;
+  background: #f9f9f9;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.QueueRFQDiv {
+  /* height: 40px; */
+  width: 61px;
+  height: 24px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 11px;
+  padding-right: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  /* background-color: red; */
+}
+.QueueRFQParent {
+  flex: 1 1 0;
+  height: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+  /* background-color: yellowgreen; */
+}
+.QueueRFQChild {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.QueueRFQ {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 12px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.12px;
+  word-wrap: break-word;
+}
+.QueueMid-1 {
+  width: 12px;
+  height: 24px;
+  position: relative;
+}
+.QueueMid-1Child {
+  width: 2px;
+  height: 14px;
+  left: 10px;
+  top: 5px;
+  position: absolute;
+  background: rgba(58, 53, 65, 0.12);
+}
+.QueueStatusDiv {
+  width: 93px;
+  height: 24px;
+  /* height: 40px; */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 9px;
+  padding-right: 16px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.QueueStatusParent {
+  flex: 1 1 0;
+  height: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.QueueStatusChild {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: inline-flex;
+}
+.QueueStatus {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 12px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.12px;
+  word-wrap: break-word;
+}
+.QueueMid-2 {
+  width: 12px;
+  height: 24px;
+  position: relative;
+}
+.QueueMid-2Child {
+  width: 2px;
+  height: 14px;
+  left: 10px;
+  top: 5px;
+  position: absolute;
+  background: rgba(58, 53, 65, 0.12);
+}
+.QueueDateDiv {
+  width: 76px;
+  height: 24px;
+  /* height: 40px; */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 6px;
+  padding-right: 9px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.QueueDateParent {
+  flex: 1 1 0;
+  height: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.QueueDateChild {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.QueueDate {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 12px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.12px;
+  word-wrap: break-word;
+}
+.QueueMid-3 {
+  width: 12px;
+  height: 24px;
+  position: relative;
+}
+.QueueMid-3Child {
+  width: 2px;
+  height: 14px;
+  left: 10px;
+  top: 5px;
+  position: absolute;
+  background: rgba(58, 53, 65, 0.12);
+}
+
+/* Queue section mid - 2 */
+.QueueRow {
+  width: 289px;
+  height: 340px;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* background-color: yellow; */
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+.QueueRow::-webkit-scrollbar {
+  width: 0px;
+}
+
+.QueueRow::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.QueueRow::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.QueueRowParent-1 {
+  width: 289px;
+  height: 64px;
+  align-self: stretch;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.QueueRowParent-1a {
+  width: 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.QueueRowChild-1b {
+  align-self: stretch;
+  height: 62px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 11px;
+  padding-right: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+}
+.QueueRowCell-1a {
+  color: #1c1c1c;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.12px;
+  word-wrap: break-word;
+}
+.QueueRowCell-1b {
+  color: #1c1c1c;
+  font-size: 8px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.08px;
+  word-wrap: break-word;
+}
+.QueueRowParent-2a {
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.QueueRowChild-2b {
+  align-self: stretch;
+  height: 62px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.QueueRowCell-2a {
+  align-self: stretch;
+  text-align: center;
+  color: #f98a09;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  word-wrap: break-word;
+}
+.QueueRowCell-2b {
+  align-self: stretch;
+  text-align: center;
+  color: #f98a09;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  word-wrap: break-word;
+}
+.QueueRowParent-3a {
+  height: 64px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.QueueRowChild-3b {
+  flex: 1 1 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 9px;
+  padding-right: 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  display: inline-flex;
+}
+.QueueRowCellParent-3 {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.QueueRowCell-3a {
+  color: #1c1c1c;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.12px;
+  word-wrap: break-word;
+}
+.QueueRowCell-3b {
+  color: #1c1c1c;
+  font-size: 8px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.08px;
+  word-wrap: break-word;
+}
+
+/* Search Bar*/
+.queueSearch {
+  width: 288px;
+  height: 35px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+  /* background-color: green; */
+}
+.queueSearch-sec1 {
+  flex: 1 1 0;
+  height: 25px;
+  background: #f9f9f9;
+  /* background-color: pink; */
+  border-radius: 6px;
+  border: 0.5px rgba(28, 28, 28, 0.4) solid;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+.queueSearch-sec1-A {
+  width: 19px;
+  height: 19px;
+  padding: 3.96px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  /* background-color: yellow; */
+}
+.SearchText {
+  width: 57px;
+  height: 12px;
+  opacity: 0.4;
+  color: #080808;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.12px;
+  word-wrap: break-word;
+  /* background-color: purple; */
+}
+.searchImage {
+  width: 9.13px;
+  height: 9.13px;
+}
+.queueSearch-sec1-Sort {
+  width: 35.47px;
+  height: 25px;
+  background: #356f9f;
+  /* background-color: purple; */
+  border-radius: 3.28px;
+  justify-content: center;
+  align-items: center;
+  gap: 6.57px;
+  display: flex;
+}
+.queueSearch-sec1-Sort-2 {
+  width: 12.03px;
+  height: 14.6px;
+}
