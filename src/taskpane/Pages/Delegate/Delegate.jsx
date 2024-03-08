@@ -66,13 +66,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     if (visible) {
       closePopupTimer = setTimeout(() => {
         setVisible(false);
+        history.push("/queue")
       }, 2000); // 2 seconds
     }
 
     return () => {
       clearTimeout(closePopupTimer);
     };
-  }, [visible]);
+  }, [visible, history]);
 
   const togglePopupnotRFQ = () => {
     console.log("toggle not rfq");
