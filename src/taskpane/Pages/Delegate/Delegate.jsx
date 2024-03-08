@@ -34,7 +34,10 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const token = location?.state.token;
   console.log(token);
 
-  const [queueDetails, setQueueDetails] = useState(false);
+  // const [queueDetails, setQueueDetails] = useState(false);
+  const [queueCustomer, setQueueCustomer] = useState(false);
+  const [queueVendor, setQueueVendor] = useState(false);
+
 
   const [visible, setVisible] = useState(false);
   const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(true);
@@ -190,6 +193,12 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     });
     // Log all vendor emails
     console.log("All Vendor Emails:", allVendorEmails);
+
+     // Check if there are no vendor emails then only save customer details with "Sent" status
+     if (Object.keys(allVendorEmails).length === 0) {
+      setQueueCustomer(true);
+    }
+
     // Call the function to send emails to vendors
 
     // Iterate over each vendor email and send an email
@@ -226,7 +235,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         .then((data) => {
           console.log("Mail sent successfully to Vendor", Vendor_Email, data);
           console.log("Queue details have been sent")
-          setQueueDetails(true);
+          // setQueueDetails(true);
+          setQueueVendor(true);
         })
         .catch((error) => {
           console.error("Error sending mail to", Vendor_Email, error);
@@ -258,15 +268,17 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Mail sent successfully to customer", data);
+        setVisible(true);
       })
       .catch((error) => {
         console.error("Error sending mail", error);
       });
   };
 
+
   useEffect(() => {
-    if (queueDetails) {
-      const sendQueuedetails = async () => {
+    if (queueCustomer) {
+      const sendQueueDetailsToCustomer = async () => {
         try {
           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
             customer_name: classifyEmail.name,
@@ -278,9 +290,46 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           console.error("Error occurred while calling API:", error);
         }
       };
-      sendQueuedetails();
+      sendQueueDetailsToCustomer();
     }
-  }, [queueDetails]);
+  }, [queueCustomer]);
+
+  useEffect(() => {
+    if (queueVendor) {
+      const sendQueueDetailsToVendor = async () => {
+        try {
+          const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
+            customer_name: classifyEmail.name,
+            RFQ_ID: rfq_id,
+            status: "Vendor quote pending",
+            day: "2 days"
+          });
+          console.log("send queue vendor details API response from backend: ", result.data);
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
+        }
+      };
+      sendQueueDetailsToVendor();
+    }
+  }, [queueVendor]);
+
+  // useEffect(() => {
+  //   if (queueDetails) {
+  //     const sendQueuedetails = async () => {
+  //       try {
+  //         const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
+  //           customer_name: classifyEmail.name,
+  //           RFQ_ID: rfq_id,
+  //           status: "Sent",
+  //         });
+  //         console.log("send queue details API response from backend: ", result.data);
+  //       } catch (error) {
+  //         console.error("Error occurred while calling API:", error);
+  //       }
+  //     };
+  //     sendQueuedetails();
+  //   }
+  // }, [queueDetails]);
 
 
   useEffect(() => {
