@@ -148,6 +148,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       .then((data) => {
         console.log("Mail sent successfully to customer", data);
         // setQueueCustomer(true);
+        setVisible(true)
       })
       .catch((error) => {
         console.error("Error sending mail", error);
