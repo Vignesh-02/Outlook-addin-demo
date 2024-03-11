@@ -24,7 +24,7 @@ const Pending = () => {
   
   console.log("Customer Name 3:", name); // Log customerName to console
   console.log("Customer Email 2:", email); // Log customerName to console
-  console.log("Customer subject 2:", subject); // Log customerName to console
+  console.log("Customer subject 3:", subject); // Log customerName to console
 
   useEffect(() => {
     if (name && email && subject) {
