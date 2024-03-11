@@ -37,16 +37,15 @@ const Queue = () => {
     rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // const handleStatusClick = (customerName, customerEmail) => {
-  //   history.push("/pending", { state: { customerName, customerEmail } });
+  
+
+  // const handleStatusClick = (customerName, customerEmail, customerSubject) => {
+  //   history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${customerSubject}`);
   // };
-
-  // function handleStatusClick(customerName, customerEmail) {
-  //   history.push("/pending", { state: { customerName, customerEmail } });
-  // }
-
+  
   const handleStatusClick = (customerName, customerEmail, customerSubject) => {
-    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${customerSubject}`);
+    const encodedSubject = encodeURIComponent(customerSubject); // Encode the subject
+    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${encodedSubject}`);
   };
   
 
