@@ -1,10 +1,7 @@
 
 
 const initialState = {
-    customerBody: "<h1>Test</h1>",
-
-    
-      
+    customerResponseBody: "<h1>Test</h1>",  
   };
 
 
@@ -14,7 +11,7 @@ const initialState = {
       case "Response_Add":
         return {
           ...state,
-          customerBody: action.payload,
+          customerResponseBody: action.payload,
         };
      
       default:

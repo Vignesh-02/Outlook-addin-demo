@@ -400,6 +400,8 @@ const Decision = ({ isPopupOpenStock, togglePopupStock }) => {
     const  {product_1, product_2, product_3}  = useSelector(
         (state) => state.product
       );
+
+      
     //   console.log('Store product_1 data', product_1)
     //   console.log('Store product_2 data', product_2)
     //   console.log('Store products_3 data', product_3)

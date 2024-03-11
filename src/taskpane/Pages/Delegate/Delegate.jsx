@@ -21,8 +21,10 @@ import Notrfq from "../../components/NotRFQ/Notrfq";
 import Topbar from "../../components/Topbar/Topbar";
 import Navbar from "../../components/Navbar/Navbar";
 import { useHistory } from "react-router-dom";
-
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { responseAdd } from "../../../Store/action/customerBodyAction";
+
 
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   
@@ -172,6 +174,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   //       }
 
   // change
+  
   const handleLaunch = () => {
     const accessToken = token;
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
@@ -281,7 +284,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           },
         ],
       },
-      comment: customerBody,
+      comment: customerResponseBody,
     };
 
     fetch(sendCustomerReplyUrl, {
@@ -306,15 +309,18 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       const SendEmailDetails = async () => {
         try {
             setShowLoader(true);
-          const res = await axios.post("https://api-dev.wise-sales.com/ml-backend/classify_email/", {
-            subject: emailDetails.subject,
-            email_body: emailDetails.body,
-            sender_email: emailDetails.from,
-            sender_name: emailDetails.senderName,
-            wisecustomer: "INTR100",
-            customerofcustomer: "200",
-            acctId: "GY248",
-          });
+            const data = {
+                subject: emailDetails.subject,
+                email_body: emailDetails.body,
+                sender_email: emailDetails.from,
+                sender_name: emailDetails.senderName,
+                wisecustomer: "INTR100",
+                customerofcustomer: "200",
+                acctId: "GY248",
+              };
+            const inputData = JSON.stringify(data)
+
+          const res = await axios.post("https://api-dev.wise-sales.com/ml-backend/classify_email/", inputData);
         
           console.log("classify API response from backend: ", res.data);
           setClassifyEmail(res.data);
@@ -367,6 +373,10 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     }
   }, [delegatebtn1]);
 
+  const  {customerResponseBody}  = useSelector(
+    (state) => state.customerResponse
+  );
+
   // Log the state outside of the useEffect to see the updated value
   console.log("Classify Email: ", classifyEmail);
   useEffect(() => {
@@ -393,6 +403,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     if (isDelegate2Clicked) {
       const generateEmail = async () => {
         const generateEmailInput = {
+          isr_name: "Santiago",
           tone: "Professional",
           RFQ_status: 1,
           name: "Abby Rodriguez",
@@ -438,7 +449,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           console.log(res.data);
           const customerResponse = res.data.Customer_quote.Body;
           //  const vendorResponse = res.data.vendor_1.Body
-          setCustomerBody(customerResponse);
+          responseAdd(customerResponse);
+        //   setCustomerBody(customerResponse);
           console.log("Customer's Body:", customerBody);
           //   console.log("Vendor's Body:", vendorBody);
 

@@ -26,12 +26,16 @@ const greetingContent = "Dear Customer,<br><br>Thank you for choosing us for you
 
 const regardsContent = ">**PVC**<br>- Specifications: 23-0004-01<br>- Shipping Location: 12060 31st. Ct. N. St. Petersburg FL 33716<br>Eg:- We started working on procuring materials that are not available yet. Rest assured, we are committed to delivering high-quality materials on time. We are open to negotiation and eagerly await your reply.<br><br>Best regards";
 const specificationContent = "<br><br>**PVC**<br>- Specifications: 23-0004-01<br>- Shipping Location: 12060 31st. Ct. N. St. Petersburg FL 33716<br>Eg:- We started working on procuring materials that are not available yet. Rest assured, we are committed to delivering high-quality materials on time. We are open to negotiation and eagerly await your reply.<br><br>Best regards"
-const Tiptap2 = () => {
+const Tiptap2 = ({ afterTable, onValueChange }) => {
 
     const editor = useEditor({
         extensions,
-        content: specificationContent,
+        content: afterTable,
         editable: true,
+        onUpdate({ editor }) {
+            // setGreeting(editor.getHTML());
+            onValueChange(editor.getHTML())
+          },
       })
   return (
     <>

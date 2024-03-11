@@ -25,26 +25,26 @@ const extensions = [
 const greetingContent = "Dear Customer,<br><br>Thank you for choosing us for your material needs. Please find below a detailed breakdown of the quote for your order:<br><br>Order Details:<br>";
 
 const specificationContent = "<br><br>**PVC**<br>- Specifications: 23-0004-01<br>- Shipping Location: 12060 31st. Ct. N. St. Petersburg FL 33716<br>Eg:- We started working on procuring materials that are not available yet. Rest assured, we are committed to delivering high-quality materials on time. We are open to negotiation and eagerly await your reply.<br><br>Best regards"
-const Tiptap1 = () => {
+const Tiptap1 = ({ beforeTable, onValueChange }) => {
 
     const [greeting, setGreeting] = useState('');
 
     const editor = useEditor({
         extensions,
-        content: greetingContent,
+        content: beforeTable,
         editable: true,
         onUpdate({ editor }) {
-            setGreeting(editor.getHTML());
+            // setGreeting(editor.getHTML());
+            onValueChange(editor.getHTML())
           },
       
       })
   return (
-    <>
-    {console.log(greeting)}
+    <div className="editor-wrapper">
       <EditorContent editor={editor} className="editor__content" />
       {/* <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu> */}
       {/* <BubbleMenu editor={editor}>This is the bubble menu</BubbleMenu> */}
-    </>
+    </div>
   )
 }
 
