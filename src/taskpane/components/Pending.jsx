@@ -25,35 +25,39 @@ const Pending = () => {
   
   console.log("Customer Name 3:", name); // Log customerName to console
   console.log("Customer Email 2:", email); // Log customerName to console
-  console.log("Customer subject 5:", subject); // Log customerName to console
+  console.log("Customer subject 6:", subject); // Log customerName to console
+
+  
 
   // useEffect(() => {
-  //   if (name && email && subject) {
-  //     // If all customerName, customerEmail, and customerSubject are available, update the state
+  //   if (name && email) {
+  //     // If both customerName and customerEmail are available
+  //     // Set an empty string if customerSubject is null
+  //     const subjectValue = subject !== null ? subject : "";
+  //     // Update the state
   //     setCustomerDetails((prevDetails) => ({
   //       ...prevDetails,
   //       customerName: name,
   //       customerEmail: email,
-  //       // customerSubject: subject
-  //       customerSubject: decodeURIComponent(subject) // Decode the subject
+  //       customerSubject: subjectValue // Use the modified subject value
   //     }));
   //   }
   // }, [name, email, subject]);
 
   useEffect(() => {
-    if (name && email) {
-      // If both customerName and customerEmail are available
-      // Set an empty string if customerSubject is null
-      const subjectValue = subject !== null ? subject : "";
+    if (name && email && subject) {
+      // Decode the subject
+      const decodedSubject = decodeURIComponent(subject);
       // Update the state
       setCustomerDetails((prevDetails) => ({
         ...prevDetails,
         customerName: name,
         customerEmail: email,
-        customerSubject: subjectValue // Use the modified subject value
+        customerSubject: decodedSubject
       }));
     }
   }, [name, email, subject]);
+  
 
 
   return (
