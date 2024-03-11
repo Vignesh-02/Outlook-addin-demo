@@ -340,6 +340,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         try {
           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
             customer_name: classifyEmail.name,
+            customer_email: emailDetails.body,
             RFQ_ID: rfq_id,
             status: "Vendor quote pending",
             day: "2 days"
