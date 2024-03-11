@@ -47,7 +47,7 @@ const Queue = () => {
   const handleStatusClick = (customerName, customerEmail, customerSubject) => {
     // const encodedSubject = encodeURIComponent(customerSubject); // Encode the subject
     history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${customerSubject}`);
-    console.log("queue sub 12", customerSubject)
+    console.log("queue subject", customerSubject)
     // console.log("queue sub 2", encodedSubject)
   };
   
@@ -147,7 +147,7 @@ const Queue = () => {
                           : "inherit", // Default color
                     }}
                     onClick={() => {
-                      if (rowData.status === "Sent" && rowData.customer_subject !== null) {
+                      if (rowData.status === "Sent") {
                          handleStatusClick(rowData.customer_name, rowData.customer_email, rowData.customer_subject);
                         // <Pending customerName={rowData.customer_name} customerEmail={rowData.customer_email} />
                        

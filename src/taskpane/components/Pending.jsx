@@ -23,44 +23,30 @@ const Pending = () => {
   const subject = searchParams.get("customerSubject");
   
   
-  console.log("Customer Name 3:", name); // Log customerName to console
-  console.log("Customer Email 2:", email); // Log customerName to console
-  console.log("Customer subject 123:", subject); // Log customerName to console
+  console.log("Customer Name :", name); // Log customerName to console
+  console.log("Customer Email :", email); // Log customerName to console
+  console.log("Customer subject :", subject); // Log customerName to console
   // const decodedSubject = decodeURIComponent(subject);
 
   // console.log("customer sub3 : ", decodedSubject)
 
   
 
-  // useEffect(() => {
-  //   if (name && email) {
-  //     // If both customerName and customerEmail are available
-  //     // Set an empty string if customerSubject is null
-  //     const subjectValue = subject !== null ? subject : "";
-  //     // Update the state
-  //     setCustomerDetails((prevDetails) => ({
-  //       ...prevDetails,
-  //       customerName: name,
-  //       customerEmail: email,
-  //       customerSubject: subjectValue // Use the modified subject value
-  //     }));
-  //   }
-  // }, [name, email, subject]);
-
   useEffect(() => {
-    if (name && email && subject) {
-      // Decode the subject
-      // const decodedSubject = decodeURIComponent(subject);
+    if (name && email) {
+      // If both customerName and customerEmail are available
+      // Set an empty string if customerSubject is null
+      // const subjectValue = subject !== null ? subject : "";
       // Update the state
       setCustomerDetails((prevDetails) => ({
         ...prevDetails,
         customerName: name,
         customerEmail: email,
-        customerSubject: decodedSubject
+        customerSubject: subject // Use the modified subject value
       }));
     }
-  }, [name, email, subject]);
-  
+  }, [name, email]);
+
 
 
   return (
