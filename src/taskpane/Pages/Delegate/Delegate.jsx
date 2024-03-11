@@ -158,63 +158,63 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   // };
 
   // Function to send emails to vendors
-  const sendEmailsToVendors = (allVendorEmails) => {
-    // Counter to keep track of successful emails sent
-    let successfulEmailsSent = 0;
+  // const sendEmailsToVendors = (allVendorEmails) => {
+  //   // Counter to keep track of successful emails sent
+  //   let successfulEmailsSent = 0;
 
-    // Iterate over each vendor email and send an email
-    Object.entries(allVendorEmails).forEach(([email, vendor]) => {
-      // Define email data
-      const emailData = {
-        message: {
-          subject: vendor.Subject,
-          body: {
-            contentType: "Text",
-            content: vendor.Body,
-          },
-          toRecipients: [
-            {
-              emailAddress: {
-                address: email,
-              },
-            },
-          ],
-        },
-        saveToSentItems: "false",
-      };
+  //   // Iterate over each vendor email and send an email
+  //   Object.entries(allVendorEmails).forEach(([email, vendor]) => {
+  //     // Define email data
+  //     const emailData = {
+  //       message: {
+  //         subject: vendor.Subject,
+  //         body: {
+  //           contentType: "Text",
+  //           content: vendor.Body,
+  //         },
+  //         toRecipients: [
+  //           {
+  //             emailAddress: {
+  //               address: email,
+  //             },
+  //           },
+  //         ],
+  //       },
+  //       saveToSentItems: "false",
+  //     };
 
-      // Send email to the vendor
-      axios
-        .post("https://graph.microsoft.com/v1.0/me/sendMail", emailData, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
+  //     // Send email to the vendor
+  //     axios
+  //       .post("https://graph.microsoft.com/v1.0/me/sendMail", emailData, {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //           "Content-Type": "application/json",
+  //         },
+  //       })
+  //       .then((response) => {
 
-          console.log("Mail sent successfully to Vendor", email, response.data);
-          // setQueueDetails(true);
-          setQueueVendor(true);
-          successfulEmailsSent++;
+  //         console.log("Mail sent successfully to Vendor", email, response.data);
+  //         // setQueueDetails(true);
+  //         setQueueVendor(true);
+  //         successfulEmailsSent++;
 
-          // Check if all emails have been successfully sent
-          if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
-            // If all emails have been sent successfully, set setVisible to true
-            setVisible(true);
-            // setQueueDetails(true);
-          }
-        })
-        .catch((error) => {
-          console.error("Error sending mail to", email, error);
-        });
-    });
-  };
+  //         // Check if all emails have been successfully sent
+  //         if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
+  //           // If all emails have been sent successfully, set setVisible to true
+  //           setVisible(true);
+  //           // setQueueDetails(true);
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error sending mail to", email, error);
+  //       });
+  //   });
+  // };
 
 
   // rough
   const handleLaunch = () => {
-    const accessToken = token;
+    // const accessToken = token;
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
     
     console.log("Vendor Details:", vendordetail);
