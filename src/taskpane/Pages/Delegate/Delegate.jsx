@@ -268,7 +268,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Mail sent successfully to customer", data);
+        console.log("Mail sent successfully to Customer", data);
         setVisible(true);
       })
       .catch((error) => {
