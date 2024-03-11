@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import React, { useState, useEffect } from "react";
 // import "./Pending.css";
 import "./styles/Pending.css"
 import Topbar from "./Topbar/Topbar";
@@ -8,34 +9,31 @@ import { useLocation } from "react-router-dom";
 
 const Pending = () => {
 
-  // const [customerDetails, setCustomerDetails] = useState({
-  //   customerName: "",
-  //   customerEmail: "", // Add customerEmail to the state
-  //   customerSubject: ""
-  // });
+  const [customerDetails, setCustomerDetails] = useState({
+    customerName: "",
+    customerEmail: "", // Add customerEmail to the state
+    customerSubject: ""
+  });
 
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get("customerName");
   const email = searchParams.get("customerEmail");
-  // const { customerName, customerEmail } = location.state?.state || {};
-  // const { customerName } = location.state || {}; // Destructure customerName from state
-  // const { customerEmail } = location.state || {}; // Destructure customerName from state
   
-  console.log("Customer Name 2:", name); // Log customerName to console
+  console.log("Customer Name 3:", name); // Log customerName to console
   console.log("Customer Email 2:", email); // Log customerName to console
 
-  // useEffect(() => {
-  //   if (customerName && customerEmail) {
-  //     // If both customerName and customerEmail are available, update the state
-  //     setCustomerDetails((prevDetails) => ({
-  //       ...prevDetails,
-  //       customerName: customerName,
-  //       customerEmail: customerEmail // Update customerEmail in the state
-  //     }));
-  //   }
-  // }, [customerName, customerEmail]);
+  useEffect(() => {
+    if (name && email) {
+      // If both customerName and customerEmail are available, update the state
+      setCustomerDetails((prevDetails) => ({
+        ...prevDetails,
+        customerName: name,
+        customerEmail: email // Update customerEmail in the state
+      }));
+    }
+  }, [name, email]);
 
 
   return (
@@ -106,8 +104,8 @@ const Pending = () => {
               <div className="PendingPage-ValueDiv-sec1-val2">
                 <div className="PendingPage-ValueDiv-sec1-val3">
                   <div className="PendingPage-ValueDiv-sec1-val4">
-                    John Deo
-                    {/* {customerName} */}
+                    {/* John Deo */}
+                    {customerDetails.customerName}
 
                   </div>
                 </div>
@@ -162,7 +160,7 @@ const Pending = () => {
                     <br />
                     <br />
                     
-                    {/* {customerEmail} */}
+                    {customerDetails.customerEmail}
                     
                   </div>
                 </div>
