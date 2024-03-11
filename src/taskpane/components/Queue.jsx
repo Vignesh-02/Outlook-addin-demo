@@ -9,6 +9,7 @@ import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import axios from 'axios'
+import Pending from "./Pending";
 
 const Queue = () => {
   const history = useHistory();
@@ -36,6 +37,13 @@ const Queue = () => {
   const filteredData = queueData.filter((rowData) =>
     rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleStatusClick = (customerName, customerEmail) => {
+    history.push("/pending", { state: { customerName, customerEmail } });
+  };
+
+
+  
 
   return (
     <div className="queuePage">
@@ -130,7 +138,8 @@ const Queue = () => {
                     }}
                     onClick={() => {
                       if (rowData.status === "Sent") {
-                        history.push("/pending");
+                        handleStatusClick(rowData.customer_name, rowData.customer_email);
+                       
                       }
                     }}
                   >

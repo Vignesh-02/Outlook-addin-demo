@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import "./Pending.css";
 import "./styles/Pending.css"
 import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import { useLocation } from "react-router-dom";
 
 const Pending = () => {
+
+  const [customerDetails, setCustomerDetails] = useState({
+    customerName: "",
+    customerEmail: "", // Add customerEmail to the state
+    customerSubject: ""
+  });
+
+
+  const location = useLocation();
+  const { customerName } = location.state || {}; // Destructure customerName from state
+  const { customerEmail } = location.state || {}; // Destructure customerName from state
+  
+  console.log("Customer Name:", customerName); // Log customerName to console
+  console.log("Customer Email:", customerEmail); // Log customerName to console
+
+  useEffect(() => {
+    if (customerName && customerEmail) {
+      // If both customerName and customerEmail are available, update the state
+      setCustomerDetails((prevDetails) => ({
+        ...prevDetails,
+        customerName: customerName,
+        customerEmail: customerEmail // Update customerEmail in the state
+      }));
+    }
+  }, [customerName, customerEmail]);
+
+
   return (
     <div className="PendingPage">
       <Topbar />
