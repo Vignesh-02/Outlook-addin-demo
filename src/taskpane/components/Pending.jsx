@@ -20,9 +20,11 @@ const Pending = () => {
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get("customerName");
   const email = searchParams.get("customerEmail");
+  const subject = searchParams.get("customerSubject");
   
   console.log("Customer Name 3:", name); // Log customerName to console
   console.log("Customer Email 2:", email); // Log customerName to console
+  console.log("Customer subject 2:", subject); // Log customerName to console
 
   useEffect(() => {
     if (name && email) {
@@ -30,7 +32,8 @@ const Pending = () => {
       setCustomerDetails((prevDetails) => ({
         ...prevDetails,
         customerName: name,
-        customerEmail: email // Update customerEmail in the state
+        customerEmail: email, // Update customerEmail in the state
+        customerSubject: subject
       }));
     }
   }, [name, email]);
@@ -156,7 +159,7 @@ const Pending = () => {
               <div className="PendingPage-Cont2-Sec2-child3">
                 <div className="PendingPage-Cont2-Sec2-child4">
                   <div className="PendingPage-Cont2-Sec2-mailContent">
-                    Subject": "Order Details and Quote Breakdown"
+                    Subject": {customerDetails.customerSubject}
                     <br />
                     <br />
                     

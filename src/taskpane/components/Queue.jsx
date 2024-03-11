@@ -45,8 +45,8 @@ const Queue = () => {
   //   history.push("/pending", { state: { customerName, customerEmail } });
   // }
 
-  const handleStatusClick = (customerName, customerEmail) => {
-    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}`);
+  const handleStatusClick = (customerName, customerEmail, customerSubject) => {
+    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${customerSubject}`);
   };
   
 
@@ -146,7 +146,7 @@ const Queue = () => {
                     }}
                     onClick={() => {
                       if (rowData.status === "Sent") {
-                         handleStatusClick(rowData.customer_name, rowData.customer_email);
+                         handleStatusClick(rowData.customer_name, rowData.customer_email, rowData.customer_subject);
                         // <Pending customerName={rowData.customer_name} customerEmail={rowData.customer_email} />
                        
                       }
