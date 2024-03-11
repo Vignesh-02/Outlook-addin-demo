@@ -438,6 +438,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           const emailWithTone = {
             ...classifyEmail,
             tone: "Professional",
+            isr_name: "Santiago"
           };
           const res = await axios.post(
             "http://127.0.0.1:8000/api/generate_email/",
