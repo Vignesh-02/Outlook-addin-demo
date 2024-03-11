@@ -4,12 +4,11 @@ import SearchImage from "../../../public/Search.png";
 import SortImage from "../../../public/sort.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
-import { useHistory } from "react-router-dom";
 import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import { useHistory } from "react-router-dom";
 import axios from 'axios'
-import Pending from "./Pending";
 
 const Queue = () => {
   const history = useHistory();
@@ -42,9 +41,13 @@ const Queue = () => {
   //   history.push("/pending", { state: { customerName, customerEmail } });
   // };
 
-  function handleStatusClick(customerName, customerEmail) {
-    history.push("/pending", { state: { customerName, customerEmail } });
-  }
+  // function handleStatusClick(customerName, customerEmail) {
+  //   history.push("/pending", { state: { customerName, customerEmail } });
+  // }
+
+  const handleStatusClick = (customerName, customerEmail) => {
+    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}`);
+  };
   
 
 
@@ -143,7 +146,8 @@ const Queue = () => {
                     }}
                     onClick={() => {
                       if (rowData.status === "Sent") {
-                        handleStatusClick(rowData.customer_name, rowData.customer_email);
+                         handleStatusClick(rowData.customer_name, rowData.customer_email);
+                        // <Pending customerName={rowData.customer_name} customerEmail={rowData.customer_email} />
                        
                       }
                     }}
