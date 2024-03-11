@@ -1,5 +1,6 @@
 // import React from "react";
 import React, { useState, useEffect } from "react";
+// import "./Pending.css";
 import "./styles/Pending.css"
 import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
@@ -10,7 +11,7 @@ const Pending = () => {
 
   const [customerDetails, setCustomerDetails] = useState({
     customerName: "",
-    customerEmail: "", 
+    customerEmail: "", // Add customerEmail to the state
     customerSubject: ""
   });
 
@@ -25,12 +26,18 @@ const Pending = () => {
   console.log("Customer Name :", name); // Log customerName to console
   console.log("Customer Email :", email); // Log customerName to console
   console.log("Customer subject :", subject); // Log customerName to console
-  
+  // const decodedSubject = decodeURIComponent(subject);
+
+  // console.log("customer sub3 : ", decodedSubject)
+
   
 
   useEffect(() => {
     if (name && email) {
-      
+      // If both customerName and customerEmail are available
+      // Set an empty string if customerSubject is null
+      // const subjectValue = subject !== null ? subject : "";
+      // Update the state
       setCustomerDetails((prevDetails) => ({
         ...prevDetails,
         customerName: name,

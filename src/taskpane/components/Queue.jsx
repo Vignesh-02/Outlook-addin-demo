@@ -38,7 +38,7 @@ const Queue = () => {
   );
 
   
-
+  
   const handleStatusClick = (customerName, customerEmail, customerSubject) => {
     // const encodedSubject = encodeURIComponent(customerSubject); // Encode the subject
     history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${customerSubject}`);
