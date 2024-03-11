@@ -25,10 +25,10 @@ const Pending = () => {
   
   console.log("Customer Name 3:", name); // Log customerName to console
   console.log("Customer Email 2:", email); // Log customerName to console
-  console.log("Customer subject 7:", subject); // Log customerName to console
-  const decodedSubject = decodeURIComponent(subject);
+  console.log("Customer subject 123:", subject); // Log customerName to console
+  // const decodedSubject = decodeURIComponent(subject);
 
-  console.log("customer sub3 : ", decodedSubject)
+  // console.log("customer sub3 : ", decodedSubject)
 
   
 
