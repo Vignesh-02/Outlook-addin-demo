@@ -283,6 +283,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         try {
           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
             customer_name: classifyEmail.name,
+            customer_subject: emailDetails.subject,
+            customer_email: emailDetails.body,
             RFQ_ID: rfq_id,
             status: "Sent",
           });
