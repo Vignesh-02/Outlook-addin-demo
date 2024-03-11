@@ -218,14 +218,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     const accessToken =
     "EwB4A8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAdO4nY1EtfQMBeOZE1jofnFoitFH/sOQtqiNPL4YWZP8PK3SiHTlV19aFJec3Cym40I0W9K29y1SQcrJvsE4XLwF4jJZvhbD9f3ABnWSNi8LIBQbtpGgrCLg5xD8eWZ3qRTK70ORiGh6D0VfG77Hfiyhi+XK7SIWMimd4GDVgihRhyCXyZQRHkKf3paCc3zIpJsIYmeSJSddJ05B5qWPIjOnP5N0L8l41TxLhfR53fYcj2pQKKbr9xfNmNee10XLQXSTEmfZBTG8MyT1Rq4lLUVur9B1dKAQceSGK4Eudl9g8ZZcGdAXz7/xbUtegSooBlhLh6F/Gt42NO+ibgOXLlEDZgAACCnC96JWlgL3SALgvqxD8u1RCub7usdwH6orkZpjAWFKLnsCUJ+Is8bQRGOVRCXpukN3lAQbmkETVp3+D3TyS0fRYCkdn6IutHKHFSFcJMmMsOvQyA/fW9zug8cSPMsrd9TyjoFRo2giWmBAV+SuMsKw+iE8XTS108+2SQyeTObQk/eYorpjw5OopjYlI4vBT00XgzU26oKKV49ZWhRdOKgMVr21R5WbIMAmkKrxFnGzR7iMerQs+MJMaIMSX434zubIPF0aeudQMGEGBk2GGrF5UP3eKeZ0sb+LBEPeUFtmfRGXlVpojGQBFp9YF0YvqqqQhNFpDgPwlBISezk8vytPiMVBp6ZSVSiP14Q1VH9ZL1Vge/3+VRkDfTCwMIqo/xeiWqRh/CKZtFhieDpj+KFY6GfSJb1qRUC+KP8v/dmGLjEXZy0wiBfL+1g1mJ7iGqEbRFs9q9Uz7xOG5rwHyPNiyuvua2bpMIU0GvEODn6dF8mTNSczQGVNjiILVx6SFjxU38m1I6C1bBKdRyXIy2fuRdWbBRbiXy5uEupeRCwiI0usrPwbFEemMHh6iAmHo6x71It5Cu7/a6ZTjleRo+TuX+4Fcpodl5uIcSEdSkIl47ASttuSAXz3zzRYcnf84YdGNTEejv4rfq4m/FY2/Bonf7cUoUT8GKcYK40CpukzIoyfbiw65sTOK9Z5L3NsH9uOOkMoiUQdO6vSOX8TNn3In1JDZtl7JOn0c+ePl3aQ0vCSqFNk09zbK8CAJVmWGH94X9qNbDkhDSy94xdoFsh20IUC";
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
-    
+
     console.log("Vendor Details:", vendordetail);
     // Define a variable to store all vendor emails
     let allVendorEmails = {};
     // Iterate over each vendor detail and store their emails
     Object.values(vendordetail).forEach((vendor) => {
-      const { Vendor_Email } = vendor;
-      allVendorEmails[Vendor_Email] = vendor;
+        const { Vendor_Email } = vendor;
+        allVendorEmails[Vendor_Email] = vendor;
     });
     // Log all vendor emails
     console.log("All Vendor Emails:", allVendorEmails);
@@ -239,80 +239,81 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     // Call the function to send emails to vendors
     // Iterate over each vendor email and send an email
     Object.entries(allVendorEmails).forEach(([email, vendor]) => {
-      // Define email data
-      const emailData = {
-        message: {
-          subject: vendor.Subject,
-          body: {
-            contentType: "Html",
-            content: vendor.Body,
-          },
-          toRecipients: [
-            {
-              emailAddress: {
-                address: email,
-              },
+        // Define email data
+        const emailData = {
+            message: {
+                subject: vendor.Subject,
+                body: {
+                    contentType: "Html",
+                    content: vendor.Body,
+                },
+                toRecipients: [
+                    {
+                        emailAddress: {
+                            address: email,
+                        },
+                    },
+                ],
             },
-          ],
-        },
-        saveToSentItems: "false",
-      };
-      //   Send email to the vendor
-      fetch(sendMailVendor, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(emailData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Mail sent successfully to Vendor", email, data);
-          setQueueVendor(true);
-          successfulEmailsSent++;
-
-          // Check if all emails have been successfully sent
-          if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
-            // If all emails have been sent successfully, set setVisible to true
-            setVisible(true);
-            // setQueueDetails(true);
-          }
+            saveToSentItems: "false",
+        };
+        //   Send email to the vendor
+        fetch(sendMailVendor, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(emailData),
         })
-        .catch((error) => {
-          console.error("Error sending mail to", email, error);
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Mail sent successfully to Vendor", email, data);
+                setQueueVendor(true);
+                successfulEmailsSent++;
+
+                // Check if all emails have been successfully sent
+                if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
+                    // If all emails have been sent successfully, set setVisible to true
+                    setVisible(true);
+                    // setQueueDetails(true);
+                }
+            })
+            .catch((error) => {
+                console.error("Error sending mail to", email, error);
+            });
     });
-    const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
-    const emailData = {
-      message: {
-        toRecipients: [
-          {
-            emailAddress: {
-              address: emailDetails.from,
+
+    // Define customer reply URL and email data
+    const sendCustomerReply = (emailDetails, customerBody) => {
+        const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
+        const emailData = {
+            comment: {
+                content: customerBody
+            }
+        };
+        fetch(sendCustomerReplyUrl, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
             },
-          },
-        ],
-      },
-      comment: customerBody,
+            body: JSON.stringify(emailData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Mail sent successfully to customer", data);
+                setVisible(true)
+            })
+            .catch((error) => {
+                console.error("Error sending mail", error);
+            });
     };
-    fetch(sendCustomerReplyUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(emailData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Mail sent successfully to customer", data);
-        setVisible(true)
-      })
-      .catch((error) => {
-        console.error("Error sending mail", error);
-      });
-  };
+
+    // Call function to send customer reply
+    sendCustomerReply(emailDetails, customerBody);
+};
+
 
   useEffect(() => {
     if (queueCustomer) {
