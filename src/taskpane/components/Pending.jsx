@@ -1,9 +1,9 @@
 import React from "react";
 // import "./Pending.css";
 import "./styles/Pending.css"
-import Topbar from "../../Components/Topbar/Topbar";
-import Navbar from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
+import Topbar from "./Topbar/Topbar";
+import Navbar from "./Navbar/Navbar";
+import Footer from "./Footer/Footer";
 
 const Pending = () => {
   return (
