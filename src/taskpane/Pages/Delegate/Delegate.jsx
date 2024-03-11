@@ -269,7 +269,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log("Mail sent successfully to Vendor", email, data);
-                setQueueVendor(true);
+                // setQueueVendor(true);
                 successfulEmailsSent++;
 
                 // Check if all emails have been successfully sent
