@@ -215,7 +215,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   // rough
   
   const handleLaunch = () => {
-    const accessToken = "EwB4A8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAaPIKAM+BjO/y2x9dUlbWpTyFw7PEawLn9Vj4RoPdcPVRZtwMWMYKNYIoiDosx7SW9smtb7BVlrDg0v+/HH2zzaSxfGc2U9PKGvAMPyZHhmp5zrQHXj6wVOz/Pegu77GJeCDrjBJU1JzD216zTPvnMQ1VXkQIjlYPnkUYzm8H3vl/1ZKFh3XYjKEuCC7O9uDPpXCBrtkZ5HGO2FA6UefS3fbF5sZHB4108WNuPIaaPOcVpNNWYK2yjEtQDyuhdj5u6aVKt0HeEbKBDZ+/lbfTuIZef971D3EJtl6d4HOsvAQuCyS6Vb2iDgOsK9pfbFga8VAF1EtkCi93HndQ6ILnjYDZgAACHtb9wQQ2A94SAINo+f7Lvq0yvC17gqm1WT1kU58/6AXdWE/MxySSjGqANXjhvTz/V++BbULbyGtNg5sRfQr2d1K2Sk7PuEkPjYefbTkg/ca6WYRsGlxnpBEIbFAbp0ngf7bJfTAsmE1KO2eEVUndWjNmRjjkVkQYXQWaSyDwZ2cOz9qjA1QoDqeSfn1jmWnu3ksq164jdXJfEBThlp4RzE5ToFjGwHUTMBma99KSTaNDXjuVQoGPEEJKmAk3ZPMSg5kPJaRpbVTV/TxCk/Jl8p272Rh67FMIH308+ItSLxHiYEF0P2NUF6tTBVRlwX+vlWdsJWinux+xOKhkA50hxPt2YyiUE08GYG0hcxOP3nx2D+Pid9zeqYcmzSlTCZxaAgDHr2IaH3ug2Um9lSx+Cmnyx+XYz3EKf3n1MWthcC9yu56rZG7QQrWuvuUbUbu4U1KpeA8AwPO4tt4n+m5odzHDVn9t9G8eMSPNfupByenyLq3WORc/N3RDeErKMLBfP2HelG6/vPp37movimH5LX6fYdtRNKNYYzkbMTMJpsTUTumsjHJqvanQ+UnzGM5PRNoN9/rMPVnj1NOeuhV5RmUQm3Wcf0BID4/3RgIt2pkTAvQLQGBXHv5NFlTCJSx60tzlO04J+N0BVlXhPve4ZochHviFiP+wXtSIjjDhJV82teXzm62v/cajVJIL0GlXQnSohWY/L1/EGSQ33BO4p06ojAZnUYw39uko5qmxUTccsrtFhRtsKLvg+IMoYNA5X88b4mdTU01EraWXD0xo1vupIUC";
+    const accessToken = "EwBoA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAb7MZ5rcVaXq0QSULjgloL8Q366pnPSfZKFjpefICHz4qPK6j/L5LbucS7cTSk/OdYIslJqs2F7YnWnw71m8/NEUWoDlI9N2Kwe1vDofKvUhO8be6OyI8WzSnVhIGPQEHQkj+k/3BmVs6WVHjb2M6CtlceVl5xK84YkYXlgtsoR19JMI/8qfv61H36dmExnB2pvNr6zoJNPVkohJ2UBCcQkY7yWr40wXUhbch4yNsrjsUYXcJSbohVVxsh6uYlrrUBRDmrhnKUB8DnnYOpFNUxH/nAu4/h56T4gzcgg+9CWyBT+VrSvnyn+r1DElzANmH2MSew6LShbV/jLHiDSV36sDZgAACA+/MNX2ie5hOAJQatlmTpS+umhHUm4h4RIOzRO9ors47E02Nb0jXb5mnGpHIq0F71dBoDGW7ByFAlkEaLGEoXzKfmuG39nl2NtovTZKESLXwgu34eYcLjSSEkaNu4+2uMbAnAxYD7zJoub0dja2EanMQJbqaSjS+B9XctltGUNpmUfTqrdQOR/vfQ0iPI8AkBZdObKw99IfMi4FzqeQ9m+QrzX5iK6GDVJ11uRGhHTSr1/vvDCpmm0BTXEfnTGcTXwX9ZCFdSfvfO89XKl1rUp1+plKE1xngEgVw/lN1TJ6LWasKE9QWXLqjj8XWqjpQeCdKlR3MRJ8xysvH7QlnCkA7/0eN7643aa2HmHteleGc8dQ1VC7gGpEBSy42E++TBzo9g7R4nvj7bB2cL01JlTLo3M+QuODxSWMZy2L4cY5nSrmF0NMjsOKE0jLQpGqjT2G9iTWe7ux3nBILNSREOjVRVp2+5pTWkR2ACc5M8xncirSB1Ym5yOr4cOPZr/1pdr32eev8SWSwx1oGiImQ98AeEbrH0e4K7/kUcAJwsBRGI2c/CS3UYzWoDwEbvmVeZoRoGSci4Sd7RlCx+G1xNGrnVOK+C6+ERpEvZ2xolBPRHLHTwrsIRoQ3dwSQ7xT2Iwk/Wk3pCNPRh8SzR/AtzP5wvJAPVu3u8tBWbQvlAFvbqcDghBwbzWNMmKWXb0gLA3d/kWel4Hw/9Glkmb1lP4iD2u8NXp/z4pAwx11ykcWIRLWkRpjDaE7E5TkkLlq1mDcdQI=";
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
     console.log("Vendor Details:", vendordetail);
     // Define a variable to store all vendor emails
@@ -263,13 +263,13 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Mail sent successfully to Vendor", Vendor_Email, data);
+          console.log("Mail sent successfully to Vendor", email, data);
           console.log("Queue details have been sent")
           // setQueueDetails(true);
           setQueueVendor(true);
         })
         .catch((error) => {
-          console.error("Error sending mail to", Vendor_Email, error);
+          console.error("Error sending mail to", email, error);
         });
     });
     const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
