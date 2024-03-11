@@ -95,143 +95,73 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   };
 
   // corrrect
-  // const accessToken =
-  //   "EwB4A8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAdO4nY1EtfQMBeOZE1jofnFoitFH/sOQtqiNPL4YWZP8PK3SiHTlV19aFJec3Cym40I0W9K29y1SQcrJvsE4XLwF4jJZvhbD9f3ABnWSNi8LIBQbtpGgrCLg5xD8eWZ3qRTK70ORiGh6D0VfG77Hfiyhi+XK7SIWMimd4GDVgihRhyCXyZQRHkKf3paCc3zIpJsIYmeSJSddJ05B5qWPIjOnP5N0L8l41TxLhfR53fYcj2pQKKbr9xfNmNee10XLQXSTEmfZBTG8MyT1Rq4lLUVur9B1dKAQceSGK4Eudl9g8ZZcGdAXz7/xbUtegSooBlhLh6F/Gt42NO+ibgOXLlEDZgAACCnC96JWlgL3SALgvqxD8u1RCub7usdwH6orkZpjAWFKLnsCUJ+Is8bQRGOVRCXpukN3lAQbmkETVp3+D3TyS0fRYCkdn6IutHKHFSFcJMmMsOvQyA/fW9zug8cSPMsrd9TyjoFRo2giWmBAV+SuMsKw+iE8XTS108+2SQyeTObQk/eYorpjw5OopjYlI4vBT00XgzU26oKKV49ZWhRdOKgMVr21R5WbIMAmkKrxFnGzR7iMerQs+MJMaIMSX434zubIPF0aeudQMGEGBk2GGrF5UP3eKeZ0sb+LBEPeUFtmfRGXlVpojGQBFp9YF0YvqqqQhNFpDgPwlBISezk8vytPiMVBp6ZSVSiP14Q1VH9ZL1Vge/3+VRkDfTCwMIqo/xeiWqRh/CKZtFhieDpj+KFY6GfSJb1qRUC+KP8v/dmGLjEXZy0wiBfL+1g1mJ7iGqEbRFs9q9Uz7xOG5rwHyPNiyuvua2bpMIU0GvEODn6dF8mTNSczQGVNjiILVx6SFjxU38m1I6C1bBKdRyXIy2fuRdWbBRbiXy5uEupeRCwiI0usrPwbFEemMHh6iAmHo6x71It5Cu7/a6ZTjleRo+TuX+4Fcpodl5uIcSEdSkIl47ASttuSAXz3zzRYcnf84YdGNTEejv4rfq4m/FY2/Bonf7cUoUT8GKcYK40CpukzIoyfbiw65sTOK9Z5L3NsH9uOOkMoiUQdO6vSOX8TNn3In1JDZtl7JOn0c+ePl3aQ0vCSqFNk09zbK8CAJVmWGH94X9qNbDkhDSy94xdoFsh20IUC";
-  // const handleLaunch = () => {
-  
-  //   // Log all vendor details received from the generate API
-  //   console.log("Vendor Details:", vendordetail);
-
-  //   // Define a variable to store all vendor emails
-  //   let allVendorEmails = {};
-
-  //   // Iterate over each vendor detail and store their emails
-  //   Object.values(vendordetail).forEach((vendor) => {
-  //     const { Vendor_Email } = vendor;
-  //     allVendorEmails[Vendor_Email] = vendor;
-  //   });
-
-  //   // Log all vendor emails
-  //   console.log("All Vendor Emails:", allVendorEmails);
-
-
-  //   // Check if there are no vendor emails then only save customer details with "Sent" status
-  //   // if (Object.keys(allVendorEmails).length === 0) {
-  //   //   setQueueCustomer(true);
-  //   // }
-  //   setQueueCustomer(true);
-
-  //   // Call the function to send emails to vendors
-  //   sendEmailsToVendors(allVendorEmails);
-
-  //   const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
-  //   const emailData = {
-  //     message: {
-  //       toRecipients: [
-  //         {
-  //           emailAddress: {
-  //             address: emailDetails.from,
-  //           },
-  //         },
-  //       ],
-  //     },
-  //     comment: customerBody,
-  //   };
-
-  //   fetch(sendCustomerReplyUrl, {
-  //     method: "POST",
-  //     headers: {
-  //       Authorization: `Bearer ${accessToken}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(emailData),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("Mail sent successfully to customer", data);
-  //       // setQueueCustomer(true);
-  //       setVisible(true)
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error sending mail", error);
-  //     });
-  // };
-
-  // Function to send emails to vendors
-  // const sendEmailsToVendors = (allVendorEmails) => {
-  //   // Counter to keep track of successful emails sent
-  //   let successfulEmailsSent = 0;
-
-  //   // Iterate over each vendor email and send an email
-  //   Object.entries(allVendorEmails).forEach(([email, vendor]) => {
-  //     // Define email data
-  //     const emailData = {
-  //       message: {
-  //         subject: vendor.Subject,
-  //         body: {
-  //           contentType: "Text",
-  //           content: vendor.Body,
-  //         },
-  //         toRecipients: [
-  //           {
-  //             emailAddress: {
-  //               address: email,
-  //             },
-  //           },
-  //         ],
-  //       },
-  //       saveToSentItems: "false",
-  //     };
-
-  //     // Send email to the vendor
-  //     axios
-  //       .post("https://graph.microsoft.com/v1.0/me/sendMail", emailData, {
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //           "Content-Type": "application/json",
-  //         },
-  //       })
-  //       .then((response) => {
-
-  //         console.log("Mail sent successfully to Vendor", email, response.data);
-  //         // setQueueDetails(true);
-  //         setQueueVendor(true);
-  //         successfulEmailsSent++;
-
-  //         // Check if all emails have been successfully sent
-  //         if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
-  //           // If all emails have been sent successfully, set setVisible to true
-  //           setVisible(true);
-  //           // setQueueDetails(true);
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error sending mail to", email, error);
-  //       });
-  //   });
-  // };
-
-
-  // rough
-  
+  const accessToken =
+    "EwBoA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAb7MZ5rcVaXq0QSULjgloL8Q366pnPSfZKFjpefICHz4qPK6j/L5LbucS7cTSk/OdYIslJqs2F7YnWnw71m8/NEUWoDlI9N2Kwe1vDofKvUhO8be6OyI8WzSnVhIGPQEHQkj+k/3BmVs6WVHjb2M6CtlceVl5xK84YkYXlgtsoR19JMI/8qfv61H36dmExnB2pvNr6zoJNPVkohJ2UBCcQkY7yWr40wXUhbch4yNsrjsUYXcJSbohVVxsh6uYlrrUBRDmrhnKUB8DnnYOpFNUxH/nAu4/h56T4gzcgg+9CWyBT+VrSvnyn+r1DElzANmH2MSew6LShbV/jLHiDSV36sDZgAACA+/MNX2ie5hOAJQatlmTpS+umhHUm4h4RIOzRO9ors47E02Nb0jXb5mnGpHIq0F71dBoDGW7ByFAlkEaLGEoXzKfmuG39nl2NtovTZKESLXwgu34eYcLjSSEkaNu4+2uMbAnAxYD7zJoub0dja2EanMQJbqaSjS+B9XctltGUNpmUfTqrdQOR/vfQ0iPI8AkBZdObKw99IfMi4FzqeQ9m+QrzX5iK6GDVJ11uRGhHTSr1/vvDCpmm0BTXEfnTGcTXwX9ZCFdSfvfO89XKl1rUp1+plKE1xngEgVw/lN1TJ6LWasKE9QWXLqjj8XWqjpQeCdKlR3MRJ8xysvH7QlnCkA7/0eN7643aa2HmHteleGc8dQ1VC7gGpEBSy42E++TBzo9g7R4nvj7bB2cL01JlTLo3M+QuODxSWMZy2L4cY5nSrmF0NMjsOKE0jLQpGqjT2G9iTWe7ux3nBILNSREOjVRVp2+5pTWkR2ACc5M8xncirSB1Ym5yOr4cOPZr/1pdr32eev8SWSwx1oGiImQ98AeEbrH0e4K7/kUcAJwsBRGI2c/CS3UYzWoDwEbvmVeZoRoGSci4Sd7RlCx+G1xNGrnVOK+C6+ERpEvZ2xolBPRHLHTwrsIRoQ3dwSQ7xT2Iwk/Wk3pCNPRh8SzR/AtzP5wvJAPVu3u8tBWbQvlAFvbqcDghBwbzWNMmKWXb0gLA3d/kWel4Hw/9Glkmb1lP4iD2u8NXp/z4pAwx11ykcWIRLWkRpjDaE7E5TkkLlq1mDcdQI=";
   const handleLaunch = () => {
-    const accessToken = "EwBoA8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAb7MZ5rcVaXq0QSULjgloL8Q366pnPSfZKFjpefICHz4qPK6j/L5LbucS7cTSk/OdYIslJqs2F7YnWnw71m8/NEUWoDlI9N2Kwe1vDofKvUhO8be6OyI8WzSnVhIGPQEHQkj+k/3BmVs6WVHjb2M6CtlceVl5xK84YkYXlgtsoR19JMI/8qfv61H36dmExnB2pvNr6zoJNPVkohJ2UBCcQkY7yWr40wXUhbch4yNsrjsUYXcJSbohVVxsh6uYlrrUBRDmrhnKUB8DnnYOpFNUxH/nAu4/h56T4gzcgg+9CWyBT+VrSvnyn+r1DElzANmH2MSew6LShbV/jLHiDSV36sDZgAACA+/MNX2ie5hOAJQatlmTpS+umhHUm4h4RIOzRO9ors47E02Nb0jXb5mnGpHIq0F71dBoDGW7ByFAlkEaLGEoXzKfmuG39nl2NtovTZKESLXwgu34eYcLjSSEkaNu4+2uMbAnAxYD7zJoub0dja2EanMQJbqaSjS+B9XctltGUNpmUfTqrdQOR/vfQ0iPI8AkBZdObKw99IfMi4FzqeQ9m+QrzX5iK6GDVJ11uRGhHTSr1/vvDCpmm0BTXEfnTGcTXwX9ZCFdSfvfO89XKl1rUp1+plKE1xngEgVw/lN1TJ6LWasKE9QWXLqjj8XWqjpQeCdKlR3MRJ8xysvH7QlnCkA7/0eN7643aa2HmHteleGc8dQ1VC7gGpEBSy42E++TBzo9g7R4nvj7bB2cL01JlTLo3M+QuODxSWMZy2L4cY5nSrmF0NMjsOKE0jLQpGqjT2G9iTWe7ux3nBILNSREOjVRVp2+5pTWkR2ACc5M8xncirSB1Ym5yOr4cOPZr/1pdr32eev8SWSwx1oGiImQ98AeEbrH0e4K7/kUcAJwsBRGI2c/CS3UYzWoDwEbvmVeZoRoGSci4Sd7RlCx+G1xNGrnVOK+C6+ERpEvZ2xolBPRHLHTwrsIRoQ3dwSQ7xT2Iwk/Wk3pCNPRh8SzR/AtzP5wvJAPVu3u8tBWbQvlAFvbqcDghBwbzWNMmKWXb0gLA3d/kWel4Hw/9Glkmb1lP4iD2u8NXp/z4pAwx11ykcWIRLWkRpjDaE7E5TkkLlq1mDcdQI=";
-    const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
+  
+    // Log all vendor details received from the generate API
     console.log("Vendor Details:", vendordetail);
+
     // Define a variable to store all vendor emails
     let allVendorEmails = {};
+
     // Iterate over each vendor detail and store their emails
     Object.values(vendordetail).forEach((vendor) => {
       const { Vendor_Email } = vendor;
       allVendorEmails[Vendor_Email] = vendor;
     });
+
     // Log all vendor emails
     console.log("All Vendor Emails:", allVendorEmails);
-     // Check if there are no vendor emails then only save customer details with "Sent" status
-     if (Object.keys(allVendorEmails).length === 0) {
-      setQueueCustomer(true);
-    }
+
+
+    // Check if there are no vendor emails then only save customer details with "Sent" status
+    // if (Object.keys(allVendorEmails).length === 0) {
+    //   setQueueCustomer(true);
+    // }
+    setQueueCustomer(true);
+
     // Call the function to send emails to vendors
+    sendEmailsToVendors(allVendorEmails);
+
+    const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
+    const emailData = {
+      message: {
+        toRecipients: [
+          {
+            emailAddress: {
+              address: emailDetails.from,
+            },
+          },
+        ],
+      },
+      comment: customerBody,
+    };
+
+    fetch(sendCustomerReplyUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Mail sent successfully to customer", data);
+        // setQueueCustomer(true);
+        setVisible(true)
+      })
+      .catch((error) => {
+        console.error("Error sending mail", error);
+      });
+  };
+
+  // Function to send emails to vendors
+  const sendEmailsToVendors = (allVendorEmails) => {
+    // Counter to keep track of successful emails sent
+    let successfulEmailsSent = 0;
+
     // Iterate over each vendor email and send an email
     Object.entries(allVendorEmails).forEach(([email, vendor]) => {
       // Define email data
@@ -239,7 +169,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         message: {
           subject: vendor.Subject,
           body: {
-            contentType: "Html",
+            contentType: "Text",
             content: vendor.Body,
           },
           toRecipients: [
@@ -252,56 +182,39 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         },
         saveToSentItems: "false",
       };
-      //   Send email to the vendor
-      fetch(sendMailVendor, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(emailData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Mail sent successfully to Vendor", email, data);
-          console.log("Queue details have been sent")
+
+      // Send email to the vendor
+      axios
+        .post("https://graph.microsoft.com/v1.0/me/sendMail", emailData, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+
+          console.log("Mail sent successfully to Vendor", email, response.data);
           // setQueueDetails(true);
-          setQueueVendor(true);
+          // setQueueVendor(true);
+          successfulEmailsSent++;
+
+          // Check if all emails have been successfully sent
+          if (successfulEmailsSent === Object.keys(allVendorEmails).length) {
+            // If all emails have been sent successfully, set setVisible to true
+            setVisible(true);
+            // setQueueDetails(true);
+          }
         })
         .catch((error) => {
           console.error("Error sending mail to", email, error);
         });
     });
-    const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
-    const emailData = {
-      message: {
-        toRecipients: [
-          {
-            emailAddress: {
-              address: emailDetails.from,
-            },
-          },
-        ],
-      },
-      comment: customerResponseBody,
-    };
-    fetch(sendCustomerReplyUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(emailData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Mail sent successfully to customer", data);
-        setVisible(true);
-      })
-      .catch((error) => {
-        console.error("Error sending mail", error);
-      });
   };
+
+
+  
+  
+ 
 
   useEffect(() => {
     if (queueCustomer) {
