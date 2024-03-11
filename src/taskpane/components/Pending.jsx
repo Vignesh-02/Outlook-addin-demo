@@ -27,16 +27,16 @@ const Pending = () => {
   console.log("Customer subject 2:", subject); // Log customerName to console
 
   useEffect(() => {
-    if (name && email) {
-      // If both customerName and customerEmail are available, update the state
+    if (name && email && subject) {
+      // If all customerName, customerEmail, and customerSubject are available, update the state
       setCustomerDetails((prevDetails) => ({
         ...prevDetails,
         customerName: name,
-        customerEmail: email, // Update customerEmail in the state
+        customerEmail: email,
         customerSubject: subject
       }));
     }
-  }, [name, email]);
+  }, [name, email, subject]);
 
 
   return (
