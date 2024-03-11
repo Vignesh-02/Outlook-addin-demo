@@ -15,7 +15,8 @@ import animationData from "./animation.json"; // Import your animation JSON file
 const Login = ({ emailAddress, ...props}) => {
     let loginDialog = null;
 
-  const [loading, setLoading] = useState(true); // State to track loading
+    const [selectedOrganization, setSelectedOrganization] = useState("");
+      const [loading, setLoading] = useState(true); // State to track loading
 
 
     
@@ -45,26 +46,34 @@ const Login = ({ emailAddress, ...props}) => {
 
 
     const loginWithOAuth = () => {
-       console.log(window.localStorage);
-        window.localStorage.setItem('emailAddress', emailAddress);   
-        const permittedEmails = ['vigu1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com', ' anumunde123@outlook.com'];
-        console.log('emailAddress ', emailAddress);
-        // localStorage.setItem('emailAddress', emailAddress);
-        // Check if the user's email is in the permittedEmails array
-        if (!permittedEmails.includes(emailAddress)) {
-        //   Redirect to a different page if the email is not permitted
-          history.push('/unauthorized'); // Change '/unauthorized' to your desired route
+        if(selectedOrganization != ""){
+            console.log(window.localStorage);
+            window.localStorage.setItem('emailAddress', emailAddress);   
+            const permittedEmails = ['vigu1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com', 'anumunde123@outlook.com'];
+            console.log('emailAddress ', emailAddress);
+            // localStorage.setItem('emailAddress', emailAddress);
+            // Check if the user's email is in the permittedEmails array
+            if (!permittedEmails.includes(emailAddress)) {
+            //   Redirect to a different page if the email is not permitted
+              history.push('/unauthorized'); // Change '/unauthorized' to your desired route
+            }
+            
+            if(permittedEmails.includes(emailAddress)){
+                const authPage = "https://localhost:3001/assets/auth-dialog.html";
+                Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
+                if (result.status === Office.AsyncResultStatus.Succeeded) {
+                    loginDialog = result.value;
+                    loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
+                } else {
+                    console.error('Failed to open dialog:', result.error);
+                }
+                });
+            }
+            
+        }else{
+            console.log('Choose an organization')
         }
-
-    const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
-    Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
-      if (result.status === Office.AsyncResultStatus.Succeeded) {
-        loginDialog = result.value;
-        loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
-      } else {
-        console.error('Failed to open dialog:', result.error);
-      }
-    });
+       
   }
 
   const handleMessageReceived = (arg) => {
@@ -107,7 +116,7 @@ const Login = ({ emailAddress, ...props}) => {
     console.log('inside refreshAccess Token code', token)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    // const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
+    // const redirectUri = "https://localhost:3001/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
@@ -128,7 +137,7 @@ const Login = ({ emailAddress, ...props}) => {
       body: formData,
     }, {
         headers: {
-            origin: "https://outlook-addin-v9y9.onrender.com/assets/login.html"
+            origin: "https://localhost:3001/assets/login.html"
         }
     })
     .then(response => response.json())
@@ -148,13 +157,13 @@ const Login = ({ emailAddress, ...props}) => {
     console.log('inside exchange code', code)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
+    const redirectUri = "https://localhost:3001/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
     const formData = new FormData();
     formData.append('client_id', clientId);
-    formData.append('scope', 'Mail.Send');
+    formData.append('scope', 'Mail.Send Mail.ReadWrite Mail.Read');
     formData.append('code', code);
     formData.append('code_verifier', '3e2727957a1bd9f47b11ff347fca362b6060941decb4');
 
@@ -169,7 +178,7 @@ const Login = ({ emailAddress, ...props}) => {
       body: formData,
     }, {
         headers: {
-            origin: "https://outlook-addin-v9y9.onrender.com/assets/login.html"
+            origin: "https://localhost:3001/assets/login.html"
         }
     })
     .then(response => response.json())
@@ -208,6 +217,11 @@ const Login = ({ emailAddress, ...props}) => {
   }, []);
 
   
+  const handleOrganizationChange = (event) => {
+    setSelectedOrganization(event.target.value);
+  };
+
+
 
 //   const handleCrossClick = () => {
 //     // Close the extension when the cross is clicked
@@ -249,19 +263,19 @@ const Login = ({ emailAddress, ...props}) => {
                 <div className="LoginOrganization">Organization </div>
               </div>
               <div className="LoginCont2-child1-a-2">
-                <select className="loginSelect">
-                  <option>Select your organization</option>
-                  <option>Onelab Ventures</option>
-                  <option>Turnkey</option>
+                <select  value={selectedOrganization}  className="loginSelect" onChange={handleOrganizationChange}>
+                  <option value="" disabled hidden>Select an Organization</option>
+                  <option value="Onelab Ventures" >Onelab Ventures</option>
+                  <option value="Turnkey" >Turnkey</option>
                 </select>
               </div>
             </div>
           </div>
-          <div  className="GoogleOAuth">
+          <div  onClick={loginWithOAuth} className={`GoogleOAuth ${!selectedOrganization && "disabled"}`}>
             {/* <div className="OAuth">
               <img src={GoogleImage} alt="Google Logo" />
             </div> */}
-            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div>
+            <div  className="OAuth-text">Sign In with Outlook</div>
           </div>
         </div>
 

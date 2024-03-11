@@ -6,8 +6,13 @@ import Pen_Image from "../../../../public/pen.png";
 import CustomerResponsePopup from './CustomerResponsePopup';
 import RegeneratePopup from '../RegeneratePopup/RegeneratePopup';
 import Modal from 'react-modal';
+import { useSelector } from "react-redux";
+
 const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, togglePopup, customerBody, setCustomerBody}) => {
   
+    const  {customerResponseBody}  = useSelector(
+        (state) => state.customerResponse
+      );
   // const [isPopupOpen, setIsPopupOpen] = useState(false);
   // const togglePopup = () => {
   //          setIsPopupOpen(!isPopupOpen);
@@ -15,6 +20,9 @@ const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, toggle
 
 //   const htmlBody = () => customerBody
   return (
+
+    
+
     <div>
       <div className="VendorSec">
         <div className="Vendor1">
@@ -57,7 +65,7 @@ const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, toggle
             <div className="V2-3">
               <div className="V2-4">
                 <div className="V2-5">
-                {customerBody}
+                {customerResponseBody}
                 </div>
               </div>
             </div>
