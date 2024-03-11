@@ -16,8 +16,9 @@ const Pending = () => {
 
 
   const location = useLocation();
-  const { customerName } = location.state || {}; // Destructure customerName from state
-  const { customerEmail } = location.state || {}; // Destructure customerName from state
+  const { customerName, customerEmail } = location.state?.state || {};
+  // const { customerName } = location.state || {}; // Destructure customerName from state
+  // const { customerEmail } = location.state || {}; // Destructure customerName from state
   
   console.log("Customer Name:", customerName); // Log customerName to console
   console.log("Customer Email:", customerEmail); // Log customerName to console

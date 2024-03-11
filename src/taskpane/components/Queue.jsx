@@ -38,9 +38,14 @@ const Queue = () => {
     rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleStatusClick = (customerName, customerEmail) => {
+  // const handleStatusClick = (customerName, customerEmail) => {
+  //   history.push("/pending", { state: { customerName, customerEmail } });
+  // };
+
+  function handleStatusClick(customerName, customerEmail) {
     history.push("/pending", { state: { customerName, customerEmail } });
-  };
+  }
+  
 
 
   
