@@ -96,7 +96,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   // corrrect
   const accessToken =
-    "EwB4A8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAdAuOUHxCr8Q9lVNcuNAtzqQbwH3/3+lDTxX4GWdKEuh5+hhxqDAh7/cKm6wMIyA/2omwDLWGqD9YaJ03KMimjnnro+0rFkp26//sfk6dP+GY3cxfK2d6d6hmiw+scK4rxPnnIzWtz6QBAuOZcH7csfAikYjhfbJRAbbwuDsCRLQfcXqOkAbmOP7zHAxL3+lyDLeH4HJSalNF9Cpxs4qIPNtVUJCsKSHdtQpshEDfaWYePZH5j7hKW1+WedE6ud9023+gEnGV8BFnLzKDgfrlEAFYO78RJ96FILBBVvCjs81aeTnlZNc2PiNx1xelF0qUwpqaj96hfqSDcEWzWNitG4DZgAACANOP0MY0RUISAIWKzT9a4JZpDWDKOZA84bYJhF74z5iaMhWGqqRnZ0qE4t2g3IeLB4MwhEnbBtjgRrWlCuIsMaLdtcAF0+i4JsN9hKASMdJFgI2s7G3prxcKNUsSt2IRorfoQ/Y9FoWZHNC2Hb/C1tSOqEMXPOf9gW4YT89+UD0/xJQ5kwz03nSwty6uE0QJ/xqFebr7XkEGXstXuwK+LEVo8YEBSzRZke6BeUzNzLUS2Jmu1SxcZLIy+5nYelY5U0ZxQFKdwtWzC03aFjtIdAHO+DseqNptULI/XNLYc5+qWVxWxjSnJBJYMjsKdk7rqbUkHmsA9Rgsw/wIYIeaCBGdxm9ASGnAfGgb2FKCv/yy4878xLzpTjpClML96SP4E7L5ppsYZ949Fo8sRckVYFz5y/mIb+8ItI1ALmRWsxeTjDpNd4MgsleQxhKxMWhgH31Bi5TGmiUfloXSmddy7RWMXmp/Nw6bS2RsGrMWdBkUxnBX2NKZPAs0861P092OWKgfsQjuDxYB/kWZiRcdjQYzmHRLKxyc4ApupZtaR1FpqpGZRuU+QLkTlColp26/yqFU5gxlPQuoC9GPAqUqmBEuSiUaPCEdJsbNjadbJuzBEXyg91JaH8F8v6ZNydHSfkOOlHNTwoX35jNVHVBNpPs9ylF/603sL/xcCrAKBX7QDU0mYOl5kQUrgNsvm/SgiNh0yZzvzv2g/oZl744G6pdxB3bshW6CYbStuGjtoiOTETcsf7akE4p7cN5T/yD3vHWRlTnlqJttDNfI1jRSMyH+YUC";
+    "EwB4A8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAdO4nY1EtfQMBeOZE1jofnFoitFH/sOQtqiNPL4YWZP8PK3SiHTlV19aFJec3Cym40I0W9K29y1SQcrJvsE4XLwF4jJZvhbD9f3ABnWSNi8LIBQbtpGgrCLg5xD8eWZ3qRTK70ORiGh6D0VfG77Hfiyhi+XK7SIWMimd4GDVgihRhyCXyZQRHkKf3paCc3zIpJsIYmeSJSddJ05B5qWPIjOnP5N0L8l41TxLhfR53fYcj2pQKKbr9xfNmNee10XLQXSTEmfZBTG8MyT1Rq4lLUVur9B1dKAQceSGK4Eudl9g8ZZcGdAXz7/xbUtegSooBlhLh6F/Gt42NO+ibgOXLlEDZgAACCnC96JWlgL3SALgvqxD8u1RCub7usdwH6orkZpjAWFKLnsCUJ+Is8bQRGOVRCXpukN3lAQbmkETVp3+D3TyS0fRYCkdn6IutHKHFSFcJMmMsOvQyA/fW9zug8cSPMsrd9TyjoFRo2giWmBAV+SuMsKw+iE8XTS108+2SQyeTObQk/eYorpjw5OopjYlI4vBT00XgzU26oKKV49ZWhRdOKgMVr21R5WbIMAmkKrxFnGzR7iMerQs+MJMaIMSX434zubIPF0aeudQMGEGBk2GGrF5UP3eKeZ0sb+LBEPeUFtmfRGXlVpojGQBFp9YF0YvqqqQhNFpDgPwlBISezk8vytPiMVBp6ZSVSiP14Q1VH9ZL1Vge/3+VRkDfTCwMIqo/xeiWqRh/CKZtFhieDpj+KFY6GfSJb1qRUC+KP8v/dmGLjEXZy0wiBfL+1g1mJ7iGqEbRFs9q9Uz7xOG5rwHyPNiyuvua2bpMIU0GvEODn6dF8mTNSczQGVNjiILVx6SFjxU38m1I6C1bBKdRyXIy2fuRdWbBRbiXy5uEupeRCwiI0usrPwbFEemMHh6iAmHo6x71It5Cu7/a6ZTjleRo+TuX+4Fcpodl5uIcSEdSkIl47ASttuSAXz3zzRYcnf84YdGNTEejv4rfq4m/FY2/Bonf7cUoUT8GKcYK40CpukzIoyfbiw65sTOK9Z5L3NsH9uOOkMoiUQdO6vSOX8TNn3In1JDZtl7JOn0c+ePl3aQ0vCSqFNk09zbK8CAJVmWGH94X9qNbDkhDSy94xdoFsh20IUC";
   const handleLaunch = () => {
   
     // Log all vendor details received from the generate API
@@ -116,9 +116,10 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
 
     // Check if there are no vendor emails then only save customer details with "Sent" status
-    if (Object.keys(allVendorEmails).length === 0) {
-      setQueueCustomer(true);
-    }
+    // if (Object.keys(allVendorEmails).length === 0) {
+    //   setQueueCustomer(true);
+    // }
+    setQueueCustomer(true);
 
     // Call the function to send emails to vendors
     sendEmailsToVendors(allVendorEmails);
@@ -216,6 +217,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         try {
           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
             customer_name: classifyEmail.name,
+            customer_email: emailDetails.body,
             RFQ_ID: rfq_id,
             status: "Sent",
           });
