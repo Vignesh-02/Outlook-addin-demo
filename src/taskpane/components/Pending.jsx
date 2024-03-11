@@ -180,7 +180,8 @@ const Pending = () => {
               <div className="PendingPage-Cont2-Sec2-child3">
                 <div className="PendingPage-Cont2-Sec2-child4">
                   <div className="PendingPage-Cont2-Sec2-mailContent">
-                    Subject": {customerDetails.customerSubject}
+                    Subject": 
+                    {customerDetails.customerSubject}
                     <br />
                     <br />
                     

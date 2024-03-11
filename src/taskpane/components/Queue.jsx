@@ -9,6 +9,7 @@ import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
+import { Subject } from "@mui/icons-material";
 
 const Queue = () => {
   const history = useHistory();
@@ -46,6 +47,8 @@ const Queue = () => {
   const handleStatusClick = (customerName, customerEmail, customerSubject) => {
     const encodedSubject = encodeURIComponent(customerSubject); // Encode the subject
     history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${encodedSubject}`);
+    console.log("queue sub 1", customerSubject)
+    console.log("queue sub 2", encodedSubject)
   };
   
 
