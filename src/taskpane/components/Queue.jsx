@@ -1,160 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/Queue.css";
 import SearchImage from "../../../public/Search.png";
+import SortImage from "../../../public/sort.png";
 import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
+import Topbar from "./Topbar/Topbar";
+import Navbar from "./Navbar/Navbar";
+import Footer from "./Footer/Footer";
+import axios from "axios";
 
 const Queue = () => {
-  // Dummy data
-  const data = [
-    {
-      name: "Afshan",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Ryan Alu",
-      code: "ABC30OFF",
-      status: "Sent",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Rahul",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-
-    {
-      name: "Lina",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Aditya",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Vignesh",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "John Deo",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Santiago",
-      code: "ABC30OFF",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "16/01/2024",
-      time: "10:00 am",
-    },
-    {
-      name: "Merim",
-      code: "ABC30OYU",
-      status: "Vendor quote pending",
-      day: "3 days",
-      date: "19/02/2024",
-      time: "12:00 pm",
-    },
-    {
-      name: "Suraksha",
-      code: "ABC50OMN",
-      status: "Sent",
-      day: "3 days",
-      date: "15/03/2024",
-      time: "02:00 pm",
-    },
-  ];
+  const [queueData, setQueueData] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
 
-//   const handleCrossClick = () => {
-//     // Close the extension when the cross is clicked
-//     window.close();
-//   };
+  useEffect(() => {
+    const fetchQueueData = async () => {
+      try {
+        const res = await axios.get("http://127.0.0.1:8000/api/QueueDetails/");
+        setQueueData(res.data.data);
+        console.log("Queue Data API response from backend: ", res.data);
+      } catch (error) {
+        console.error("Error occurred while calling API:", error);
+      }
+    };
+
+    fetchQueueData(); // Call the fetch function here, not inside itself
+  }, []);
 
   // Filter data based on the search query
-  const filteredData = data.filter((rowData) =>
-    rowData.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredData = queueData.filter((rowData) =>
+    rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-      <div className="topbar-frame">
+      <Topbar />
 
-        {/* <div className="topbar">
-          <div className="topframe">
-            <img src={W_Image} alt="Logo" />
-            <div className="topframe-b">
-              <img src={WiseImage} alt="Logo" id="b1" />
-              <img src={InsideImage} alt="Logo" id="b2" />
-            </div>
-          </div>
-          <div onClick={handleCrossClick} className="topframe-c">
-            <img src={cross} alt="Logo" />
-          </div>
-        </div> */}
-
-        {/* Section - 2 */}
-
-        <div className="topbar2">
-          <div className="navbar">
-            <div className="delegate-div">
-              <div className="delegate">Delegate</div>
-            </div>
-            <div className="Queue-queue-div">
-              <div className="Queue-queue">Queue</div>
-            </div>
-            <div className="contact-div">
-              <div className="contact">Contact Us</div>
-            </div>
-          </div>
-          <div className="A-div">
-            <div className="A">A</div>
-          </div>
-        </div>
-      </div>
+      <Navbar />
 
       {/* Search - Bar */}
 
-      <div className="SearchBar">
-        <div className="SearchParent">
-          <div className="SearchChild">
-            <img src={SearchImage} alt="Logo" />
+      <div className="queueSearch">
+        <div className="queueSearch-sec1">
+          <div className="queueSearch-sec1-A">
+            <img src={SearchImage} alt="Logo" className="searchImage" />
           </div>
+          <input
+            type="text"
+            className="SearchText"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
-        <input
-          type="text"
-          className="SearchText"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        <div className="queueSearch-sec1-Sort">
+          <img src={SortImage} alt="Logo" className="queueSearch-sec1-Sort-2" />
+        </div>
       </div>
 
       {/* Section - 3 */}
@@ -203,8 +106,8 @@ const Queue = () => {
             <div className="QueueRowParent-1" key={index}>
               <div className="QueueRowParent-1a">
                 <div className="QueueRowChild-1b">
-                  <div className="QueueRowCell-1a">{rowData.name}</div>
-                  <div className="QueueRowCell-1b">{rowData.code}</div>
+                  <div className="QueueRowCell-1a">{rowData.customer_name}</div>
+                  <div className="QueueRowCell-1b">{rowData.RFQ_ID}</div>
                 </div>
               </div>
               <div className="QueueRowParent-2a">
@@ -212,14 +115,19 @@ const Queue = () => {
                   <div
                     className="QueueRowCell-2a"
                     style={{
-                      color: rowData.status === "Sent" ? "#74D446" : "inherit",
+                      color:
+                        rowData.status === "Sent"
+                          ? "#000000" // Black color for "Sent"
+                          : rowData.status === "Vendor quote pending"
+                          ? "rgba(249, 138, 9, 1)" // Orange color for "Vendor quote pending"
+                          : rowData.status === "Received quotes"
+                          ? "rgba(52, 168, 83, 1)" // Green color for "Received quotes"
+                          : "inherit", // Default color
                     }}
                   >
                     {rowData.status}
                   </div>
-                  {rowData.status !== "Sent" && (
-                    <div className="QueueRowCell-2b">{rowData.day}</div>
-                  )}
+                  {rowData.status !== "Sent" && <div className="QueueRowCell-2b">{rowData.day}</div>}
                 </div>
               </div>
               <div className="QueueRowParent-3a">
@@ -234,6 +142,8 @@ const Queue = () => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
