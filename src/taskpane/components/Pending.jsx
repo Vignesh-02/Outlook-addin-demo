@@ -22,9 +22,10 @@ const Pending = () => {
   const email = searchParams.get("customerEmail");
   const subject = searchParams.get("customerSubject");
   
+  
   console.log("Customer Name 3:", name); // Log customerName to console
   console.log("Customer Email 2:", email); // Log customerName to console
-  console.log("Customer subject 3:", subject); // Log customerName to console
+  console.log("Customer subject 4:", subject); // Log customerName to console
 
   useEffect(() => {
     if (name && email && subject) {
@@ -33,7 +34,8 @@ const Pending = () => {
         ...prevDetails,
         customerName: name,
         customerEmail: email,
-        customerSubject: subject
+        // customerSubject: subject
+        customerSubject: decodeURIComponent(subject) // Decode the subject
       }));
     }
   }, [name, email, subject]);
