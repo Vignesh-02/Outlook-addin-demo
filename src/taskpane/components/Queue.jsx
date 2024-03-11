@@ -147,7 +147,7 @@ const Queue = () => {
                           : "inherit", // Default color
                     }}
                     onClick={() => {
-                      if (rowData.status === "Sent") {
+                      if (rowData.status === "Sent" && rowData.customer_subject !== null) {
                          handleStatusClick(rowData.customer_name, rowData.customer_email, rowData.customer_subject);
                         // <Pending customerName={rowData.customer_name} customerEmail={rowData.customer_email} />
                        

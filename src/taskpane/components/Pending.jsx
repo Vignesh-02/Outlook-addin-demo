@@ -25,7 +25,10 @@ const Pending = () => {
   
   console.log("Customer Name 3:", name); // Log customerName to console
   console.log("Customer Email 2:", email); // Log customerName to console
-  console.log("Customer subject 6:", subject); // Log customerName to console
+  console.log("Customer subject 7:", subject); // Log customerName to console
+  const decodedSubject = decodeURIComponent(subject);
+
+  console.log("customer sub3 : ", decodedSubject)
 
   
 
@@ -47,7 +50,7 @@ const Pending = () => {
   useEffect(() => {
     if (name && email && subject) {
       // Decode the subject
-      const decodedSubject = decodeURIComponent(subject);
+      // const decodedSubject = decodeURIComponent(subject);
       // Update the state
       setCustomerDetails((prevDetails) => ({
         ...prevDetails,
