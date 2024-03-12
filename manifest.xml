@@ -16,7 +16,6 @@
 <AppDomain>https://graph.microsoft.com/</AppDomain>
 <AppDomain>https://login.microsoftonline.com/</AppDomain>
 <AppDomain>https://localhost:3000</AppDomain>
-
 </AppDomains>
 <Hosts>
 <Host Name="Mailbox"/>
@@ -122,7 +121,7 @@
 </Resources>
 <WebApplicationInfo>
     <Id>1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Id>
-    <Resource>api://outlook-addin-v9y9.onrender.com/1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Resource>
+    <Resource>api://test-wise-sales.onrender.com/1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Resource>
     <Scopes>
         <Scope>openid</Scope>
         <Scope>user.read</Scope>
