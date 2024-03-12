@@ -370,6 +370,9 @@
   gap: 10px;
   display: flex;
 }
+.queueSearch-sec1>input {
+  border: transparent;
+}
 .queueSearch-sec1-A {
   width: 19px;
   height: 19px;
