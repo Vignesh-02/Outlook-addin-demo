@@ -4,8 +4,10 @@
   height: 350px;
   padding-bottom: 10px;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  /* justify-content: flex-start;
+  align-items: flex-start; */
+  justify-content: center;
+  align-items: center;
   gap: 12px;
   display: inline-flex;
   margin-top: 8px;
