@@ -371,7 +371,8 @@
   display: flex;
 }
 .queueSearch-sec1>input {
-  border:none;
+  border: transparent;
+  outline: none;
 }
 .queueSearch-sec1 > input:hover {
   border: none;
