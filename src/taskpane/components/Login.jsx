@@ -13,6 +13,7 @@ import animationData from "./animation.json"; // Import your animation JSON file
 
 
 const Login = () => {
+  let loginDialog = null;
 
   const [loading, setLoading] = useState(true); // State to track loading
 
@@ -34,58 +35,69 @@ const Login = () => {
     const loginWithOAuth = () => {
 
     
-    const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
+    const authPage = "https://test-wise-sales.onrender.com/assets/auth-dialog.html";
     Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
-        dialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
-      } else {
-        console.error('Failed to open dialog:', result.error);
-      }
-    });
+                    loginDialog = result.value;
+                    loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, handleMessageReceived);
+                } else {
+                    console.error('Failed to open dialog:', result.error);
+                }
+                });
   }
 
   const handleMessageReceived = (arg) => {
     console.log(arg);
-    const message = JSON.parse(arg.message);
+    const message = arg.message;
     console.log('Received Message', message);
-    if (message.status === 'success') {
-      // Close the dialog window
-      arg.source.close();
-      // Exchange the authorization code for a token
-      console.log('exchangeCode is called')
-      exchangeCodeForToken(message.code);
-    }
+        loginDialog.close();
+      exchangeCodeForToken(message).then(receivedToken => {
+        console.log('Received Token', receivedToken);
+         history.push({
+           pathname: '/del',
+           state: { token: receivedToken }
+         });
   }
 
   const exchangeCodeForToken = (code) => {
     console.log('inside exchange code', code)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
+    const redirectUri = "https://test-wise-sales.onrender.com/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
     const formData = new FormData();
     formData.append('client_id', clientId);
-    formData.append('scope', 'Mail.Send');
+    formData.append('scope', 'Mail.Send Mail.ReadWrite Mail.Read');
     formData.append('code', code);
+    formData.append('code_verifier', '3e2727957a1bd9f47b11ff347fca362b6060941decb4');
+
     formData.append('redirect_uri', redirectUri);
     formData.append('grant_type', 'authorization_code');
-    formData.append('client_secret', clientSecret); // Only if required
+    // formData.append('client_secret', clientSecret); 
+    // Only if required
 
     // Use fetch or similar to post to the token URL
-    fetch(tokenUrl, {
+   return fetch(tokenUrl, {
       method: 'POST',
       body: formData,
+    }, {
+        headers: {
+            origin: "https://test-wise-sales.onrender.com/assets/login.html"
+        }
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Data', data);
       console.log('Token:', data.access_token);
+      return data.access_token
+    //   setAccessToken(data.access_token);
+    //   console.log('Access Token', accessToken)
       // Here you can store the token securely and use it to make API calls
     })
     .catch(error => console.error('Error fetching token:', error));
   }
-
   useEffect(() => {
     // Load animation on component mount
     const anim = lottie.loadAnimation({
@@ -163,7 +175,7 @@ const Login = () => {
             {/* <div className="OAuth">
               <img src={GoogleImage} alt="Google Logo" />
             </div> */}
-            <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div>
+            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div>
           </div>
         </div>
 

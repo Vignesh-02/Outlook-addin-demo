@@ -24,6 +24,12 @@ import { useHistory } from "react-router-dom";
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const history = useHistory();
 
+  
+  const location = useLocation();
+  console.log(location);
+  const token = location?.state.token;
+  console.log(token);
+  
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
   const [queueVendor, setQueueVendor] = useState(false);
@@ -95,8 +101,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   };
 
   // corrrect
-  const accessToken =
-    "EwB4A8l6BAAUTTy6dbu0OLf3Lzl3R/vfUXxq8g8AAZxaOdP3rTpTnpJyuEjAFNgDoyrF0LmWl8rw0y313ZKw2EiPAsPtLqGdzzit130fm9KVyHNHe5rSBIdG6jlKZ0cSVnk27mKQs6yER2Qich4sNP5gZOT0xXPJBOB2+yL8HAR/cfubm0Rp93jvszrL7QRI8k7QV71iJyEjjk+xmIKCA99ecCKqA3Bbn3kG2reaNqNAjY+hkFNzbKjLx860BK7T/RB1kUL9BK96coiog5DQRGoImWSwdiFNnr0096g4APOsT/qh44UAKw8S0eroBMLV2dT4ezI4vLERLYs3z/Jb8ya4Khu7zkHxU9FIS4lZ/GbXszKYgxBu6kr+5x//bBQDZgAACIjxw8wLuSGgSAJ9okT7jqhgPKk1XMnMKp/5TGcTw8uKGQy0cixo7uszJbhQRiNsUUKB0N3cbDjeD1Mxm9igH5onRrN460Hy8rIF1A8zONJ2zESe1zoodoCGGOh0H/OdKgp+xnDG2sIe3MDHAR/7oc8Ko5SaJZ+neenRnFqs+YHW/ZuMcmrHlTrzy3RkzgMedQutNWvH1G7FwwIAgBXlTFDOuzU2UWhNW5XkQGQxzhOxXXevJRXElAlrhUVs9Dsf44BCmBYgo6XgdNBD2XsYlM3hQzHSWF1mWkSV9Aco//VI0BpK6G+vbALI7G0GmVulwWGYRH5wFLlpFXggrfnkF220HETRPCRnuI27RnLOsHaTwX8cPT3ncDgtJWlRgAyAdR3Ev8u7nVoj2mV0sm2fNIdfrJcos7lM9l+HI55Cxmn+cey6UVNpOkfTOp0Vu6VQpl0A5gSZ2y3ZPBzS0fDmSRQz4fnppbG2T+UPvVO93Sas9eJPVU8fxY5V+yCvOyCope9Vc6wLt24iynY9vTssO6U10i204EZ9bofm0QAbgWT+l+EZ0c3EuxEzoYrwZ87sRuziYr+GApJzNO0OBpV0iEM6s02pGyrDqGUAaaRWSDqnNoCWJoRPo8unnfH4TVvN+vMHrZUiVkg5cWKn12Kq7ck7zWE1m20pw0TaBcInEGDg36eCF200B6CNV8tYfJXCB2KxnFdqCVaGPZ2+8TOfHQ6b+kBQ0/HbX/nuu7epk4yqBHHkmAGeUtK8GitsXjni/wqsTpSvgEjI9Kvi5qjHGWeXqIUC";
+  const accessToken = token;
   const handleLaunch = () => {
   
     // Log all vendor details received from the generate API
