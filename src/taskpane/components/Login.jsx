@@ -1,5 +1,5 @@
-// import React, { useEffect } from "react";
-import React, { useState, useEffect } from "react";
+// import React, useEffect from "react";
+import React, {useState, useEffect} from "react";
 import "./styles/Login.css"
 import logo from "../../../public/logo1.png";
 import animation from "../../../public/animation.gif";
@@ -7,10 +7,9 @@ import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useHistory } from "react-router-dom";
+import useHistory from "react-router-dom";
 import lottie from "lottie-web"; // Import Lottie library
 import animationData from "./animation.json"; // Import your animation JSON file
-
 
 const Login = () => {
   let loginDialog = null;
@@ -33,7 +32,6 @@ const Login = () => {
     };
 
     const loginWithOAuth = () => {
-
     
     const authPage = "https://test-wise-sales.onrender.com/assets/auth-dialog.html";
     Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
@@ -57,6 +55,7 @@ const Login = () => {
            pathname: '/del',
            state: { token: receivedToken }
          });
+      });
   }
 
   const exchangeCodeForToken = (code) => {
@@ -120,13 +119,6 @@ const Login = () => {
       anim.destroy();
     };
   }, []);
-
-  
-
-//   const handleCrossClick = () => {
-//     // Close the extension when the cross is clicked
-//     window.close();
-//   };
 
   return (
     <>
