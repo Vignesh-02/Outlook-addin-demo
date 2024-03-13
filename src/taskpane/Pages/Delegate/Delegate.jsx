@@ -20,6 +20,7 @@ import Model from "react-modal";
 import Success from "../../components/Success/Success";
 import Notrfq from "../../components/NotRFQ/Notrfq";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const history = useHistory();
