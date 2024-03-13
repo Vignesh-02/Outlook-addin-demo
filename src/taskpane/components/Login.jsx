@@ -7,7 +7,7 @@ import "@fontsource/orbitron"; // Defaults to weight 400
 import "@fontsource/orbitron/400.css"; // Specify weight
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import useHistory from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import lottie from "lottie-web"; // Import Lottie library
 import animationData from "./animation.json"; // Import your animation JSON file
 
