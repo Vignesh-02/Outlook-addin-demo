@@ -15,6 +15,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Delegate from "../Pages/Delegate/Delegate";
 import Login from "./Login";
 import Contact from "./Contact/Contact";
+import Board from "./Board";
 
 import Unauthorized from "./Unauthorized/Unauthorized";
 // import { useHistory } from "react-router-dom";
@@ -458,6 +459,7 @@ const App = (props) => {
           )}
         />
          <Route exact path="/contact" component={Contact} />
+         <Route exact path="/pending" component={Board} />
 
         {/* <Route 
                 exact
