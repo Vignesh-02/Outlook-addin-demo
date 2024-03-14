@@ -15,7 +15,8 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Delegate from "./Pages/Delegate/Delegate";
 import Contact from "./components/Contact";
 import Queue from "./components/Queue";
-import Pending from "./components/Pending";
+// import Pending from "./components/Pending";
+import Board from "./components/Board";
 // import Home from "./Pages/Home/Home";
 // import Login from "./Login";
 // import Home from "./Home"/;
@@ -442,7 +443,7 @@ Office.onReady((info) => {
         />
          <Route exact path="/contact" component={Contact} />
          <Route exact path="/queue" component={Queue} />
-         <Route exact path="/pending" component={Pending} />
+         <Route exact path="/pending" component={Board} />
          
       </Switch>
     </Router>
