@@ -4,58 +4,60 @@ import "@fontsource/orbitron";
 import "@fontsource/orbitron/400.css";
 import Extend from "../../../../public/extender.png";
 
-const Stocks = ({classifyEmail }) => {
-  // const classifyEmail = {
-  //   "RFQ_status": 1,
-  //   "name": "Abby Rodriguez",
-  //   "email": "afshan@100gmail.com",
-  //   "company": "Integral Machining & Engineering",
-  //   "shipping_address": "12060 31st. Ct. N. St. Petersburg FL 33716",
-  //   "cert_need": false,
-  //   "product_1": {
-  //     "material": "Acetal",
-  //     "size": {
-  //         "diameter": "1.25 inch RD",
-  //         "thick": null,
-  //         "length": "10 feet",
-  //         "width": null
-  //     },
-  //     "shape": "Rod",
-  //     "specification": "23-0002-XX",
-  //     "manufacturer": null,
-  //     "color": "Gray",
-  //     "quantity": "20 lengths"
-  //   },
-  //   "product_2": {
-  //     "material": "Nylon",
-  //     "size": {
-  //         "diameter": "1.125 inch RD",
-  //         "thick": null,
-  //         "length": "10 feet",
-  //         "width": null
-  //     },
-  //     "shape": "Rod",
-  //     "specification": "23-0004-01",
-  //     "manufacturer": null,
-  //     "color": "Gray",
-  //     "quantity": "28 Lengths"
-  //   },
-  //   "product_3": {
-  //     "material": "UHMW",
-  //     "size": {
-  //         "diameter": "1.125 inch RD",
-  //         "thick": null,
-  //         "length": "10 feet",
-  //         "width": 12
-  //     },
-  //     "shape": "Rod",
-  //     "specification": "23-0004-01",
-  //     "manufacturer": null,
-  //     "color": "orange",
-  //     "quantity": null
-  //   },
-  //   "RFQ_ID": "INTR100200GY24821"
-  // };
+const Stocks = () => {
+  // const Stocks = ({classifyEmail }) => {
+ 
+  const classifyEmail = {
+    "RFQ_status": 1,
+    "name": "Abby Rodriguez",
+    "email": "afshan@100gmail.com",
+    "company": "Integral Machining & Engineering",
+    "shipping_address": "12060 31st. Ct. N. St. Petersburg FL 33716",
+    "cert_need": false,
+    "product_1": {
+      "material": "Acetal",
+      "size": {
+          "diameter": "1.25 inch RD",
+          "thick": null,
+          "length": "10 feet",
+          "width": null
+      },
+      "shape": "Rod",
+      "specification": "23-0002-XX",
+      "manufacturer": null,
+      "color": "Gray",
+      "quantity": "20 lengths"
+    },
+    "product_2": {
+      "material": "Nylon",
+      "size": {
+          "diameter": "1.125 inch RD",
+          "thick": null,
+          "length": "10 feet",
+          "width": null
+      },
+      "shape": "Rod",
+      "specification": "23-0004-01",
+      "manufacturer": null,
+      "color": "Gray",
+      "quantity": "28 Lengths"
+    },
+    "product_3": {
+      "material": "UHMW",
+      "size": {
+          "diameter": "1.125 inch RD",
+          "thick": null,
+          "length": "10 feet",
+          "width": 12
+      },
+      "shape": "Rod",
+      "specification": "23-0004-01",
+      "manufacturer": null,
+      "color": "orange",
+      "quantity": null
+    },
+    "RFQ_ID": "INTR100200GY24821"
+  };
 
   const [selectedProduct, setSelectedProduct] = useState(1);
 
