@@ -1,9 +1,9 @@
 
 import React, { useState } from "react";
-// import "../Stocks/Stocks.css"
+import "./Pendingstocks.css";
 import "@fontsource/orbitron";
 import "@fontsource/orbitron/400.css";
-import "../styles/Stocks.css"
+
 
 // const Pendingstocks = ({materialDetails}) => {
     const Pendingstocks = () => {

@@ -216,13 +216,13 @@ const Queue = () => {
   // const handleStatusClick = (customerName, customerEmail) => {
   //   navigate("/pending", { state: { customerName, customerEmail } });
   // };
-  const [rfq, setRfq] = useState(null);
+  // const [rfq, setRfq] = useState(null);
   const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
     history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}`);
     console.log("RFQ: ", RFQ_ID)
     console.log("QueueDate: ", date)
-    setRfq(RFQ_ID)
+    // setRfq(RFQ_ID)
   };
 
   // useEffect(() => {
