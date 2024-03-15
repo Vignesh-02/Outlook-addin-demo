@@ -11,6 +11,7 @@ import MailPopup from "./MailPopup/MailPopup";
 import InfoPopup from "./InfoPopup/InfoPopup";
 import Pendingstocks from "./PendingStocks/Pendingstocks";
 import Model from "react-modal";
+import axios from "axios";
 
 const Board = () => {
   const [customerDetails, setCustomerDetails] = useState({
