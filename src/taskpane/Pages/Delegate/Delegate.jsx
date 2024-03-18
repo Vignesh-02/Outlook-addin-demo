@@ -439,7 +439,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   // change
   useEffect(() => {
-    console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
+    // console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
   
     if (classifyEmail && classifyEmail.RFQ_status === 1) {
       const getEmailDetails = async () => {
@@ -476,7 +476,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     } else {
       console.log("RFQ_status is not 1 or classifyEmail is not available, skipping API call.");
     }
-  }, [classifyEmail, emailDetails, customerDetail]);
+  }, [classifyEmail, emailDetails]);
   
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
