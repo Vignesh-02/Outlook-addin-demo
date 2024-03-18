@@ -36,29 +36,30 @@ const Board = () => {
   const [senderSA, setSenderSA] = useState(null);
 
   const location = useLocation();
-  const { customerName } = location.state || {}; // Destructure customerName from state
-  const { customerEmail } = location.state || {}; // Destructure customerName from state
-  const { date } = location.state || {}; // Destructure customerName from state
-  const { time } = location.state || {}; // Destructure customerName from state
-  const { RFQ_ID } = location.state || {}; // Destructure customerName from state
-
-  console.log("Customer Name:", customerName); // Log customerName to console
-  console.log("Customer Email:", customerEmail); // Log customerName to console
+  const searchParams = new URLSearchParams(location.search);
+  const name = searchParams.get("customerName");
+  const email = searchParams.get("customerEmail");
+  const RFQ_ID = searchParams.get("RFQ_ID");
+  const date = searchParams.get("date");
+  const time = searchParams.get("{time");
+  
+  console.log("Customer Name:", name); // Log customerName to console
+  console.log("Customer Email:", email); // Log customerName to console
   console.log("Customer RFQ_ID:", RFQ_ID); // Log customerName to console
   console.log("Customer date:", date); // Log customerName to console
   console.log("Customer time:", time); // Log customerName to console
 
   useEffect(() => {
-    if (customerName && customerEmail && RFQ_ID) {
+    if (name && email && RFQ_ID) {
       // If both customerName and customerEmail are available, update the state
       setCustomerDetails((prevDetails) => ({
         ...prevDetails,
-        customerName: customerName,
-        customerEmail: customerEmail, // Update customerEmail in the state
+        customerName: name,
+        customerEmail: email, // Update customerEmail in the state
         RFQ_ID: RFQ_ID
       }));
     }
-  }, [customerName, customerEmail, RFQ_ID]);
+  }, [name, email, RFQ_ID]);
 
   const togglePopupMail = () => {
     setIsPopupOpenMail(!isPopupOpenMail);
@@ -384,7 +385,7 @@ const Board = () => {
         <div className="pendingMiddle-BVal">
           <div className="pendingMiddle-BVal-2">
             <div className="pendingMiddle-BVal-3">
-              <div className="pendingMiddle-BVal-3a">{customerName}</div>
+              <div className="pendingMiddle-BVal-3a">{name}</div>
               <div className="pendingMiddle-BVal-3b">{RFQ_ID}</div>
             </div>
           </div>
@@ -495,7 +496,8 @@ const Board = () => {
                   <div className="Board-userInfo-Val-5">
                     <div className="Board-userInfo-Val-6">
                       {/* Angie Pankuch */}
-                      {customerName}
+                      {/* {customerName} */}
+                      {name}
                       </div>
                   </div>
                 </div>
@@ -602,7 +604,7 @@ const Board = () => {
                   Thank you once again for choosing us.
                   <br />
                   Best regards: */}
-                  {customerEmail}
+                  {email}
                 </div>
               </div>
             </div>
