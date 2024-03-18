@@ -7,12 +7,18 @@ import "@fontsource/orbitron/400.css"; // Specify weight
 import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import axios from 'axios'
 
 
 const Queue = () => {
+  
   const history = useHistory();
+  const location = useLocation();
+
+  const token = location?.state.token;
+
   const [searchQuery, setSearchQuery] = useState("");
   const [queueData, setQueueData] = useState([]);
   
@@ -20,9 +26,74 @@ const Queue = () => {
   useEffect(() => {
     const fetchQueueData = async () => {
       try {
+        const extractBeforeNewline = (str) => {
+            const index = str.indexOf('\r');
+            if (index === -1) {
+              return str; // Return the original string if '\r' is not found
+            }
+            return str.substring(0, index);
+          };
+
+        
         const res = await axios.get("http://127.0.0.1:8000/api/QueueDetails/");
         setQueueData(res.data.data);
         console.log("Queue Data API response from backend: ", res.data);
+
+        // res.data.data.map(async (queueItem) => {
+        res.data.data.map(async (queueItem, index) => {
+            if(queueItem.vendor_responses){
+                queueItem.vendor_responses.map(async (vendorItem) => {
+                    console.log('VendorItem', vendorItem);
+                    const vendorReply =  await axios.get(`https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: ${vendorItem.Subject}  from:${vendorItem.Vendor_Email}"`, {
+                        headers: {
+                          Authorization: `Bearer ${token}`,
+                          "Content-Type": "application/json",
+                        },
+                      });
+                    
+                      // storing the first reply mail from the vendor
+                      const fetchedVendorContent = vendorReply.data.value[0].bodyPreview;
+                    
+                      const extractedResponse = extractBeforeNewline(fetchedVendorContent);
+                      
+        
+                      console.log('extracted vendor response', extractedResponse)
+
+                      const vendorResponseObject = {
+                        Body: extractedResponse,
+                        Subject: `RE: ${vendorItem.Subject}`,
+                        Vendor_Email: vendorItem.Vendor_Email 
+                      }
+
+                      const url = `http://127.0.0.1:8000/api/QueueDetails/${index+1}/`; // Replace with your actual endpoint URL
+                      const requestData = {
+                        method: 'PUT',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ vendor_responses: vendorResponseObject }),
+                      };
+                    
+                      const response = await fetch(url, requestData);
+
+                        if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        const data = await response.json(); // Assuming the server responds with JSON
+                        console.log('Success:', data);
+
+                      console.log('vendor reply', vendorReply)
+                })
+            }
+        })
+        // const vendorReply = await axios.get(`https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: Request for Quote - PVC Material from:vignesh@onelabventures.com"`, {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //     "Content-Type": "application/json",
+        //   },
+        // });
+        // console.log("This is a vendor reply ", vendorReply);
+        // })
       } catch (error) {
         console.error("Error occurred while calling API:", error);
       }
@@ -32,6 +103,8 @@ const Queue = () => {
   }, []); // Empty dependency array to run the effect only once on component mount
 
   console.log("QueueData", queueData);
+
+  const statuses = [];
 
   // Filter data based on the search query
   const filteredData = queueData.filter((rowData) =>

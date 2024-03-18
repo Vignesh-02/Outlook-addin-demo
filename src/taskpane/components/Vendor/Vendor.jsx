@@ -51,8 +51,8 @@ const Vendor = ({ isOpen, togglePopup, vendordetail }) => {
                 <div className="vendorSecB-EmailCont">
                   {/* Display selected vendor email body */}
                   {selectedVendor && (
-                    <div>
-                      {vendordetail[selectedVendor].Body}
+                    <div
+                    dangerouslySetInnerHTML={{ __html: vendordetail[selectedVendor].Body }}>
                     </div>
                   )}
                 </div>

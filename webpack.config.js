@@ -8,8 +8,13 @@ const CspHtmlWebpackPlugin = require("csp-html-webpack-plugin");
  
 const webpack = require("webpack");
 
-const urlDev = "https://localhost:3002/";
-const urlProd = "https://outlook-addin-v9y9.onrender.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+// http://127.0.0.1:4040                     
+// https://881b-182-48-208-239.ngrok-free.app
+
+const urlDev = "http://localhost:3001";
+const urlProd = "https://outlook-addin-v9y9.onrender.com"
+// const urlProd = "https://outlook-addin-v9y9.onrender.com/"; 
+// CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
@@ -147,10 +152,10 @@ module.exports = async (env, options) => {
       },
       server: {
         // type: "http",
-        type: "https",
+        type: "http",
         options: env.WEBPACK_BUILD || options.https !== undefined ? options.https : await getHttpsOptions(),
       },
-      port: process.env.npm_package_config_dev_server_port || 3002,
+      port: process.env.npm_package_config_dev_server_port || 3001,
     },
   };
 

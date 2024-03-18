@@ -25,6 +25,8 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { responseAdd } from "../../../Store/action/customerBodyAction";
 
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   
@@ -32,9 +34,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   
   const location = useLocation();
-  console.log(location);
   const token = location?.state.token;
-  console.log(token);
 
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -76,19 +76,28 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     RFQ_ID: "",
   });
 
+  const [selectedRFQ, setSelectedRFQ] = useState(true);
+
+  const toggleSelectedRFQ = () => {
+    setSelectedRFQ(!selectedRFQ);
+  };
+
   useEffect(() => {
     let closePopupTimer;
     if (visible) {
       closePopupTimer = setTimeout(() => {
         setVisible(false);
-        history.push("/queue")
+        history.push({
+            pathname: '/queue',
+            state: { token: token }
+          });
       }, 2000); // 2 seconds
     }
 
     return () => {
       clearTimeout(closePopupTimer);
     };
-  }, [visible]);
+  }, [history, visible]);
 
   const togglePopupnotRFQ = () => {
     console.log("toggle not rfq");
@@ -185,6 +194,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   // change
   
   const handleLaunch = () => {
+    const uniqueId = uuidv4();
     const accessToken = token;
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
 
@@ -201,9 +211,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     console.log("All Vendor Emails:", allVendorEmails);
 
      // Check if there are no vendor emails then only save customer details with "Sent" status
-     if (Object.keys(allVendorEmails).length === 0) {
-      setQueueCustomer(true);
-    }
+    //  if (Object.keys(allVendorEmails).length === 0) {
+    //   setQueueCustomer(true);
+    // }
 
     // Call the function to send emails to vendors
 
@@ -212,7 +222,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       // Define email data
       const emailData = {
         message: {
-          subject: vendor.Subject,
+          subject: vendor.Subject + `#${uniqueId}`,
           body: {
             contentType: "Html",
             content: vendor.Body,
@@ -225,9 +235,10 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             },
           ],
         },
-        saveToSentItems: "false",
+        saveToSentItems: "true",
       };
       //   Send email to the vendor
+    //   console.log(emailData);
 
       fetch(sendMailVendor, {
         method: "POST",
@@ -237,18 +248,20 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         },
         body: JSON.stringify(emailData),
       })
-        .then((response) => response.json())
         .then((data) => {
-          console.log("Mail sent successfully to Vendor", Vendor_Email, data);
+          console.log("Mail sent successfully to Vendor",  );
           console.log("Queue details have been sent")
           // setQueueDetails(true);
-          setQueueVendor(true);
+        //   setQueueVendor(true);
         })
         .catch((error) => {
-          console.error("Error sending mail to", Vendor_Email, error);
+          console.error(`Error sending mail to Vendor`, error);
         });
+
     });
 
+    console.log('Message Id ', emailDetails.msgId);
+    console.log('CustomerResponseBody ',customerResponseBody );
     const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
     const emailData = {
       message: {
@@ -271,14 +284,33 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       },
       body: JSON.stringify(emailData),
     })
-      .then((response) => response.json())
       .then((data) => {
-        console.log("Mail sent successfully to Customer", data);
+        console.log("Mail sent successfully to customer", data.status);
         setVisible(true);
+        setQueueCustomer(true);
+        // history.push("/queue")
       })
       .catch((error) => {
         console.error("Error sending mail", error);
       });
+
+    //   const vendorMailConversationurl = 
+    //   fetch(vendorMailConversationurl, {
+    //     method: "POST",
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(emailData),
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       console.log("Mail sent successfully to customer", data);
+    //       setVisible(true);
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error sending mail", error);
+    //     });
   };
 
 
@@ -287,12 +319,13 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       const sendQueueDetailsToCustomer = async () => {
         try {
           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
-            customer_name: classifyEmail.name,
+            customer_name: emailDetails.senderName,
+            customer_email: emailDetails.from,
             customer_subject: emailDetails.subject,
-            customer_email: emailDetails.body,
+            customer_response: customerResponseBody,
+            vendor_responses: vendordetail,
             RFQ_ID: rfq_id,
             status: "Sent",
-            customer_response: customerBody, // change
             customer_response_subject: customerSubject
           });
           console.log("send queue details API response from backend: ", result.data);
@@ -304,24 +337,24 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     }
   }, [queueCustomer]);
 
-  useEffect(() => {
-    if (queueVendor) {
-      const sendQueueDetailsToVendor = async () => {
-        try {
-          const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
-            customer_name: classifyEmail.name,
-            RFQ_ID: rfq_id,
-            status: "Vendor quote pending",
-            day: "2 days"
-          });
-          console.log("send queue vendor details API response from backend: ", result.data);
-        } catch (error) {
-          console.error("Error occurred while calling API:", error);
-        }
-      };
-      sendQueueDetailsToVendor();
-    }
-  }, [queueVendor]);
+//   useEffect(() => {
+//     if (queueVendor) {
+//       const sendQueueDetailsToVendor = async () => {
+//         try {
+//           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
+//             customer_name: classifyEmail.name,
+//             RFQ_ID: rfq_id,
+//             status: "Vendor quote pending",
+//             day: "2 days"
+//           });
+//           console.log("send queue vendor details API response from backend: ", result.data);
+//         } catch (error) {
+//           console.error("Error occurred while calling API:", error);
+//         }
+//       };
+//       sendQueueDetailsToVendor();
+//     }
+//   }, [queueVendor]);
 
   // useEffect(() => {
   //   if (queueDetails) {
@@ -765,7 +798,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                 {isDelegate2Clicked && <Status />}
 
                 {isDelegate2Clicked && (
-                  <Decision isPopupOpenStock={isPopupOpenStock} togglePopupStock={togglePopupStock} />
+                  <Decision isPopupOpenStock={isPopupOpenStock} togglePopupStock={togglePopupStock} selectedRFQ={selectedRFQ} handleToggleChange={toggleSelectedRFQ}/>
                 )}
 
                 {isDelegate2Clicked && (
@@ -780,6 +813,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                     setCustomerBody={setCustomerBody}
                     vendorBody={vendorBody}
                     vendordetail={vendordetail}
+                    selectedRFQ={selectedRFQ}
                   />
                 )}
               </div>

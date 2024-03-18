@@ -49,7 +49,7 @@ const Login = ({ emailAddress, ...props}) => {
         if(selectedOrganization != ""){
             console.log(window.localStorage);
             window.localStorage.setItem('emailAddress', emailAddress);   
-            const permittedEmails = ['vigu1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com', 'anumunde123@outlook.com'];
+            const permittedEmails = ['vigu1401@outlook.com', 'viguito1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com', 'anumunde123@outlook.com'];
             console.log('emailAddress ', emailAddress);
             // localStorage.setItem('emailAddress', emailAddress);
             // Check if the user's email is in the permittedEmails array
@@ -59,7 +59,7 @@ const Login = ({ emailAddress, ...props}) => {
             }
             
             if(permittedEmails.includes(emailAddress)){
-                const authPage = "https://localhost:3001/assets/auth-dialog.html";
+                const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
                 Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
                 if (result.status === Office.AsyncResultStatus.Succeeded) {
                     loginDialog = result.value;
@@ -116,7 +116,7 @@ const Login = ({ emailAddress, ...props}) => {
     console.log('inside refreshAccess Token code', token)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    // const redirectUri = "https://localhost:3001/assets/login.html";
+    // const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
@@ -137,7 +137,7 @@ const Login = ({ emailAddress, ...props}) => {
       body: formData,
     }, {
         headers: {
-            origin: "https://localhost:3001/assets/login.html"
+            origin: "https://outlook-addin-v9y9.onrender.com/assets/login.html"
         }
     })
     .then(response => response.json())
@@ -157,7 +157,7 @@ const Login = ({ emailAddress, ...props}) => {
     console.log('inside exchange code', code)
     const tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    const redirectUri = "https://localhost:3001/assets/login.html";
+    const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
     const clientSecret = "3Bv8Q~lVCrFG1YYgXoA05E~pMwvWLs0fZs5x_a9N"; // Only if required, for web apps
 
     // Prepare the form data to post
@@ -178,7 +178,7 @@ const Login = ({ emailAddress, ...props}) => {
       body: formData,
     }, {
         headers: {
-            origin: "https://localhost:3001/assets/login.html"
+            origin: "https://outlook-addin-v9y9.onrender.com/assets/login.html"
         }
     })
     .then(response => response.json())
