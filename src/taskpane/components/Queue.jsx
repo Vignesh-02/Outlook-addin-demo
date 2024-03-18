@@ -217,9 +217,9 @@ const Queue = () => {
   //   navigate("/pending", { state: { customerName, customerEmail } });
   // };
   // const [rfq, setRfq] = useState(null);
-  const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time) => {
+  const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
-    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}`);
+    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`);
     console.log("RFQ: ", RFQ_ID)
     console.log("QueueDate: ", date)
     // setRfq(RFQ_ID)
@@ -341,7 +341,7 @@ const Queue = () => {
                         // handleStatusClick(rowData.customer_name);
                         // handleStatusClick(rowData.customer_name, rowData.customer_email);
                         handleStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
-                          ,rowData.date, rowData.time
+                          ,rowData.date, rowData.time, rowData.customer_response_subject
                           );
                       }
                     }}

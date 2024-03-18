@@ -41,13 +41,15 @@ const Board = () => {
   const email = searchParams.get("customerEmail");
   const RFQ_ID = searchParams.get("RFQ_ID");
   const date = searchParams.get("date");
-  const time = searchParams.get("{time");
+  const time = searchParams.get("time");
+  const customer_response_subject = searchParams.get("customer_response_subject");
   
   console.log("Customer Name:", name); // Log customerName to console
   console.log("Customer Email:", email); // Log customerName to console
   console.log("Customer RFQ_ID:", RFQ_ID); // Log customerName to console
   console.log("Customer date:", date); // Log customerName to console
   console.log("Customer time:", time); // Log customerName to console
+  console.log("customer_response_subject:", customer_response_subject); // Log customerName to console
 
   useEffect(() => {
     if (name && email && RFQ_ID) {
@@ -568,7 +570,7 @@ const Board = () => {
             <div className="Board-Cutomer-EmailDiv-Value-3">
               <div className="Board-Cutomer-EmailDiv-Value-4">
                 <div className="Board-Cutomer-EmailDiv-Value-Content">
-                  Subject: "Order Details and Quote Breakdown"
+                  Subject: "{customer_response_subject}"
                   <br />
                   <br />
                   {/* Thank you for choosing our services. We appreciate your
