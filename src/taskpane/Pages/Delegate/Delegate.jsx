@@ -40,6 +40,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const [queueCustomer, setQueueCustomer] = useState(false);
   const [queueVendor, setQueueVendor] = useState(false);
 
+  const [shippingAddress, setShippingAddress] = useState(null);
 
   const [visible, setVisible] = useState(false);
   const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(true);
@@ -456,11 +457,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         shipping_address: classifyEmail.shipping_address || "N/A",
         RFQ_ID: classifyEmail.RFQ_ID || "N/A",
       });
+      setShippingAddress(classifyEmail.shipping_address)
+
     }
   }, [classifyEmail]);
 
   console.log("Classify Email-SA: ", classifyEmail.shipping_address);
   console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
+  console.log("shipping_address_update5: ", shippingAddress)
 
   const SA = classifyEmail.shipping_address;
   const RFQID = classifyEmail.RFQID;
@@ -576,6 +580,49 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 //       getEmailDetails();
 //     }
 //   }, [classifyEmail, emailDetails, emailDetailsFetched]);
+
+useEffect(() => {
+  // console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
+
+  if (classifyEmail && classifyEmail.RFQ_status === 1) {
+    const getEmailDetails = async () => {
+      try {
+        // const ccToSend = customerDetail.cc !== null && customerDetail.cc !== undefined ? customerDetail.cc : []; // Check if cc is null or undefined, if so, set it to an empty array
+        let ccToSend = []; // Initialize ccToSend as an empty array
+      if (emailDetails.cc && emailDetails.cc.length > 0) {
+        ccToSend = emailDetails.cc; // Assign ccToSend to customerDetail.cc if it exists and has length
+      }
+        const res = await axios.post(
+          "http://127.0.0.1:8000/api/getEmailDetails/",
+          {
+            customer_name: emailDetails.senderName,
+            customer_email: emailDetails.from,
+            // cc: customerDetail.cc, // Send customerDetail.cc directly
+            cc:ccToSend, // Send customerDetail.cc directly
+            company: emailDetails.company,
+            // shipping_address: shippingAddress,
+            shipping_address: "xyz", // to update
+            // email_id: emailDetails.messageId,// to update
+            email_id: "AS671EUI",// to update
+            email_subject: emailDetails.subject,
+            email_body: emailDetails.body,
+            RFQ_ID: rfq_id,
+          }
+        );
+
+        console.log("getEmailDetails API response from backend: ", res.data);
+        setEmailDetailsFetched(true);
+      } catch (error) {
+        console.error("Error occurred while calling API:", error);
+      }
+    };
+
+    getEmailDetails();
+  } else {
+    console.log("RFQ_status is not 1 or classifyEmail is not available, skipping API call.");
+  }
+}, [classifyEmail, emailDetails]);
+
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
