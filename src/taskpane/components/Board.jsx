@@ -449,7 +449,7 @@ const Board = () => {
                 //   close={togglePopupMail}
 
                 close={togglePopupMail} 
-                  emailSubject={senderSubject}
+                  subject={senderSubject}
                   body={senderBody}
                 />
               </Model>
