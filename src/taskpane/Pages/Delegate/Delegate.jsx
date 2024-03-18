@@ -409,31 +409,75 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   console.log("Customer's Body2:", customerBody);
   console.log("Vendor's Body2:", vendorBody);
 
+  // correct - prev
+  // useEffect(() => {
+  //   if (emailDetails && !emailDetailsFetched) {
+  //     const getEmailDetails = async () => {
+  //       try {
+  //         // Make sure the RFQ_status is 1 before making the API call
+  //         if (classifyEmail.RFQ_status === 1) {
+  //           const res = await axios.post("http://127.0.0.1:8000/api/getEmailDetails/", {
+  //             getEmailDetails: emailDetails,
+  //             RFQ_ID: rfq_id,
+  //           });
+
+  //           console.log("getEmailDetails API response from backend: ", res.data);
+  //           console.log("RFQ 2", rfq_id);
+  //           // Set the state variable to true indicating that the API call has been made
+  //           setEmailDetailsFetched(true);
+  //         } else {
+  //           console.log("RFQ_status is not 1, skipping API call.");
+  //         }
+  //       } catch (error) {
+  //         console.error("Error occurred while calling API:", error);
+  //       }
+  //     };
+  //     getEmailDetails();
+  //   }
+  // }, [classifyEmail, emailDetails, emailDetailsFetched]);
+
+
+  // change
   useEffect(() => {
-    if (emailDetails && !emailDetailsFetched) {
+    console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
+  
+    if (classifyEmail && classifyEmail.RFQ_status === 1) {
       const getEmailDetails = async () => {
         try {
-          // Make sure the RFQ_status is 1 before making the API call
-          if (classifyEmail.RFQ_status === 1) {
-            const res = await axios.post("http://127.0.0.1:8000/api/getEmailDetails/", {
-              getEmailDetails: emailDetails,
+          // const ccToSend = customerDetail.cc !== null && customerDetail.cc !== undefined ? customerDetail.cc : []; // Check if cc is null or undefined, if so, set it to an empty array
+          let ccToSend = []; // Initialize ccToSend as an empty array
+        if (emailDetails.cc && emailDetails.cc.length > 0) {
+          ccToSend = emailDetails.cc; // Assign ccToSend to customerDetail.cc if it exists and has length
+        }
+          const res = await axios.post(
+            "http://127.0.0.1:8000/api/getEmailDetails/",
+            {
+              customer_name: emailDetails.senderName,
+              customer_email: emailDetails.from,
+              // cc: customerDetail.cc, // Send customerDetail.cc directly
+              cc:ccToSend, // Send customerDetail.cc directly
+              company: emailDetails.company,
+              shipping_address: materialDetails.shipping_address,
+              email_id: emailDetails.messageId,
+              email_subject: emailDetails.subject,
+              email_body: emailDetails.body,
               RFQ_ID: rfq_id,
-            });
-
-            console.log("getEmailDetails API response from backend: ", res.data);
-            console.log("RFQ 2", rfq_id);
-            // Set the state variable to true indicating that the API call has been made
-            setEmailDetailsFetched(true);
-          } else {
-            console.log("RFQ_status is not 1, skipping API call.");
-          }
+            }
+          );
+  
+          console.log("getEmailDetails API response from backend: ", res.data);
+          setEmailDetailsFetched(true);
         } catch (error) {
           console.error("Error occurred while calling API:", error);
         }
       };
+  
       getEmailDetails();
+    } else {
+      console.log("RFQ_status is not 1 or classifyEmail is not available, skipping API call.");
     }
-  }, [classifyEmail, emailDetails, emailDetailsFetched]);
+  }, [classifyEmail, emailDetails, customerDetail]);
+  
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
