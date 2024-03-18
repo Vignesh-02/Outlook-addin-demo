@@ -67,6 +67,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     shipping_address: "",
     RFQ_ID: "",
   });
+
+  const [shippingAddress, setShippingAddress] = useState(null);
   const [isPopupOpennotrfq, setIsPopupOpennotrfq] = useState(true);
 
   useEffect(() => {
@@ -337,14 +339,13 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         shipping_address: classifyEmail.shipping_address || "N/A",
         RFQ_ID: classifyEmail.RFQ_ID || "N/A",
       });
+      setShippingAddress(classifyEmail.shipping_address)
     }
   }, [classifyEmail]);
 
   console.log("Classify Email-SA: ", classifyEmail.shipping_address);
   console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
 
-  const SA = classifyEmail.shipping_address;
-  const RFQID = classifyEmail.RFQID;
 
   const DelegeBtn2 = () => {
     setBtn(true);
@@ -457,8 +458,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
               // cc: customerDetail.cc, // Send customerDetail.cc directly
               cc:ccToSend, // Send customerDetail.cc directly
               company: emailDetails.company,
-              shipping_address: materialDetails.shipping_address,
-              email_id: emailDetails.messageId,
+              shipping_address: shippingAddress,
+              // email_id: emailDetails.messageId,// to update
+              email_id: "AS671EUI",// to update
               email_subject: emailDetails.subject,
               email_body: emailDetails.body,
               RFQ_ID: rfq_id,
