@@ -232,6 +232,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             customer_email: emailDetails.body,
             RFQ_ID: rfq_id,
             status: "Sent",
+            customer_response: customerBody,
           });
           console.log("send queue details API response from backend: ", result.data);
         } catch (error) {
