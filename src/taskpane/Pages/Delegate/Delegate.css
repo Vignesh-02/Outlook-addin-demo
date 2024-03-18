@@ -1,790 +1,815 @@
 .QuotePage {
-    width: 320px;
-    height: 580px;
-    bottom: 50px;
-    display: flex;
-    padding-top: 10px;
-    padding-bottom: 6px;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 3.67px;
-    display: inline-flex;
-    border: 2px solid black;
-    z-index: 1;
-  }
-  .topbar-frame {
-    width: 320px;
-    height: 87.33px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
-    display: inline-flex;
-  }
-  
-  /* Section - 1 */
-  .topbar {
-    width: 284px;
-    height: 33.33px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 113px;
-    display: inline-flex;
-  }
-  
-  .topframe {
-    width: 147px;
-    height: 33.33px;
-    position: relative;
-  }
-  .topframe img {
-    width: 38.78px;
-    height: 33.33px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-  }
-  .topframe-b {
-    width: 115.55px;
-    height: 25.74px;
-    left: 31.45px;
-    top: 7.33px;
-    position: absolute;
-  }
-  #b1 {
-    width: 115.55px;
-    height: 13.17px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-  }
-  #b2 {
-    width: 66.46px;
-    height: 8.38px;
-    left: 7.18px;
-    top: 17.36px;
-    position: absolute;
-  }
-  .topframe-c {
-    width: 24px;
-    height: 24px;
-    padding: 7px;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  
-  .topframe-c img {
-    width: 10px;
-    height: 10px;
-    border: 1.5px black solid;
-    padding: 7px;
-    border: 0;
-    cursor: pointer;
-  }
-  
-  /* Section - 2 */
-  .topbar2 {
-    width: 288px;
-    height: 26px;
-    align-self: stretch;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 1px rgba(0, 0, 0, 0.12) solid;
-    justify-content: space-between;
-    align-items: center;
-    display: inline-flex;
-  }
-  .navbar {
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8px;
-    display: flex;
-  }
-  .DEL-delegate-div {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px black solid;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .DEL-delegate {
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 100;
-    letter-spacing: 0.36px;
-    word-wrap: break-word;
-  }
-  .queue-div {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    opacity: 0.8;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .queue {
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 100;
-    letter-spacing: 0.36px;
-    word-wrap: break-word;
-  }
-  .contact-div {
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    opacity: 0.8;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-  }
-  .contact {
-    color: #1c1c1c;
-    font-size: 12px;
-    font-family: Helvetica Neue;
-    font-weight: 100;
-    letter-spacing: 0.36px;
-    word-wrap: break-word;
-  }
-  .A-div {
-    height: 22px;
-    width: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background: #356f9f;
-    border-radius: 3px;
-    justify-content: left;
-    align-items: flex-start;
-    gap: 10px;
-    display: flex;
-  }
-  .A {
-    color: white;
-    font-size: 9px;
-    font-family: Orbitron;
-    font-weight: 400;
-    letter-spacing: 0.14px;
-    word-wrap: break-word;
-  }
-  
-  /* Section - B */
-  .Quote-Sec-2 {
-    width: 289px;
-    height: 379px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 12px;
-    display: inline-flex;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  .Quote-Sec-2::-webkit-scrollbar {
-    width: 0px;
-  }
-  
-  .Quote-Sec-2::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-  
-  .Quote-Sec-2::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  
-  /* RFQ Section */
-  .Quote-RFQ-Section {
-    width: 289px;
-    height: 203px;
-    border-radius: 6px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: flex;
-  }
-  .Quote-RFQ-Div {
-    align-self: stretch;
-    background: #f9f9f9;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    overflow: hidden;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-RFQ-Parent {
-    flex: 1 1 0;
-    height: 28px;
-    padding-left: 11px;
-    padding-right: 11px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-RFQ-Child {
-    flex: 1 1 0;
-    height: 13px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .Quote-RFQ-TextParent {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-RFQ-Text {
-    color: #080808;
-    /* color: rgba(58, 53, 65, 0.87); */
-    font-size: 10px;
-    font-family: Orbitron;
-    font-weight: 400;
-    letter-spacing: 0.1px;
-    word-wrap: break-word;
-  }
-  .Quote-RFQ-Image {
-    width: 22px;
-    height: 22px;
-    padding-top: 5.04px;
-    padding-bottom: 4.12px;
-    padding-left: 5.04px;
-    padding-right: 4.12px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  /* RFQ - Email */
-  .Quote-RFQ-EmailParent {
-    align-self: stretch;
-    height: 176px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    overflow: hidden;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 3px;
-    display: flex;
-  }
-  .Quote-RFQ-EmailChild {
-    align-self: stretch;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    border-left: 1px rgba(58, 53, 65, 0.12) solid;
-    border-right: 1px rgba(58, 53, 65, 0.12) solid;
-    border-bottom: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-RFQ-EmailDiv {
-    flex: 1 1 0;
-    height: 164px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: flex;
-  }
-  .Quote-RFQ-EmailSec {
-    flex: 1 1 0;
-    padding-left: 11px;
-    padding-right: 16px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 9px;
-    display: inline-flex;
-  }
-  .Quote-RFQ-Email-Cont {
-    align-self: stretch;
-    height: 164px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 3px;
-    display: flex;
-  }
-  .Quote-RFQ-Email-Content {
-    align-self: stretch;
-    height: 130px;
-    color: #080808;
-    font-size: 13px;
-    font-family: Helvetica Neue;
-    font-weight: 300;
-    line-height: 14px;
-    letter-spacing: 0.1px;
-    word-wrap: break-word;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    -ms-overflow-style: none;
-    overflow-wrap: break-word;
-    word-break: break-all;
-  }
-  
-  /* DETAILS TABLE */
-  .Quote-Table {
-    width: 289px;
-    height: 155px;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  
-  /* Name */
-  .Quote-Table-Name {
-    align-self: stretch;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  .Quote-Table-NameDiv {
-    flex: 1 1 0;
-    height: 30px;
-    padding-left: 2px;
-    padding-right: 2px;
-    background: #f9f9f9;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-Table-EmailDiv {
-    flex: 1 1 0;
-    height: 30px;
-    padding-left: 2px;
-    padding-right: 2px;
-    background: #f9f9f9;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-Table-CompanyDiv {
-    flex: 1 1 0;
-    height: 30px;
-    padding-left: 2px;
-    padding-right: 2px;
-    background: #f9f9f9;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-Table-NameSec {
-    flex: 1 1 0;
-    height: 22px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 6px;
-    padding-right: 2px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .Quote-Table-NameParent {
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .Quote-Table-NameChild {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-Name-Text {
-    color: rgba(58, 53, 65, 0.87);
-    font-size: 13px;
-    font-family: Orbitron;
-    font-weight: 500;
-    letter-spacing: 0.13px;
-    word-wrap: break-word;
-  }
-  /* Name : Value */
-  .Quote-Table-NameValue {
-    flex: 1 1 0;
-    align-self: stretch;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-NameValueDiv {
-    align-self: stretch;
-    flex: 1 1 0;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-NameValueDiv2 {
-    align-self: stretch;
-    flex: 1 1 0;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-NameValueSec {
-    flex: 1 1 0;
-    height: 28px;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-Table-NameValueParent {
-    flex: 1 1 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 6px;
-    padding-right: 16px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-NameValueChild {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: flex;
-  }
-  .Quote-Table-NameValueText {
-    color: #080808;
-    font-size: 9px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    word-wrap: break-word;
-  }
-  /* Email */
-  .Quote-Table-Email {
-    align-self: stretch;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  /* CC - SECTION */
-  .Quote-Table-CC {
-    align-self: stretch;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  .Quote-Table-CC-Div {
-    flex: 1 1 0;
-    align-self: stretch;
-    padding-left: 2px;
-    padding-right: 2px;
-    background: #f9f9f9;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-Table-CC-Sec {
-    flex: 1 1 0;
-    height: 22px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 6px;
-    padding-right: 2px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .Quote-Table-CC-Parent {
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .Quote-Table-CC-Child {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-CC-Text {
-    color: rgba(58, 53, 65, 0.87);
-    font-size: 13px;
-    font-family: Orbitron;
-    font-weight: 600;
-    letter-spacing: 0.13px;
-    word-wrap: break-word;
-  }
-  /* CC - Values */
-  .Quote-Table-CC-Values {
-    flex: 1 1 0;
-    align-self: stretch;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-CC-ValuesDiv {
-    align-self: stretch;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-CC-ValuesSec {
-    flex: 1 1 0;
-    height: 68px;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-Table-CC-ValuesParent {
-    flex: 1 1 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 6px;
-    padding-right: 16px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: inline-flex;
-  }
-  .Quote-Table-CC-ValuesChild1 {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: flex;
-  }
-  .Quote-Table-CC-ValuesChild1-text {
-    color: #080808;
-    font-size: 9px;
-    font-family: Helvetica Neue;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    word-wrap: break-word;
-  }
-  /* Company */
-  .Quote-Table-Company {
-    align-self: stretch;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-  }
-  /* TABLE 2.0 */
-  .Quote-Table-Name2 {
-    width: 283px;
-    height: 30px;
-    padding-right: 5px;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: inline-flex;
-    margin-bottom: 8px;
-  }
-  .Quote-Table-Name2-a {
-    flex: 1 1 0;
-    height: 30px;
-    padding-left: 5px;
-    padding-right: 5px;
-    background: #f9f9f9;
-    border: 1px rgba(58, 53, 65, 0.12) solid;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .Quote-Table-Name2-b {
-    flex: 1 1 0;
-    height: 19px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 6px;
-    padding-right: 2px;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4px;
-    display: flex;
-  }
-  .Quote-Table-Name2-Text {
-    color: rgba(58, 53, 65, 0.87);
-    font-size: 13px;
-    font-family: Orbitron;
-    font-weight: 400;
-    letter-spacing: 0.1px;
-    word-wrap: break-word;
-  }
-  .Quote-Table-Name2-Image {
-    padding-left: 2px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  .Quote-Table-Name2-ImageC {
-    width: 22px;
-    height: 22px;
-    padding-top: 5.04px;
-    padding-bottom: 4.12px;
-    padding-left: 5.04px;
-    padding-right: 4.12px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  
-  /* BUTTON SECTION - 3 */
-  .Quote-DelegateBtnDiv {
-    width: calc(289px - 30px);
-    height: 24px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background: #356f9f;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-    margin-bottom: 6px;
-    margin-top: 6px;
-    cursor: pointer;
-  }
-  .Quote-DelegateBtn {
-    color: white;
-    font-size: 14px;
-    font-family: Orbitron;
-    font-weight: 600;
-    text-transform: capitalize;
-    letter-spacing: 1.12px;
-    word-wrap: break-word;
-  }
-  
-  /* FOOTER SECTION */
-  .Quote-Footer {
-    width: 300px;
-    height: 32.12px;
-    padding-top: 4px;
-    padding-bottom: 7px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: #356f9f;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    display: inline-flex;
-    margin-bottom: -5.6px;
-  }
-  .Quote-Footer-Text {
-    text-align: center;
-    color: white;
-    font-size: 12.93px;
-    font-family: Helvetica Neue;
-    font-weight: 100;
-    letter-spacing: 0.39px;
-    word-wrap: break-word;
-  }
-  .Quote-Footer-Images {
-    width: 117.18px;
-    height: 21.12px;
-    position: relative;
-  }
-  
-  /* Button section */
-  .DEL-Buttons {
-    width: 289px;
-    height: 54px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 18px;
-    display: inline-flex;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .Regenrate-btn {
-    flex: 1 1 0;
-    height: 34px;
-    background: #356f9f;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: flex;
-  }
-  #reg-btn {
-    color: rgba(255, 255, 255, 1);
-    font-size: 14px;
-    font-family: Orbitron;
-    font-weight: 600;
-    line-height: 17.56px;
-    text-transform: capitalize;
-    letter-spacing: 1.12px;
-    word-wrap: break-word;
-    cursor: pointer;
-  }
-  .Launch-btnParent {
-    flex: 1 1 0;
-    height: 34px;
-    background: #356f9f;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-  }
-  #Launch-btn {
-    color: white;
-    font-size: 14px;
-    font-family: Orbitron;
-    font-weight: 600;
-    letter-spacing: 1.12px;
-    word-wrap: break-word;
-    cursor: pointer;
-    line-height: 17.56px;
-  }
-  
-  /* POP - UP */
-  .backdrop {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  
+  width: 320px;
+  height: 568px;
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3.67px;
+  display: inline-flex;
+  border: 2px solid black;
+  z-index: 1;
+}
+.topbar-frame {
+  width: 320px;
+  height: 81px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+  /* background-color: red; */
+}
 
+/* Section - 1 */
+.topbar {
+  width: 284px;
+  height: 33.33px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 113px;
+  display: inline-flex;
+}
 
-  
+.topframe {
+  width: 147px;
+  height: 33.33px;
+  position: relative;
+}
+.topframe img {
+  width: 38.78px;
+  height: 33.33px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+.topframe-b {
+  width: 115.55px;
+  height: 25.74px;
+  left: 31.45px;
+  top: 7.33px;
+  position: absolute;
+}
+#b1 {
+  width: 115.55px;
+  height: 13.17px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+#b2 {
+  width: 66.46px;
+  height: 8.38px;
+  left: 7.18px;
+  top: 17.36px;
+  position: absolute;
+}
+.topframe-c {
+  width: 24px;
+  height: 24px;
+  padding: 7px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.topframe-c img {
+  width: 10px;
+  height: 10px;
+  border: 1.5px black solid;
+  padding: 7px;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Section - 2 */
+.topbar2 {
+  width: 288px;
+  height: 26px;
+  align-self: stretch;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+  justify-content: space-between;
+  align-items: center;
+  display: inline-flex;
+}
+.navbar {
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  display: flex;
+}
+.DEL-delegate-div {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px black solid;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+.DEL-delegate {
+  color: #1c1c1c;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.36px;
+  word-wrap: break-word;
+}
+.queue-div {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  opacity: 0.8;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+.queue {
+  color: #1c1c1c;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.36px;
+  word-wrap: break-word;
+}
+.contact-div {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  opacity: 0.8;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+}
+.contact {
+  color: #1c1c1c;
+  font-size: 12px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.36px;
+  word-wrap: break-word;
+}
+.A-div {
+  height: 18px;
+  width: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: #356f9f;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+.A {
+  color: white;
+  font-size: 14px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.14px;
+  word-wrap: break-word;
+}
+
+/* Section - B */
+.Quote-Sec-2 {
+  width: 289px;
+  height: 379px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  display: inline-flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* background-color: blueviolet; */
+  margin-top: 7px;
+}
+.Quote-Sec-2::-webkit-scrollbar {
+  width: 0px;
+}
+
+.Quote-Sec-2::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.Quote-Sec-2::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* RFQ Section */
+.Quote-RFQ-Section {
+  width: 289px;
+  /* height: 203px; */
+  /* height: 236px; */
+  height: 270px;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  /* background-color: green; */
+}
+.Quote-RFQ-Div {
+  align-self: stretch;
+  background: #f9f9f9;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  overflow: hidden;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-RFQ-Parent {
+  flex: 1 1 0;
+  height: 28px;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.Quote-RFQ-Child {
+  flex: 1 1 0;
+  height: 13px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.Quote-RFQ-TextParent {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-RFQ-Text {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 10px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+.Quote-RFQ-Image {
+  width: 22px;
+  height: 22px;
+  padding-top: 5.04px;
+  padding-bottom: 4.12px;
+  padding-left: 5.04px;
+  padding-right: 4.12px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+/* RFQ - Email */
+.Quote-RFQ-EmailParent {
+  align-self: stretch;
+  height: 218px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  overflow: hidden;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3px;
+  display: flex;
+  /* background-color: red; */
+}
+.Quote-RFQ-EmailChild {
+  align-self: stretch;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-left: 1px rgba(58, 53, 65, 0.12) solid;
+  border-right: 1px rgba(58, 53, 65, 0.12) solid;
+  border-bottom: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-RFQ-EmailDiv {
+  flex: 1 1 0;
+  height: 206px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.Quote-RFQ-EmailSec {
+  flex: 1 1 0;
+  height: 206px;
+  padding-left: 11px;
+  padding-right: 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 9px;
+  display: inline-flex;
+}
+.Quote-RFQ-Email-Cont {
+  align-self: stretch;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3px;
+  display: flex;
+  overflow-y: auto;
+}
+.Quote-RFQ-Email-Cont::-webkit-scrollbar {
+  width: 0px;
+}
+
+.Quote-RFQ-Email-Cont::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.Quote-RFQ-Email-Cont::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.Quote-RFQ-Email-Content {
+  /* height: 206px; */
+  align-self: stretch;
+  flex: 1 1 0;
+  color: #080808;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+  /* background-color: orange; */
+}
+
+/* DETAILS TABLE */
+.Quote-Table {
+  /* background-color: pink; */
+  align-self: stretch;
+  height: 115px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/* Name */
+.Quote-Table-Name {
+  align-self: stretch;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.Quote-Table-NameDiv {
+  width: 100px;
+  /* flex: 1 1 0; */
+  height: 30px;
+  padding-left: 2px;
+  padding-right: 2px;
+  background: #f9f9f9;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.Quote-Table-EmailDiv {
+  /* flex: 1 1 0; */
+  width: 100px;
+  height: 30px;
+  padding-left: 2px;
+  padding-right: 2px;
+  background: #f9f9f9;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.Quote-Table-CompanyDiv {
+  /* flex: 1 1 0; */
+  width: 100px;
+  height: 30px;
+  padding-left: 2px;
+  padding-right: 2px;
+  background: #f9f9f9;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.Quote-Table-NameSec {
+  flex: 1 1 0;
+  height: 22px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 2px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.Quote-Table-NameParent {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.Quote-Table-NameChild {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-Table-Name-Text {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 13px;
+  font-family: Orbitron;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  word-wrap: break-word;
+}
+/* Name : Value */
+.Quote-Table-NameValue {
+  flex: 1 1 0;
+  align-self: stretch;
+  /* border: 1px solid; */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-Table-NameValueDiv {
+  align-self: stretch;
+  flex: 1 1 0;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+/* .Quote-Table-NameValueDiv2 {
+  flex: 1 1 0; align-self: stretch; justify-content: flex-start; align-items: center; display: flex;
+} */
+.Quote-Table-NameValueSec {
+  flex: 1 1 0;
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.Quote-Table-NameValueParent {
+  flex: 1 1 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-Table-NameValueChild {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.Quote-Table-NameValueText {
+  color: #080808;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+/* Email */
+.Quote-Table-Email {
+  align-self: stretch;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+/* CC - SECTION */
+.Quote-Table-CC {
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.Quote-Table-CC-Div {
+  /* flex: 1 1 0; */
+  width: 100px;
+  align-self: stretch;
+  padding-left: 2px;
+  padding-right: 2px;
+  background: #f9f9f9;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.Quote-Table-CC-Sec {
+  flex: 1 1 0;
+  height: 22px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 2px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.Quote-Table-CC-Parent {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.Quote-Table-CC-Child {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-Table-CC-Text {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 13px;
+  font-family: Orbitron;
+  font-weight: 600;
+  letter-spacing: 0.13px;
+  word-wrap: break-word;
+}
+/* CC - Values */
+.Quote-Table-CC-Values {
+  flex: 1 1 0;
+  align-self: stretch;
+  /* border: 1px solid; */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-Table-CC-ValuesDiv {
+  align-self: stretch;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-Table-CC-ValuesSec {
+  flex: 1 1 0;
+  height: 28px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.Quote-Table-CC-ValuesParent {
+  flex: 1 1 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 16px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.Quote-Table-CC-ValuesChild1 {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.Quote-Table-CC-ValuesChild1-text {
+  color: #080808;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+/* Company */
+.Quote-Table-Company {
+  align-self: stretch;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+/* TABLE 2.0 */
+.Quote-Table-Name2 {
+  width: 283px;
+  height: 30px;
+  padding-right: 5px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  margin-bottom: 8px;
+}
+.Quote-Table-Name2-a {
+  flex: 1 1 0;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background: #f9f9f9;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.Quote-Table-Name2-b {
+  flex: 1 1 0;
+  height: 19px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 2px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.Quote-Table-Name2-Text {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 10px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+.Quote-Table-Name2-Image {
+  padding-left: 2px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+.Quote-Table-Name2-ImageC {
+  width: 22px;
+  height: 22px;
+  padding-top: 5.04px;
+  padding-bottom: 4.12px;
+  padding-left: 5.04px;
+  padding-right: 4.12px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/* BUTTON SECTION - 3 */
+.Quote-DelegateBtnDiv {
+  width: calc(289px - 30px);
+  height: 24px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: #356f9f;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+.Quote-DelegateBtn {
+  color: white;
+  font-size: 14px;
+  font-family: Orbitron;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 1.12px;
+  word-wrap: break-word;
+}
+
+/* FOOTER SECTION */
+.Quote-Footer {
+  width: 300px;
+  height: 32.12px;
+  padding-top: 4px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #356f9f;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  display: inline-flex;
+  margin-bottom: -5.6px;
+}
+.Quote-Footer-Text {
+  text-align: center;
+  color: white;
+  font-size: 12.93px;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  letter-spacing: 0.39px;
+  word-wrap: break-word;
+}
+.Quote-Footer-Images {
+  width: 117.18px;
+  height: 21.12px;
+  position: relative;
+}
+
+/* Button section */
+.DEL-Buttons {
+  width: 289px;
+  height: 54px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 18px;
+  display: inline-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Regenrate-btn {
+  flex: 1 1 0;
+  height: 34px;
+  background: #356f9f;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+#reg-btn {
+  color: rgba(255, 255, 255, 1);
+  font-size: 14px;
+  font-family: Orbitron;
+  font-weight: 600;
+  line-height: 17.56px;
+  text-transform: capitalize;
+  letter-spacing: 1.12px;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+.Launch-btnParent {
+  flex: 1 1 0;
+  height: 34px;
+  background: #356f9f;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+}
+#Launch-btn {
+  color: white;
+  font-size: 14px;
+  font-family: Orbitron;
+  font-weight: 600;
+  letter-spacing: 1.12px;
+  word-wrap: break-word;
+  cursor: pointer;
+  line-height: 17.56px;
+}
+
+/* POP - UP */
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* @keyframes fadeInScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+} */
+
 /* Success POP UP */
 .overlaySuccess {
   width: 321px;
@@ -800,32 +825,45 @@
   /* margin-top: 80px;
   margin-left: 15px; */
   /* animation: fadeInScaleUp 0.3s ease-out forwards; */
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
 }
-
-
 
 /* Loader */
 
 .L1 {
-  
-  width: 100%; height: 100%; padding-top: 4.43px; padding-bottom: 4.43px; justify-content: center; align-items: center; gap: 9.74px; display: inline-flex;
+  width: 100%;
+  height: 100%;
+  padding-top: 4.43px;
+  padding-bottom: 4.43px;
+  justify-content: center;
+  align-items: center;
+  gap: 9.74px;
+  display: inline-flex;
 }
 .L2 {
   animation: moveDot1 1s infinite linear;
   /* animation: dot-elastic-before 1s infinite linear; */
-  width: 14.17px; height: 23.47px; background: #356F9F; border-radius: 221.43px;
+  width: 14.17px;
+  height: 23.47px;
+  background: #356f9f;
+  border-radius: 221.43px;
 }
 .L3 {
   animation: moveDot2 1s infinite linear;
-  width: 14.17px; height: 15.06px; opacity: 0.70; background: #356F9F; border-radius: 221.43px;
+  width: 14.17px;
+  height: 15.06px;
+  opacity: 0.7;
+  background: #356f9f;
+  border-radius: 221.43px;
 }
 .L4 {
   animation: moveDot3 1s infinite linear;
-  width: 14.17px; height: 14.61px; opacity: 0.30; background: #356F9F; border-radius: 221.43px;
+  width: 14.17px;
+  height: 14.61px;
+  opacity: 0.3;
+  background: #356f9f;
+  border-radius: 221.43px;
 }
-
-
 
 @keyframes moveDot1 {
   0% {
@@ -879,8 +917,6 @@
   }
 }
 
-
-
 .overlayNoRFQ {
   width: 321px;
   /* height:576px; */
@@ -895,5 +931,5 @@
   /* margin-top: 80px;
   margin-left: 15px; */
   /* animation: fadeInScaleUp 0.3s ease-out forwards; */
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
 }
