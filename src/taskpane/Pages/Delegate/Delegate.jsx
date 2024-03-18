@@ -345,6 +345,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   console.log("Classify Email-SA: ", classifyEmail.shipping_address);
   console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
+  console.log("shipping_address_update : ", shippingAddress)
 
 
   const DelegeBtn2 = () => {
