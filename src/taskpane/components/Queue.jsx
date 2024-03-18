@@ -10,44 +10,68 @@ import Footer from "./Footer/Footer";
 import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
+
 const Queue = () => {
   const history = useHistory();
-  // Dummy data
-  
-  const [queueData, setQueueData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [queueData, setQueueData] = useState([]);
+  
+
   useEffect(() => {
     const fetchQueueData = async () => {
       try {
-        const res = await axios.get(
-          "http://127.0.0.1:8000/api/QueueDetails/"
-        );
-        setQueueData(res.data.data)
+        const res = await axios.get("http://127.0.0.1:8000/api/QueueDetails/");
+        setQueueData(res.data.data);
         console.log("Queue Data API response from backend: ", res.data);
       } catch (error) {
         console.error("Error occurred while calling API:", error);
       }
     };
-    
+
     fetchQueueData(); // Call the fetch function here, not inside itself
-  }, []); 
+  }, []); // Empty dependency array to run the effect only once on component mount
+
+  console.log("QueueData", queueData);
 
   // Filter data based on the search query
   const filteredData = queueData.filter((rowData) =>
     rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  
-  
-  const handleStatusClick = (customerName, customerEmail, customerSubject) => {
-    // const encodedSubject = encodeURIComponent(customerSubject); // Encode the subject
-    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${customerSubject}`);
-    console.log("queue subject", customerSubject)
-    // console.log("queue sub 2", encodedSubject)
+  // const handleStatusClick = () => {
+  //   navigate("/pending");
+  // };
+
+  // const handleStatusClick = (customerName) => {
+  //   navigate("/pending", { state: { customerName } });
+  // };
+
+  // const handleStatusClick = (customerName, customerEmail) => {
+  //   navigate("/pending", { state: { customerName, customerEmail } });
+  // };
+  // const [rfq, setRfq] = useState(null);
+  const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject) => {
+    // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
+    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`);
+    console.log("RFQ: ", RFQ_ID)
+    console.log("QueueDate: ", date)
+    // setRfq(RFQ_ID)
   };
+
+  // useEffect(() => {
+  //   const fetchCustomerDetails = async () => {
+  //     try {
+  //       if (rfq) {
+  //         const res = await axios.get(`http://127.0.0.1:8000/api/getEmailDetails/${rfq}/`);
+  //         console.log("Customer API response from backend: ", res.data);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error occurred while calling API:", error);
+  //     }
+  //   };
   
-
-
+  //   fetchCustomerDetails();
+  // }, [rfq]);
   
 
   return (
@@ -129,6 +153,7 @@ const Queue = () => {
               </div>
               <div className="QueueRowParent-2a">
                 <div className="QueueRowChild-2b">
+              
                   <div
                     className="QueueRowCell-2a"
                     style={{
@@ -142,15 +167,21 @@ const Queue = () => {
                           : "inherit", // Default color
                     }}
                     onClick={() => {
-                      if (rowData.status === "Sent") {
-                         handleStatusClick(rowData.customer_name, rowData.customer_email, rowData.customer_subject);
-                        // <Pending customerName={rowData.customer_name} customerEmail={rowData.customer_email} />
-                       
+                      if (rowData.status === "Sent" || rowData.status === "Vendor quote pending") {
+                        // navigate("/pending",
+                        // { customerName: rowData.customer_name })
+                        // ;
+                        // handleStatusClick(rowData.customer_name);
+                        // handleStatusClick(rowData.customer_name, rowData.customer_email);
+                        handleStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
+                          ,rowData.date, rowData.time, rowData.customer_response_subject
+                          );
                       }
                     }}
                   >
                     {rowData.status}
                   </div>
+                     
                   {rowData.status !== "Sent" && (
                     <div className="QueueRowCell-2b">{rowData.day}</div>
                   )}

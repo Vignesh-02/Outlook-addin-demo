@@ -50,6 +50,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const [rfq_id, setRfq_id] = useState(null);
 
   const [customerBody, setCustomerBody] = useState(null);
+  const [customerSubject, setCustomerSubject] = useState(null);
+
   const [vendorBody, setVendorBody] = useState(null);
 
   const [vendordetail, setVendorDetails] = useState([]);
@@ -290,6 +292,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             customer_email: emailDetails.body,
             RFQ_ID: rfq_id,
             status: "Sent",
+            customer_response: customerBody, // change
+            customer_response_subject: customerSubject
           });
           console.log("send queue details API response from backend: ", result.data);
         } catch (error) {
@@ -484,9 +488,11 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           const customerResponse = res.data.Customer_quote.Body;
           //  const vendorResponse = res.data.vendor_1.Body
           responseAdd(customerResponse);
-        //   setCustomerBody(customerResponse);
+          // setCustomerBody(customerResponse);
           console.log("Customer's Body:", customerBody);
           //   console.log("Vendor's Body:", vendorBody);
+          setCustomerSubject(res.data.Customer_quote.Subject);
+
 
           const vendorDetails = Object.values(res.data).filter((obj) => obj.Vendor_Email);
           console.log(vendorDetails);
