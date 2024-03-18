@@ -458,7 +458,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
               // cc: customerDetail.cc, // Send customerDetail.cc directly
               cc:ccToSend, // Send customerDetail.cc directly
               company: emailDetails.company,
-              shipping_address: shippingAddress,
+              // shipping_address: shippingAddress,
+              shipping_address: "xyz", // to update
               // email_id: emailDetails.messageId,// to update
               email_id: "AS671EUI",// to update
               email_subject: emailDetails.subject,
