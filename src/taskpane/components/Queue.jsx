@@ -16,9 +16,7 @@ const Queue = () => {
   const token = location?.state.token;
 
   const [queueData, setQueueData] = useState([]);
-
   const [searchQuery, setSearchQuery] = useState("");
-
   useEffect(() => {
     const fetchQueueData = async () => {
       try {
@@ -94,9 +92,9 @@ const Queue = () => {
         console.error("Error occurred while calling API:", error);
       }
     };
-
+    
     fetchQueueData(); // Call the fetch function here, not inside itself
-  }, []);
+  }, []); 
 
   const statuses = [];
 
@@ -104,6 +102,19 @@ const Queue = () => {
   const filteredData = queueData.filter((rowData) =>
     rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  
+  
+  const handleStatusClick = (customerName, customerEmail, customerSubject) => {
+    // const encodedSubject = encodeURIComponent(customerSubject); // Encode the subject
+    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&customerSubject=${customerSubject}`);
+    console.log("queue subject", customerSubject)
+    // console.log("queue sub 2", encodedSubject)
+  };
+  
+
+
+  
 
   return (
     <div className="queuePage">
@@ -196,10 +207,19 @@ const Queue = () => {
                           ? "rgba(52, 168, 83, 1)" // Green color for "Received quotes"
                           : "inherit", // Default color
                     }}
+                    onClick={() => {
+                      if (rowData.status === "Sent") {
+                         handleStatusClick(rowData.customer_name, rowData.customer_email, rowData.customer_subject);
+                        // <Pending customerName={rowData.customer_name} customerEmail={rowData.customer_email} />
+                       
+                      }
+                    }}
                   >
                     {rowData.status}
                   </div>
-                  {rowData.status !== "Sent" && <div className="QueueRowCell-2b">{rowData.day}</div>}
+                  {rowData.status !== "Sent" && (
+                    <div className="QueueRowCell-2b">{rowData.day}</div>
+                  )}
                 </div>
               </div>
               <div className="QueueRowParent-3a">
