@@ -57,12 +57,7 @@ const Login = ({ emailAddress, ...props}) => {
             // localStorage.setItem('emailAddress', emailAddress);
             // Check if the user's email is in the permittedEmails array
             // !permittedEmails.includes(emailAddress)
-            if (!parts[1].toLowerCase() === 'outlook.com') {
-            //   Redirect to a different page if the email is not permitted
-              history.push('/unauthorized'); // Change '/unauthorized' to your desired route
-            }
-            
-            if(permittedEmails.includes(emailAddress)){
+            if (parts[1].toLowerCase() === 'outlook.com') {
                 const authPage = "https://outlook-addin-v9y9.onrender.com/assets/auth-dialog.html";
                 Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
                 if (result.status === Office.AsyncResultStatus.Succeeded) {
@@ -72,7 +67,14 @@ const Login = ({ emailAddress, ...props}) => {
                     console.error('Failed to open dialog:', result.error);
                 }
                 });
+
+            //   Redirect to a different page if the email is not permitted
+               // Change '/unauthorized' to your desired route
             }
+            else{
+                history.push('/unauthorized');
+            }
+            
             
         }else{
             console.log('Choose an organization')

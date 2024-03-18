@@ -5,17 +5,16 @@
 <DefaultLocale>en-US</DefaultLocale>
 <DisplayName DefaultValue="Wise Sales"/>
 <Description DefaultValue="A template to get started."/>
-<IconUrl DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/wise-sales-logo-64.png"/>
-<HighResolutionIconUrl DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-128.png"/>
+<IconUrl DefaultValue="https://3276-182-48-208-239.ngrok-free.app/assets/wise-sales-logo-64.png"/>
+<HighResolutionIconUrl DefaultValue="https://3276-182-48-208-239.ngrok-free.app/assets/icon-128.png"/>
 <SupportUrl DefaultValue="https://www.contoso.com/help"/>
 <AppDomains>
-<AppDomain>https://outlook-addin-v9y9.onrender.com</AppDomain>
+<AppDomain>https://3276-182-48-208-239.ngrok-free.app</AppDomain>
 <AppDomain>https://jsonplaceholder.typicode.com</AppDomain>
 <AppDomain>http://50.19.4.239/ml-backend</AppDomain>
 <AppDomain>https://api-dev.wise-sales.com</AppDomain>
 <AppDomain>https://graph.microsoft.com/</AppDomain>
 <AppDomain>https://login.microsoftonline.com/</AppDomain>
-<AppDomain>https://outlook-addin-v9y9.onrender.com</AppDomain>
 <AppDomain>http://127.0.0.1:8000</AppDomain>
 </AppDomains>
 <Hosts>
@@ -29,7 +28,7 @@
 <FormSettings>
 <Form xsi:type="ItemRead">
 <DesktopSettings>
-<SourceLocation DefaultValue="https://outlook-addin-v9y9.onrender.com/taskpane.html"/>
+<SourceLocation DefaultValue="https://3276-182-48-208-239.ngrok-free.app/taskpane.html"/>
 <RequestedHeight>250</RequestedHeight>
 </DesktopSettings>
 </Form>
@@ -103,13 +102,13 @@
 </Hosts>
 <Resources>
 <bt:Images>
-<bt:Image id="Icon.16x16" DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-16.png"/>
-<bt:Image id="Icon.32x32" DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-32.png"/>
-<bt:Image id="Icon.80x80" DefaultValue="https://outlook-addin-v9y9.onrender.com/assets/icon-80.png"/>
+<bt:Image id="Icon.16x16" DefaultValue="https://3276-182-48-208-239.ngrok-free.app/assets/icon-16.png"/>
+<bt:Image id="Icon.32x32" DefaultValue="https://3276-182-48-208-239.ngrok-free.app/assets/icon-32.png"/>
+<bt:Image id="Icon.80x80" DefaultValue="https://3276-182-48-208-239.ngrok-free.app/assets/icon-80.png"/>
 </bt:Images>
 <bt:Urls>
-<bt:Url id="Commands.Url" DefaultValue="https://outlook-addin-v9y9.onrender.com/commands.html"/>
-<bt:Url id="Taskpane.Url" DefaultValue="https://outlook-addin-v9y9.onrender.com/taskpane.html"/>
+<bt:Url id="Commands.Url" DefaultValue="https://3276-182-48-208-239.ngrok-free.app/commands.html"/>
+<bt:Url id="Taskpane.Url" DefaultValue="https://3276-182-48-208-239.ngrok-free.app/taskpane.html"/>
 </bt:Urls>
 <bt:ShortStrings>
 <bt:String id="GroupLabel" DefaultValue="Contoso Add-in"/>
@@ -122,8 +121,8 @@
 </Resources>
 <WebApplicationInfo>
     <Id>1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Id>
-    <Resource>api://outlook-addin-v9y9.onrender.com//1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Resource>
-    <!-- outlook-addin-v9y9.onrender.com -->
+    <Resource>api://3276-182-48-208-239.ngrok-free.app//1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f</Resource>
+    <!-- 3276-182-48-208-239.ngrok-free.app -->
     <Scopes>
         <Scope>openid</Scope>
         <Scope>user.read</Scope>
