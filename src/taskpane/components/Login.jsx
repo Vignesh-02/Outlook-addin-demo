@@ -51,9 +51,13 @@ const Login = ({ emailAddress, ...props}) => {
             window.localStorage.setItem('emailAddress', emailAddress);   
             const permittedEmails = ['vigu1401@outlook.com', 'viguito1401@outlook.com', 'brando.m@wise-sales.com', 'onelab_anuradha@cinestox.com', 'anuradhamunde25@outlook.com', 'anumunde123@outlook.com', 'anumunde10@outlook.com'];
             console.log('emailAddress ', emailAddress);
+
+            const parts = emailAddress.split('@');
+
             // localStorage.setItem('emailAddress', emailAddress);
             // Check if the user's email is in the permittedEmails array
-            if (!permittedEmails.includes(emailAddress)) {
+            // !permittedEmails.includes(emailAddress)
+            if (parts[1].toLowerCase() === 'outlook.com') {
             //   Redirect to a different page if the email is not permitted
               history.push('/unauthorized'); // Change '/unauthorized' to your desired route
             }
