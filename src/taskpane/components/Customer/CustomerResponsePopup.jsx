@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./CustomerResponsePopup.css"; // Import the CSS file
-// import cross from "../../../public/Cross.png"
+import cross from "../../../../public/Cross.png"
 import Tiptap1 from "./Tiptap1";
 import Tiptap2 from "./Tiptap2";
 import { useSelector } from "react-redux";
@@ -136,7 +136,7 @@ const CustomerResponsePopup = ({ close, customerBody, setCustomerBody }) => {
             </div>
           </div>
           <div className="XnixLineCross">
-            <img className="Vector47" onClick={close} />
+            <img src={cross}  className="Vector47" onClick={close} />
           </div>
         </div>
       </div>

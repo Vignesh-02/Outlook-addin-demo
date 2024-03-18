@@ -13,6 +13,7 @@ const Buttoncv = ({
   customerBody,
   vendorBody,
   vendordetail,
+  selectedRFQ
 }) => {
   const [loadingPercentage, setLoadingPercentage] = useState(0);
   const [showLoader, setShowLoader] = useState(true);
@@ -64,6 +65,7 @@ const Buttoncv = ({
             togglePopup={togglePopup1}
             customerBody={customerBody}
           />
+          <div style={{ display: selectedRFQ ? 'block' : 'none' }}>
           <Vendor
             isPopupOpenRegenerate={isPopupOpenRegenerate}
             togglePopupRegenerate={togglePopupRegenerate}
@@ -72,6 +74,9 @@ const Buttoncv = ({
             vendorBody={vendorBody}
             vendordetail={vendordetail}
           />
+      </div>
+          
+          
         </>
       )}
     </div>

@@ -64,8 +64,8 @@ const Customer = ({ isPopupOpenRegenerate, togglePopupRegenerate, isOpen, toggle
           <div className="V2-2">
             <div className="V2-3">
               <div className="V2-4">
-                <div className="V2-5">
-                {customerResponseBody}
+                <div className="V2-5"
+          dangerouslySetInnerHTML={{ __html: customerResponseBody }}>
                 </div>
               </div>
             </div>

@@ -3,10 +3,17 @@ import "./Notrfq.css";
 
 import alert from "../../../../public/AlertError.png";
 import action from "../../../../public/Actions.png";
-
+import { useHistory } from "react-router-dom";
 
 
 const Notrfq = ({close}) => {
+    const history = useHistory();
+
+    const handleClose = () => {
+        close();
+        history.push('/');
+    }
+
   return (
     <div className="NOT-RFQDiv">
     <div className="NOT-RFQDiv-1">
@@ -22,7 +29,7 @@ const Notrfq = ({close}) => {
                 <div className="NOT-RFQDiv-3c">
                     <div className="NOT-RFQDiv-3d">
                         <div className="NOT-RFQDiv-3e">
-                        <img src={action} alt="action" onClick={close}/> 
+                        <img src={action} alt="action" onClick={handleClose}/> 
                         </div>
                     </div>
                 </div>

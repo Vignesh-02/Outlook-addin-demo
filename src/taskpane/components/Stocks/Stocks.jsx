@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Stocks.css";
 import "@fontsource/orbitron";
 import "@fontsource/orbitron/400.css";
 import Extend from "../../../../public/extender.png";
+import { useSelector } from "react-redux";
+import { addMaterialData, updateMaterialAtIndex } from "../../../Store/action/materialAction";
+
 
 const Stocks = ({classifyEmail }) => {
   // const classifyEmail = {
@@ -57,15 +60,99 @@ const Stocks = ({classifyEmail }) => {
   //   "RFQ_ID": "INTR100200GY24821"
   // };
 
+
   const [selectedProduct, setSelectedProduct] = useState(1);
+
+  const  {materialData}  = useSelector(
+    (state) => state.material
+  );
+    // const [selectedProduct, setSelectedProduct2] = useState(1);
+  const [selectedProductData, setSelectedProductData] = useState(null); // Data for the selected product
+  const [editableFields, setEditableFields] = useState({
+    shape: false,
+    dimensions: false,
+    color: false,
+    unit: false,
+    specification: false,
+  });
 
   const products = Object.keys(classifyEmail)
     .filter((key) => key.startsWith("product_"))
     .map((key) => classifyEmail[key]);
 
+    console.log('Products ', products);
+
   const handleClick = (productId) => {
     setSelectedProduct(productId);
   };
+
+  const handleFieldChange = (event, field) => {
+        if (event.key === "Enter") {
+          const newData = {
+            ...selectedProductData,
+            [field]: event.target.value,
+          };
+          updateMaterialAtIndex(selectedProduct-1, newData)
+          // Save data to local storage
+        //   window.localStorage.setItem(
+        //     `selectedProductData_${selectedProduct}`,
+        //     JSON.stringify(newData)
+        //   );
+          setSelectedProductData(newData);
+          setEditableFields((prevState) => ({
+            ...prevState,
+            [field]: false, // Exit edit mode
+          }));
+        }
+      };
+
+        const toggleEditMode = (field) => {
+    setEditableFields((prevState) => ({
+      ...prevState,
+      [field]: true,
+    }));
+  };
+
+  console.log('MTERIAL  DATA', materialData)
+//   const defaultProduct = classifyEmail[`product_${selectedProduct}`];
+//     console.log('defaultProduct' , defaultProduct);
+     // Corrected variable name here
+  //    const defaultProduct = products[`product_${selectedProduct}`];
+
+    // setSelectedProductData(defaultProduct);
+
+    // console.log('selected Product Data', selectedProductData)
+  // Load saved data from localStorage on component mount
+  useEffect(() => {
+    console.log('entered useEffect')
+    let getMaterialData = null;
+    addMaterialData(products);
+
+    if(selectedProduct){
+        getMaterialData = materialData[selectedProduct-1];
+    }
+    setSelectedProductData(getMaterialData);
+
+    // const savedData = window.localStorage.getItem(
+    //   `selectedProductData_${selectedProduct}`
+    // );
+
+    // if (savedData) {
+    //     console.log('saving data', savedData)
+    //   setSelectedProductData(JSON.parse(savedData));
+    // } else {
+      // If no saved data found, set the default data for the selected product
+    //   const defaultProduct = classifyEmail[`product_${selectedProduct}`];
+    //   console.log('defaultProduct' , defaultProduct);
+       // Corrected variable name here
+    //    const defaultProduct = products[`product_${selectedProduct}`];
+
+    //   setSelectedProductData(defaultProduct);
+    
+  }, [selectedProduct]);
+
+
+  console.log('selected product data', selectedProductData);
 
   const calculateDimension = (size) => {
     if (!size) return null;
@@ -130,13 +217,42 @@ const Stocks = ({classifyEmail }) => {
                   </div>
                 </div>
                 <div className="Stock-Vent-Value1Sec-Shape-VP">
-                  <div className="Stock-Vent-Value1Sec-Shape-VC">
-                    <div className="Stock-Vent-Value1Sec-Shape-Val-P">
-                      <div className="Stock-Vent-Value1Sec-Shape-Val-C">
-                        <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
-                        <div className="Stock-Vent-Value1Sec-Shape-Value">
-                          {products[selectedProduct - 1]?.shape || ""}
-                          </div>
+                   <div className="Stock-Vent-Value1Sec-Shape-VC">
+                     <div className="Stock-Vent-Value1Sec-Shape-Val-P">
+                       <div className="Stock-Vent-Value1Sec-Shape-Val-C">
+                         <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
+                {editableFields.shape ? (
+                            <input
+                              type="text"
+                              value={selectedProductData.shape}
+                              onChange={(e) =>
+                                setSelectedProductData((prevData) => ({
+                                  ...prevData,
+                                  shape: e.target.value,
+                                }))
+                              }
+                              onBlur={() =>
+                                setEditableFields((prevState) => ({
+                                  ...prevState,
+                                  shape: false,
+                                }))
+                              }
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  handleFieldChange(e, "shape");
+                                }
+                              }}
+                              style={{ width: "100%", border: "transparent" }}
+                            />
+                          ) : (
+                            <div
+                              className="Stock-Vent-Value1Sec-Shape-Value"
+                              onDoubleClick={() => toggleEditMode("shape")}
+                            >
+                              {/* {selectedProductData.shape} */}
+                              {products[selectedProduct - 1]?.shape || ""}
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -157,25 +273,59 @@ const Stocks = ({classifyEmail }) => {
                   </div>
                 </div>
                 <div className="Stock-Vent-Value1Sec-Shape-VP">
-                  <div className="Stock-Vent-Value1Sec-Shape-VC">
-                    <div className="Stock-Vent-Value1Sec-Shape-Val-P">
-                      <div className="Stock-Vent-Value1Sec-Shape-Val-C">
-                        <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
-                        <span
+                   <div className="Stock-Vent-Value1Sec-Shape-VC">
+                     <div className="Stock-Vent-Value1Sec-Shape-Val-P">
+                       <div className="Stock-Vent-Value1Sec-Shape-Val-C">
+                         <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
+                           {editableFields.dimensions ? (
+                            <input
+                              type="text"
+                              value={
+                                selectedProductData.size
+                                  ? calculateDimension(
+                                      selectedProductData.size
+                                    )
+                                  : ""
+                              }
+                              onChange={(e) =>
+                                setSelectedProductData((prevData) => ({
+                                  ...prevData,
+                                  size: e.target.value,
+                                }))
+                              }
+                              onBlur={() =>
+                                setEditableFields((prevState) => ({
+                                  ...prevState,
+                                  dimensions: false,
+                                }))
+                              }
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  handleFieldChange(e, "size");
+                                }
+                              }}
+                              style={{ width: "100%", border: "transparent" }}
+                            />
+                          ) : (
+                            <span
                               style={{
                                 color: "#080808",
                                 fontSize: "10px",
                                 fontFamily: "Helvetica Neue",
-                                fontWeight: 400,
+                                fontWeight: 100,
                                 lineHeight: "20px",
                                 letterSpacing: "0.50px",
                                 wordWrap: "break-word",
                               }}
+                              onDoubleClick={() =>
+                                toggleEditMode("dimensions")
+                              }
                             >
-                            {products[selectedProduct - 1]?.size
-                              ? calculateDimension(products[selectedProduct - 1].size)
-                              : ""}
-                          </span>
+                              {/* {selectedProductData.size
+                                ? calculateDimension(selectedProductData.size)
+                                : ""} */}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -194,10 +344,41 @@ const Stocks = ({classifyEmail }) => {
                   </div>
                 </div>
                 <div className="Stock-Vent-Value1Sec-Shape-VP">
-                  <div className="Stock-Vent-Value1Sec-Shape-VC">
-                    <div className="Stock-Vent-Value1Sec-Shape-Val-P">
-                      <div className="Stock-Vent-Value1Sec-Shape-Val-C">
-                        <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
+                   <div className="Stock-Vent-Value1Sec-Shape-VC">
+                     <div className="Stock-Vent-Value1Sec-Shape-Val-P">
+                       <div className="Stock-Vent-Value1Sec-Shape-Val-C">
+                         <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
+                         {editableFields.color ? (
+                            <input
+                              type="text"
+                              value={selectedProductData.color}
+                              onChange={(e) =>
+                                setSelectedProductData((prevData) => ({
+                                  ...prevData,
+                                  color: e.target.value,
+                                }))
+                              }
+                              onBlur={() =>
+                                setEditableFields((prevState) => ({
+                                  ...prevState,
+                                  color: false,
+                                }))
+                              }
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  handleFieldChange(e, "color");
+                                }
+                              }}
+                              style={{ width: "100%", border: "transparent" }}
+                            />
+                          ) : (
+                            <div
+                              className="Stock-Vent-Value1Sec-Shape-Value"
+                              onDoubleClick={() => toggleEditMode("color")}
+                            >
+                              {/* {selectedProductData.color} */}
+                              </div>
+                                                      )}
                           <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.color || ""}</span>
                         </div>
                       </div>
@@ -205,6 +386,7 @@ const Stocks = ({classifyEmail }) => {
                   </div>
                 </div>
               </div>
+
 
               <div className="Stock-Vent-Value1Sec">
                 <div className="Stock-Vent-Value1Sec-P">
@@ -217,14 +399,43 @@ const Stocks = ({classifyEmail }) => {
                   </div>
                 </div>
                 <div className="Stock-Vent-Value1Sec-Shape-VP">
-                  <div className="Stock-Vent-Value1Sec-Shape-VC">
-                    <div className="Stock-Vent-Value1Sec-Shape-Val-P">
-                      <div className="Stock-Vent-Value1Sec-Shape-Val-C">
-                        <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
-                          <span className="Stock-Vent-Value1Sec-Shape-Value">
-                          {/* Unit */}
-                          {products[selectedProduct - 1]?.unit || ""}
-                          </span>
+                   <div className="Stock-Vent-Value1Sec-Shape-VC">
+                     <div className="Stock-Vent-Value1Sec-Shape-Val-P">
+                       <div className="Stock-Vent-Value1Sec-Shape-Val-C">
+                         <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
+                         {editableFields.unit ? (
+                            <input
+                              type="text"
+                              value={selectedProductData.unit}
+                              onChange={(e) =>
+                                setSelectedProductData((prevData) => ({
+                                  ...prevData,
+                                  unit: e.target.value,
+                                }))
+                              }
+                              onBlur={() =>
+                                setEditableFields((prevState) => ({
+                                  ...prevState,
+                                  unit: false,
+                                }))
+                              }
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  handleFieldChange(e, "unit");
+                                }
+                              }}
+                              style={{ width: "100%", border: "transparent" }}
+                            />
+                          ) : (
+                            <div
+                              className="Stock-Vent-Value1Sec-Shape-Value"
+                              onDoubleClick={() => toggleEditMode("unit")}
+                            >
+                              {/* {selectedProductData.unit} */}
+                              {products[selectedProduct - 1]?.unit || ""}
+                            </div>
+                          )}
+                          {/* <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.color || ""}</span> */}
                         </div>
                       </div>
                     </div>
@@ -243,17 +454,49 @@ const Stocks = ({classifyEmail }) => {
                   </div>
                 </div>
                 <div className="Stock-Vent-Value1Sec-Shape-VP">
-                  <div className="Stock-Vent-Value1Sec-Shape-VC">
-                    <div className="Stock-Vent-Value1Sec-Shape-Val-P">
-                      <div className="Stock-Vent-Value1Sec-Shape-Val-C">
-                        <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
-                          <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.specification || ""}</span>
+                   <div className="Stock-Vent-Value1Sec-Shape-VC">
+                     <div className="Stock-Vent-Value1Sec-Shape-Val-P">
+                       <div className="Stock-Vent-Value1Sec-Shape-Val-C">
+                         <div className="Stock-Vent-Value1Sec-Shape-Val-C1">
+                           {editableFields.specification ? (
+                            <input
+                              type="text"
+                              value={selectedProductData.specification}
+                              onChange={(e) =>
+                                setSelectedProductData((prevData) => ({
+                                  ...prevData,
+                                  specification: e.target.value,
+                                }))
+                              }
+                              onBlur={() =>
+                                setEditableFields((prevState) => ({
+                                  ...prevState,
+                                  specification: false,
+                                }))
+                              }
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  handleFieldChange(e, "specification");
+                                }
+                              }}
+                              style={{ width: "100%", border: "transparent" }}
+                            />
+                          ) : (
+                            <div
+                              className="Stock-Vent-Value1Sec-Shape-Value"
+                              onDoubleClick={() => toggleEditMode("specification")}
+                            >
+                              {/* {selectedProductData.specification} */}
+                              {products[selectedProduct - 1]?.specification || ""}
+                            </div>
+                          )}
+                          {/* <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.color || ""}</span> */}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>              
             </div>
           </div>
         </div>
