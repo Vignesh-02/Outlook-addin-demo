@@ -57,7 +57,7 @@ const Login = ({ emailAddress, ...props}) => {
             // localStorage.setItem('emailAddress', emailAddress);
             // Check if the user's email is in the permittedEmails array
             // !permittedEmails.includes(emailAddress)
-            if (parts[1].toLowerCase() === 'outlook.com') {
+            if (!parts[1].toLowerCase() === 'outlook.com') {
             //   Redirect to a different page if the email is not permitted
               history.push('/unauthorized'); // Change '/unauthorized' to your desired route
             }
