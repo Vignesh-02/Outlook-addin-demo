@@ -345,7 +345,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   console.log("Classify Email-SA: ", classifyEmail.shipping_address);
   console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
-  console.log("shipping_address_update2 : ", shippingAddress)
+  console.log("shipping_address_update5: ", shippingAddress)
 
 
   const DelegeBtn2 = () => {
@@ -444,8 +444,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     // console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
   
     if (classifyEmail && classifyEmail.RFQ_status === 1) {
-      // const getEmailDetails = async () => {
-        const getEmailDetails = async (shippingAddress) => {
+      const getEmailDetails = async () => {
         try {
           // const ccToSend = customerDetail.cc !== null && customerDetail.cc !== undefined ? customerDetail.cc : []; // Check if cc is null or undefined, if so, set it to an empty array
           let ccToSend = []; // Initialize ccToSend as an empty array
@@ -461,7 +460,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
               cc:ccToSend, // Send customerDetail.cc directly
               company: emailDetails.company,
               // shipping_address: shippingAddress,
-              shipping_address: shippingAddress, // to update
+              shipping_address: "xyz", // to update
               // email_id: emailDetails.messageId,// to update
               email_id: "AS671EUI",// to update
               email_subject: emailDetails.subject,
@@ -477,8 +476,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         }
       };
   
-      // getEmailDetails();
-      getEmailDetails(classifyEmail.shipping_address || "N/A");
+      getEmailDetails();
     } else {
       console.log("RFQ_status is not 1 or classifyEmail is not available, skipping API call.");
     }
