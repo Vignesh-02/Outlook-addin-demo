@@ -76,6 +76,18 @@ const Stocks = ({classifyEmail }) => {
     specification: false,
   });
 
+  useEffect(() => {
+    console.log('entered useEffect')
+    let getMaterialData = null;
+    addMaterialData(products);
+
+    if(selectedProduct){
+        getMaterialData = materialData[selectedProduct-1];
+    }
+    setSelectedProductData(getMaterialData);
+    
+}, [selectedProduct]);
+
   const products = Object.keys(classifyEmail)
     .filter((key) => key.startsWith("product_"))
     .map((key) => classifyEmail[key]);
@@ -85,6 +97,7 @@ const Stocks = ({classifyEmail }) => {
   const handleClick = (productId) => {
     setSelectedProduct(productId);
   };
+
 
   const handleFieldChange = (event, field) => {
         if (event.key === "Enter") {
@@ -113,7 +126,7 @@ const Stocks = ({classifyEmail }) => {
     }));
   };
 
-  console.log('MTERIAL  DATA', materialData)
+  console.log('MATERIAL  DATA', materialData)
 //   const defaultProduct = classifyEmail[`product_${selectedProduct}`];
 //     console.log('defaultProduct' , defaultProduct);
      // Corrected variable name here
@@ -123,15 +136,8 @@ const Stocks = ({classifyEmail }) => {
 
     // console.log('selected Product Data', selectedProductData)
   // Load saved data from localStorage on component mount
-  useEffect(() => {
-    console.log('entered useEffect')
-    let getMaterialData = null;
-    addMaterialData(products);
+  
 
-    if(selectedProduct){
-        getMaterialData = materialData[selectedProduct-1];
-    }
-    setSelectedProductData(getMaterialData);
 
     // const savedData = window.localStorage.getItem(
     //   `selectedProductData_${selectedProduct}`
@@ -149,7 +155,6 @@ const Stocks = ({classifyEmail }) => {
 
     //   setSelectedProductData(defaultProduct);
     
-  }, [selectedProduct]);
 
 
   console.log('selected product data', selectedProductData);
