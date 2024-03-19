@@ -357,6 +357,14 @@
   /* background-color: orange; */
 }
 
+.Quote-RFQ-Section.collapsed {
+  height: 54px;
+}
+.Quote-RFQ-EmailParent.collapsed {
+  height: 27px;
+}
+
+
 /* DETAILS TABLE */
 .Quote-Table {
   /* background-color: pink; */
