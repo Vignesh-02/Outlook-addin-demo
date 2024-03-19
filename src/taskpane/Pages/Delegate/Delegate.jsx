@@ -713,8 +713,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                   <Buttoncv
                     isPopupOpen1={isPopupOpen1}
                     togglePopup1={togglePopup1}
-                    isPopupOpenRegenerate={isPopupOpenRegenerate}
-                    togglePopupRegenerate={togglePopupRegenerate}
+                    // isPopupOpenRegenerate={isPopupOpenRegenerate}
+                    // togglePopupRegenerate={togglePopupRegenerate}
                     isPopupOpen2={isPopupOpen2}
                     togglePopup2={togglePopup2}
                     customerBody={customerBody}

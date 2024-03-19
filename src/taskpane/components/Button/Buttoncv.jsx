@@ -4,8 +4,8 @@ import Vendor from "../Vendor/Vendor";
 import "./Buttoncv.css";
 
 const Buttoncv = ({
-  isPopupOpenRegenerate,
-  togglePopupRegenerate,
+  // isPopupOpenRegenerate,
+  // togglePopupRegenerate,
   isPopupOpen1,
   togglePopup1,
   isPopupOpen2,
@@ -58,15 +58,15 @@ const Buttoncv = ({
       {loadingPercentage === 100 && (
         <>
           <Customer
-            isPopupOpenRegenerate={isPopupOpenRegenerate}
-            togglePospupRegenerate={togglePopupRegenerate}
+            // isPopupOpenRegenerate={isPopupOpenRegenerate}
+            // togglePospupRegenerate={togglePopupRegenerate}
             isOpen={isPopupOpen1}
             togglePopup={togglePopup1}
             customerBody={customerBody}
           />
           <Vendor
-            isPopupOpenRegenerate={isPopupOpenRegenerate}
-            togglePopupRegenerate={togglePopupRegenerate}
+            // isPopupOpenRegenerate={isPopupOpenRegenerate}
+            // togglePopupRegenerate={togglePopupRegenerate}
             isOpen={isPopupOpen2}
             togglePopup={togglePopup2}
             vendorBody={vendorBody}

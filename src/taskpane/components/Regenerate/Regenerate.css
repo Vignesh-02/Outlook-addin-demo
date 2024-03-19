@@ -1,0 +1,216 @@
+.RegeneratePage {
+  width: 289px;
+  height: 209px;
+  background: white;
+  border-radius: 6px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.RegeneratePage-Div1 {
+width: 289px;
+height: 38px;
+  align-self: stretch;
+  background: #f9f9f9;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.RegeneratePage-Div1-A {
+  flex: 1 1 0;
+  height: 38px;
+  padding-left: 11px;
+  padding-right: 11px;
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.RegeneratePage-Div1-B {
+  flex: 1 1 0;
+  height: 13px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.RegeneratePage-Div1-B-I {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.RegeneratePage-Div1-B-IA {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 10px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+.RegeneratePage-Div1-C {
+  width: 18px;
+  height: 18px;
+  padding: 5.25px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+.RegeneratePage-Div1-C-Img {
+  width: 18px;
+  height: 18px;
+  /* border: 1px black solid; */
+}
+/* sec - 2 */
+.RegeneratePage-Div2 {
+    width: 289px;
+  align-self: stretch;
+  height: 172px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  overflow: hidden;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  /* background-color: pink; */
+}
+.RegeneratePage-Div2-A {
+  width: 259px;
+  height: 90px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  /* background-color: greenyellow; */
+}
+.RegeneratePage-Div2-B {
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.RegeneratePage-Div2-C {
+  align-self: stretch;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+.RegeneratePage-Div2-D {
+  flex: 1 1 0;
+  height: 30px;
+  background: #f9f9f9;
+  border: 1px rgba(58, 53, 65, 0.12) solid;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.RegeneratePage-Div2-E {
+  flex: 1 1 0;
+  height: 19px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 2px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+  cursor: pointer;
+}
+.RegeneratePage-Div2-F {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+.RegeneratePage-Div2-G {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: inline-flex;
+}
+.RegeneratePage-Div2-Text {
+  color: rgba(58, 53, 65, 0.87);
+  font-size: 10px;
+  font-family: Orbitron;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  word-wrap: break-word;
+}
+
+/* sec - 3 */
+.RegeneratePage-Div3 {
+  width: 249px;
+  height: 31px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  display: inline-flex;
+  /* background-color: yellow; */
+}
+.RegeneratePage-Div3-A {
+  flex: 1 1 0;
+  height: 31px;
+  /* padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px; */
+  border-radius: 5px;
+  border: 1px #356f9f solid;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  cursor: pointer;
+}
+.RegeneratePage-Div3-A-btn {
+  color: #356f9f;
+  font-size: 12px;
+  font-family: Orbitron;
+  font-weight: 600;
+  letter-spacing: 0.96px;
+  word-wrap: break-word;
+}
+
+.RegeneratePage-Div3-B {
+  flex: 1 1 0;
+  height: 31px;
+  /* padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px; */
+  background: #356f9f;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  cursor: pointer;
+}
+.RegeneratePage-Div3-B-btn {
+  color: white;
+  font-size: 12px;
+  font-family: Orbitron;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.96px;
+  word-wrap: break-word;
+}
