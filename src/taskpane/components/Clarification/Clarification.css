@@ -81,12 +81,12 @@
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
-  background-color: pink;
+  /* background-color: pink; */
 }
 .ClarificationPage-cont2-a {
   width: 269px;
   height: 98px;
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
   align-self: stretch;
   padding: 10px;
   border-left: 1px rgba(58, 53, 65, 0.12) solid;
