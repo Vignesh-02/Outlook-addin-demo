@@ -28,7 +28,7 @@ const Navbar = ({ activePage }) => {
 
   return (
     <div className="nav-table2">
-      <div className="nav-table2Div">
+      <div className="nav-table2Div" onClick={() => history.push(-1)}>
         <img src={ArrowLeft} alt="Logo" />
       </div>
       <div className="nav-table2-Div2">
