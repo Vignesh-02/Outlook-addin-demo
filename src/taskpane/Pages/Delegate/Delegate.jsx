@@ -24,6 +24,7 @@ import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { responseAdd } from "../../../Store/action/customerBodyAction";
+import Clarification from "../../components/Clarification/Clarification";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -52,6 +53,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       state: { selectedOrganization: selectedOrganization }
     });
   }
+
+  
+  const [isPopupClarify, setIsPopupClarify] = useState(false);
+  const togglePopupClarify = () => {
+    console.log("toggle Regenerate");
+    setIsPopupClarify(!isPopupClarify);
+    console.log(isPopupClarify);
+  };
 
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -1004,7 +1013,20 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                 </div>
               </div>
               <div className="Launch-btnParent">
-                <div id="Launch-btn">Clarification</div>
+                <div id="Launch-btn" onClick={togglePopupClarify}>
+                  Clarification
+                  {
+          isPopupClarify && (
+            <Model
+            isOpen={isPopupClarify}
+            onRequestClose={togglePopupClarify}
+            className="overlayNoRFQ"
+          >
+            <Clarification close={togglePopupClarify} />
+          </Model>
+          )
+         }
+                </div>
               </div>
             </div>
           ) : (
