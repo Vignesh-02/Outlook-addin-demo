@@ -1,7 +1,6 @@
 .QuotePage {
   width: 320px;
-  height: 580px;
-  bottom: 50px;
+  height: 568px;
   display: flex;
   padding-top: 10px;
   padding-bottom: 6px;
@@ -15,12 +14,13 @@
 }
 .topbar-frame {
   width: 320px;
-  height: 87.33px;
+  height: 81px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
   display: inline-flex;
+  /* background-color: red; */
 }
 
 /* Section - 1 */
@@ -162,22 +162,22 @@
   word-wrap: break-word;
 }
 .A-div {
-  height: 22px;
-  width: 50px;
+  height: 18px;
+  width: 12px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 4px;
   padding-bottom: 4px;
   background: #356f9f;
   border-radius: 3px;
-  justify-content: left;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   display: flex;
 }
 .A {
   color: white;
-  font-size: 9px;
+  font-size: 14px;
   font-family: Orbitron;
   font-weight: 400;
   letter-spacing: 0.14px;
@@ -195,6 +195,8 @@
   display: inline-flex;
   overflow-y: auto;
   overflow-x: hidden;
+  /* background-color: blueviolet; */
+  margin-top: 7px;
 }
 .Quote-Sec-2::-webkit-scrollbar {
   width: 0px;
@@ -211,12 +213,15 @@
 /* RFQ Section */
 .Quote-RFQ-Section {
   width: 289px;
-  height: 203px;
+  /* height: 203px; */
+  /* height: 236px; */
+  height: 270px;
   border-radius: 6px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
+  /* background-color: green; */
 }
 .Quote-RFQ-Div {
   align-self: stretch;
@@ -255,8 +260,7 @@
   display: inline-flex;
 }
 .Quote-RFQ-Text {
-  color: #080808;
-  /* color: rgba(58, 53, 65, 0.87); */
+  color: rgba(58, 53, 65, 0.87);
   font-size: 10px;
   font-family: Orbitron;
   font-weight: 400;
@@ -277,7 +281,7 @@
 /* RFQ - Email */
 .Quote-RFQ-EmailParent {
   align-self: stretch;
-  height: 176px;
+  height: 218px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   overflow: hidden;
@@ -287,6 +291,7 @@
   align-items: flex-start;
   gap: 3px;
   display: flex;
+  /* background-color: red; */
 }
 .Quote-RFQ-EmailChild {
   align-self: stretch;
@@ -301,13 +306,14 @@
 }
 .Quote-RFQ-EmailDiv {
   flex: 1 1 0;
-  height: 164px;
+  height: 206px;
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
 }
 .Quote-RFQ-EmailSec {
   flex: 1 1 0;
+  height: 206px;
   padding-left: 11px;
   padding-right: 16px;
   flex-direction: column;
@@ -318,42 +324,59 @@
 }
 .Quote-RFQ-Email-Cont {
   align-self: stretch;
-  height: 164px;
+  flex: 1 1 0;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 3px;
   display: flex;
+  overflow-y: auto;
+}
+.Quote-RFQ-Email-Cont::-webkit-scrollbar {
+  width: 0px;
+}
+
+.Quote-RFQ-Email-Cont::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.Quote-RFQ-Email-Cont::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 .Quote-RFQ-Email-Content {
+  /* height: 206px; */
   align-self: stretch;
-  height: 130px;
+  flex: 1 1 0;
   color: #080808;
-  font-size: 13px;
+  font-size: 10px;
   font-family: Helvetica Neue;
-  font-weight: 300;
+  font-weight: 100;
   line-height: 14px;
   letter-spacing: 0.1px;
   word-wrap: break-word;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  -ms-overflow-style: none;
-  overflow-wrap: break-word;
-  word-break: break-all;
+  /* background-color: orange; */
+}
+
+/* For Collapsed */
+.Quote-RFQ-Section.collapsed {
+  height: 54px;
+}
+.Quote-RFQ-EmailParent.collapsed {
+  height: 27px;
 }
 
 /* DETAILS TABLE */
 .Quote-Table {
-  width: 289px;
-  height: 155px;
+  /* background-color: pink; */
+  align-self: stretch;
+  height: 115px;
   border-radius: 6px;
   overflow: hidden;
   border: 1px rgba(58, 53, 65, 0.12) solid;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: inline-flex;
+  display: flex;
 }
 
 /* Name */
@@ -365,7 +388,8 @@
   display: inline-flex;
 }
 .Quote-Table-NameDiv {
-  flex: 1 1 0;
+  width: 100px;
+  /* flex: 1 1 0; */
   height: 30px;
   padding-left: 2px;
   padding-right: 2px;
@@ -376,7 +400,8 @@
   display: flex;
 }
 .Quote-Table-EmailDiv {
-  flex: 1 1 0;
+  /* flex: 1 1 0; */
+  width: 100px;
   height: 30px;
   padding-left: 2px;
   padding-right: 2px;
@@ -387,7 +412,8 @@
   display: flex;
 }
 .Quote-Table-CompanyDiv {
-  flex: 1 1 0;
+  /* flex: 1 1 0; */
+  width: 100px;
   height: 30px;
   padding-left: 2px;
   padding-right: 2px;
@@ -433,6 +459,7 @@
 .Quote-Table-NameValue {
   flex: 1 1 0;
   align-self: stretch;
+  /* border: 1px solid; */
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -446,16 +473,12 @@
   align-items: flex-start;
   display: inline-flex;
 }
-.Quote-Table-NameValueDiv2 {
-  align-self: stretch;
-  flex: 1 1 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  display: inline-flex;
-}
+/* .Quote-Table-NameValueDiv2 {
+  flex: 1 1 0; align-self: stretch; justify-content: flex-start; align-items: center; display: flex;
+} */
 .Quote-Table-NameValueSec {
   flex: 1 1 0;
-  height: 28px;
+  align-self: stretch;
   justify-content: flex-start;
   align-items: center;
   display: flex;
@@ -479,10 +502,10 @@
 }
 .Quote-Table-NameValueText {
   color: #080808;
-  font-size: 9px;
+  font-size: 10px;
   font-family: Helvetica Neue;
-  font-weight: 400;
-  line-height: 20px;
+  font-weight: 100;
+  line-height: 14px;
   letter-spacing: 0.1px;
   word-wrap: break-word;
 }
@@ -502,7 +525,8 @@
   display: inline-flex;
 }
 .Quote-Table-CC-Div {
-  flex: 1 1 0;
+  /* flex: 1 1 0; */
+  width: 100px;
   align-self: stretch;
   padding-left: 2px;
   padding-right: 2px;
@@ -548,6 +572,7 @@
 .Quote-Table-CC-Values {
   flex: 1 1 0;
   align-self: stretch;
+  /* border: 1px solid; */
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -562,7 +587,7 @@
 }
 .Quote-Table-CC-ValuesSec {
   flex: 1 1 0;
-  height: 68px;
+  height: 28px;
   justify-content: flex-start;
   align-items: center;
   display: flex;
@@ -586,9 +611,9 @@
 }
 .Quote-Table-CC-ValuesChild1-text {
   color: #080808;
-  font-size: 9px;
+  font-size: 10px;
   font-family: Helvetica Neue;
-  font-weight: 400;
+  font-weight: 100;
   line-height: 20px;
   letter-spacing: 0.1px;
   word-wrap: break-word;
@@ -640,7 +665,7 @@
 }
 .Quote-Table-Name2-Text {
   color: rgba(58, 53, 65, 0.87);
-  font-size: 13px;
+  font-size: 10px;
   font-family: Orbitron;
   font-weight: 400;
   letter-spacing: 0.1px;
@@ -781,6 +806,17 @@
 .backdrop {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+/* @keyframes fadeInScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+} */
 
 /* Success POP UP */
 .overlaySuccess {

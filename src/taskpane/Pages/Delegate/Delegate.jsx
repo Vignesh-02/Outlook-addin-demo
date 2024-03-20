@@ -715,7 +715,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           {/* SECTION - 2 */}
           <div className="Quote-Sec-2">
             {/* RFQ - SECTION */}
-            <div className="Quote-RFQ-Section">
+            {/* <div className="Quote-RFQ-Section"> */}
+            <div className={`Quote-RFQ-Section ${isDelegateClicked ? 'collapsed' : ''}`}>
               <div className="Quote-RFQ-Div">
                 <div className="Quote-RFQ-Parent">
                   <div className="Quote-RFQ-Child">
@@ -748,7 +749,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                   </div>
                 </div>
               </div>
-              <div className="Quote-RFQ-EmailParent">
+              {/* <div className="Quote-RFQ-EmailParent"> */}
+              <div className={`Quote-RFQ-EmailParent ${isDelegateClicked ? 'collapsed' : ''}`}>
                 <div className="Quote-RFQ-EmailChild">
                   <div className="Quote-RFQ-EmailDiv">
                     <div className="Quote-RFQ-EmailSec">
@@ -841,8 +843,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                   <Buttoncv
                     isPopupOpen1={isPopupOpen1}
                     togglePopup1={togglePopup1}
-                    isPopupOpenRegenerate={isPopupOpenRegenerate}
-                    togglePopupRegenerate={togglePopupRegenerate}
+                    // isPopupOpenRegenerate={isPopupOpenRegenerate}
+                    // togglePopupRegenerate={togglePopupRegenerate}
                     isPopupOpen2={isPopupOpen2}
                     togglePopup2={togglePopup2}
                     customerBody={customerBody}
