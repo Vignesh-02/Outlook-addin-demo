@@ -3,6 +3,7 @@ import "./Topbar.css";
 import cross from "../../../../public/Vector.png";
 import interState from "../../../../public/interstate.png";
 import oneLab from "../../../../public/onelab.png";
+import wiseSale from "../../../../public/wise.png";
 
 const Topbar = ({ selectedOrganization }) => {
   // Determine the selected image based on the selectedOrganization prop
