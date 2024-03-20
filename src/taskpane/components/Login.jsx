@@ -166,6 +166,7 @@ const Login = () => {
               </div>
               <div className="LoginCont2-child1-a-2">
                 <select className="loginSelect" onChange={handleOrganizationChange}>
+                <option>Select your organization</option>
                 <option value="Onelab Ventures">Onelab Ventures</option>
                   <option value="Wise Sales">Wise Sales</option>
                   <option value="Interstate Advanced Materials">Interstate Advanced Materials</option>
