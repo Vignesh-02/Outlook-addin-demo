@@ -8,57 +8,6 @@ import { addMaterialData, updateMaterialAtIndex } from "../../../Store/action/ma
 
 
 const Stocks = ({classifyEmail }) => {
-  // const classifyEmail = {
-  //   "RFQ_status": 1,
-  //   "name": "Abby Rodriguez",
-  //   "email": "afshan@100gmail.com",
-  //   "company": "Integral Machining & Engineering",
-  //   "shipping_address": "12060 31st. Ct. N. St. Petersburg FL 33716",
-  //   "cert_need": false,
-  //   "product_1": {
-  //     "material": "Acetal",
-  //     "size": {
-  //         "diameter": "1.25 inch RD",
-  //         "thick": null,
-  //         "length": "10 feet",
-  //         "width": null
-  //     },
-  //     "shape": "Rod",
-  //     "specification": "23-0002-XX",
-  //     "manufacturer": null,
-  //     "color": "Gray",
-  //     "quantity": "20 lengths"
-  //   },
-  //   "product_2": {
-  //     "material": "Nylon",
-  //     "size": {
-  //         "diameter": "1.125 inch RD",
-  //         "thick": null,
-  //         "length": "10 feet",
-  //         "width": null
-  //     },
-  //     "shape": "Rod",
-  //     "specification": "23-0004-01",
-  //     "manufacturer": null,
-  //     "color": "Gray",
-  //     "quantity": "28 Lengths"
-  //   },
-  //   "product_3": {
-  //     "material": "UHMW",
-  //     "size": {
-  //         "diameter": "1.125 inch RD",
-  //         "thick": null,
-  //         "length": "10 feet",
-  //         "width": 12
-  //     },
-  //     "shape": "Rod",
-  //     "specification": "23-0004-01",
-  //     "manufacturer": null,
-  //     "color": "orange",
-  //     "quantity": null
-  //   },
-  //   "RFQ_ID": "INTR100200GY24821"
-  // };
 
 
   const [selectedProduct, setSelectedProduct] = useState(1);
@@ -76,24 +25,38 @@ const Stocks = ({classifyEmail }) => {
     specification: false,
   });
 
-  useEffect(() => {
-    console.log('entered useEffect')
-    let getMaterialData = null;
-    addMaterialData(products);
-
-    if(selectedProduct){
-        getMaterialData = materialData[selectedProduct-1];
-    }
-    setSelectedProductData(getMaterialData);
-    
-}, [selectedProduct]);
-
   const products = Object.keys(classifyEmail)
     .filter((key) => key.startsWith("product_"))
     .map((key) => classifyEmail[key]);
 
     console.log('Products ', products);
 
+  useEffect(() => {
+    addMaterialData(products);
+  }, [])
+
+
+  useEffect(() => {
+    if (selectedProduct && materialData.length > 0) {
+      const getMaterialData = materialData[selectedProduct - 1];
+      setSelectedProductData(getMaterialData);
+    }
+  }, [selectedProduct, materialData]); // Depend on both selectedProduct and materialData
+
+  
+//   useEffect(() => {
+//     console.log('entered useEffect')
+//     let getMaterialData = null;
+//     // addMaterialData(products);
+
+//     if(selectedProduct){
+//         getMaterialData = materialData[selectedProduct-1];
+//     }
+//     setSelectedProductData(getMaterialData);
+    
+// }, [selectedProduct]);
+
+  
   const handleClick = (productId) => {
     setSelectedProduct(productId);
   };
@@ -193,7 +156,7 @@ const Stocks = ({classifyEmail }) => {
         )
       ))}
  
-      {selectedProduct !== null && (
+      {selectedProductData !== null && (
         <div className="Stock-VentDiv4">
           <div className="Stock-VentDiv4-Child">
             <div className="Stock-VentSec1">
@@ -221,7 +184,8 @@ const Stocks = ({classifyEmail }) => {
                     </div>
                   </div>
                 </div>
-                <div className="Stock-Vent-Value1Sec-Shape-VP">
+                <div className="Stock-Vent-Value1Sec-Shape-VP"
+                onDoubleClick={() => toggleEditMode("shape")}>
                    <div className="Stock-Vent-Value1Sec-Shape-VC">
                      <div className="Stock-Vent-Value1Sec-Shape-Val-P">
                        <div className="Stock-Vent-Value1Sec-Shape-Val-C">
@@ -251,11 +215,9 @@ const Stocks = ({classifyEmail }) => {
                             />
                           ) : (
                             <div
-                              className="Stock-Vent-Value1Sec-Shape-Value"
-                              onDoubleClick={() => toggleEditMode("shape")}
-                            >
-                              {/* {selectedProductData.shape} */}
-                              {products[selectedProduct - 1]?.shape || ""}
+                              className="Stock-Vent-Value1Sec-Shape-Value">
+                              {selectedProductData.shape}
+                              {/* {products[selectedProduct - 1]?.shape || ""} */}
                             </div>
                           )}
                         </div>
@@ -277,7 +239,8 @@ const Stocks = ({classifyEmail }) => {
                     </div>
                   </div>
                 </div>
-                <div className="Stock-Vent-Value1Sec-Shape-VP">
+                <div className="Stock-Vent-Value1Sec-Shape-VP"
+                onDoubleClick={() => toggleEditMode("size")}>
                    <div className="Stock-Vent-Value1Sec-Shape-VC">
                      <div className="Stock-Vent-Value1Sec-Shape-Val-P">
                        <div className="Stock-Vent-Value1Sec-Shape-Val-C">
@@ -317,18 +280,14 @@ const Stocks = ({classifyEmail }) => {
                                 color: "#080808",
                                 fontSize: "10px",
                                 fontFamily: "Helvetica Neue",
-                                fontWeight: 100,
+                                fontWeight: 400,
                                 lineHeight: "20px",
                                 letterSpacing: "0.50px",
                                 wordWrap: "break-word",
-                              }}
-                              onDoubleClick={() =>
-                                toggleEditMode("dimensions")
-                              }
-                            >
-                              {/* {selectedProductData.size
+                              }}>
+                              {selectedProductData.size
                                 ? calculateDimension(selectedProductData.size)
-                                : ""} */}
+                                : ""}
                             </span>
                           )}
                         </div>
@@ -348,7 +307,8 @@ const Stocks = ({classifyEmail }) => {
                     </div>
                   </div>
                 </div>
-                <div className="Stock-Vent-Value1Sec-Shape-VP">
+                <div className="Stock-Vent-Value1Sec-Shape-VP"
+                onDoubleClick={() => toggleEditMode("color")}>
                    <div className="Stock-Vent-Value1Sec-Shape-VC">
                      <div className="Stock-Vent-Value1Sec-Shape-Val-P">
                        <div className="Stock-Vent-Value1Sec-Shape-Val-C">
@@ -378,13 +338,11 @@ const Stocks = ({classifyEmail }) => {
                             />
                           ) : (
                             <div
-                              className="Stock-Vent-Value1Sec-Shape-Value"
-                              onDoubleClick={() => toggleEditMode("color")}
-                            >
-                              {/* {selectedProductData.color} */}
+                              className="Stock-Vent-Value1Sec-Shape-Value">
+                              {selectedProductData.color}
                               </div>
                                                       )}
-                          <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.color || ""}</span>
+                          {/* <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.color || ""}</span> */}
                         </div>
                       </div>
                     </div>
@@ -403,7 +361,8 @@ const Stocks = ({classifyEmail }) => {
                     </div>
                   </div>
                 </div>
-                <div className="Stock-Vent-Value1Sec-Shape-VP">
+                <div className="Stock-Vent-Value1Sec-Shape-VP"
+                onDoubleClick={() => toggleEditMode("unit")}>
                    <div className="Stock-Vent-Value1Sec-Shape-VC">
                      <div className="Stock-Vent-Value1Sec-Shape-Val-P">
                        <div className="Stock-Vent-Value1Sec-Shape-Val-C">
@@ -433,11 +392,9 @@ const Stocks = ({classifyEmail }) => {
                             />
                           ) : (
                             <div
-                              className="Stock-Vent-Value1Sec-Shape-Value"
-                              onDoubleClick={() => toggleEditMode("unit")}
-                            >
-                              {/* {selectedProductData.unit} */}
-                              {products[selectedProduct - 1]?.unit || ""}
+                              className="Stock-Vent-Value1Sec-Shape-Value">
+                              {selectedProductData.unit}
+                              {/* {products[selectedProduct - 1]?.unit || ""} */}
                             </div>
                           )}
                           {/* <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.color || ""}</span> */}
@@ -458,7 +415,8 @@ const Stocks = ({classifyEmail }) => {
                     </div>
                   </div>
                 </div>
-                <div className="Stock-Vent-Value1Sec-Shape-VP">
+                <div className="Stock-Vent-Value1Sec-Shape-VP"
+                onDoubleClick={() => toggleEditMode("specification")}>
                    <div className="Stock-Vent-Value1Sec-Shape-VC">
                      <div className="Stock-Vent-Value1Sec-Shape-Val-P">
                        <div className="Stock-Vent-Value1Sec-Shape-Val-C">
@@ -488,11 +446,9 @@ const Stocks = ({classifyEmail }) => {
                             />
                           ) : (
                             <div
-                              className="Stock-Vent-Value1Sec-Shape-Value"
-                              onDoubleClick={() => toggleEditMode("specification")}
-                            >
-                              {/* {selectedProductData.specification} */}
-                              {products[selectedProduct - 1]?.specification || ""}
+                              className="Stock-Vent-Value1Sec-Shape-Value">
+                              {selectedProductData.specification}
+                              {/* {products[selectedProduct - 1]?.specification || ""} */}
                             </div>
                           )}
                           {/* <span className="Stock-Vent-Value1Sec-Shape-Value">{products[selectedProduct - 1]?.color || ""}</span> */}

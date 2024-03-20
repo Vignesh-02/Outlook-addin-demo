@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./Contact.css";
 import W_Image from "../../../../public/w1.png";
 import WiseImage from "../../../../public/wise.png";
@@ -18,6 +18,28 @@ const Contact = () => {
   const location = useLocation();
   const { selectedOrganization } = location.state || {};
   console.log("contactselect5",selectedOrganization);
+
+    useEffect(() => {
+
+        Office.onReady((info) => {
+            if (info.host === Office.HostType.Outlook) {
+                document.getElementById('sendMail').addEventListener('click', () => {
+                    // Define the message form, prefilling the 'To' field
+                    const message = {
+                      toRecipients: ['it.support@wise-sales.com'], // Replace with the desired email address
+                    };
+                
+                    // Display a new message form
+                    Office.context.mailbox.displayNewMessageForm(message);
+                  });
+            }
+        });
+      
+
+    }, []);
+
+    // https://outlook.live.com/mail/0/deeplink/compose?to=your@email.com
+
 
   return (
     <div className="contactPage">
@@ -63,7 +85,9 @@ const Contact = () => {
         {/* Button */}
         <div className="contactPage-btn">
           <div className="contactPage-btn-A">
-            <div className="contactPage-btn-A-Child">Send Us a mail</div>
+            <div id="sendMail" className="contactPage-btn-A-Child">
+                Send Us a mail
+                </div>
           </div>
         </div>
       </div>
@@ -74,4 +98,5 @@ const Contact = () => {
   );
 };
 
+// 
 export default Contact;

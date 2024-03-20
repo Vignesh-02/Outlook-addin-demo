@@ -12,9 +12,9 @@ const webpack = require("webpack");
 // https://881b-182-48-208-239.ngrok-free.app
 
 const urlDev = "http://localhost:3001";
-const urlProd = "https://outlook-addin-v9y9.onrender.com"
+// const urlProd = "https://3276-182-48-208-239.ngrok-free.app"
 // 3276-182-48-208-239.ngrok-free.app
-// const urlProd = "https://outlook-addin-v9y9.onrender.com/"; 
+const urlProd = "https://outlook-addin-v9y9.onrender.com/"; 
 // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 async function getHttpsOptions() {
