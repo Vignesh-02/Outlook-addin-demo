@@ -11,9 +11,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-
 const Queue = () => {
-  
   const history = useHistory();
   const location = useLocation();
 
@@ -21,71 +19,71 @@ const Queue = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [queueData, setQueueData] = useState([]);
-  
 
   useEffect(() => {
     const fetchQueueData = async () => {
       try {
         const extractBeforeNewline = (str) => {
-            const index = str.indexOf('\r');
-            if (index === -1) {
-              return str; // Return the original string if '\r' is not found
-            }
-            return str.substring(0, index);
-          };
+          const index = str.indexOf("\r");
+          if (index === -1) {
+            return str; // Return the original string if '\r' is not found
+          }
+          return str.substring(0, index);
+        };
 
-        
-        const res = await axios.get("http://127.0.0.1:8000/api/QueueDetails/");
+        const res = await axios.get("https://api-dev.wise-sales.com/backend/api/QueueDetails/");
         setQueueData(res.data.data);
         console.log("Queue Data API response from backend: ", res.data);
 
         // res.data.data.map(async (queueItem) => {
         res.data.data.map(async (queueItem, index) => {
-            if(queueItem.vendor_responses){
-                queueItem.vendor_responses.map(async (vendorItem) => {
-                    console.log('VendorItem', vendorItem);
-                    const vendorReply =  await axios.get(`https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: ${vendorItem.Subject}  from:${vendorItem.Vendor_Email}"`, {
-                        headers: {
-                          Authorization: `Bearer ${token}`,
-                          "Content-Type": "application/json",
-                        },
-                      });
-                    
-                      // storing the first reply mail from the vendor
-                      const fetchedVendorContent = vendorReply.data.value[0].bodyPreview;
-                    
-                      const extractedResponse = extractBeforeNewline(fetchedVendorContent);
-                      
-        
-                      console.log('extracted vendor response', extractedResponse)
+          if (queueItem.vendor_responses) {
+            queueItem.vendor_responses.map(async (vendorItem) => {
+              console.log("VendorItem", vendorItem);
+              const vendorReply = await axios.get(
+                `https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: ${vendorItem.Subject}  from:${vendorItem.Vendor_Email}"`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
 
-                      const vendorResponseObject = {
-                        Body: extractedResponse,
-                        Subject: `RE: ${vendorItem.Subject}`,
-                        Vendor_Email: vendorItem.Vendor_Email 
-                      }
+              // storing the first reply mail from the vendor
+              const fetchedVendorReplyContent = vendorReply.data.value[0].bodyPreview;
 
-                      const url = `http://127.0.0.1:8000/api/QueueDetails/${index+1}/`; // Replace with your actual endpoint URL
-                      const requestData = {
-                        method: 'PUT',
-                        headers: {
-                          'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ vendor_responses: vendorResponseObject }),
-                      };
-                    
-                      const response = await fetch(url, requestData);
+              const extractedReply = extractBeforeNewline(fetchedVendorReplyContent);
 
-                        if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        const data = await response.json(); // Assuming the server responds with JSON
-                        console.log('Success:', data);
+              console.log("extracted vendor reply", extractedReply);
 
-                      console.log('vendor reply', vendorReply)
-                })
-            }
-        })
+              const vendorReplyObject = {
+                Body: extractedReply,
+                Subject: `RE: ${vendorItem.Subject}`,
+                Vendor_Email: vendorItem.Vendor_Email,
+              };
+
+              const url = `https://api-dev.wise-sales.com/backend/api/QueueDetails/${index + 1}/`; // Replace with your actual endpoint URL
+              const requestData = {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ vendor_replies: vendorReplyObject }),
+              };
+
+              const response = await fetch(url, requestData);
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              const data = await response.json(); // Assuming the server responds with JSON
+              console.log("Success:", data);
+
+              console.log("vendor reply", vendorReply);
+            });
+          }
+        });
         // const vendorReply = await axios.get(`https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: Request for Quote - PVC Material from:vignesh@onelabventures.com"`, {
         //   headers: {
         //     Authorization: `Bearer ${token}`,
@@ -125,9 +123,11 @@ const Queue = () => {
   // const [rfq, setRfq] = useState(null);
   const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
-    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`);
-    console.log("RFQ: ", RFQ_ID)
-    console.log("QueueDate: ", date)
+    history.push(
+      `/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`
+    );
+    console.log("RFQ: ", RFQ_ID);
+    console.log("QueueDate: ", date);
     // setRfq(RFQ_ID)
   };
 
@@ -135,17 +135,16 @@ const Queue = () => {
   //   const fetchCustomerDetails = async () => {
   //     try {
   //       if (rfq) {
-  //         const res = await axios.get(`http://127.0.0.1:8000/api/getEmailDetails/${rfq}/`);
+  //         const res = await axios.get(`https://api-dev.wise-sales.com/backend/api/getEmailDetails/${rfq}/`);
   //         console.log("Customer API response from backend: ", res.data);
   //       }
   //     } catch (error) {
   //       console.error("Error occurred while calling API:", error);
   //     }
   //   };
-  
+
   //   fetchCustomerDetails();
   // }, [rfq]);
-  
 
   return (
     <div className="queuePage">
@@ -226,7 +225,6 @@ const Queue = () => {
               </div>
               <div className="QueueRowParent-2a">
                 <div className="QueueRowChild-2b">
-              
                   <div
                     className="QueueRowCell-2a"
                     style={{
@@ -246,18 +244,21 @@ const Queue = () => {
                         // ;
                         // handleStatusClick(rowData.customer_name);
                         // handleStatusClick(rowData.customer_name, rowData.customer_email);
-                        handleStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
-                          ,rowData.date, rowData.time, rowData.customer_response_subject
-                          );
+                        handleStatusClick(
+                          rowData.customer_name,
+                          rowData.customer_response,
+                          rowData.RFQ_ID,
+                          rowData.date,
+                          rowData.time,
+                          rowData.customer_response_subject
+                        );
                       }
                     }}
                   >
                     {rowData.status}
                   </div>
-                     
-                  {rowData.status !== "Sent" && (
-                    <div className="QueueRowCell-2b">{rowData.day}</div>
-                  )}
+
+                  {rowData.status !== "Sent" && <div className="QueueRowCell-2b">{rowData.day}</div>}
                 </div>
               </div>
               <div className="QueueRowParent-3a">

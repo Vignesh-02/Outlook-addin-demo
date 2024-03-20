@@ -25,14 +25,11 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { responseAdd } from "../../../Store/action/customerBodyAction";
 
-import { v4 as uuidv4 } from 'uuid';
-
+import { v4 as uuidv4 } from "uuid";
 
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
-  
   const history = useHistory();
 
-  
   const location = useLocation();
   const token = location?.state.token;
 
@@ -89,9 +86,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       closePopupTimer = setTimeout(() => {
         setVisible(false);
         history.push({
-            pathname: '/queue',
-            state: { token: token }
-          });
+          pathname: "/queue",
+          state: { token: token },
+        });
       }, 2000); // 2 seconds
     }
 
@@ -193,13 +190,12 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   //       }
 
   // change
-  
+
   const handleLaunch = () => {
     const uniqueId = uuidv4();
     const accessToken = token;
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
 
-   
     console.log("Vendor Details:", vendordetail);
     // Define a variable to store all vendor emails
     let allVendorEmails = {};
@@ -211,7 +207,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     // Log all vendor emails
     console.log("All Vendor Emails:", allVendorEmails);
 
-     // Check if there are no vendor emails then only save customer details with "Sent" status
+    // Check if there are no vendor emails then only save customer details with "Sent" status
     //  if (Object.keys(allVendorEmails).length === 0) {
     //   setQueueCustomer(true);
     // }
@@ -239,7 +235,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         saveToSentItems: "true",
       };
       //   Send email to the vendor
-    //   console.log(emailData);
+      //   console.log(emailData);
 
       fetch(sendMailVendor, {
         method: "POST",
@@ -250,19 +246,18 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         body: JSON.stringify(emailData),
       })
         .then((data) => {
-          console.log("Mail sent successfully to Vendor",  );
-          console.log("Queue details have been sent")
+          console.log("Mail sent successfully to Vendor");
+          console.log("Queue details have been sent");
           // setQueueDetails(true);
-        //   setQueueVendor(true);
+          //   setQueueVendor(true);
         })
         .catch((error) => {
           console.error(`Error sending mail to Vendor`, error);
         });
-
     });
 
-    console.log('Message Id ', emailDetails.msgId);
-    console.log('CustomerResponseBody ',customerResponseBody );
+    console.log("Message Id ", emailDetails.msgId);
+    console.log("CustomerResponseBody ", customerResponseBody);
     const sendCustomerReplyUrl = `https://graph.microsoft.com/v1.0/me/messages/${emailDetails.msgId}/reply`;
     const emailData = {
       message: {
@@ -295,7 +290,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         console.error("Error sending mail", error);
       });
 
-    //   const vendorMailConversationurl = 
+    //   const vendorMailConversationurl =
     //   fetch(vendorMailConversationurl, {
     //     method: "POST",
     //     headers: {
@@ -314,12 +309,11 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     //     });
   };
 
-
   useEffect(() => {
     if (queueCustomer) {
       const sendQueueDetailsToCustomer = async () => {
         try {
-          const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
+          const result = await axios.post("https://api-dev.wise-sales.com/backend/api/QueueDetails/", {
             customer_name: emailDetails.senderName,
             customer_email: emailDetails.from,
             customer_subject: emailDetails.subject,
@@ -327,7 +321,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             vendor_responses: vendordetail,
             RFQ_ID: rfq_id,
             status: "Sent",
-            customer_response_subject: customerSubject
+            customer_response_subject: customerSubject,
           });
           console.log("send queue details API response from backend: ", result.data);
         } catch (error) {
@@ -338,30 +332,30 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     }
   }, [queueCustomer]);
 
-//   useEffect(() => {
-//     if (queueVendor) {
-//       const sendQueueDetailsToVendor = async () => {
-//         try {
-//           const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
-//             customer_name: classifyEmail.name,
-//             RFQ_ID: rfq_id,
-//             status: "Vendor quote pending",
-//             day: "2 days"
-//           });
-//           console.log("send queue vendor details API response from backend: ", result.data);
-//         } catch (error) {
-//           console.error("Error occurred while calling API:", error);
-//         }
-//       };
-//       sendQueueDetailsToVendor();
-//     }
-//   }, [queueVendor]);
+  //   useEffect(() => {
+  //     if (queueVendor) {
+  //       const sendQueueDetailsToVendor = async () => {
+  //         try {
+  //           const result = await axios.post("https://api-dev.wise-sales.com/backend/api/QueueDetails/", {
+  //             customer_name: classifyEmail.name,
+  //             RFQ_ID: rfq_id,
+  //             status: "Vendor quote pending",
+  //             day: "2 days"
+  //           });
+  //           console.log("send queue vendor details API response from backend: ", result.data);
+  //         } catch (error) {
+  //           console.error("Error occurred while calling API:", error);
+  //         }
+  //       };
+  //       sendQueueDetailsToVendor();
+  //     }
+  //   }, [queueVendor]);
 
   // useEffect(() => {
   //   if (queueDetails) {
   //     const sendQueuedetails = async () => {
   //       try {
-  //         const result = await axios.post("http://127.0.0.1:8000/api/QueueDetails/", {
+  //         const result = await axios.post("https://api-dev.wise-sales.com/backend/api/QueueDetails/", {
   //           customer_name: classifyEmail.name,
   //           RFQ_ID: rfq_id,
   //           status: "Sent",
@@ -375,33 +369,31 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   //   }
   // }, [queueDetails]);
 
-
   useEffect(() => {
     if (delegatebtn1) {
       const SendEmailDetails = async () => {
         try {
-            setShowLoader(true);
-            const data = {
-                subject: emailDetails.subject,
-                email_body: emailDetails.body,
-                sender_email: emailDetails.from,
-                sender_name: emailDetails.senderName,
-                wisecustomer: "INTR100",
-                customerofcustomer: "200",
-                acctId: "GY248",
-              };
-            const inputData = JSON.stringify(data)
+          setShowLoader(true);
+          const data = {
+            subject: emailDetails.subject,
+            email_body: emailDetails.body,
+            sender_email: emailDetails.from,
+            sender_name: emailDetails.senderName,
+            wisecustomer: "INTR100",
+            customerofcustomer: "200",
+            acctId: "GY248",
+          };
+          const inputData = JSON.stringify(data);
 
           const res = await axios.post("https://api-dev.wise-sales.com/ml-backend/classify_email/", inputData);
-        
+
           console.log("classify API response from backend: ", res.data);
           setClassifyEmail(res.data);
           setRfq_id(res.data.RFQ_ID);
         } catch (error) {
           console.error("Error occurred while calling API:", error);
-        }
-        finally{
-            setShowLoader(false);
+        } finally {
+          setShowLoader(false);
         }
       };
       SendEmailDetails();
@@ -445,9 +437,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     }
   }, [delegatebtn1]);
 
-  const  {customerResponseBody}  = useSelector(
-    (state) => state.customerResponse
-  );
+  const { customerResponseBody } = useSelector((state) => state.customerResponse);
 
   // Log the state outside of the useEffect to see the updated value
   console.log("Classify Email: ", classifyEmail);
@@ -457,14 +447,13 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         shipping_address: classifyEmail.shipping_address || "N/A",
         RFQ_ID: classifyEmail.RFQ_ID || "N/A",
       });
-      setShippingAddress(classifyEmail.shipping_address)
-
+      setShippingAddress(classifyEmail.shipping_address);
     }
   }, [classifyEmail]);
 
   console.log("Classify Email-SA: ", classifyEmail.shipping_address);
   console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
-  console.log("shipping_address_update5: ", shippingAddress)
+  console.log("shipping_address_update5: ", shippingAddress);
 
   const SA = classifyEmail.shipping_address;
   const RFQID = classifyEmail.RFQID;
@@ -530,7 +519,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           //   console.log("Vendor's Body:", vendorBody);
           setCustomerSubject(res.data.Customer_quote.Subject);
 
-
           const vendorDetails = Object.values(res.data).filter((obj) => obj.Vendor_Email);
           console.log(vendorDetails);
           // setVendorEmails(vendorEmails)
@@ -555,74 +543,70 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     }
   }, [isDelegate2Clicked]);
 
-//   useEffect(() => {
-//     if (emailDetails && !emailDetailsFetched) {
-//       const getEmailDetails = async () => {
-//         try {
-//           // Make sure the RFQ_status is 1 before making the API call
-//           if (classifyEmail.RFQ_status === 1) {
-//             const res = await axios.post("http://127.0.0.1:8000/api/getEmailDetails/", {
-//               getEmailDetails: emailDetails,
-//               RFQ_ID: rfq_id,
-//             });
+  //   useEffect(() => {
+  //     if (emailDetails && !emailDetailsFetched) {
+  //       const getEmailDetails = async () => {
+  //         try {
+  //           // Make sure the RFQ_status is 1 before making the API call
+  //           if (classifyEmail.RFQ_status === 1) {
+  //             const res = await axios.post("https://api-dev.wise-sales.com/backend/api/getEmailDetails/", {
+  //               getEmailDetails: emailDetails,
+  //               RFQ_ID: rfq_id,
+  //             });
 
-//             console.log("getEmailDetails API response from backend: ", res.data);
-//             console.log("RFQ 2", rfq_id);
-//             // Set the state variable to true indicating that the API call has been made
-//             setEmailDetailsFetched(true);
-//           } else {
-//             console.log("RFQ_status is not 1, skipping API call.");
-//           }
-//         } catch (error) {
-//           console.error("Error occurred while calling API:", error);
-//         }
-//       };
-//       getEmailDetails();
-//     }
-//   }, [classifyEmail, emailDetails, emailDetailsFetched]);
+  //             console.log("getEmailDetails API response from backend: ", res.data);
+  //             console.log("RFQ 2", rfq_id);
+  //             // Set the state variable to true indicating that the API call has been made
+  //             setEmailDetailsFetched(true);
+  //           } else {
+  //             console.log("RFQ_status is not 1, skipping API call.");
+  //           }
+  //         } catch (error) {
+  //           console.error("Error occurred while calling API:", error);
+  //         }
+  //       };
+  //       getEmailDetails();
+  //     }
+  //   }, [classifyEmail, emailDetails, emailDetailsFetched]);
 
-useEffect(() => {
-  // console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
+  useEffect(() => {
+    // console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
 
-  if (classifyEmail && classifyEmail.RFQ_status === 1) {
-    const getEmailDetails = async () => {
-      try {
-        // const ccToSend = customerDetail.cc !== null && customerDetail.cc !== undefined ? customerDetail.cc : []; // Check if cc is null or undefined, if so, set it to an empty array
-        let ccToSend = []; // Initialize ccToSend as an empty array
-      if (emailDetails.cc && emailDetails.cc.length > 0) {
-        ccToSend = emailDetails.cc; // Assign ccToSend to customerDetail.cc if it exists and has length
-      }
-        const res = await axios.post(
-          "http://127.0.0.1:8000/api/getEmailDetails/",
-          {
+    if (classifyEmail && classifyEmail.RFQ_status === 1) {
+      const getEmailDetails = async () => {
+        try {
+          // const ccToSend = customerDetail.cc !== null && customerDetail.cc !== undefined ? customerDetail.cc : []; // Check if cc is null or undefined, if so, set it to an empty array
+          let ccToSend = []; // Initialize ccToSend as an empty array
+          if (emailDetails.cc && emailDetails.cc.length > 0) {
+            ccToSend = emailDetails.cc; // Assign ccToSend to customerDetail.cc if it exists and has length
+          }
+          const res = await axios.post("https://api-dev.wise-sales.com/backend/api/getEmailDetails/", {
             customer_name: emailDetails.senderName,
             customer_email: emailDetails.from,
             // cc: customerDetail.cc, // Send customerDetail.cc directly
-            cc:ccToSend, // Send customerDetail.cc directly
+            cc: ccToSend, // Send customerDetail.cc directly
             company: emailDetails.company,
             // shipping_address: shippingAddress,
             shipping_address: "xyz", // to update
             // email_id: emailDetails.messageId,// to update
-            email_id: "AS671EUI",// to update
+            email_id: emailDetails.msgId, // to update
             email_subject: emailDetails.subject,
             email_body: emailDetails.body,
             RFQ_ID: rfq_id,
-          }
-        );
+          });
 
-        console.log("getEmailDetails API response from backend: ", res.data);
-        setEmailDetailsFetched(true);
-      } catch (error) {
-        console.error("Error occurred while calling API:", error);
-      }
-    };
+          console.log("getEmailDetails API response from backend: ", res.data);
+          setEmailDetailsFetched(true);
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
+        }
+      };
 
-    getEmailDetails();
-  } else {
-    console.log("RFQ_status is not 1 or classifyEmail is not available, skipping API call.");
-  }
-}, [classifyEmail, emailDetails]);
-
+      getEmailDetails();
+    } else {
+      console.log("RFQ_status is not 1 or classifyEmail is not available, skipping API call.");
+    }
+  }, [classifyEmail, emailDetails]);
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
@@ -680,7 +664,6 @@ useEffect(() => {
     <div className={`QuotePage ${isAnyPopupOpen() ? "backdrop" : ""}`}>
       {/* TOP BAR */}
 
-
       {isDelegateClicked && classifyEmail && classifyEmail.RFQ_status === 1 ? (
         <>
           <Topbar />
@@ -688,30 +671,31 @@ useEffect(() => {
         </>
       ) : (
         <>
-      <div className="topbar-frame">
-        {/* Section -1A */}
+          <div className="topbar-frame">
+            {/* Section -1A */}
 
-        {/* Section - 1B*/}
-        <div className="topbar2">
-          <div className="navbar">
-            <div className="DEL-delegate-div">
-              <div className="DEL-delegate">Delegate</div>
-            </div>
+            {/* Section - 1B*/}
+            <div className="topbar2">
+              <div className="navbar">
+                <div className="DEL-delegate-div">
+                  <div className="DEL-delegate">Delegate</div>
+                </div>
 
-            <div className="queue-div">
-              <div className="queue">Queue</div>
-            </div>
-            <div className="contact-div">
-              <div className="contact"  onClick={()=> history.push('/contact')}>Contact Us</div>
+                <div className="queue-div">
+                  <div className="queue">Queue</div>
+                </div>
+                <div className="contact-div">
+                  <div className="contact" onClick={() => history.push("/contact")}>
+                    Contact Us
+                  </div>
+                </div>
+              </div>
+              <div className="A-div">
+                <div className="A">{userName}</div>
+              </div>
             </div>
           </div>
-          <div className="A-div">
-            <div className="A">{userName}</div>
-          </div>
-        </div>
-      </div>
-
-      </>
+        </>
       )}
 
       {classifyEmail && classifyEmail.RFQ_status === 0 && (
@@ -845,7 +829,12 @@ useEffect(() => {
                 {isDelegate2Clicked && <Status />}
 
                 {isDelegate2Clicked && (
-                  <Decision isPopupOpenStock={isPopupOpenStock} togglePopupStock={togglePopupStock} selectedRFQ={selectedRFQ} handleToggleChange={toggleSelectedRFQ}/>
+                  <Decision
+                    isPopupOpenStock={isPopupOpenStock}
+                    togglePopupStock={togglePopupStock}
+                    selectedRFQ={selectedRFQ}
+                    handleToggleChange={toggleSelectedRFQ}
+                  />
                 )}
 
                 {isDelegate2Clicked && (

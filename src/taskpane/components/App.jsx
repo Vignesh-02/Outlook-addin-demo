@@ -18,6 +18,7 @@ import Contact from "./Contact/Contact";
 import Queue from "./Queue"
 import Board from "./Board";
 
+
 import Unauthorized from "./Unauthorized/Unauthorized";
 // import { useHistory } from "react-router-dom";
 
@@ -319,11 +320,16 @@ const App = (props) => {
 
 //   }, [])
   
-
   useEffect(() => {
     // Office.js ready check
     Office.onReady((info) => {
       if (info.host === Office.HostType.Outlook) {
+
+        // Ensure Office initializes before running our script
+    // Adds an event handler for the button click
+    
+  
+
         // Handler for item change event
         function onItemChanged() {
           try {
