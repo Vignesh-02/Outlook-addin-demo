@@ -11,6 +11,7 @@ const Contact = () => {
 
   const location = useLocation();
   const { selectedOrganization } = location.state || {};
+  console.log("contactselect5",selectedOrganization);
   return (
     <div className="contactPage">
       {/* Topbar */}

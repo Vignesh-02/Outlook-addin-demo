@@ -11,11 +11,18 @@ const Navbar = ({ activePage }) => {
     const { selectedOrganization } = location.state || {};
 
     const delegateNavigation = () => {
-      history.push(`/del?selectedOrganization=${selectedOrganization}`);
-      
+      // history.push(`/del?selectedOrganization=${selectedOrganization}`);
+      history.push({
+        pathname: '/del',
+        state: { selectedOrganization: selectedOrganization }
+      });
     }
     const contactNavigation = () => {
-      history.push(`/contact?selectedOrganization=${selectedOrganization}`);
+      // history.push(`/contact?selectedOrganization=${selectedOrganization}`);
+      history.push({
+        pathname: '/contact',
+        state: { selectedOrganization: selectedOrganization }
+      });
       
     }
 
