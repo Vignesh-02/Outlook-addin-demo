@@ -15,8 +15,9 @@ import animationData from "./animation.json"; // Import your animation JSON file
 const Login = ({ emailAddress, ...props}) => {
     let loginDialog = null;
 
-    const [selectedOrganization, setSelectedOrganization] = useState("");
+    // const [selectedOrganization, setSelectedOrganization] = useState("");
       const [loading, setLoading] = useState(true); // State to track loading
+      const [selectedOrganization, setSelectedOrganization] = useState(null);
 
 
     
@@ -104,10 +105,11 @@ const Login = ({ emailAddress, ...props}) => {
        return refreshAccessToken(receivedToken)
      })
        .then(token => {
-                   history.push({
-          pathname: '/del',
-          state: { token: token }
-        });
+        //            history.push({
+        //   pathname: '/del',
+        //   state: { token: token }
+        // });
+        history.push(`/del?token=${token}&selectedOrganization=${selectedOrganization}`);
    
         console.log('test 3');
         }).catch(error => {
@@ -223,16 +225,15 @@ const Login = ({ emailAddress, ...props}) => {
   }, []);
 
   
-  const handleOrganizationChange = (event) => {
-    setSelectedOrganization(event.target.value);
-  };
-
-
 
 //   const handleCrossClick = () => {
 //     // Close the extension when the cross is clicked
 //     window.close();
 //   };
+
+const handleOrganizationChange = (event) => {
+  setSelectedOrganization(event.target.value);
+};
 
   return (
     <>
@@ -269,10 +270,11 @@ const Login = ({ emailAddress, ...props}) => {
                 <div className="LoginOrganization">Organization </div>
               </div>
               <div className="LoginCont2-child1-a-2">
-                <select  value={selectedOrganization}  className="loginSelect" onChange={handleOrganizationChange}>
+                <select className="loginSelect" onChange={handleOrganizationChange}>
                   <option value="" disabled hidden>Select an Organization</option>
-                  <option value="Onelab Ventures" >Onelab Ventures</option>
-                  <option value="Turnkey" >Turnkey</option>
+                  <option value="Onelab Ventures">Onelab Ventures</option>
+                  <option value="Wise Sales">Wise Sales</option>
+                  <option value="Interstate Advanced Materials">Interstate Advanced Materials</option>
                 </select>
               </div>
             </div>

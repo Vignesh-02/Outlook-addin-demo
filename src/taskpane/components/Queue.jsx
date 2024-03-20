@@ -17,10 +17,18 @@ const Queue = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const token = location?.state.token;
+  // const token = location?.state.token;
 
   const [searchQuery, setSearchQuery] = useState("");
   const [queueData, setQueueData] = useState([]);
+
+  
+  // const location = useLocation();
+  const {token} = location.state || {} // change
+  console.log("Token: ",token);
+  const { selectedOrganization } = location.state || {};
+  console.log("queueselect5",selectedOrganization);
+  
   
 
   useEffect(() => {
@@ -150,7 +158,8 @@ const Queue = () => {
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-      <Topbar />
+      {/* <Topbar /> */}
+      <Topbar selectedOrganization={selectedOrganization}/>
 
       <Navbar />
 

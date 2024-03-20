@@ -34,7 +34,27 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   
   const location = useLocation();
-  const token = location?.state.token;
+  // const token = location?.state.token;
+
+  const searchParams = new URLSearchParams(location.search);
+  const token = searchParams.get("token");
+  const selectedOrganization = searchParams.get("selectedOrganization");
+  console.log("selectedOrganization", selectedOrganization)
+
+  const queueNavigation = () => {
+    // history.push(`/queue?selectedOrganization=${selectedOrganization}`);
+     history.push({
+           pathname: '/queue',
+           state: { selectedOrganization: selectedOrganization }
+         });
+  }
+  const contactNavigation = () => {
+    // history.push(`/contact?selectedOrganization=${selectedOrganization}`);
+    history.push({
+      pathname: '/contact',
+      state: { selectedOrganization: selectedOrganization }
+    });
+  }
 
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -683,26 +703,29 @@ useEffect(() => {
 
       {isDelegateClicked && classifyEmail && classifyEmail.RFQ_status === 1 ? (
         <>
-          <Topbar />
+          {/* <Topbar /> */}
+          <Topbar selectedOrganization={selectedOrganization}/>
           <Navbar />
         </>
       ) : (
         <>
       <div className="topbar-frame">
         {/* Section -1A */}
-
+        <Topbar selectedOrganization={selectedOrganization}/>
         {/* Section - 1B*/}
         <div className="topbar2">
           <div className="navbar">
             <div className="DEL-delegate-div">
               <div className="DEL-delegate">Delegate</div>
             </div>
+            
 
-            <div className="queue-div">
+            {/* <div className="queue-div"> */}
+            <div className="queue-div" onClick={queueNavigation}>
               <div className="queue">Queue</div>
             </div>
-            <div className="contact-div">
-              <div className="contact"  onClick={()=> history.push('/contact')}>Contact Us</div>
+            <div className="contact-div" onClick={contactNavigation}>
+              <div className="contact">Contact Us</div>
             </div>
           </div>
           <div className="A-div">
