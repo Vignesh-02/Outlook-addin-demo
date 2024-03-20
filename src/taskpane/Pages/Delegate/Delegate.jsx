@@ -21,6 +21,8 @@ import Success from "../../components/Success/Success";
 import Notrfq from "../../components/NotRFQ/Notrfq";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Topbar from "../../components/Topbar/Topbar";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const history = useHistory();
@@ -543,20 +545,17 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   return (
     <div className={`QuotePage ${isAnyPopupOpen() ? "backdrop" : ""}`}>
       {/* TOP BAR */}
-      <div className="topbar-frame">
-        {/* Section -1A */}
-        <div className="topbar">
-          <div className="topframe">
-            <img src={W_Image} alt="Logo" />
-            <div className="topframe-b">
-              <img src={WiseImage} alt="Logo" id="b1" />
-              <img src={InsideImage} alt="Logo" id="b2" />
-            </div>
-          </div>
-          <div className="topframe-c">
-            <img onClick={handleCrossClick} src={cross} alt="Logo" />
-          </div>
-        </div>
+      {isDelegateClicked && classifyEmail && classifyEmail.RFQ_status === 1 ? (
+        <>
+          
+          <Topbar selectedOrganization={selectedOrganization}/>
+          
+          <Navbar />
+        </>
+      ) : (
+        <>
+   <div className="topbar-frame">
+   <Topbar selectedOrganization={selectedOrganization}/>
 
         {/* Section - 1B*/}
         <div className="topbar2">
@@ -577,6 +576,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           </div>
         </div>
       </div>
+      </>
+      )}
 
       {classifyEmail && classifyEmail.RFQ_status === 0 && (
         <Model isOpen={isPopupOpennotrfq} onRequestClose={togglePopupnotRFQ} className="overlayNoRFQ">
