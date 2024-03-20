@@ -185,7 +185,7 @@ const Queue = () => {
 
   const location = useLocation();
   const { selectedOrganization } = location.state || {};
-  console.log("queueselect",selectedOrganization);
+  console.log("queueselect5",selectedOrganization);
   
 
   useEffect(() => {

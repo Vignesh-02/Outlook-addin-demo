@@ -39,12 +39,18 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   console.log("selectedOrganization", selectedOrganization)
 
   const queueNavigation = () => {
-    history.push(`/queue?selectedOrganization=${selectedOrganization}`);
-    
+    // history.push(`/queue?selectedOrganization=${selectedOrganization}`);
+     history.push({
+           pathname: '/queue',
+           state: { selectedOrganization: selectedOrganization }
+         });
   }
   const contactNavigation = () => {
-    history.push(`/contact?selectedOrganization=${selectedOrganization}`);
-    
+    // history.push(`/contact?selectedOrganization=${selectedOrganization}`);
+    history.push({
+      pathname: '/contact',
+      state: { selectedOrganization: selectedOrganization }
+    });
   }
   
   // const [queueDetails, setQueueDetails] = useState(false);
