@@ -7,7 +7,7 @@ import "@fontsource/orbitron/400.css"; // Specify weight
 import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation} from "react-router-dom";
 import axios from 'axios'
 
 // const Queue = () => {
@@ -182,6 +182,10 @@ const Queue = () => {
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState("");
   const [queueData, setQueueData] = useState([]);
+
+  const location = useLocation();
+  const { selectedOrganization } = location.state || {};
+  console.log("queueselect",selectedOrganization);
   
 
   useEffect(() => {
@@ -244,7 +248,7 @@ const Queue = () => {
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-      <Topbar />
+      <Topbar selectedOrganization={selectedOrganization}/>
 
       <Navbar />
 

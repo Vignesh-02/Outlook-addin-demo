@@ -5,12 +5,16 @@ import Topbar from "./Topbar/Topbar";
 import Footer from "./Footer/Footer";
 import "@fontsource/orbitron";
 import "@fontsource/orbitron/400.css";
+import { useLocation } from "react-router-dom";
 
 const Contact = () => {
+
+  const location = useLocation();
+  const { selectedOrganization } = location.state || {};
   return (
     <div className="contactPage">
       {/* Topbar */}
-      <Topbar />
+      <Topbar selectedOrganization={selectedOrganization}/>
 
       {/* Navbar */}
       {/* <Navbar /> */}

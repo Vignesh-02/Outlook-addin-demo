@@ -37,6 +37,15 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const token = searchParams.get("token");
   const selectedOrganization = searchParams.get("selectedOrganization");
   console.log("selectedOrganization", selectedOrganization)
+
+  const queueNavigation = () => {
+    history.push(`/queue?selectedOrganization=${selectedOrganization}`);
+    
+  }
+  const contactNavigation = () => {
+    history.push(`/contact?selectedOrganization=${selectedOrganization}`);
+    
+  }
   
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -564,10 +573,12 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
               <div className="DEL-delegate">Delegate</div>
             </div>
 
-            <div className="queue-div" onClick={() => history.push("/queue")}>
+            {/* <div className="queue-div" onClick={() => history.push("/queue")}> */}
+            <div className="queue-div" onClick={queueNavigation}>
               <div className="queue">Queue</div>
             </div>
-            <div className="contact-div" onClick={() => history.push("/contact")}>
+            {/* <div className="contact-div" onClick={() => history.push("/contact")}> */}
+            <div className="contact-div" onClick={contactNavigation}>
               <div className="contact">Contact Us</div>
             </div>
           </div>
