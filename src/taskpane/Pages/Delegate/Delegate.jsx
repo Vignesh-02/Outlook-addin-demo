@@ -27,9 +27,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   
   const location = useLocation();
-  console.log(location);
-  const token = location?.state.token;
-  console.log(token);
+  // console.log(location);
+  // const token = location?.state.token;
+  // console.log(token);
+
+  const searchParams = new URLSearchParams(location.search);
+  const token = searchParams.get("token");
+  const selectedOrganization = searchParams.get("selectedOrganization");
+  console.log("selectedOrganization", selectedOrganization)
   
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);

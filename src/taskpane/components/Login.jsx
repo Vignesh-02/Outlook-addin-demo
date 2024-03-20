@@ -15,6 +15,7 @@ const Login = () => {
   let loginDialog = null;
 
   const [loading, setLoading] = useState(true); // State to track loading
+  const [selectedOrganization, setSelectedOrganization] = useState(null);
 
     
     const history = useHistory();
@@ -24,6 +25,9 @@ const Login = () => {
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
+
+    
+  
 
     const handleLogin = () => {
       // Your login logic goes here
@@ -51,10 +55,12 @@ const Login = () => {
         loginDialog.close();
       exchangeCodeForToken(message).then(receivedToken => {
         console.log('Received Token', receivedToken);
-         history.push({
-           pathname: '/del',
-           state: { token: receivedToken }
-         });
+        //  history.push({
+        //    pathname: '/del',
+        //    state: { token: receivedToken }
+        //  });
+    history.push(`/del?token=${receivedToken}&selectedOrganization=${selectedOrganization}`);
+
       });
   }
 
@@ -120,6 +126,10 @@ const Login = () => {
     };
   }, []);
 
+  const handleOrganizationChange = (event) => {
+    setSelectedOrganization(event.target.value);
+  };
+
   return (
     <>
      {loading ? ( // Display the animation while loading
@@ -155,10 +165,10 @@ const Login = () => {
                 <div className="LoginOrganization">Organization </div>
               </div>
               <div className="LoginCont2-child1-a-2">
-                <select className="loginSelect">
-                  <option>Select your organization</option>
-                  <option>Onelab Ventures</option>
-                  <option>Turnkey</option>
+                <select className="loginSelect" onChange={handleOrganizationChange}>
+                <option value="Onelab Ventures">Onelab Ventures</option>
+                  <option value="Wise Sales">Wise Sales</option>
+                  <option value="Interstate Advanced Materials">Interstate Advanced Materials</option>
                 </select>
               </div>
             </div>

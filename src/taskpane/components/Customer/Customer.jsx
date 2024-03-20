@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "./Customer.css"; // Import the CSS file
 import Pen_Image from "../../../../public/pen.png";
 import CustomerResponsePopup from "./CustomerResponsePopup";
-import RegeneratePopup from "../RegeneratePopup/RegeneratePopup";
+// import RegeneratePopup from "../RegeneratePopup/RegeneratePopup";
 import Modal from "react-modal";
 import Regenerate from "../Regenerate/Regenerate";
 const Customer = ({
