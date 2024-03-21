@@ -960,7 +960,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             onRequestClose={togglePopupClarify}
             className="overlayNoRFQ"
           >
-            <Clarification close={togglePopupClarify} />
+            <Clarification 
+            messageBody = {clarifyBody}
+            close={togglePopupClarify} />
           </Model>
           )
          }
