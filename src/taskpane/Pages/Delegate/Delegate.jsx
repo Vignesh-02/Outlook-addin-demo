@@ -53,8 +53,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     });
   }
 
+  
+
+  
+
   const [clarifyBtn, setClarifyBtn] = useState(false);
   const [isPopupClarify, setIsPopupClarify] = useState(false);
+  const [isPopupClarify2, setIsPopupClarify2] = useState(false);
+  const [hasBody, setHasBody] = useState(false);
   const togglePopupClarify = () => {
    setClarifyBtn(true);
     console.log("toggle Regenerate");
@@ -127,6 +133,81 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   }, [clarifyBtn])
 
   console.log("Clarify Body : ", clarifyBody)
+
+
+  
+  // Log the updated value of isPopupClarify2
+  useEffect(() => {
+    const generateClarifyEmail2 = async () => {
+      try {
+        if (isPopupClarify2) {
+         const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
+        {
+          
+            "RFQ_status": 1,
+            "name": "Oscar Rodriguez",
+            "email": "orodriguez@roncelli.com",
+            "company": "Roncelli Plastics",
+            "shipping_address": "330 W. Duarte Road. Monrovia, CA. 91016",
+            "cert_need": true,
+            "products": [
+                {
+                    "material": "G-10",
+                    "size": {"diameter": "0.187 inch", "thick": null, "length": "48.00 inch", "width": null},
+                    "shape": "Rod",
+                    "specification": "MIL-I-24768/2 GEE",
+                    "manufacturer": null,
+                    "color": null,
+                    "quantity": "20",
+                    "unit": "rods"
+                },
+                {
+                    "material": "G-20",
+                    "size": {"diameter": null, "thick": null, "length": null, "width": null},
+                    "shape": "Sheet",
+                    "specification": "MIL-I-24768/2 GEE",
+                    "manufacturer": null,
+                    "color": null,
+                    "quantity": "10",
+                    "unit": "sheets"
+                }
+            ]
+        
+        }
+        
+        )
+          console.log("Clarification API Response:", res.data);
+          if(res.data.body) {
+              setClarifyBody(res.data.body)
+              setHasBody(true);
+          } else if (res.data.message) {
+            setHasBody(false);
+            setIsPopupClarify2(false);
+            console.log("popup 199:", isPopupClarify2)
+           setIsDelegate2Clicked(true);
+            setBtn(true)
+            console.log("LAuch", res.data.message);
+          }
+          // Set clarifyDelegateBtn to false after processing
+          console.log("POPUP 7:",isPopupClarify2)
+          // setIsPopupClarify2(false);
+        }
+      } catch (error) {
+        console.error("Error occurred while calling API:", error);
+      }
+    };
+  
+    generateClarifyEmail2();
+  }, [isPopupClarify2]);
+
+
+  const DelegeBtn2 = () => {
+    setIsPopupClarify2(!isPopupClarify2);
+    console.log("POPUP 1:",isPopupClarify2);
+    // setBtn(true);
+    // setIsDelegate2Clicked(true);
+    // setQueueDetails(true);
+  };
   
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -444,12 +525,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
   console.log("shipping_address_update5: ", shippingAddress)
 
-
-  const DelegeBtn2 = () => {
-    setBtn(true);
-    setIsDelegate2Clicked(true);
-    // setQueueDetails(true);
-  };
 
   useEffect(() => {
     if (isDelegate2Clicked) {
@@ -976,6 +1051,21 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           )}
         </>
       )}
+
+      
+{isPopupClarify2 && hasBody &&(
+      <Model
+        isOpen={isPopupClarify2}
+        onRequestClose={DelegeBtn2}
+        className="overlayNoRFQ"
+      >
+        <Clarification 
+          messageBody={clarifyBody}
+          close={DelegeBtn2} 
+        />
+      </Model>
+    )}
+
 
       {/* FOOTER SECTION */}
       <div className="Quote-Footer">
