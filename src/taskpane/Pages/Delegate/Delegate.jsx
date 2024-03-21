@@ -144,34 +144,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
          const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
         {
           
-            "RFQ_status": 1,
-            "name": "Oscar Rodriguez",
-            "email": "orodriguez@roncelli.com",
-            "company": "Roncelli Plastics",
-            "shipping_address": "330 W. Duarte Road. Monrovia, CA. 91016",
-            "cert_need": true,
-            "products": [
-                {
-                    "material": "G-10",
-                    "size": {"diameter": "0.187 inch", "thick": null, "length": "48.00 inch", "width": null},
-                    "shape": "Rod",
-                    "specification": "MIL-I-24768/2 GEE",
-                    "manufacturer": null,
-                    "color": null,
-                    "quantity": "20",
-                    "unit": "rods"
-                },
-                {
-                    "material": "G-20",
-                    "size": {"diameter": null, "thick": null, "length": null, "width": null},
-                    "shape": "Sheet",
-                    "specification": "MIL-I-24768/2 GEE",
-                    "manufacturer": null,
-                    "color": null,
-                    "quantity": "10",
-                    "unit": "sheets"
-                }
-            ]
+           classifyEmail : classifyEmail
         
         }
         
