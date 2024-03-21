@@ -2,7 +2,7 @@ import React from "react";
 import "./Clarification.css";
 import cross from "../../../../public/Cross5.png";
 
-const Clarification = ({close}) => {
+const Clarification = ({messageBody, close}) => {
   return (
     <div className="ClarificationPage">
       <div className="ClarificationPage-cont1">
@@ -29,11 +29,12 @@ const Clarification = ({close}) => {
           <div className="ClarificationPage-cont2-b">
             <div className="ClarificationPage-cont2-c">
               <div className="ClarificationPage-cont2-Text">
-                Hi John Deo, Hello, in order for us to quote you on this we will
+                {/* Hi John Deo, Hello, in order for us to quote you on this we will
                 need further clarification on the type of material and color.
                 <br />
                 <br />
-                Thanks & Regards, ABC
+                Thanks & Regards, ABC */}
+                {messageBody}
                 
               </div>
             </div>
