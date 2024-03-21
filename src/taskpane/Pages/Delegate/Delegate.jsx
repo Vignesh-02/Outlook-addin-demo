@@ -56,6 +56,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   const [clarifyBtn, setClarifyBtn] = useState(false);
   const [isPopupClarify, setIsPopupClarify] = useState(false);
+  const [isPopupClarify2, setIsPopupClarify2] = useState(false);
+  const [hasBody, setHasBody] = useState(false);
   const togglePopupClarify = () => {
    setClarifyBtn(true);
     console.log("toggle Regenerate");
@@ -129,6 +131,43 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   console.log("Clarify Body : ", clarifyBody)
   
+  // Log the updated value of isPopupClarify2
+  useEffect(() => {
+    const generateClarifyEmail2 = async () => {
+      try {
+        if (isPopupClarify2) {
+         const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
+        {
+          
+           classifyEmail : classifyEmail
+        
+        }
+        
+        )
+          console.log("Clarification API Response:", res.data);
+          if(res.data.body) {
+              setClarifyBody(res.data.body)
+              setHasBody(true);
+          } else if (res.data.message) {
+            setHasBody(false);
+            setIsPopupClarify2(false);
+            console.log("popup inside  generateClarifyEmail:", isPopupClarify2)
+           setIsDelegate2Clicked(true);
+            setBtn(true)
+            console.log("LAuch", res.data.message);
+          }
+          // Set clarifyDelegateBtn to false after processing
+          console.log("POPUP 7:",isPopupClarify2)
+          // setIsPopupClarify2(false);
+        }
+      } catch (error) {
+        console.error("Error occurred while calling API:", error);
+      }
+    };
+  
+    generateClarifyEmail2();
+  }, [isPopupClarify2]);
+
 
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -556,8 +595,10 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const RFQID = classifyEmail.RFQID;
 
   const DelegeBtn2 = () => {
-    setBtn(true);
-    setIsDelegate2Clicked(true);
+    setIsPopupClarify2(!isPopupClarify2);
+    console.log("POPUP 1:",isPopupClarify2);
+    // setBtn(true);
+    // setIsDelegate2Clicked(true);
   };
 
   useEffect(() => {
@@ -1106,6 +1147,22 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           )}
         </>
       )}
+
+
+           
+{isPopupClarify2 && hasBody &&(
+      <Model
+        isOpen={isPopupClarify2}
+        onRequestClose={DelegeBtn2}
+        className="overlayNoRFQ"
+      >
+        <Clarification 
+          messageBody={clarifyBody}
+          close={DelegeBtn2} 
+        />
+      </Model>
+    )}
+
 
       {/* FOOTER SECTION */}
       <div className="Quote-Footer">
