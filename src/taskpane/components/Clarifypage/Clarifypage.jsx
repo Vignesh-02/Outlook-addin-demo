@@ -8,9 +8,9 @@ import MailPopup from "../MailPopup/MailPopup";
 import InfoPopup from "../InfoPopup/InfoPopup";
 import Pendingstocks from "../PendingStocks/Pendingstocks";
 import Model from "react-modal";
-import "./Clarifypage.css"
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import "./Clarifypage.css"
 
 const Clarifypage = () => {
 
