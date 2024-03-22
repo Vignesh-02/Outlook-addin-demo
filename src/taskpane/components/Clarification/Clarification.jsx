@@ -12,15 +12,13 @@ const Clarification = ({
   status,
   customer_response,
   customer_response_subject,
-  clarifyStatus, 
-  close
-
+  clarifyStatus,
+  close,
 }) => {
-
   const history = useHistory();
 
-   // function
-   const clarifySend = () => {
+  // function
+  const clarifySend = () => {
     if (clarifyStatus === true) {
       const sendClarificationDetails = async () => {
         try {
@@ -31,9 +29,10 @@ const Clarification = ({
             RFQ_ID: RFQ_ID,
             status: status,
             customer_response: customer_response,
-            customer_response_subject : customer_response_subject
+            customer_response_subject: customer_response_subject,
+            day: "0 Day"
           });
-          if(result.data.message === "Queue Details received and stored successfully") {
+          if (result.data.message === "Queue Details received and stored successfully") {
             history.push("/queue");
           }
           console.log("send queue details API response from backend: ", result.data);
@@ -42,12 +41,10 @@ const Clarification = ({
         }
       };
       sendClarificationDetails();
-    } 
-    else {
-      console.log("everthing is fine no need to send clarification details")
+    } else {
+      console.log("everthing is fine no need to send clarification details");
     }
-
-  }
+  };
 
   return (
     <div className="ClarificationPage">
@@ -55,17 +52,11 @@ const Clarification = ({
         <div className="ClarificationPage-cont1-b">
           <div className="ClarificationPage-cont1-c">
             <div className="ClarificationPage-cont1-d">
-              <div className="ClarificationPage-cont1-text">
-                Customer Clarification Response
-              </div>
+              <div className="ClarificationPage-cont1-text">Customer Clarification Response</div>
             </div>
           </div>
           <div className="ClarificationPage-Image">
-            <img
-              className="ClarificationPage-Image-1"
-              src={cross} 
-              onClick={close}
-            />
+            <img className="ClarificationPage-Image-1" src={cross} onClick={close} />
           </div>
         </div>
       </div>
@@ -90,7 +81,9 @@ const Clarification = ({
             <div className="ClarificationPage-btn-1-text">Cancel</div>
           </div>
           <div className="ClarificationPage-btn-2">
-            <div className="ClarificationPage-btn-2-text" onClick={clarifySend}>Send</div>
+            <div className="ClarificationPage-btn-2-text" onClick={clarifySend}>
+              Send
+            </div>
           </div>
         </div>
       </div>

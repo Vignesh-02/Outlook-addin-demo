@@ -27,7 +27,6 @@ import Clarification from "../../components/Clarification/Clarification";
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const history = useHistory();
 
-  
   const location = useLocation();
   // console.log(location);
   // const token = location?.state.token;
@@ -36,193 +35,176 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const searchParams = new URLSearchParams(location.search);
   const token = searchParams.get("token");
   const selectedOrganization = searchParams.get("selectedOrganization");
-  console.log("selectedOrganization", selectedOrganization)
+  console.log("selectedOrganization", selectedOrganization);
 
   const queueNavigation = () => {
     // history.push(`/queue?selectedOrganization=${selectedOrganization}`);
-     history.push({
-           pathname: '/queue',
-           state: { selectedOrganization: selectedOrganization }
-         });
-  }
+    history.push({
+      pathname: "/queue",
+      state: { selectedOrganization: selectedOrganization },
+    });
+  };
   const contactNavigation = () => {
     // history.push(`/contact?selectedOrganization=${selectedOrganization}`);
     history.push({
-      pathname: '/contact',
-      state: { selectedOrganization: selectedOrganization }
+      pathname: "/contact",
+      state: { selectedOrganization: selectedOrganization },
     });
-  }
-
-  
-
-  
+  };
 
   const [clarifyBtn, setClarifyBtn] = useState(false);
   const [isPopupClarify, setIsPopupClarify] = useState(false);
   const [isPopupClarify2, setIsPopupClarify2] = useState(false);
   const [hasBody, setHasBody] = useState(false);
   const togglePopupClarify = () => {
-   setClarifyBtn(true);
+    setClarifyBtn(true);
     console.log("toggle Regenerate");
     setIsPopupClarify(!isPopupClarify);
     console.log(isPopupClarify);
   };
 
-  
   // state to store the message/email body we received from clarification API
   const [clarifyBody, setClarifyBody] = useState(null);
   const [clarifySubject, setClarifySubject] = useState(null);
   const [clarifyFlag, setClarifyFlag] = useState(false);
   // call generate_clarification_emails API when clarification button clciked
   useEffect(() => {
-   if(clarifyBtn) {
-    const generateClarifyEmail =  async () => {
-      try {
-        const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
-        {
-          
-            "RFQ_status": 1,
-            "name": "Oscar Rodriguez",
-            "email": "orodriguez@roncelli.com",
-            "company": "Roncelli Plastics",
-            "shipping_address": "330 W. Duarte Road. Monrovia, CA. 91016",
-            "cert_need": true,
-            "products": [
-                {
-                    "material": "G-10",
-                    "size": {"diameter": "0.187 inch", "thick": null, "length": "48.00 inch", "width": null},
-                    "shape": "Rod",
-                    "specification": "MIL-I-24768/2 GEE",
-                    "manufacturer": null,
-                    "color": null,
-                    "quantity": "20",
-                    "unit": "rods"
-                },
-                {
-                    "material": "G-20",
-                    "size": {"diameter": null, "thick": null, "length": null, "width": null},
-                    "shape": "Sheet",
-                    "specification": "MIL-I-24768/2 GEE",
-                    "manufacturer": null,
-                    "color": null,
-                    "quantity": "10",
-                    "unit": "sheets"
-                }
-            ]
-        
+    if (clarifyBtn) {
+      const generateClarifyEmail = async () => {
+        try {
+          const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/", {
+            RFQ_status: 1,
+            name: "Oscar Rodriguez",
+            email: "orodriguez@roncelli.com",
+            company: "Roncelli Plastics",
+            shipping_address: "330 W. Duarte Road. Monrovia, CA. 91016",
+            cert_need: true,
+            products: [
+              {
+                material: "G-10",
+                size: { diameter: "0.187 inch", thick: null, length: "48.00 inch", width: null },
+                shape: "Rod",
+                specification: "MIL-I-24768/2 GEE",
+                manufacturer: null,
+                color: null,
+                quantity: "20",
+                unit: "rods",
+              },
+              {
+                material: "G-20",
+                size: { diameter: null, thick: null, length: null, width: null },
+                shape: "Sheet",
+                specification: "MIL-I-24768/2 GEE",
+                manufacturer: null,
+                color: null,
+                quantity: "10",
+                unit: "sheets",
+              },
+            ],
+          });
+          // const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
+          // {
+          //    classifyEmail : classifyEmail
+          // }
+          // )
+          console.log("Clarification API Response : ", res.data);
+          if (res.data.message) {
+            setClarifyBody(res.data.message);
+            setClarifyFlag(false);
+          } else if (res.data.body) {
+            setClarifyBody(res.data.body);
+            setClarifySubject(res.data.subject);
+            setClarifyFlag(true);
+          }
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
         }
-        )
-        // const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
-        // {
-        //    classifyEmail : classifyEmail
-        // }
-        // )
-        console.log("Clarification API Response : ", res.data);
-        if(res.data.message) {
-          setClarifyBody(res.data.message);
-          setClarifyFlag(false);
-        } else if(res.data.body) {
-          setClarifyBody(res.data.body);
-          setClarifySubject(res.data.subject)
-          setClarifyFlag(true);
-        }
-      } catch (error) {
-        console.error("Error occurred while calling API:", error);
-      }
-      
+      };
+      generateClarifyEmail();
+      setClarifyBtn(false);
     }
-    generateClarifyEmail();
-    setClarifyBtn(false);
-   }
-  }, [clarifyBtn])
+  }, [clarifyBtn]);
 
-  console.log("Clarify Body : ", clarifyBody)
+  console.log("Clarify Body : ", clarifyBody);
 
-
-  
   // Log the updated value of isPopupClarify2
   useEffect(() => {
     const generateClarifyEmail2 = async () => {
       try {
         if (isPopupClarify2) {
-        //  const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
-        // {
-          
-        //    classifyEmail : classifyEmail
-        
-        // }
-        
-        // )
-        const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
-        {
-          
-            "RFQ_status": 1,
-            "name": "Oscar Rodriguez",
-            "email": "orodriguez@roncelli.com",
-            "company": "Roncelli Plastics",
-            "shipping_address": "330 W. Duarte Road. Monrovia, CA. 91016",
-            "cert_need": true,
-            "products": [
-                {
-                    "material": "G-10",
-                    "size": {"diameter": "0.187 inch", "thick": null, "length": "48.00 inch", "width": null},
-                    "shape": "Rod",
-                    "specification": "MIL-I-24768/2 GEE",
-                    "manufacturer": null,
-                    "color": null,
-                    "quantity": "20",
-                    "unit": "rods"
-                },
-                {
-                    "material": "G-20",
-                    "size": {"diameter": null, "thick": null, "length": null, "width": null},
-                    "shape": "Sheet",
-                    "specification": "MIL-I-24768/2 GEE",
-                    "manufacturer": null,
-                    "color": null,
-                    "quantity": "10",
-                    "unit": "sheets"
-                }
-            ]
-        
-        }
-        )
+          //  const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
+          // {
+
+          //    classifyEmail : classifyEmail
+
+          // }
+
+          // )
+          const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/", {
+            RFQ_status: 1,
+            name: "Oscar Rodriguez",
+            email: "orodriguez@roncelli.com",
+            company: "Roncelli Plastics",
+            shipping_address: "330 W. Duarte Road. Monrovia, CA. 91016",
+            cert_need: true,
+            products: [
+              {
+                material: "G-10",
+                size: { diameter: "0.187 inch", thick: null, length: "48.00 inch", width: null },
+                shape: "Rod",
+                specification: "MIL-I-24768/2 GEE",
+                manufacturer: null,
+                color: null,
+                quantity: "20",
+                unit: "rods",
+              },
+              {
+                material: "G-20",
+                size: { diameter: null, thick: null, length: null, width: null },
+                shape: "Sheet",
+                specification: "MIL-I-24768/2 GEE",
+                manufacturer: null,
+                color: null,
+                quantity: "10",
+                unit: "sheets",
+              },
+            ],
+          });
           console.log("Clarification API Response:", res.data);
-          if(res.data.body) {
-              setClarifyBody(res.data.body)
-              setClarifySubject(res.data.subject)
-              setHasBody(true);
-              setClarifyFlag(true);
+          if (res.data.body) {
+            setClarifyBody(res.data.body);
+            setClarifySubject(res.data.subject);
+            setHasBody(true);
+            setClarifyFlag(true);
           } else if (res.data.message) {
             setClarifyFlag(false);
             setHasBody(false);
             setIsPopupClarify2(false);
-            console.log("popup 199:", isPopupClarify2)
-           setIsDelegate2Clicked(true);
-            setBtn(true)
+            console.log("popup 199:", isPopupClarify2);
+            setIsDelegate2Clicked(true);
+            setBtn(true);
             console.log("LAuch", res.data.message);
           }
           // Set clarifyDelegateBtn to false after processing
-          console.log("POPUP 7:",isPopupClarify2)
+          console.log("POPUP 7:", isPopupClarify2);
           // setIsPopupClarify2(false);
         }
       } catch (error) {
         console.error("Error occurred while calling API:", error);
       }
     };
-  
+
     generateClarifyEmail2();
   }, [isPopupClarify2]);
 
-
   const DelegeBtn2 = () => {
     setIsPopupClarify2(!isPopupClarify2);
-    console.log("POPUP 1:",isPopupClarify2);
+    console.log("POPUP 1:", isPopupClarify2);
     // setBtn(true);
     // setIsDelegate2Clicked(true);
     // setQueueDetails(true);
   };
-  
+
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
   const [queueVendor, setQueueVendor] = useState(false);
@@ -268,7 +250,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     if (visible) {
       closePopupTimer = setTimeout(() => {
         setVisible(false);
-        history.push("/queue")
+        history.push("/queue");
       }, 2000); // 2 seconds
     }
 
@@ -299,7 +281,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   // corrrect
   const accessToken = token;
   const handleLaunch = () => {
-  
     // Log all vendor details received from the generate API
     console.log("Vendor Details:", vendordetail);
 
@@ -314,7 +295,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
     // Log all vendor emails
     console.log("All Vendor Emails:", allVendorEmails);
-
 
     // Check if there are no vendor emails then only save customer details with "Sent" status
     // if (Object.keys(allVendorEmails).length === 0) {
@@ -351,7 +331,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       .then((data) => {
         console.log("Mail sent successfully to customer", data);
         // setQueueCustomer(true);
-        setVisible(true)
+        setVisible(true);
       })
       .catch((error) => {
         console.error("Error sending mail", error);
@@ -393,7 +373,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           },
         })
         .then((response) => {
-
           console.log("Mail sent successfully to Vendor", email, response.data);
           // setQueueDetails(true);
           // setQueueVendor(true);
@@ -412,11 +391,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     });
   };
 
-
-  
-  
- 
-
   useEffect(() => {
     if (queueCustomer) {
       const sendQueueDetailsToCustomer = async () => {
@@ -428,7 +402,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             RFQ_ID: rfq_id,
             status: "Sent",
             customer_response: customerBody,
-            customer_response_subject: customerSubject
+            customer_response_subject: customerSubject,
           });
           console.log("send queue details API response from backend: ", result.data);
         } catch (error) {
@@ -448,7 +422,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             customer_email: emailDetails.body,
             RFQ_ID: rfq_id,
             status: "Vendor quote pending",
-            day: "2 days"
+            day: "2 days",
           });
           console.log("send queue vendor details API response from backend: ", result.data);
         } catch (error) {
@@ -531,14 +505,13 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         shipping_address: classifyEmail.shipping_address || "N/A",
         RFQ_ID: classifyEmail.RFQ_ID || "N/A",
       });
-      setShippingAddress(classifyEmail.shipping_address)
+      setShippingAddress(classifyEmail.shipping_address);
     }
   }, [classifyEmail]);
 
   console.log("Classify Email-SA: ", classifyEmail.shipping_address);
   console.log("Classify Email-RFQ_ID: ", classifyEmail.RFQ_ID);
-  console.log("shipping_address_update5: ", shippingAddress)
-
+  console.log("shipping_address_update5: ", shippingAddress);
 
   useEffect(() => {
     if (isDelegate2Clicked) {
@@ -548,7 +521,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           const emailWithTone = {
             ...classifyEmail,
             tone: "Professional",
-            isr_name: "Santiago"
+            isr_name: "Santiago",
           };
           const res = await axios.post(
             "http://127.0.0.1:8000/api/generate_email/",
@@ -563,9 +536,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           setCustomerSubject(res.data.Customer_quote.Subject);
           const vendorResponse = res.data.vendor_1.Body;
           setVendorBody(vendorResponse);
-           // Logging bodies
-        console.log("Customer's response:", customerResponse);
-        console.log("Vendor's response:", vendorResponse);
+          // Logging bodies
+          console.log("Customer's response:", customerResponse);
+          console.log("Vendor's response:", vendorResponse);
           console.log("Customer's Body:", customerBody);
           console.log("Vendor's Body:", vendorBody);
 
@@ -624,50 +597,45 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   //   }
   // }, [classifyEmail, emailDetails, emailDetailsFetched]);
 
-
   // change
   useEffect(() => {
     // console.log("Customer Detail CC:", customerDetail.cc); // Log the value of customerDetail.cc for debugging
-  
+
     if (classifyEmail && classifyEmail.RFQ_status === 1) {
       const getEmailDetails = async () => {
         try {
           // const ccToSend = customerDetail.cc !== null && customerDetail.cc !== undefined ? customerDetail.cc : []; // Check if cc is null or undefined, if so, set it to an empty array
           let ccToSend = []; // Initialize ccToSend as an empty array
-        if (emailDetails.cc && emailDetails.cc.length > 0) {
-          ccToSend = emailDetails.cc; // Assign ccToSend to customerDetail.cc if it exists and has length
-        }
-          const res = await axios.post(
-            "http://127.0.0.1:8000/api/getEmailDetails/",
-            {
-              customer_name: emailDetails.senderName,
-              customer_email: emailDetails.from,
-              // cc: customerDetail.cc, // Send customerDetail.cc directly
-              cc:ccToSend, // Send customerDetail.cc directly
-              company: emailDetails.company,
-              // shipping_address: shippingAddress,
-              shipping_address: "xyz", // to update
-              // email_id: emailDetails.messageId,// to update
-              email_id: "AS671EUI",// to update
-              email_subject: emailDetails.subject,
-              email_body: emailDetails.body,
-              RFQ_ID: rfq_id,
-            }
-          );
-  
+          if (emailDetails.cc && emailDetails.cc.length > 0) {
+            ccToSend = emailDetails.cc; // Assign ccToSend to customerDetail.cc if it exists and has length
+          }
+          const res = await axios.post("http://127.0.0.1:8000/api/getEmailDetails/", {
+            customer_name: emailDetails.senderName,
+            customer_email: emailDetails.from,
+            // cc: customerDetail.cc, // Send customerDetail.cc directly
+            cc: ccToSend, // Send customerDetail.cc directly
+            company: emailDetails.company,
+            // shipping_address: shippingAddress,
+            shipping_address: "xyz", // to update
+            // email_id: emailDetails.messageId,// to update
+            email_id: "AS671EUI", // to update
+            email_subject: emailDetails.subject,
+            email_body: emailDetails.body,
+            RFQ_ID: rfq_id,
+          });
+
           console.log("getEmailDetails API response from backend: ", res.data);
           setEmailDetailsFetched(true);
         } catch (error) {
           console.error("Error occurred while calling API:", error);
         }
       };
-  
+
       getEmailDetails();
     } else {
       console.log("RFQ_status is not 1 or classifyEmail is not available, skipping API call.");
     }
   }, [classifyEmail, emailDetails]);
-  
 
   const [isPopupOpen1, setIsPopupOpen1] = useState(false);
   const [isPopupOpen2, setIsPopupOpen2] = useState(false);
@@ -721,45 +689,42 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     window.close();
   };
 
-
-
   return (
     <div className={`QuotePage ${isAnyPopupOpen() ? "backdrop" : ""}`}>
       {/* TOP BAR */}
       {isDelegateClicked && classifyEmail && classifyEmail.RFQ_status === 1 ? (
         <>
-          
-          <Topbar selectedOrganization={selectedOrganization}/>
-          
+          <Topbar selectedOrganization={selectedOrganization} />
+
           <Navbar />
         </>
       ) : (
         <>
-   <div className="topbar-frame">
-   <Topbar selectedOrganization={selectedOrganization}/>
+          <div className="topbar-frame">
+            <Topbar selectedOrganization={selectedOrganization} />
 
-        {/* Section - 1B*/}
-        <div className="topbar2">
-          <div className="navbar">
-            <div className="DEL-delegate-div">
-              <div className="DEL-delegate">Delegate</div>
-            </div>
+            {/* Section - 1B*/}
+            <div className="topbar2">
+              <div className="navbar">
+                <div className="DEL-delegate-div">
+                  <div className="DEL-delegate">Delegate</div>
+                </div>
 
-            {/* <div className="queue-div" onClick={() => history.push("/queue")}> */}
-            <div className="queue-div" onClick={queueNavigation}>
-              <div className="queue">Queue</div>
-            </div>
-            {/* <div className="contact-div" onClick={() => history.push("/contact")}> */}
-            <div className="contact-div" onClick={contactNavigation}>
-              <div className="contact">Contact Us</div>
+                {/* <div className="queue-div" onClick={() => history.push("/queue")}> */}
+                <div className="queue-div" onClick={queueNavigation}>
+                  <div className="queue">Queue</div>
+                </div>
+                {/* <div className="contact-div" onClick={() => history.push("/contact")}> */}
+                <div className="contact-div" onClick={contactNavigation}>
+                  <div className="contact">Contact Us</div>
+                </div>
+              </div>
+              <div className="A-div">
+                <div className="A">{userName}</div>
+              </div>
             </div>
           </div>
-          <div className="A-div">
-            <div className="A">{userName}</div>
-          </div>
-        </div>
-      </div>
-      </>
+        </>
       )}
 
       {classifyEmail && classifyEmail.RFQ_status === 0 && (
@@ -780,7 +745,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           <div className="Quote-Sec-2">
             {/* RFQ - SECTION */}
             {/* <div className="Quote-RFQ-Section"> */}
-            <div className={`Quote-RFQ-Section ${isDelegateClicked ? 'collapsed' : ''}`}>
+            <div className={`Quote-RFQ-Section ${isDelegateClicked ? "collapsed" : ""}`}>
               <div className="Quote-RFQ-Div">
                 <div className="Quote-RFQ-Parent">
                   <div className="Quote-RFQ-Child">
@@ -814,7 +779,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                 </div>
               </div>
               {/* <div className="Quote-RFQ-EmailParent"> */}
-            <div className={`Quote-RFQ-EmailParent ${isDelegateClicked ? 'collapsed' : ''}`}>
+              <div className={`Quote-RFQ-EmailParent ${isDelegateClicked ? "collapsed" : ""}`}>
                 <div className="Quote-RFQ-EmailChild">
                   <div className="Quote-RFQ-EmailDiv">
                     <div className="Quote-RFQ-EmailSec">
@@ -1042,26 +1007,21 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
               <div className="Launch-btnParent">
                 <div id="Launch-btn" onClick={togglePopupClarify}>
                   Clarification
-                  {
-          isPopupClarify && (
-            <Model
-            isOpen={isPopupClarify}
-            onRequestClose={togglePopupClarify}
-            className="overlayNoRFQ"
-          >
-            <Clarification 
-           customer_name={emailDetails.senderName}
-           customer_subject = {emailDetails.subject}
-           customer_email={emailDetails.body}
-           RFQ_ID = {rfq_id}
-           status = "Clarification Pending"
-           customer_response={clarifyBody}
-           customer_response_subject = {clarifySubject}
-           clarifyStatus = {clarifyFlag}
-            close={togglePopupClarify} />
-          </Model>
-          )
-         }
+                  {isPopupClarify && (
+                    <Model isOpen={isPopupClarify} onRequestClose={togglePopupClarify} className="overlayNoRFQ">
+                      <Clarification
+                        customer_name={emailDetails.senderName}
+                        customer_subject={emailDetails.subject}
+                        customer_email={emailDetails.body}
+                        RFQ_ID={rfq_id}
+                        status="Clarification Pending"
+                        customer_response={clarifyBody}
+                        customer_response_subject={clarifySubject}
+                        clarifyStatus={clarifyFlag}
+                        close={togglePopupClarify}
+                      />
+                    </Model>
+                  )}
                 </div>
               </div>
             </div>
@@ -1073,27 +1033,21 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         </>
       )}
 
-      
-{isPopupClarify2 && hasBody &&(
-      <Model
-        isOpen={isPopupClarify2}
-        onRequestClose={DelegeBtn2}
-        className="overlayNoRFQ"
-      >
-        <Clarification 
-         customer_name={emailDetails.senderName}
-         customer_subject = { emailDetails.subject}
-         customer_email={emailDetails.body}
-         RFQ_ID = {rfq_id}
-         status = "Clarification Pending"
-         customer_response={clarifyBody}
-         customer_response_subject = {clarifySubject}
-         clarifyStatus = {clarifyFlag}
-        close={DelegeBtn2} 
-        />
-      </Model>
-    )}
-
+      {isPopupClarify2 && hasBody && (
+        <Model isOpen={isPopupClarify2} onRequestClose={DelegeBtn2} className="overlayNoRFQ">
+          <Clarification
+            customer_name={emailDetails.senderName}
+            customer_subject={emailDetails.subject}
+            customer_email={emailDetails.body}
+            RFQ_ID={rfq_id}
+            status="Clarification Pending"
+            customer_response={clarifyBody}
+            customer_response_subject={clarifySubject}
+            clarifyStatus={clarifyFlag}
+            close={DelegeBtn2}
+          />
+        </Model>
+      )}
 
       {/* FOOTER SECTION */}
       <div className="Quote-Footer">
