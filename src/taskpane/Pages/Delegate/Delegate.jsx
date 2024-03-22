@@ -68,7 +68,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   
   // state to store the message/email body we received from clarification API
   const [clarifyBody, setClarifyBody] = useState(null);
-
+  const [clarifySubject, setClarifySubject] = useState(null);
+  const [clarifyFlag, setClarifyFlag] = useState(false);
   // call generate_clarification_emails API when clarification button clciked
   useEffect(() => {
    if(clarifyBtn) {
@@ -116,8 +117,11 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         console.log("Clarification API Response : ", res.data);
         if(res.data.message) {
           setClarifyBody(res.data.message);
+          setClarifyFlag(false);
         } else if(res.data.body) {
           setClarifyBody(res.data.body);
+          setClarifySubject(res.data.subject)
+          setClarifyFlag(true);
         }
       } catch (error) {
         console.error("Error occurred while calling API:", error);
@@ -146,9 +150,12 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         )
           console.log("Clarification API Response:", res.data);
           if(res.data.body) {
-              setClarifyBody(res.data.body)
-              setHasBody(true);
+            setClarifyBody(res.data.body)
+            setClarifySubject(res.data.subject)
+            setHasBody(true);
+            setClarifyFlag(true);
           } else if (res.data.message) {
+            setClarifyFlag(false);
             setHasBody(false);
             setIsPopupClarify2(false);
             console.log("popup inside  generateClarifyEmail:", isPopupClarify2)
@@ -1132,7 +1139,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             className="overlayNoRFQ"
           >
             <Clarification 
-            messageBody = {clarifyBody}
+            customer_name={emailDetails.senderName}
+            customer_subject = {emailDetails.subject}
+            customer_email={emailDetails.from}
+            RFQ_ID = {rfq_id}
+            status = "Clarification Pending"
+            customer_response={clarifyBody}
+            customer_response_subject = {clarifySubject}
+            clarifyStatus = {clarifyFlag}
             close={togglePopupClarify} />
           </Model>
           )
@@ -1157,7 +1171,14 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         className="overlayNoRFQ"
       >
         <Clarification 
-          messageBody={clarifyBody}
+          customer_name={emailDetails.senderName}
+          customer_subject = {emailDetails.from}
+          customer_email={emailDetails.body}
+          RFQ_ID = {rfq_id}
+          status = "Clarification Pending"
+          customer_response={clarifyBody}
+          customer_response_subject = {clarifySubject}
+          clarifyStatus = {clarifyFlag}
           close={DelegeBtn2} 
         />
       </Model>
