@@ -17,7 +17,8 @@ import Login from "./Login";
 import Contact from "./Contact/Contact";
 import Queue from "./Queue"
 import Board from "./Board";
-
+// import Clarifypage from "./Clarifypage/Clarifypage";
+import Clarifypage from "./Clarifypage/Clarifypage";
 
 import Unauthorized from "./Unauthorized/Unauthorized";
 // import { useHistory } from "react-router-dom";
@@ -468,7 +469,8 @@ const App = (props) => {
         />
          <Route exact path="/contact" component={Contact} />
          <Route exact path="/pending" component={Board} />
-
+        <Route exact path="/clarify" component={Clarifypage} />
+         
         {/* <Route 
                 exact
                 path="/home" 

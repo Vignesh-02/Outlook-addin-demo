@@ -13,94 +13,20 @@ import { useHistory } from "react-router-dom";
 
 const Queue = () => {
   const history = useHistory();
-  const location = useLocation();
-
-  // const token = location?.state.token;
-
   const [searchQuery, setSearchQuery] = useState("");
   const [queueData, setQueueData] = useState([]);
 
-  
-  // const location = useLocation();
-  const {token} = location.state || {} // change
-  console.log("Token: ",token);
+  const location = useLocation();
   const { selectedOrganization } = location.state || {};
   console.log("queueselect5",selectedOrganization);
-  
   
 
   useEffect(() => {
     const fetchQueueData = async () => {
       try {
-        const extractBeforeNewline = (str) => {
-          const index = str.indexOf("\r");
-          if (index === -1) {
-            return str; // Return the original string if '\r' is not found
-          }
-          return str.substring(0, index);
-        };
-
-        const res = await axios.get("https://api-dev.wise-sales.com/backend/api/QueueDetails/");
+        const res = await axios.get("http://127.0.0.1:8000/api/QueueDetails/");
         setQueueData(res.data.data);
         console.log("Queue Data API response from backend: ", res.data);
-
-        // res.data.data.map(async (queueItem) => {
-        res.data.data.map(async (queueItem, index) => {
-          if (queueItem.vendor_responses) {
-            queueItem.vendor_responses.map(async (vendorItem) => {
-              console.log("VendorItem", vendorItem);
-              const vendorReply = await axios.get(
-                `https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: ${vendorItem.Subject}  from:${vendorItem.Vendor_Email}"`,
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                  },
-                }
-              );
-
-              // storing the first reply mail from the vendor
-              const fetchedVendorReplyContent = vendorReply.data.value[0].bodyPreview;
-
-              const extractedReply = extractBeforeNewline(fetchedVendorReplyContent);
-
-              console.log("extracted vendor reply", extractedReply);
-
-              const vendorReplyObject = {
-                Body: extractedReply,
-                Subject: `RE: ${vendorItem.Subject}`,
-                Vendor_Email: vendorItem.Vendor_Email,
-              };
-
-              const url = `https://api-dev.wise-sales.com/backend/api/QueueDetails/${index + 1}/`; // Replace with your actual endpoint URL
-              const requestData = {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ vendor_replies: vendorReplyObject }),
-              };
-
-              const response = await fetch(url, requestData);
-
-              if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-              }
-              const data = await response.json(); // Assuming the server responds with JSON
-              console.log("Success:", data);
-
-              console.log("vendor reply", vendorReply);
-            });
-          }
-        });
-        // const vendorReply = await axios.get(`https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: Request for Quote - PVC Material from:vignesh@onelabventures.com"`, {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //     "Content-Type": "application/json",
-        //   },
-        // });
-        // console.log("This is a vendor reply ", vendorReply);
-        // })
       } catch (error) {
         console.error("Error occurred while calling API:", error);
       }
@@ -110,8 +36,6 @@ const Queue = () => {
   }, []); // Empty dependency array to run the effect only once on component mount
 
   console.log("QueueData", queueData);
-
-  const statuses = [];
 
   // Filter data based on the search query
   const filteredData = queueData.filter((rowData) =>
@@ -132,33 +56,25 @@ const Queue = () => {
   // const [rfq, setRfq] = useState(null);
   const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
-    history.push(
-      `/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`
-    );
-    console.log("RFQ: ", RFQ_ID);
-    console.log("QueueDate: ", date);
+    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`);
+    console.log("RFQ: ", RFQ_ID)
+    console.log("QueueDate: ", date)
     // setRfq(RFQ_ID)
   };
 
-  // useEffect(() => {
-  //   const fetchCustomerDetails = async () => {
-  //     try {
-  //       if (rfq) {
-  //         const res = await axios.get(`https://api-dev.wise-sales.com/backend/api/getEmailDetails/${rfq}/`);
-  //         console.log("Customer API response from backend: ", res.data);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error occurred while calling API:", error);
-  //     }
-  //   };
+  const ClarifyStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject,day) => {
+    // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
+    history.push(`/clarify?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}&day=${day}`);
+    console.log("RFQ: ", RFQ_ID)
+    console.log("QueueDate: ", date)
+    // setRfq(RFQ_ID)
+  };
 
-  //   fetchCustomerDetails();
-  // }, [rfq]);
+  
 
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-      {/* <Topbar /> */}
       <Topbar selectedOrganization={selectedOrganization}/>
 
       <Navbar />
@@ -235,6 +151,7 @@ const Queue = () => {
               </div>
               <div className="QueueRowParent-2a">
                 <div className="QueueRowChild-2b">
+              
                   <div
                     className="QueueRowCell-2a"
                     style={{
@@ -248,27 +165,29 @@ const Queue = () => {
                           : "inherit", // Default color
                     }}
                     onClick={() => {
-                      if (rowData.status === "Sent" || rowData.status === "Vendor quote pending") {
+                      if (rowData.status === "Sent") {
                         // navigate("/pending",
                         // { customerName: rowData.customer_name })
                         // ;
                         // handleStatusClick(rowData.customer_name);
                         // handleStatusClick(rowData.customer_name, rowData.customer_email);
-                        handleStatusClick(
-                          rowData.customer_name,
-                          rowData.customer_response,
-                          rowData.RFQ_ID,
-                          rowData.date,
-                          rowData.time,
-                          rowData.customer_response_subject
-                        );
+                        handleStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
+                          ,rowData.date, rowData.time, rowData.customer_response_subject
+                          );
+                      }
+                      else if (rowData.status === "Clarification Pending") {
+                        ClarifyStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
+                          ,rowData.date, rowData.time, rowData.customer_response_subject, rowData.day
+                          );
                       }
                     }}
                   >
                     {rowData.status}
                   </div>
-
-                  {rowData.status !== "Sent" && <div className="QueueRowCell-2b">{rowData.day}</div>}
+                     
+                  {rowData.status !== "Sent" && (
+                    <div className="QueueRowCell-2b">{rowData.day}</div>
+                  )}
                 </div>
               </div>
               <div className="QueueRowParent-3a">
