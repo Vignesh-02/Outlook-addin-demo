@@ -7,7 +7,7 @@
 /* Middle */
 .clarifypageMiddle {
   /* background-color: greenyellow; */
-  height: 419px;
+  height: 437px;
   width: 289px;
   margin-left: 16px;
   margin-bottom: 12px;
@@ -568,7 +568,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
-  background-color: greenyellow;
 }
 .Board-Cutomer-EmailDiv-2 {
   align-self: stretch;
@@ -625,7 +624,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
-  background-color: red;
 }
 .Board-Cutomer-EmailDiv-Value-2 {
   align-self: stretch;
@@ -677,12 +675,12 @@
   line-height: 14px;
   letter-spacing: 0.1px;
   word-wrap: break-word;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 .boardFooter {
   /* background-color: red; */
-  margin-top: -12px;
+  margin-top: -23px;
 }
 
 .overlayBoardMail {
