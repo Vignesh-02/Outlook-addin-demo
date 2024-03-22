@@ -221,7 +221,7 @@ const Clarifypage = () => {
                     <MailPopup
                       isOpen={isPopupOpenMail}
                       close={togglePopupMail}
-                      emailSubject={senderSubject}
+                      subject={senderSubject}
                       body={senderBody}
                     />
                   </Model>
