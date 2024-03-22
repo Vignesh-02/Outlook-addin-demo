@@ -568,6 +568,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
+  background-color: greenyellow;
 }
 .Board-Cutomer-EmailDiv-2 {
   align-self: stretch;
@@ -624,6 +625,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
+  background-color: red;
 }
 .Board-Cutomer-EmailDiv-Value-2 {
   align-self: stretch;
