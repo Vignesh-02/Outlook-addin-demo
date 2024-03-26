@@ -22,13 +22,12 @@ const Queue = () => {
 
   const location = useLocation();
   const { selectedOrganization } = location.state || {};
-  console.log("queueselect5",selectedOrganization);
-  
+  console.log("queueselect5", selectedOrganization);
 
   useEffect(() => {
     const fetchQueueData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/QueueDetails/");
+        const res = await axios.get("https://api-dev.wise-sales.com/backend/api/QueueDetails/");
         setQueueData(res.data.data);
         console.log("Queue Data API response from backend: ", res.data);
 
@@ -118,26 +117,28 @@ const Queue = () => {
   // const [rfq, setRfq] = useState(null);
   const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
-    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`);
-    console.log("RFQ: ", RFQ_ID)
-    console.log("QueueDate: ", date)
+    history.push(
+      `/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`
+    );
+    console.log("RFQ: ", RFQ_ID);
+    console.log("QueueDate: ", date);
     // setRfq(RFQ_ID)
   };
 
-  const ClarifyStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject,day) => {
+  const ClarifyStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject, day) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
-    history.push(`/clarify?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}&day=${day}`);
-    console.log("RFQ: ", RFQ_ID)
-    console.log("QueueDate: ", date)
+    history.push(
+      `/clarify?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}&day=${day}`
+    );
+    console.log("RFQ: ", RFQ_ID);
+    console.log("QueueDate: ", date);
     // setRfq(RFQ_ID)
   };
-
-  
 
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-      <Topbar selectedOrganization={selectedOrganization}/>
+      <Topbar selectedOrganization={selectedOrganization} />
 
       <Navbar />
 
@@ -213,7 +214,6 @@ const Queue = () => {
               </div>
               <div className="QueueRowParent-2a">
                 <div className="QueueRowChild-2b">
-              
                   <div
                     className="QueueRowCell-2a"
                     style={{
@@ -233,23 +233,31 @@ const Queue = () => {
                         // ;
                         // handleStatusClick(rowData.customer_name);
                         // handleStatusClick(rowData.customer_name, rowData.customer_email);
-                        handleStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
-                          ,rowData.date, rowData.time, rowData.customer_response_subject
-                          );
-                      }
-                      else if (rowData.status === "Clarification Pending") {
-                        ClarifyStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
-                          ,rowData.date, rowData.time, rowData.customer_response_subject, rowData.day
-                          );
+                        handleStatusClick(
+                          rowData.customer_name,
+                          rowData.customer_response,
+                          rowData.RFQ_ID,
+                          rowData.date,
+                          rowData.time,
+                          rowData.customer_response_subject
+                        );
+                      } else if (rowData.status === "Clarification Pending") {
+                        ClarifyStatusClick(
+                          rowData.customer_name,
+                          rowData.customer_response,
+                          rowData.RFQ_ID,
+                          rowData.date,
+                          rowData.time,
+                          rowData.customer_response_subject,
+                          rowData.day
+                        );
                       }
                     }}
                   >
                     {rowData.status}
                   </div>
-                     
-                  {rowData.status !== "Sent" && (
-                    <div className="QueueRowCell-2b">{rowData.day}</div>
-                  )}
+
+                  {rowData.status !== "Sent" && <div className="QueueRowCell-2b">{rowData.day}</div>}
                 </div>
               </div>
               <div className="QueueRowParent-3a">

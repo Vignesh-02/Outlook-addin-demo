@@ -1,5 +1,5 @@
 // import React from "react";
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Topbar from "../Topbar/Topbar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -10,15 +10,14 @@ import Pendingstocks from "../PendingStocks/Pendingstocks";
 import Model from "react-modal";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import "./Clarifypage.css"
+import "./Clarifypage.css";
 
 const Clarifypage = () => {
-
   const [customerDetails, setCustomerDetails] = useState({
     customerName: "",
     customerEmail: "", // Add customerEmail to the state
     customerSubject: "",
-    RFQ_ID: ""
+    RFQ_ID: "",
   });
 
   const [isPopupOpenMail, setIsPopupOpenMail] = useState(false);
@@ -51,7 +50,7 @@ const Clarifypage = () => {
   const time = searchParams.get("time");
   const customer_response_subject = searchParams.get("customer_response_subject");
   const day = searchParams.get("day");
-  
+
   console.log("clarify Customer Name:", customerName); // Log customerName to console
 
   useEffect(() => {
@@ -61,7 +60,7 @@ const Clarifypage = () => {
         ...prevDetails,
         customerName: customerName,
         customerEmail: customerEmail, // Update customerEmail in the state
-        RFQ_ID: RFQ_ID
+        RFQ_ID: RFQ_ID,
       }));
     }
   }, [customerName, customerEmail, RFQ_ID]);
@@ -77,33 +76,32 @@ const Clarifypage = () => {
     const fetchCustomerDetails = async () => {
       try {
         if (RFQ_ID) {
-          const res = await axios.get(`http://127.0.0.1:8000/api/getEmailDetails/${RFQ_ID}/`);
+          const res = await axios.get(`https://api-dev.wise-sales.com/backend/api/getEmailDetails/${RFQ_ID}/`);
           console.log("Customer API response from backend: ", res.data);
           // console.log("a",res.data.customer_name)
           // Check if the response contains any data
           const customerName2 = res.data.data[0].customer_name;
           console.log("abc:", customerName2);
-          setSenderName(res.data.data[0].customer_name)
-          setSenderEmail(res.data.data[0].customer_email)
-          setSenderCC(res.data.data[0].cc)
-          setSenderDomain(res.data.data[0].company)
-          setSenderSA(res.data.data[0].shipping_address)
-          setSenderSubject(res.data.data[0].email_subject)
-          setSenderBody(res.data.data[0].email_body)
-          console.log("Email subject board: ", senderSubject)
+          setSenderName(res.data.data[0].customer_name);
+          setSenderEmail(res.data.data[0].customer_email);
+          setSenderCC(res.data.data[0].cc);
+          setSenderDomain(res.data.data[0].company);
+          setSenderSA(res.data.data[0].shipping_address);
+          setSenderSubject(res.data.data[0].email_subject);
+          setSenderBody(res.data.data[0].email_body);
+          console.log("Email subject board: ", senderSubject);
         }
       } catch (error) {
         console.error("Error occurred while calling API:", error);
       }
     };
-  
-    fetchCustomerDetails();
 
+    fetchCustomerDetails();
 
     const fetchMaterialDetails = async () => {
       try {
         if (RFQ_ID) {
-          const res = await axios.get(`http://127.0.0.1:8000/api/getMaterial/${RFQ_ID}/`);
+          const res = await axios.get(`https://api-dev.wise-sales.com/backend/api/getMaterial/${RFQ_ID}/`);
           console.log("Material API response from backend: ", res.data);
           setMaterialDetails(res.data);
         }
@@ -213,11 +211,7 @@ const Clarifypage = () => {
                   //   // emailSubject={emailSubject}
                   //   // body={body}
                   // />
-                  <Model
-                    isOpen={isPopupOpenMail}
-                    close={togglePopupMail}
-                    className="overlayBoardMail"
-                  >
+                  <Model isOpen={isPopupOpenMail} close={togglePopupMail} className="overlayBoardMail">
                     <MailPopup
                       isOpen={isPopupOpenMail}
                       close={togglePopupMail}
@@ -277,12 +271,7 @@ const Clarifypage = () => {
             </div>
             <div className="Board-userInfo-img">
               <div className="Board-userInfo-img2">
-                <img
-                  className="Board-userInfo-img3"
-                  src={Extend}
-                  alt="Logo"
-                  onClick={togglePopupInfo}
-                />
+                <img className="Board-userInfo-img3" src={Extend} alt="Logo" onClick={togglePopupInfo} />
                 {isPopupOpenInfo && (
                   // <InfoPopup
                   //   isOpen={isPopupOpenInfo}
@@ -294,11 +283,7 @@ const Clarifypage = () => {
                   //   shipping_address={materialDetails.shipping_address}
 
                   // />
-                  <Model
-                    isOpen={isPopupOpenInfo}
-                    close={togglePopupInfo}
-                    className="overlayBoardInfo"
-                  >
+                  <Model isOpen={isPopupOpenInfo} close={togglePopupInfo} className="overlayBoardInfo">
                     <InfoPopup
                       isOpen={isPopupOpenInfo}
                       close={togglePopupInfo}
@@ -316,7 +301,7 @@ const Clarifypage = () => {
         </div>
         {/* Material Table */}
         {/* <clarifypagestocks materialDetails={materialDetails} /> */}
-        <Pendingstocks materialDetails={materialDetails}/>
+        <Pendingstocks materialDetails={materialDetails} />
 
         {/* customer */}
         <div className="Board-Cutomer-EmailDiv">
@@ -324,9 +309,7 @@ const Clarifypage = () => {
             <div className="Board-Cutomer-EmailDiv-3">
               <div className="Board-Cutomer-EmailDiv-4">
                 <div className="Board-Cutomer-EmailDiv-5">
-                  <div className="Board-Cutomer-EmailDiv-Mail">
-                    Clarification Mail Request
-                  </div>
+                  <div className="Board-Cutomer-EmailDiv-Mail">Clarification Mail Request</div>
                 </div>
               </div>
             </div>
@@ -335,9 +318,7 @@ const Clarifypage = () => {
             <div className="Board-Cutomer-EmailDiv-Value-2">
               <div className="Board-Cutomer-EmailDiv-Value-3">
                 <div className="Board-Cutomer-EmailDiv-Value-4">
-                  <div className="Board-Cutomer-EmailDiv-Value-Content">
-                    {customerEmail}
-                  </div>
+                  <div className="Board-Cutomer-EmailDiv-Value-Content">{customerEmail}</div>
                 </div>
               </div>
             </div>
