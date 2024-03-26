@@ -225,16 +225,14 @@ const Login = ({ emailAddress, ...props }) => {
     };
   }, []);
 
-  
+  //   const handleCrossClick = () => {
+  //     // Close the extension when the cross is clicked
+  //     window.close();
+  //   };
 
-//   const handleCrossClick = () => {
-//     // Close the extension when the cross is clicked
-//     window.close();
-//   };
-
-const handleOrganizationChange = (event) => {
-  setSelectedOrganization(event.target.value);
-};
+  const handleOrganizationChange = (event) => {
+    setSelectedOrganization(event.target.value);
+  };
 
   return (
     <>
@@ -272,7 +270,7 @@ const handleOrganizationChange = (event) => {
                     </option>
                     <option value="Onelab Ventures">Onelab Ventures</option>
                     <option value="Wise Sales">Wise Sales</option>
-                  <option value="Interstate Advanced Materials">Interstate Advanced Materials</option>
+                    <option value="Interstate Advanced Materials">Interstate Advanced Materials</option>
                   </select>
                 </div>
               </div>

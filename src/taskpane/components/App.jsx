@@ -270,32 +270,31 @@ const App = (props) => {
 //         // Ensure Office is ready
 
 
-useEffect(() => {
-            async function getIDToken() {
-            try {
-              let userTokenEncoded = await OfficeRuntime.auth.getAccessToken({
-                forMSGraphAccess: false
-              });
-              let userToken = jwt_decode(userTokenEncoded);
-              //you can use oid from userToken
-              console.log('This is the access token ', userTokenEncoded);
-              console.log('This is the decoded access token ', userToken);
-              sendMail(userTokenEncoded);
+// useEffect(() => {
+//             async function getIDToken() {
+//             try {
+//               let userTokenEncoded = await OfficeRuntime.auth.getAccessToken({
+//                 forMSGraphAccess: false
+//               });
+//               let userToken = jwt_decode(userTokenEncoded);
+//               //you can use oid from userToken
+//               console.log('This is the access token ', userTokenEncoded);
+//               console.log('This is the decoded access token ', userToken);
+//               sendMail(userTokenEncoded);
           
-            } catch (error) {
-              console.log(error);
-            }
-          }
+//             } catch (error) {
+//               console.log(error);
+//             }
+//           }
 
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Outlook) {
-     getIDToken();
-  }
-});
+// Office.onReady((info) => {
+//   if (info.host === Office.HostType.Outlook) {
+//      getIDToken();
+//   }
+// });
 
 
-//   }, [])
-}, []);
+// }, []);
 
 
   
