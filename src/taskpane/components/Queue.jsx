@@ -10,6 +10,8 @@ import Footer from "./Footer/Footer";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Model from "react-modal";
+import Sort from "./SortQueue/Sort";
 
 const Queue = () => {
   const history = useHistory();
@@ -20,6 +22,13 @@ const Queue = () => {
   const { selectedOrganization } = location.state || {};
   console.log("queueselect5",selectedOrganization);
   
+  const [isPopupOpenSort, setIsPopupOpenSort] = useState(false);
+  const togglePopupSort = () => {
+    setIsPopupOpenSort(!isPopupOpenSort);
+  };
+
+  const [selectedSortOption, setSelectedSortOption] = useState(null);
+
 
   useEffect(() => {
     const fetchQueueData = async () => {
@@ -38,9 +47,9 @@ const Queue = () => {
   console.log("QueueData", queueData);
 
   // Filter data based on the search query
-  const filteredData = queueData.filter((rowData) =>
-    rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // const filteredData = queueData.filter((rowData) =>
+  //   rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
   // const handleStatusClick = () => {
   //   navigate("/pending");
@@ -70,7 +79,65 @@ const Queue = () => {
     // setRfq(RFQ_ID)
   };
 
-  
+  // Function to handle sorting selection
+  const handleSortSelection = (option) => {
+    setSelectedSortOption(option);
+    setIsPopupOpenSort(false); // Close the sort popup
+  };
+
+  // Apply sorting and filtering based on the selected sorting option
+const sortedAndFilteredData = queueData
+.filter((rowData) =>
+  rowData.customer_name.toLowerCase().includes(searchQuery.toLowerCase())
+)
+.filter((rowData) => {
+  if (selectedSortOption) {
+    switch (selectedSortOption) {
+      case "Date (ascending)":
+      case "Date (descending)":
+        return true; // No filtering needed
+      case "Customer name (ascending)":
+        return true; // No filtering needed
+      case "Customer name (descending)":
+        return true; // No filtering needed
+      case "Sent":
+        return rowData.status === "Sent";
+      case "Vendor quote pending":
+        return rowData.status === "Vendor quote pending";
+      case "Received quotes":
+        return rowData.status === "Received quotes";
+      case "Clarification Pending":
+        return rowData.status === "Clarification Pending";
+      default:
+        return false;
+    }
+  } else {
+    // If no sorting option is selected, return all rows
+    return true;
+  }
+})
+.sort((a, b) => {
+  switch (selectedSortOption) {
+    case "Date (ascending)":
+      return new Date(a.date) - new Date(b.date);
+    case "Date (descending)":
+      return new Date(b.date) - new Date(a.date);
+    case "Customer name (ascending)":
+      return a.customer_name.localeCompare(b.customer_name);
+    case "Customer name (descending)":
+      return b.customer_name.localeCompare(a.customer_name);
+    case "Sent":
+      return a.status === "Sent" ? -1 : 1;
+    case "Vendor quote pending":
+      return a.status === "Vendor quote pending" ? -1 : 1;
+    case "Received quotes":
+      return a.status === "Received quotes" ? -1 : 1;
+    case "Clarification Pending":
+      return a.status === "Clarification Pending" ? -1 : 1;
+    default:
+      return 0;
+  }
+});
 
   return (
     <div className="queuePage">
@@ -94,8 +161,13 @@ const Queue = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="queueSearch-sec1-Sort">
+        <div className="queueSearch-sec1-Sort" onClick={() => setIsPopupOpenSort(!isPopupOpenSort)}>
           <img src={SortImage} alt="Logo" className="queueSearch-sec1-Sort-2" />
+          {isPopupOpenSort && (
+            <Model isOpen={isPopupOpenSort} onRequestClose={() => setIsPopupOpenSort(false)} className="overlayQueueSort">
+              <Sort close={() => setIsPopupOpenSort(false)} onSelectSort={handleSortSelection} />
+            </Model>
+          )}
         </div>
       </div>
 
@@ -141,7 +213,7 @@ const Queue = () => {
 
         {/* mid - 2 */}
         <div className="QueueRow">
-          {filteredData.map((rowData, index) => (
+          {sortedAndFilteredData.map((rowData, index) => (
             <div className="QueueRowParent-1" key={index}>
               <div className="QueueRowParent-1a">
                 <div className="QueueRowChild-1b">
