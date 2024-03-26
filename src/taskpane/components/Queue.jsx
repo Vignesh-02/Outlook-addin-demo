@@ -8,6 +8,7 @@ import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Model from "react-modal";
@@ -15,11 +16,15 @@ import Sort from "./SortQueue/Sort";
 
 const Queue = () => {
   const history = useHistory();
+
+  const { accessToken } = useSelector((state) => state.accessToken);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [queueData, setQueueData] = useState([]);
 
   const location = useLocation();
   const { selectedOrganization } = location.state || {};
+<<<<<<< HEAD
   console.log("queueselect5",selectedOrganization);
   
   const [isPopupOpenSort, setIsPopupOpenSort] = useState(false);
@@ -29,13 +34,74 @@ const Queue = () => {
 
   const [selectedSortOption, setSelectedSortOption] = useState(null);
 
+=======
+  console.log("queueselect5", selectedOrganization);
+>>>>>>> aa3404e7186fbd1f31bd8371764e68efb595c0e5
 
   useEffect(() => {
     const fetchQueueData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/QueueDetails/");
+        const res = await axios.get("https://api-dev.wise-sales.com/backend/api/QueueDetails/");
         setQueueData(res.data.data);
         console.log("Queue Data API response from backend: ", res.data);
+
+        // res.data.data.map(async (queueItem) => {
+        res.data.data.map(async (queueItem, index) => {
+          if (queueItem.vendor_responses) {
+            queueItem.vendor_responses.map(async (vendorItem) => {
+              console.log("VendorItem", vendorItem);
+              const vendorReply = await axios.get(
+                `https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: ${vendorItem.Subject}  from:${vendorItem.Vendor_Email}"`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+
+              // storing the first reply mail from the vendor
+              const fetchedVendorReplyContent = vendorReply.data.value[0].bodyPreview;
+
+              const extractedReply = extractBeforeNewline(fetchedVendorReplyContent);
+
+              console.log("extracted vendor reply", extractedReply);
+
+              const vendorReplyObject = {
+                Body: extractedReply,
+                Subject: `RE: ${vendorItem.Subject}`,
+                Vendor_Email: vendorItem.Vendor_Email,
+              };
+
+              const url = `https://api-dev.wise-sales.com/backend/api/QueueDetails/${index + 1}/`; // Replace with your actual endpoint URL
+              const requestData = {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ vendor_replies: vendorReplyObject }),
+              };
+
+              const response = await fetch(url, requestData);
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              const data = await response.json(); // Assuming the server responds with JSON
+              console.log("Success:", data);
+
+              console.log("vendor reply", vendorReply);
+            });
+          }
+        });
+        // const vendorReply = await axios.get(`https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: Request for Quote - PVC Material from:vignesh@onelabventures.com"`, {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //     "Content-Type": "application/json",
+        //   },
+        // });
+        // console.log("This is a vendor reply ", vendorReply);
+        // })
       } catch (error) {
         console.error("Error occurred while calling API:", error);
       }
@@ -65,20 +131,25 @@ const Queue = () => {
   // const [rfq, setRfq] = useState(null);
   const handleStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
-    history.push(`/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`);
-    console.log("RFQ: ", RFQ_ID)
-    console.log("QueueDate: ", date)
+    history.push(
+      `/pending?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}`
+    );
+    console.log("RFQ: ", RFQ_ID);
+    console.log("QueueDate: ", date);
     // setRfq(RFQ_ID)
   };
 
-  const ClarifyStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject,day) => {
+  const ClarifyStatusClick = (customerName, customerEmail, RFQ_ID, date, time, customer_response_subject, day) => {
     // navigate("/pending", { state: { customerName, customerEmail, RFQ_ID, date, time} });
-    history.push(`/clarify?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}&day=${day}`);
-    console.log("RFQ: ", RFQ_ID)
-    console.log("QueueDate: ", date)
+    history.push(
+      `/clarify?customerName=${customerName}&customerEmail=${customerEmail}&RFQ_ID=${RFQ_ID}&date=${date}&time=${time}&customer_response_subject=${customer_response_subject}&day=${day}`
+    );
+    console.log("RFQ: ", RFQ_ID);
+    console.log("QueueDate: ", date);
     // setRfq(RFQ_ID)
   };
 
+<<<<<<< HEAD
   // Function to handle sorting selection
   const handleSortSelection = (option) => {
     setSelectedSortOption(option);
@@ -139,10 +210,12 @@ const sortedAndFilteredData = queueData
   }
 });
 
+=======
+>>>>>>> aa3404e7186fbd1f31bd8371764e68efb595c0e5
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
-      <Topbar selectedOrganization={selectedOrganization}/>
+      <Topbar selectedOrganization={selectedOrganization} />
 
       <Navbar />
 
@@ -223,7 +296,6 @@ const sortedAndFilteredData = queueData
               </div>
               <div className="QueueRowParent-2a">
                 <div className="QueueRowChild-2b">
-              
                   <div
                     className="QueueRowCell-2a"
                     style={{
@@ -243,23 +315,31 @@ const sortedAndFilteredData = queueData
                         // ;
                         // handleStatusClick(rowData.customer_name);
                         // handleStatusClick(rowData.customer_name, rowData.customer_email);
-                        handleStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
-                          ,rowData.date, rowData.time, rowData.customer_response_subject
-                          );
-                      }
-                      else if (rowData.status === "Clarification Pending") {
-                        ClarifyStatusClick(rowData.customer_name, rowData.customer_response, rowData.RFQ_ID
-                          ,rowData.date, rowData.time, rowData.customer_response_subject, rowData.day
-                          );
+                        handleStatusClick(
+                          rowData.customer_name,
+                          rowData.customer_response,
+                          rowData.RFQ_ID,
+                          rowData.date,
+                          rowData.time,
+                          rowData.customer_response_subject
+                        );
+                      } else if (rowData.status === "Clarification Pending") {
+                        ClarifyStatusClick(
+                          rowData.customer_name,
+                          rowData.customer_response,
+                          rowData.RFQ_ID,
+                          rowData.date,
+                          rowData.time,
+                          rowData.customer_response_subject,
+                          rowData.day
+                        );
                       }
                     }}
                   >
                     {rowData.status}
                   </div>
-                     
-                  {rowData.status !== "Sent" && (
-                    <div className="QueueRowCell-2b">{rowData.day}</div>
-                  )}
+
+                  {rowData.status !== "Sent" && <div className="QueueRowCell-2b">{rowData.day}</div>}
                 </div>
               </div>
               <div className="QueueRowParent-3a">

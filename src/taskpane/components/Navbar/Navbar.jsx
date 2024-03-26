@@ -39,7 +39,9 @@ const Navbar = ({ activePage }) => {
         >
           <div className="nav-table2-Div2-b">Delegate</div>
         </div>
-        <div className={`nav-table2-Div2-a2 ${activePage === "Queue" ? "active" : ""}`}>
+        <div className={`nav-table2-Div2-a2 ${activePage === "Queue" ? "active" : ""}`}
+                  onClick={() => history.push("/queue")}
+        >
           <div className="nav-table2-Div2-b">Queue</div>
         </div>
         <div

@@ -31,150 +31,140 @@ import { v4 as uuidv4 } from "uuid";
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const history = useHistory();
 
+  const { accessToken } = useSelector((state) => state.accessToken);
   const location = useLocation();
   // const token = location?.state.token;
 
   const searchParams = new URLSearchParams(location.search);
-  const token = searchParams.get("token");
   const selectedOrganization = searchParams.get("selectedOrganization");
-  console.log("selectedOrganization", selectedOrganization)
+  console.log("selectedOrganization", selectedOrganization);
 
   const queueNavigation = () => {
     // history.push(`/queue?selectedOrganization=${selectedOrganization}`);
-     history.push({
-           pathname: '/queue',
-           state: { selectedOrganization: selectedOrganization }
-         });
-  }
+    history.push({
+      pathname: "/queue",
+      state: { selectedOrganization: selectedOrganization },
+    });
+  };
   const contactNavigation = () => {
     // history.push(`/contact?selectedOrganization=${selectedOrganization}`);
     history.push({
-      pathname: '/contact',
-      state: { selectedOrganization: selectedOrganization }
+      pathname: "/contact",
+      state: { selectedOrganization: selectedOrganization },
     });
-  }
+  };
 
   const [clarifyBtn, setClarifyBtn] = useState(false);
   const [isPopupClarify, setIsPopupClarify] = useState(false);
   const [isPopupClarify2, setIsPopupClarify2] = useState(false);
   const [hasBody, setHasBody] = useState(false);
   const togglePopupClarify = () => {
-   setClarifyBtn(true);
+    setClarifyBtn(true);
     console.log("toggle Regenerate");
     setIsPopupClarify(!isPopupClarify);
     console.log(isPopupClarify);
   };
 
-  
   // state to store the message/email body we received from clarification API
   const [clarifyBody, setClarifyBody] = useState(null);
   const [clarifySubject, setClarifySubject] = useState(null);
   const [clarifyFlag, setClarifyFlag] = useState(false);
   // call generate_clarification_emails API when clarification button clciked
   useEffect(() => {
-   if(clarifyBtn) {
-    const generateClarifyEmail =  async () => {
-      try {
-        // const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
-        // {
-          
-        //     "RFQ_status": 1,
-        //     "name": "Oscar Rodriguez",
-        //     "email": "orodriguez@roncelli.com",
-        //     "company": "Roncelli Plastics",
-        //     "shipping_address": "330 W. Duarte Road. Monrovia, CA. 91016",
-        //     "cert_need": true,
-        //     "products": [
-        //         {
-        //             "material": "G-10",
-        //             "size": {"diameter": "0.187 inch", "thick": null, "length": "48.00 inch", "width": null},
-        //             "shape": "Rod",
-        //             "specification": "MIL-I-24768/2 GEE",
-        //             "manufacturer": null,
-        //             "color": null,
-        //             "quantity": "20",
-        //             "unit": "rods"
-        //         },
-        //         {
-        //             "material": "G-20",
-        //             "size": {"diameter": null, "thick": null, "length": null, "width": null},
-        //             "shape": "Sheet",
-        //             "specification": "MIL-I-24768/2 GEE",
-        //             "manufacturer": null,
-        //             "color": null,
-        //             "quantity": "10",
-        //             "unit": "sheets"
-        //         }
-        //     ]
-        
-        // }
-        // )
-        const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
-        {
-           classifyEmail : classifyEmail
-        }
-        )
-        console.log("Clarification API Response : ", res.data);
-        if(res.data.message) {
-          setClarifyBody(res.data.message);
-          setClarifyFlag(false);
-        } else if(res.data.body) {
-          setClarifyBody(res.data.body);
-          setClarifySubject(res.data.subject)
-          setClarifyFlag(true);
-        }
-      } catch (error) {
-        console.error("Error occurred while calling API:", error);
-      }
-      
-    }
-    generateClarifyEmail();
-    setClarifyBtn(false);
-   }
-  }, [clarifyBtn])
+    if (clarifyBtn) {
+      const generateClarifyEmail = async () => {
+        try {
+          // const res = await axios.post("https://api-dev.wise-sales.com/backend/api/generate_clarification_emails/",
+          // {
 
-  console.log("Clarify Body : ", clarifyBody)
-  
+          //     "RFQ_status": 1,
+          //     "name": "Oscar Rodriguez",
+          //     "email": "orodriguez@roncelli.com",
+          //     "company": "Roncelli Plastics",
+          //     "shipping_address": "330 W. Duarte Road. Monrovia, CA. 91016",
+          //     "cert_need": true,
+          //     "products": [
+          //         {
+          //             "material": "G-10",
+          //             "size": {"diameter": "0.187 inch", "thick": null, "length": "48.00 inch", "width": null},
+          //             "shape": "Rod",
+          //             "specification": "MIL-I-24768/2 GEE",
+          //             "manufacturer": null,
+          //             "color": null,
+          //             "quantity": "20",
+          //             "unit": "rods"
+          //         },
+          //         {
+          //             "material": "G-20",
+          //             "size": {"diameter": null, "thick": null, "length": null, "width": null},
+          //             "shape": "Sheet",
+          //             "specification": "MIL-I-24768/2 GEE",
+          //             "manufacturer": null,
+          //             "color": null,
+          //             "quantity": "10",
+          //             "unit": "sheets"
+          //         }
+          //     ]
+
+          // }
+          // )
+          const res = await axios.post("https://api-dev.wise-sales.com/backend/api/generate_clarification_emails/", {
+            classifyEmail: classifyEmail,
+          });
+          console.log("Clarification API Response : ", res.data);
+          if (res.data.message) {
+            setClarifyBody(res.data.message);
+            setClarifyFlag(false);
+          } else if (res.data.body) {
+            setClarifyBody(res.data.body);
+            setClarifySubject(res.data.subject);
+            setClarifyFlag(true);
+          }
+        } catch (error) {
+          console.error("Error occurred while calling API:", error);
+        }
+      };
+      generateClarifyEmail();
+      setClarifyBtn(false);
+    }
+  }, [clarifyBtn]);
+
+  console.log("Clarify Body : ", clarifyBody);
+
   // Log the updated value of isPopupClarify2
   useEffect(() => {
     const generateClarifyEmail2 = async () => {
       try {
         if (isPopupClarify2) {
-         const res = await axios.post("http://127.0.0.1:8000/api/generate_clarification_emails/",
-        {
-          
-           classifyEmail : classifyEmail
-        
-        }
-        
-        )
+          const res = await axios.post("https://api-dev.wise-sales.com/backend/api/generate_clarification_emails/", {
+            classifyEmail: classifyEmail,
+          });
           console.log("Clarification API Response:", res.data);
-          if(res.data.body) {
-            setClarifyBody(res.data.body)
-            setClarifySubject(res.data.subject)
+          if (res.data.body) {
+            setClarifyBody(res.data.body);
+            setClarifySubject(res.data.subject);
             setHasBody(true);
             setClarifyFlag(true);
           } else if (res.data.message) {
             setClarifyFlag(false);
             setHasBody(false);
             setIsPopupClarify2(false);
-            console.log("popup inside  generateClarifyEmail:", isPopupClarify2)
-           setIsDelegate2Clicked(true);
-            setBtn(true)
+            console.log("popup inside  generateClarifyEmail:", isPopupClarify2);
+            setIsDelegate2Clicked(true);
+            setBtn(true);
             console.log("LAuch", res.data.message);
           }
           // Set clarifyDelegateBtn to false after processing
-          console.log("POPUP 7:",isPopupClarify2)
+          console.log("POPUP 7:", isPopupClarify2);
           // setIsPopupClarify2(false);
         }
       } catch (error) {
         console.error("Error occurred while calling API:", error);
       }
     };
-  
+
     generateClarifyEmail2();
   }, [isPopupClarify2]);
-
 
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -230,9 +220,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         setVisible(false);
         history.push({
           pathname: "/queue",
-          state: { token: token },
         });
-      }, 2000); // 2 seconds
+      }, 3000); // 2 seconds
     }
 
     return () => {
@@ -336,7 +325,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   const handleLaunch = () => {
     const uniqueId = uuidv4();
-    const accessToken = token;
+    // const accessToken = token;
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
 
     console.log("Vendor Details:", vendordetail);
@@ -603,7 +592,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   const DelegeBtn2 = () => {
     setIsPopupClarify2(!isPopupClarify2);
-    console.log("POPUP 1:",isPopupClarify2);
+    console.log("POPUP 1:", isPopupClarify2);
     // setBtn(true);
     // setIsDelegate2Clicked(true);
   };
@@ -812,36 +801,37 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       {isDelegateClicked && classifyEmail && classifyEmail.RFQ_status === 1 ? (
         <>
           {/* <Topbar /> */}
-          <Topbar selectedOrganization={selectedOrganization}/>
+          <Topbar selectedOrganization={selectedOrganization} />
           <Navbar />
         </>
       ) : (
         <>
-      <div className="topbar-frame">
-        {/* Section -1A */}
-        <Topbar selectedOrganization={selectedOrganization}/>
-        {/* Section - 1B*/}
-        <div className="topbar2">
-          <div className="navbar">
-            <div className="DEL-delegate-div">
-              <div className="DEL-delegate">Delegate</div>
-            </div>
-            
+          <div className="topbar-frame">
+            {/* Section -1A */}
+            <Topbar selectedOrganization={selectedOrganization} />
+            {/* Section - 1B*/}
+            <div className="topbar2">
+              <div className="navbar">
+                <div className="DEL-delegate-div">
+                  <div className="DEL-delegate">Delegate</div>
+                </div>
 
-            {/* <div className="queue-div"> */}
-            <div className="queue-div" onClick={queueNavigation}>
-              <div className="queue">Queue</div>
+                <div className="queue-div">
+                  <div className="queue" onClick={queueNavigation}>
+                    Queue
+                  </div>
+                </div>
+                <div className="contact-div">
+                  <div className="contact" onClick={contactNavigation}>
+                    Contact Us
+                  </div>
+                </div>
+                <div className="A-div">
+                  <div className="A">{userName}</div>
+                </div>
+              </div>
             </div>
-            <div className="contact-div" onClick={contactNavigation}>
-              <div className="contact">Contact Us</div>
-            </div>
           </div>
-          <div className="A-div">
-            <div className="A">{userName}</div>
-          </div>
-
-          </div>
-      </div>
         </>
       )}
 
@@ -863,7 +853,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           <div className="Quote-Sec-2">
             {/* RFQ - SECTION */}
             {/* <div className="Quote-RFQ-Section"> */}
-            <div className={`Quote-RFQ-Section ${isDelegateClicked ? 'collapsed' : ''}`}>
+            <div className={`Quote-RFQ-Section ${isDelegateClicked ? "collapsed" : ""}`}>
               <div className="Quote-RFQ-Div">
                 <div className="Quote-RFQ-Parent">
                   <div className="Quote-RFQ-Child">
@@ -897,7 +887,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                 </div>
               </div>
               {/* <div className="Quote-RFQ-EmailParent"> */}
-              <div className={`Quote-RFQ-EmailParent ${isDelegateClicked ? 'collapsed' : ''}`}>
+              <div className={`Quote-RFQ-EmailParent ${isDelegateClicked ? "collapsed" : ""}`}>
                 <div className="Quote-RFQ-EmailChild">
                   <div className="Quote-RFQ-EmailDiv">
                     <div className="Quote-RFQ-EmailSec">
@@ -1131,26 +1121,21 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
               <div className="Launch-btnParent">
                 <div id="Launch-btn" onClick={togglePopupClarify}>
                   Clarification
-                  {
-          isPopupClarify && (
-            <Model
-            isOpen={isPopupClarify}
-            onRequestClose={togglePopupClarify}
-            className="overlayNoRFQ"
-          >
-            <Clarification 
-            customer_name={emailDetails.senderName}
-            customer_subject = {emailDetails.subject}
-            customer_email={emailDetails.from}
-            RFQ_ID = {rfq_id}
-            status = "Clarification Pending"
-            customer_response={clarifyBody}
-            customer_response_subject = {clarifySubject}
-            clarifyStatus = {clarifyFlag}
-            close={togglePopupClarify} />
-          </Model>
-          )
-         }
+                  {isPopupClarify && (
+                    <Model isOpen={isPopupClarify} onRequestClose={togglePopupClarify} className="overlayNoRFQ">
+                      <Clarification
+                        customer_name={emailDetails.senderName}
+                        customer_subject={emailDetails.subject}
+                        customer_email={emailDetails.from}
+                        RFQ_ID={rfq_id}
+                        status="Clarification Pending"
+                        customer_response={clarifyBody}
+                        customer_response_subject={clarifySubject}
+                        clarifyStatus={clarifyFlag}
+                        close={togglePopupClarify}
+                      />
+                    </Model>
+                  )}
                 </div>
               </div>
             </div>
@@ -1162,28 +1147,21 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         </>
       )}
 
-
-           
-{isPopupClarify2 && hasBody &&(
-      <Model
-        isOpen={isPopupClarify2}
-        onRequestClose={DelegeBtn2}
-        className="overlayNoRFQ"
-      >
-        <Clarification 
-          customer_name={emailDetails.senderName}
-          customer_subject = {emailDetails.from}
-          customer_email={emailDetails.body}
-          RFQ_ID = {rfq_id}
-          status = "Clarification Pending"
-          customer_response={clarifyBody}
-          customer_response_subject = {clarifySubject}
-          clarifyStatus = {clarifyFlag}
-          close={DelegeBtn2} 
-        />
-      </Model>
-    )}
-
+      {isPopupClarify2 && hasBody && (
+        <Model isOpen={isPopupClarify2} onRequestClose={DelegeBtn2} className="overlayNoRFQ">
+          <Clarification
+            customer_name={emailDetails.senderName}
+            customer_subject={emailDetails.from}
+            customer_email={emailDetails.body}
+            RFQ_ID={rfq_id}
+            status="Clarification Pending"
+            customer_response={clarifyBody}
+            customer_response_subject={clarifySubject}
+            clarifyStatus={clarifyFlag}
+            close={DelegeBtn2}
+          />
+        </Model>
+      )}
 
       {/* FOOTER SECTION */}
       <div className="Quote-Footer">

@@ -163,7 +163,7 @@
 }
 .A-div {
   height: 18px;
-  width: 12px;
+  width: 50px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 4px;
@@ -177,7 +177,7 @@
 }
 .A {
   color: white;
-  font-size: 14px;
+  font-size: 10px;
   font-family: Orbitron;
   font-weight: 400;
   letter-spacing: 0.14px;
