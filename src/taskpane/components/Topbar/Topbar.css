@@ -23,7 +23,13 @@
   margin-right: 22px;
   cursor: pointer;
 }
-.contactPage-topDiv-Child1 img {
+/* .contactPage-topDiv-Child1 img {
   width: 10px;
   height: 10px;
+} */
+
+
+.refreshImage {
+  width: 18px;
+  height: 18px;
 }
