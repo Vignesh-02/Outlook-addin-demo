@@ -24,7 +24,7 @@ const Queue = () => {
 
   const location = useLocation();
   const { selectedOrganization } = location.state || {};
-<<<<<<< HEAD
+
   console.log("queueselect5",selectedOrganization);
   
   const [isPopupOpenSort, setIsPopupOpenSort] = useState(false);
@@ -33,10 +33,6 @@ const Queue = () => {
   };
 
   const [selectedSortOption, setSelectedSortOption] = useState(null);
-
-=======
-  console.log("queueselect5", selectedOrganization);
->>>>>>> aa3404e7186fbd1f31bd8371764e68efb595c0e5
 
   useEffect(() => {
     const fetchQueueData = async () => {
@@ -149,7 +145,6 @@ const Queue = () => {
     // setRfq(RFQ_ID)
   };
 
-<<<<<<< HEAD
   // Function to handle sorting selection
   const handleSortSelection = (option) => {
     setSelectedSortOption(option);
@@ -210,8 +205,6 @@ const sortedAndFilteredData = queueData
   }
 });
 
-=======
->>>>>>> aa3404e7186fbd1f31bd8371764e68efb595c0e5
   return (
     <div className="queuePage">
       {/* TOP - BAR */}
