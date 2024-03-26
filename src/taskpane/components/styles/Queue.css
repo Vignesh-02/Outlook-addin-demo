@@ -418,3 +418,17 @@
   width: 12.03px;
   height: 14.6px;
 }
+
+
+/* popup */
+.overlayQueueSort {
+  width: 144px;
+  height: 211px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 175px;
+  margin-top: 225px;
+  border: transparent;
+  /* border: 1px solid red; */
+}
