@@ -179,7 +179,7 @@ const Clarifypage = () => {
           </div>
         </div>
 
-        {/* mail */}
+      
         {/* mail */}
         <div className="Board-RFQ-Section">
           <div className="Board-RFQ-Div">
