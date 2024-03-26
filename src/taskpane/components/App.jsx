@@ -19,6 +19,8 @@ import Queue from "./Queue"
 import Board from "./Board";
 import VendorResponsePending from "./VendorResponsePending/VendorResponsePending";
 
+// import Clarifypage from "./Clarifypage/Clarifypage";
+import Clarifypage from "./Clarifypage/Clarifypage";
 
 import Unauthorized from "./Unauthorized/Unauthorized";
 // import { useHistory } from "react-router-dom";
@@ -477,6 +479,8 @@ Office.onReady((info) => {
          <Route exact path="/vendor_response_pending" component={VendorResponsePending} />
         
 
+        <Route exact path="/clarify" component={Clarifypage} />
+         
         {/* <Route 
                 exact
                 path="/home" 

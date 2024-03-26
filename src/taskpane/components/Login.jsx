@@ -20,6 +20,7 @@ const Login = ({ emailAddress, ...props }) => {
   const [loading, setLoading] = useState(true); // State to track loading
 
   const history = useHistory();
+
   const [accessToken, setAccessToken] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -99,7 +100,7 @@ const Login = ({ emailAddress, ...props }) => {
       .then((token) => {
         tokenAdd(token);
         history.push({
-          pathname: "/del",
+          pathname: `/del?selectedOrganization=${selectedOrganization}`,
         });
 
         console.log("test 3");
@@ -224,14 +225,16 @@ const Login = ({ emailAddress, ...props }) => {
     };
   }, []);
 
-  const handleOrganizationChange = (event) => {
-    setSelectedOrganization(event.target.value);
-  };
+  
 
-  //   const handleCrossClick = () => {
-  //     // Close the extension when the cross is clicked
-  //     window.close();
-  //   };
+//   const handleCrossClick = () => {
+//     // Close the extension when the cross is clicked
+//     window.close();
+//   };
+
+const handleOrganizationChange = (event) => {
+  setSelectedOrganization(event.target.value);
+};
 
   return (
     <>
@@ -268,7 +271,8 @@ const Login = ({ emailAddress, ...props }) => {
                       Select an Organization
                     </option>
                     <option value="Onelab Ventures">Onelab Ventures</option>
-                    <option value="Turnkey">Turnkey</option>
+                    <option value="Wise Sales">Wise Sales</option>
+                  <option value="Interstate Advanced Materials">Interstate Advanced Materials</option>
                   </select>
                 </div>
               </div>
