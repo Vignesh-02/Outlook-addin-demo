@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./VendorResponsePending.css"; // Import the CSS file
+import "./VendorResponseReceived.css";
 import Topbar from "../Topbar/Topbar";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import Pending1 from "./Pending1";
-import Received1 from "./Received1";
-import VendorFollowUp from "./VendorFollowUp";
 
 import Extend from "../../../../public/extender.png";
 
@@ -15,6 +12,7 @@ import InfoPopup from "../InfoPopup/InfoPopup";
 import Pendingstocks from "../PendingStocks/Pendingstocks";
 import Modal from "react-modal";
 import axios from "axios";
+import Recei
 
 const VendorResponsePending = () => {
   const [customerDetails, setCustomerDetails] = useState({
@@ -177,13 +175,13 @@ const VendorResponsePending = () => {
 
         {/* mail */}
         {/* mail */}
-        <div className="Board-RFQ-Section">
-          <div className="Board-RFQ-Div">
-            <div className="Board-RFQ-Parent">
-              <div className="Board-RFQ-Child">
-                <div className="Board-RFQ-TextParent">
-                  {/* <div className="Board-RFQ-Text"> RFQ {materialDetails.RFQ_ID || "RFQ"}</div> */}
-                  <div className="Board-RFQ-Text">
+        <div className="VendorResponsePending-RFQ-Section">
+          <div className="VendorResponsePending-RFQ-Div">
+            <div className="VendorResponsePending-RFQ-Parent">
+              <div className="VendorResponsePending-RFQ-Child">
+                <div className="VendorResponsePending-RFQ-TextParent">
+                  {/* <div className="VendorResponsePending-RFQ-Text"> RFQ {materialDetails.RFQ_ID || "RFQ"}</div> */}
+                  <div className="VendorResponsePending-RFQ-Text">
                     {" "}
                     RFQ{" "}
                     {/* {materialDetails.RFQ_ID
@@ -192,7 +190,7 @@ const VendorResponsePending = () => {
                   </div>
                 </div>
               </div>
-              <div className="Board-RFQ-Image">
+              <div className="VendorResponsePending-RFQ-Image">
                 <img
                   className={{
                     width: "12.83px",
@@ -223,12 +221,12 @@ const VendorResponsePending = () => {
               </div>
             </div>
           </div>
-          <div className="Board-RFQ-EmailParent">
-            <div className="Board-RFQ-EmailChild">
-              <div className="Board-RFQ-EmailDiv">
-                <div className="Board-RFQ-EmailSec">
-                  <div className="Board-RFQ-Email-Cont">
-                    <div className="Board-RFQ-Email-Content">
+          <div className="VendorResponsePending-RFQ-EmailParent">
+            <div className="VendorResponsePending-RFQ-EmailChild">
+              <div className="VendorResponsePending-RFQ-EmailDiv">
+                <div className="VendorResponsePending-RFQ-EmailSec">
+                  <div className="VendorResponsePending-RFQ-Email-Cont">
+                    <div className="VendorResponsePending-RFQ-Email-Content">
                       {/* {customerSubject} */}
                       subject : {senderSubject}
                       <br />
@@ -244,23 +242,23 @@ const VendorResponsePending = () => {
         </div>
 
         {/* User Info */}
-        <div className="Board-userInfo">
-          <div className="Board-userInfo-1">
-            <div className="Board-userInfo-2">
-              <div className="Board-userInfo-3">
-                <div className="Board-userInfo-4">
-                  <div className="Board-userInfo-5">
-                    <div className="Board-userInfo-Name">Name</div>
+        <div className="VendorResponsePending-userInfo">
+          <div className="VendorResponsePending-userInfo-1">
+            <div className="VendorResponsePending-userInfo-2">
+              <div className="VendorResponsePending-userInfo-3">
+                <div className="VendorResponsePending-userInfo-4">
+                  <div className="VendorResponsePending-userInfo-5">
+                    <div className="VendorResponsePending-userInfo-Name">Name</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="Board-userInfo-Val">
-              <div className="Board-userInfo-Val-2">
-                <div className="Board-userInfo-Val-3">
-                  <div className="Board-userInfo-Val-4">
-                    <div className="Board-userInfo-Val-5">
-                      <div className="Board-userInfo-Val-6">
+            <div className="VendorResponsePending-userInfo-Val">
+              <div className="VendorResponsePending-userInfo-Val-2">
+                <div className="VendorResponsePending-userInfo-Val-3">
+                  <div className="VendorResponsePending-userInfo-Val-4">
+                    <div className="VendorResponsePending-userInfo-Val-5">
+                      <div className="VendorResponsePending-userInfo-Val-6">
                         {/* Angie Pankuch */}
                         {/* {customerName} */}
                         {name}
@@ -270,9 +268,14 @@ const VendorResponsePending = () => {
                 </div>
               </div>
             </div>
-            <div className="Board-userInfo-img">
-              <div className="Board-userInfo-img2">
-                <img className="Board-userInfo-img3" src={Extend} alt="Logo" onClick={togglePopupInfo} />
+            <div className="VendorResponsePending-userInfo-img">
+              <div className="VendorResponsePending-userInfo-img2">
+                <img
+                  className="VendorResponsePending-userInfo-img3"
+                  src={Extend}
+                  alt="Logo"
+                  onClick={togglePopupInfo}
+                />
                 {isPopupOpenInfo && (
                   // <InfoPopup
                   //   isOpen={isPopupOpenInfo}
@@ -303,29 +306,29 @@ const VendorResponsePending = () => {
         {/* Material Table */}
         <Pendingstocks materialDetails={materialDetails} />
 
-        <Pending1 />
+         {/* <Pending1 />
 
-        <Received1 />
+         <Received />
 
-        {/* <VendorFollowUp />            */}
+         <VendorFollowUp />            */}
 
         {/* customer */}
 
-        {/* <div className="Board-Cutomer-EmailDiv">
-          <div className="Board-Cutomer-EmailDiv-2">
-            <div className="Board-Cutomer-EmailDiv-3">
-              <div className="Board-Cutomer-EmailDiv-4">
-                <div className="Board-Cutomer-EmailDiv-5">
-                  <div className="Board-Cutomer-EmailDiv-Mail">Pending (3 days)</div>
+        {/* <div className="VendorResponsePending-Cutomer-EmailDiv">
+          <div className="VendorResponsePending-Cutomer-EmailDiv-2">
+            <div className="VendorResponsePending-Cutomer-EmailDiv-3">
+              <div className="VendorResponsePending-Cutomer-EmailDiv-4">
+                <div className="VendorResponsePending-Cutomer-EmailDiv-5">
+                  <div className="VendorResponsePending-Cutomer-EmailDiv-Mail">Pending (3 days)</div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="Board-Cutomer-EmailDiv-Value">
-            <div className="Board-Cutomer-EmailDiv-Value-2">
-              <div className="Board-Cutomer-EmailDiv-Value-3">
-                <div className="Board-Cutomer-EmailDiv-Value-4">
-                  <div className="Board-Cutomer-EmailDiv-Value-Content">
+          <div className="VendorResponsePending-Cutomer-EmailDiv-Value">
+            <div className="VendorResponsePending-Cutomer-EmailDiv-Value-2">
+              <div className="VendorResponsePending-Cutomer-EmailDiv-Value-3">
+                <div className="VendorResponsePending-Cutomer-EmailDiv-Value-4">
+                  <div className="VendorResponsePending-Cutomer-EmailDiv-Value-Content">
                     Subject: "{customer_response_subject}"
                     <br />
                     <br />
@@ -362,14 +365,14 @@ const VendorResponsePending = () => {
                   Thank you once again for choosing us.
                   <br />
                   Best regards: */}
-        {/* {email}
+                    {/* {email}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div> */}
-      </div>
+      </div> 
 
       {/* footer */}
       <div className="boardFooter">

@@ -30,8 +30,7 @@ import { v4 as uuidv4 } from "uuid";
 const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
   const history = useHistory();
 
-  const location = useLocation();
-  const token = location?.state.token;
+  const { accessToken } = useSelector((state) => state.accessToken);
 
   // const [queueDetails, setQueueDetails] = useState(false);
   const [queueCustomer, setQueueCustomer] = useState(false);
@@ -87,7 +86,6 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
         setVisible(false);
         history.push({
           pathname: "/queue",
-          state: { token: token },
         });
       }, 2000); // 2 seconds
     }
@@ -193,7 +191,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
 
   const handleLaunch = () => {
     const uniqueId = uuidv4();
-    const accessToken = token;
+    // const accessToken = token;
     const sendMailVendor = "https://graph.microsoft.com/v1.0/me/sendMail";
 
     console.log("Vendor Details:", vendordetail);
@@ -682,7 +680,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                 </div>
 
                 <div className="queue-div">
-                  <div className="queue">Queue</div>
+                  <div className="queue" onClick={() => history.push("/queue")}>
+                    Queue
+                  </div>
                 </div>
                 <div className="contact-div">
                   <div className="contact" onClick={() => history.push("/contact")}>
@@ -716,7 +716,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
           <div className="Quote-Sec-2">
             {/* RFQ - SECTION */}
             {/* <div className="Quote-RFQ-Section"> */}
-            <div className={`Quote-RFQ-Section ${isDelegateClicked ? 'collapsed' : ''}`}>
+            <div className={`Quote-RFQ-Section ${isDelegateClicked ? "collapsed" : ""}`}>
               <div className="Quote-RFQ-Div">
                 <div className="Quote-RFQ-Parent">
                   <div className="Quote-RFQ-Child">
@@ -750,7 +750,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                 </div>
               </div>
               {/* <div className="Quote-RFQ-EmailParent"> */}
-              <div className={`Quote-RFQ-EmailParent ${isDelegateClicked ? 'collapsed' : ''}`}>
+              <div className={`Quote-RFQ-EmailParent ${isDelegateClicked ? "collapsed" : ""}`}>
                 <div className="Quote-RFQ-EmailChild">
                   <div className="Quote-RFQ-EmailDiv">
                     <div className="Quote-RFQ-EmailSec">

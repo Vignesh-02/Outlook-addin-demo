@@ -5,16 +5,16 @@ const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CspHtmlWebpackPlugin = require("csp-html-webpack-plugin");
- 
+
 const webpack = require("webpack");
 
-// http://127.0.0.1:4040                     
+// http://127.0.0.1:4040
 // https://881b-182-48-208-239.ngrok-free.app
 
 const urlDev = "http://localhost:3001";
-// const urlProd = "https://3276-182-48-208-239.ngrok-free.app"
-// 3276-182-48-208-239.ngrok-free.app
-const urlProd = "https://outlook-addin-v9y9.onrender.com/"; 
+// const urlProd = "https://outlook-addin-v9y9.onrender.com"
+// outlook-addin-v9y9.onrender.com
+const urlProd = "https://outlook-addin-v9y9.onrender.com/";
 // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 async function getHttpsOptions() {
@@ -33,11 +33,11 @@ module.exports = async (env, options) => {
       commands: "./src/commands/commands.js",
     },
     output: {
-        path: path.resolve(__dirname, "build"),
-        filename: "[name].bundle.js",
-        clean: true,
-        publicPath: "/",
-      },
+      path: path.resolve(__dirname, "build"),
+      filename: "[name].bundle.js",
+      clean: true,
+      publicPath: "/",
+    },
     resolve: {
       extensions: [".html", ".js", ".jsx"],
     },
@@ -76,10 +76,9 @@ module.exports = async (env, options) => {
           },
         },
         {
-            test: /\.css$/i,  // Regex to match CSS files
-            use: ['style-loader', 'css-loader'],  // Loaders are used in reverse order
+          test: /\.css$/i, // Regex to match CSS files
+          use: ["style-loader", "css-loader"], // Loaders are used in reverse order
         },
-
       ],
     },
     plugins: [
@@ -103,34 +102,34 @@ module.exports = async (env, options) => {
         ],
       }),
 
-    //   new CspHtmlWebpackPlugin(
-    //     {
-            
-    //             "base-uri": "'self'",
-    //             "object-src": "'none'",
-    //             "script-src": ["'self'", "'unsafe-eval'"],
-    //             "style-src": ["'self'", "'unsafe-inline'"],
-    //             "connect-src": [ "'self'",
-    //                               "https://dummyjson.com",
-    //                               "http://localhost:8000",
-    //                               "127.0.0.1:8000",
-                                  
-    //             ],
-    //             "frame-src": ["'self'"]
-    //     },
-    //     {
-    //         enabled: true,
-    //         hashingMethod: "sha256",
-    //         hashEnabled: {
-    //           "script-src": true,
-    //           "style-src": true,
-    //         },
-    //         nonceEnabled: {
-    //           "script-src": true,
-    //           "style-src": true,
-    //         },
-    //       },
-    //     ),
+      //   new CspHtmlWebpackPlugin(
+      //     {
+
+      //             "base-uri": "'self'",
+      //             "object-src": "'none'",
+      //             "script-src": ["'self'", "'unsafe-eval'"],
+      //             "style-src": ["'self'", "'unsafe-inline'"],
+      //             "connect-src": [ "'self'",
+      //                               "https://dummyjson.com",
+      //                               "http://localhost:8000",
+      //                               "127.0.0.1:8000",
+
+      //             ],
+      //             "frame-src": ["'self'"]
+      //     },
+      //     {
+      //         enabled: true,
+      //         hashingMethod: "sha256",
+      //         hashEnabled: {
+      //           "script-src": true,
+      //           "style-src": true,
+      //         },
+      //         nonceEnabled: {
+      //           "script-src": true,
+      //           "style-src": true,
+      //         },
+      //       },
+      //     ),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
@@ -146,7 +145,7 @@ module.exports = async (env, options) => {
       }),
     ],
     devServer: {
-    static: "./build",
+      static: "./build",
       hot: true,
       headers: {
         "Access-Control-Allow-Origin": "*",

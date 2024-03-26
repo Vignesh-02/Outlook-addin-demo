@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Authenticate</title>
     <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-
-</head>
-<body>
+  </head>
+  <body>
     <script>
-            window.onload = function() {
+      window.onload = function () {
         const clientId = "1ce719b8-44a7-4a11-8c4c-e5c9e2e5ba6f";
-    const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
-    const scope = "Mail.Send Mail.ReadWrite Mail.Read";
-    const state="12345";
-    const code_challenge="1SF5UEwYplIjmAwHUwcitzp9qz8zv98uYflt-tBmwLc"
-    const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&response_mode=query&code_challenge=${encodeURIComponent(code_challenge)}&&code_challenge_method=S256`;;
-    // &state=${encodeURIComponent(state)}
-        
+        const redirectUri = "https://outlook-addin-v9y9.onrender.com/assets/login.html";
+        const scope = "Mail.Send Mail.ReadWrite Mail.Read";
+        const state = "12345";
+        const code_challenge = "1SF5UEwYplIjmAwHUwcitzp9qz8zv98uYflt-tBmwLc";
+        const authUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(
+          redirectUri
+        )}&scope=${encodeURIComponent(scope)}&response_mode=query&code_challenge=${encodeURIComponent(
+          code_challenge
+        )}&&code_challenge_method=S256`;
+        // &state=${encodeURIComponent(state)}
+
         window.location.replace(authUrl);
-    };
-
-
+      };
     </script>
-    
-</body>
+  </body>
 </html>

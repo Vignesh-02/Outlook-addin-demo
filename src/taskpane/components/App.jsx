@@ -17,6 +17,7 @@ import Login from "./Login";
 import Contact from "./Contact/Contact";
 import Queue from "./Queue"
 import Board from "./Board";
+import VendorResponsePending from "./VendorResponsePending/VendorResponsePending";
 
 
 import Unauthorized from "./Unauthorized/Unauthorized";
@@ -266,30 +267,35 @@ const App = (props) => {
    
 //         // Ensure Office is ready
 
-//         async function getIDToken() {
-//             try {
-//               let userTokenEncoded = await OfficeRuntime.auth.getAccessToken({
-//                 allowSignInPrompt: true,
-//               });
-//               let userToken = jwt_decode(userTokenEncoded);
-//               //you can use oid from userToken
-//               console.log('This is the access token ', userTokenEncoded);
-//               console.log('This is the decoded access token ', userToken);
-//               sendMail(userTokenEncoded);
-          
-//             } catch (error) {
-//               console.log(error);
-//             }
-//           }
 
-// Office.onReady((info) => {
-//   if (info.host === Office.HostType.Outlook) {
-//      getIDToken();
-//   }
-// });
+useEffect(() => {
+            async function getIDToken() {
+            try {
+              let userTokenEncoded = await OfficeRuntime.auth.getAccessToken({
+                forMSGraphAccess: false
+              });
+              let userToken = jwt_decode(userTokenEncoded);
+              //you can use oid from userToken
+              console.log('This is the access token ', userTokenEncoded);
+              console.log('This is the decoded access token ', userToken);
+              sendMail(userTokenEncoded);
+          
+            } catch (error) {
+              console.log(error);
+            }
+          }
+
+Office.onReady((info) => {
+  if (info.host === Office.HostType.Outlook) {
+     getIDToken();
+  }
+});
 
 
 //   }, [])
+}, []);
+
+
   
   
   
@@ -468,6 +474,8 @@ const App = (props) => {
         />
          <Route exact path="/contact" component={Contact} />
          <Route exact path="/pending" component={Board} />
+         <Route exact path="/vendor_response_pending" component={VendorResponsePending} />
+        
 
         {/* <Route 
                 exact

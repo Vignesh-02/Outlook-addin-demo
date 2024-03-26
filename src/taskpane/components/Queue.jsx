@@ -8,14 +8,14 @@ import Topbar from "./Topbar/Topbar";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 const Queue = () => {
   const history = useHistory();
-  const location = useLocation();
 
-  const token = location?.state.token;
+  const { accessToken } = useSelector((state) => state.accessToken);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [queueData, setQueueData] = useState([]);
@@ -44,7 +44,7 @@ const Queue = () => {
                 `https://graph.microsoft.com/v1.0/me/messages?search="subject:RE: ${vendorItem.Subject}  from:${vendorItem.Vendor_Email}"`,
                 {
                   headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${accessToken}`,
                     "Content-Type": "application/json",
                   },
                 }
