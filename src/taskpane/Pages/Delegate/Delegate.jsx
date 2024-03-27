@@ -15,7 +15,7 @@ import Buttoncv from "../../components/Button/Buttoncv";
 import InfoPopup from "../../components/InfoPopup/InfoPopup";
 import MailPopup from "../../components/MailPopup/MailPopup";
 import axios from "axios";
-import Model from "react-modal";
+import Modal from "react-modal";
 import Success from "../../components/Success/Success";
 import Notrfq from "../../components/NotRFQ/Notrfq";
 import Topbar from "../../components/Topbar/Topbar";
@@ -415,7 +415,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       .then((data) => {
         console.log("Mail sent successfully to customer", data.status);
         setVisible(true);
-        setQueueCustomer(true);
+        sendQueueDetailsToCustomer();
+        // setQueueCustomer(true);
         // history.push("/queue")
       })
       .catch((error) => {
@@ -441,28 +442,29 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     //     });
   };
 
-  useEffect(() => {
-    if (queueCustomer) {
-      const sendQueueDetailsToCustomer = async () => {
-        try {
-          const result = await axios.post("https://api-dev.wise-sales.com/backend/api/QueueDetails/", {
-            customer_name: emailDetails.senderName,
-            customer_email: emailDetails.from,
-            customer_subject: emailDetails.subject,
-            customer_response: customerResponseBody,
-            vendor_responses: vendordetail,
-            RFQ_ID: rfq_id,
-            status: "Sent",
-            customer_response_subject: customerSubject,
-          });
-          console.log("send queue details API response from backend: ", result.data);
-        } catch (error) {
-          console.error("Error occurred while calling API:", error);
-        }
-      };
-      sendQueueDetailsToCustomer();
+  //   useEffect(() => {
+  //     if (queueCustomer) {
+  const sendQueueDetailsToCustomer = async () => {
+    try {
+      const result = await axios.post("https://api-dev.wise-sales.com/backend/api/QueueDetails/", {
+        customer_name: emailDetails.senderName,
+        customer_email: emailDetails.from,
+        customer_subject: emailDetails.subject,
+        customer_response: customerResponseBody,
+        // vendor_responses: vendordetail,
+        // vendor_replies: [],
+        RFQ_ID: rfq_id,
+        status: "Sent",
+        customer_response_subject: "Test Subject",
+      });
+      console.log("sent queue details API response from backend: ", result.data);
+    } catch (error) {
+      console.error("Error occurred while calling API:", error);
     }
-  }, [queueCustomer]);
+  };
+  //       sendQueueDetailsToCustomer();
+  //     }
+  //   }, [queueCustomer]);
 
   //   useEffect(() => {
   //     if (queueVendor) {
@@ -596,6 +598,8 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
     // setBtn(true);
     // setIsDelegate2Clicked(true);
   };
+
+  console.log("Customer Subject", customerSubject);
 
   useEffect(() => {
     if (isDelegate2Clicked) {
@@ -836,16 +840,15 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       )}
 
       {classifyEmail && classifyEmail.RFQ_status === 0 && (
-        <Model isOpen={isPopupOpennotrfq} onRequestClose={togglePopupnotRFQ} className="overlayNoRFQ">
+        <Modal isOpen={isPopupOpennotrfq} onRequestClose={togglePopupnotRFQ} className="overlayNoRFQ">
           <Notrfq close={togglePopupnotRFQ} />
-        </Model>
+        </Modal>
       )}
 
       {isDelegateClicked && showLoader ? (
         <div className="L1">
           <div className="L2"></div>
-          <div className="L3"></div>
-          <div className="L4"></div>
+          <div className="L3"></div>\<div className="L4"></div>
         </div>
       ) : (
         <>
@@ -876,12 +879,16 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                       onClick={togglePopupMail}
                     />
                     {isPopupOpenMail && (
-                      <MailPopup
-                        isOpen={isPopupOpenMail}
-                        close={togglePopupMail}
-                        subject={emailDetails.subject}
-                        body={emailDetails.body}
-                      />
+                      <Modal isOpen={isPopupOpenMail} close={togglePopupMail} className="overlayDelegateMail">
+                        <MailPopup
+                          isOpen={isPopupOpenMail}
+                          //   close={togglePopupMail}
+
+                          close={togglePopupMail}
+                          subject={emailDetails.subject}
+                          body={emailDetails.body}
+                        />
+                      </Modal>
                     )}
                   </div>
                 </div>
@@ -1106,9 +1113,9 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             <div className="Quote-DelegateBtnDiv" onClick={handleLaunch}>
               <div className="Quote-DelegateBtn">
                 Launch
-                <Model isOpen={visible} onRequestClose={() => setVisible(false)} className="overlaySuccess">
+                <Modal isOpen={visible} onRequestClose={() => setVisible(false)} className="overlaySuccess">
                   <Success />
-                </Model>
+                </Modal>
               </div>
             </div>
           ) : isDelegateClicked2 ? (
@@ -1122,7 +1129,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                 <div id="Launch-btn" onClick={togglePopupClarify}>
                   Clarification
                   {isPopupClarify && (
-                    <Model isOpen={isPopupClarify} onRequestClose={togglePopupClarify} className="overlayNoRFQ">
+                    <Modal isOpen={isPopupClarify} onRequestClose={togglePopupClarify} className="overlayNoRFQ">
                       <Clarification
                         customer_name={emailDetails.senderName}
                         customer_subject={emailDetails.subject}
@@ -1134,7 +1141,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
                         clarifyStatus={clarifyFlag}
                         close={togglePopupClarify}
                       />
-                    </Model>
+                    </Modal>
                   )}
                 </div>
               </div>
@@ -1148,7 +1155,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
       )}
 
       {isPopupClarify2 && hasBody && (
-        <Model isOpen={isPopupClarify2} onRequestClose={DelegeBtn2} className="overlayNoRFQ">
+        <Modal isOpen={isPopupClarify2} onRequestClose={DelegeBtn2} className="overlayNoRFQ">
           <Clarification
             customer_name={emailDetails.senderName}
             customer_subject={emailDetails.from}
@@ -1160,7 +1167,7 @@ const Delegate = ({ emailDetails, emailAddress, userName, val, ...props }) => {
             clarifyStatus={clarifyFlag}
             close={DelegeBtn2}
           />
-        </Model>
+        </Modal>
       )}
 
       {/* FOOTER SECTION */}

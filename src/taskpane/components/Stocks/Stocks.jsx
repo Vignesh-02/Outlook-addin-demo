@@ -18,6 +18,7 @@ const Stocks = ({classifyEmail }) => {
     // const [selectedProduct, setSelectedProduct2] = useState(1);
   const [selectedProductData, setSelectedProductData] = useState(null); // Data for the selected product
   const [editableFields, setEditableFields] = useState({
+    material: false,
     shape: false,
     dimensions: false,
     color: false,
@@ -141,7 +142,11 @@ const Stocks = ({classifyEmail }) => {
             <div className="Stock-VentSec1" onClick={() => handleClick(index + 1)}>
               <div className="Stock-VentSec1-Txt">
                 <div>
-                  <span className="Stock-VentSec1-Text1">{`${product.material}`}</span>
+                  <span className="Stock-VentSec1-Text1"
+                  >
+                    {`${product.material}`}
+
+                    </span>
                   <span className="Stock-VentSec1-Text3">
                     {/* ({product.quantity && product.quantity.match(/\d+/)[0]}) */}
                     ({product.quantity ? product.quantity.match(/\d+/)[0] : "()"})
@@ -161,7 +166,38 @@ const Stocks = ({classifyEmail }) => {
           <div className="Stock-VentDiv4-Child">
             <div className="Stock-VentSec1">
               <div className="Stock-VentSec1-Txt">
-                <div className="Stock-VentSec1-Text1">{products[selectedProduct - 1]?.material}</div>
+                <div className="Stock-VentSec1-Text1" onDoubleClick={() => toggleEditMode("material")}>
+                {editableFields.material ? (
+                            <input
+                              type="text"
+                              value={selectedProductData.material}
+                              onChange={(e) =>
+                                setSelectedProductData((prevData) => ({
+                                  ...prevData,
+                                  material: e.target.value,
+                                }))
+                              }
+                              onBlur={() =>
+                                setEditableFields((prevState) => ({
+                                  ...prevState,
+                                  material: false,
+                                }))
+                              }
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  handleFieldChange(e, "material");
+                                }
+                              }}
+                            //   style={{ width: "100%", border: "transparent" }}
+                            />
+                          ) : (
+                            <div
+                            //   className="Stock-Vent-Value1Sec-Shape-Value"
+                              >
+                              {selectedProductData.material}
+                              </div>
+                                                      )}
+                    </div>
               </div>
               <div className="Stock-VentSec4-Text2">
                 ({products[selectedProduct - 1]?.quantity &&

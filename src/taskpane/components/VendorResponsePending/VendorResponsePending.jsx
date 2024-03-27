@@ -307,7 +307,7 @@ const VendorResponsePending = () => {
 
         <Received1 />
 
-        {/* <VendorFollowUp />            */}
+        <VendorFollowUp />
 
         {/* customer */}
 

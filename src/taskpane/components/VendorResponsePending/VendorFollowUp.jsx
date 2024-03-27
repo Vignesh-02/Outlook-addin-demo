@@ -9,10 +9,15 @@ const VendorFollowUp = ({  }) => {
   
     // props - isOpen, togglePopup, vendordetail
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    }
 
     // State to keep track of selected vendor
   
-    // const [selectedVendor, setSelectedVendor] = useState(null);
+    const [selectedVendor, setSelectedVendor] = useState(null);
   
   // Filter out the "Customer_quote" key from vendordetail
   
@@ -54,13 +59,18 @@ const VendorFollowUp = ({  }) => {
               <div className="vendorSecB-3">
                 {/* Iterate over vendors */}
                 {/* {vendors.map((vendor, index) => ( */}
+                  
+                {/* ${selectedVendor === vendor ? "selected" : ""}`} */}
                   <div
-                    className={`vendorSecB-4 ${selectedVendor === vendor ? "selected" : ""}`}
-                    key={index}
-                    onClick={() => setSelectedVendor(vendor)}
+                    className={`vendorSecB-4`} 
+                      
+                    // key={index}
+                    // onClick={() => setSelectedVendor(vendor)}
                   >
                     <div className="vendorSecB-4b">
-                      <div className="vendorSecB-4c">{vendor.replace("_", " ")}</div>
+                      <div className="vendorSecB-4c">Vendor 1
+                      {/* {vendor.replace("_", " ")} */}
+                      </div>
                     </div>
                   </div>
                 {/* ))} */}
@@ -72,7 +82,7 @@ const VendorFollowUp = ({  }) => {
                   {/* {selectedVendor && (
                     <div dangerouslySetInnerHTML={{ __html: vendordetail[selectedVendor].Body }}></div>
                   )} */}
-                  
+
                 </div>
               </div>
             </div>
@@ -80,10 +90,11 @@ const VendorFollowUp = ({  }) => {
         </div>
       </div>
       {/* Footer */}
+      {/* onClick={togglePopupRegenerate2} for 2nd div */}
       <div className="vendor-footer">
-        <div className="vendor-footer-btn" onClick={togglePopupRegenerate2}>
+        <div className="vendor-footer-btn" >
           Regenerate
-          {
+          {/* {
           isPopupRegenerate2 && (
             <Model
             isOpen={isPopupRegenerate2}
@@ -93,7 +104,7 @@ const VendorFollowUp = ({  }) => {
             <Regenerate close={togglePopupRegenerate2} />
           </Model>
           )
-         }
+         } */}
         </div>
       </div>
     </div>
