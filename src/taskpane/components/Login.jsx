@@ -30,12 +30,20 @@ const Login = () => {
     
   
 
+    // const handleLogin = () => {
+    //   // Your login logic goes here
+    //   console.log("Login button is clicked");
+    //   history.push('/del');
+    // };
+
     const handleLogin = () => {
-      // Your login logic goes here
+      if (!selectedOrganization) {
+        setError("Please select an organization.");
+        return; // Prevent login if no organization is selected
+      }
       console.log("Login button is clicked");
       history.push('/del');
     };
-
     const loginWithOAuth = () => {
     
     const authPage = "https://test-wise-sales.onrender.com/assets/auth-dialog.html";
@@ -193,7 +201,8 @@ const Login = () => {
                 )}
           </div>
           <div className={`GoogleOAuth ${!selectedOrganization && "disabled"}`}>
-            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div>
+            {/* <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div> */}
+            <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div>
           </div>
         </div>
 
