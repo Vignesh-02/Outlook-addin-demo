@@ -1,5 +1,6 @@
 .queuePage {
-  width: 320px;
+  /* width: 320px; */
+  width: 316px;
   height: 568px;
   display: flex;
   padding-top: 10px;
