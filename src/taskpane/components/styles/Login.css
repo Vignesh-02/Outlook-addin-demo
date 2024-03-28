@@ -1,11 +1,9 @@
 .loginPage {
-  width: 100%;
-  /* width: 320px; */
+  width: 320px;
   height: 568px;
   position: relative;
-  /* background: #1c3c57; */
+  background: #1c3c57;
   overflow: hidden;
-  background-color: greenyellow;
 }
 
 .globe {
@@ -47,11 +45,9 @@
 
 /* Container - 1 */
 .loginCont-1 {
-  width: 100%;
-  /* width: 267px; */
+  width: 267px;
   height: 173.38px;
-  /* left: 27px; */
-  left: 0; 
+  left: 27px;
   top: 41px;
   position: absolute;
   flex-direction: column;
@@ -94,7 +90,7 @@
 /* Container - 2 */
 .loginCont-2 {
   height: 135px;
-  /* left: 27px; */left: 0; 
+  left: 27px;
   top: 369px;
   position: absolute;
   flex-direction: column;
