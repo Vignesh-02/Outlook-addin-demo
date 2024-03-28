@@ -46,12 +46,12 @@ const Login = () => {
     // };
     const loginWithOAuth = () => {
 
-      if (!selectedOrganization && selectedOrganization === "Select your organization") {
+      if (!selectedOrganization) {
         setError("Please select an organization.");
         return; // Prevent OAuth login if no organization is selected
       }
-
-      console.log("you are login successsfully, Afshan")
+    
+      console.log("12345you are login successsfully, Afshan")
     
     const authPage = "https://test-wise-sales.onrender.com/assets/auth-dialog.html";
     Office.context.ui.displayDialogAsync(authPage, { height: 60, width: 30, promptBeforeOpen: false }, (result) => {
@@ -208,7 +208,7 @@ const Login = () => {
                 )}
           </div>
           <div className={`GoogleOAuth ${!selectedOrganization && "disabled"}`}>
-            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook2</div>
+            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook4</div>
             {/* <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div> */}
           </div>
         </div>
