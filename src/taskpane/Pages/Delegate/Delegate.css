@@ -20,7 +20,7 @@
   align-items: center;
   gap: 8px;
   display: inline-flex;
-  /* background-color: red; */
+  background-color: red;
 }
 
 /* Section - 1 */
@@ -291,7 +291,7 @@
   align-items: flex-start;
   gap: 3px;
   display: flex;
-  /* background-color: red; */
+  background-color: red;
 }
 .Quote-RFQ-EmailChild {
   align-self: stretch;
@@ -357,13 +357,13 @@
   /* background-color: orange; */
 }
 
+
 .Quote-RFQ-Section.collapsed {
   height: 54px;
 }
 .Quote-RFQ-EmailParent.collapsed {
   height: 27px;
 }
-
 
 /* DETAILS TABLE */
 .Quote-Table {
