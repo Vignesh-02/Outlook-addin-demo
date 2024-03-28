@@ -46,7 +46,12 @@ const Login = () => {
     // };
     const loginWithOAuth = () => {
 
-      if (!selectedOrganization) {
+      // if (!selectedOrganization) {
+      //   setError("Please select an organization.");
+      //   return; // Prevent OAuth login if no organization is selected
+      // }
+
+      if (!selectedOrganization || selectedOrganization === "Select your organization") {
         setError("Please select an organization.");
         return; // Prevent OAuth login if no organization is selected
       }
@@ -208,7 +213,7 @@ const Login = () => {
                 )}
           </div>
           <div className={`GoogleOAuth ${!selectedOrganization && "disabled"}`}>
-            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook4</div>
+            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook8</div>
             {/* <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div> */}
           </div>
         </div>
