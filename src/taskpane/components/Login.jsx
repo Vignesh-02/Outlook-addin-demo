@@ -200,7 +200,8 @@ const Login = () => {
               <div className={`LoginCont2-child1-a-2 ${error ? 'dropdownError' : ''}`}>
               {/* <div className="LoginCont2-child1-a-2"> */}
                 <select className="loginSelect" onChange={handleOrganizationChange}>
-                <option>Select your organization</option>
+                {/* <option>Select your organization</option> */}
+                <option value='Select your organization'>Select your organization</option>
                 <option value="Onelab Ventures">Onelab Ventures</option>
                   <option value="Wise Sales">Wise Sales</option>
                   <option value="Interstate Advanced Materials">Interstate Advanced Materials</option>
