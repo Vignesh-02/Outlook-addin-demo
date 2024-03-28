@@ -215,7 +215,7 @@ const Login = () => {
                 )}
           </div>
           <div className={`GoogleOAuth ${!selectedOrganization && "disabled"}`}>
-            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook10</div>
+            <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook112</div>
             {/* <div onClick={handleLogin} className="OAuth-text">Sign In with Outlook</div> */}
           </div>
         </div>
