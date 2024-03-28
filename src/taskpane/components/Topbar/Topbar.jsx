@@ -1,6 +1,6 @@
 import React from "react";
 import "./Topbar.css";
-import cross from "../../../../public/Vector.png";
+// import cross from "../../../../public/Vector.png";
 import refresh from "../../../../public/refresh.png";
 import interState from "../../../../public/interstate.png";
 import oneLab from "../../../../public/onelab.png";

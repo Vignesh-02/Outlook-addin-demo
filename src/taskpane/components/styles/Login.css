@@ -204,3 +204,24 @@
     cursor: pointer;
   }
   
+
+  
+.errorContainer {
+  position: absolute;
+  top: calc(100% - 70px);
+}
+
+.loginError {
+  color:#FF0000;
+  font-size: 12px;
+}
+
+.dropdownError {
+  /* border-color: red; */
+  border: 1px solid red;
+}
+.disabled {
+  position: absolute;
+  top: calc(100% - 30px); /* Adjust as needed */
+  width: 90%;
+}

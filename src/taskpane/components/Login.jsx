@@ -16,6 +16,7 @@ const Login = () => {
 
   const [loading, setLoading] = useState(true); // State to track loading
   const [selectedOrganization, setSelectedOrganization] = useState(null);
+  const [error, setError] = useState(""); // State to track validation error
 
     
     const history = useHistory();
@@ -126,10 +127,21 @@ const Login = () => {
     };
   }, []);
 
-  const handleOrganizationChange = (event) => {
-    setSelectedOrganization(event.target.value);
-  };
+  // const handleOrganizationChange = (event) => {
+  //   setSelectedOrganization(event.target.value);
+  // };
 
+  const handleOrganizationChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedOrganization(selectedValue);
+    
+    // If the selected value is the default option, show the error message
+    if (selectedValue === "Select your organization") {
+      setError("Please select an organization.");
+    } else {
+      setError(""); // Clear error message when organization is selected
+    }
+  };
   return (
     <>
      {loading ? ( // Display the animation while loading
@@ -164,7 +176,8 @@ const Login = () => {
               <div className="LoginCont2-child1-a-1">
                 <div className="LoginOrganization">Organization </div>
               </div>
-              <div className="LoginCont2-child1-a-2">
+              <div className={`LoginCont2-child1-a-2 ${error ? 'dropdownError' : ''}`}>
+              {/* <div className="LoginCont2-child1-a-2"> */}
                 <select className="loginSelect" onChange={handleOrganizationChange}>
                 <option>Select your organization</option>
                 <option value="Onelab Ventures">Onelab Ventures</option>
@@ -173,11 +186,13 @@ const Login = () => {
                 </select>
               </div>
             </div>
+            {error && (
+                  <div className="errorContainer">
+                    <div className="loginError">{error}</div>
+                  </div>
+                )}
           </div>
-          <div  className="GoogleOAuth">
-            {/* <div className="OAuth">
-              <img src={GoogleImage} alt="Google Logo" />
-            </div> */}
+          <div className={`GoogleOAuth ${!selectedOrganization && "disabled"}`}>
             <div onClick={loginWithOAuth} className="OAuth-text">Sign In with Outlook</div>
           </div>
         </div>
